@@ -1,0 +1,122 @@
+{
+  "_sobre": "Preset de direção de arte TÉCNICA. Mescle no tokens.json do projeto e defina cores/fontes da marca por cima.",
+  "_paleta": "Fundo azul-noite ou grafite (#080C16–#0E1424). Linhas/volumes em ciano ou branco frio (primary). Acento quente (laranja/âmbar) para o que está em foco. Um secundário frio (verde-água) opcional para estados.",
+  "_tipografia": "Sans técnica (IBM Plex Sans, Inter, Space Grotesk) para títulos; MONO (IBM Plex Mono, JetBrains Mono) obrigatória para rótulos, unidades e números pequenos.",
+  "art": {
+    "direction": "technical",
+    "hud": "minimal"
+  },
+  "shape": {
+    "radius": {
+      "sm": 4,
+      "md": 8,
+      "lg": 14
+    },
+    "strokeWidth": 2,
+    "corner": "sharp"
+  },
+  "layout": {
+    "margin": 72,
+    "gap": 40,
+    "safe": {
+      "top": 220,
+      "bottom": 360,
+      "left": 72,
+      "right": 120
+    }
+  },
+  "surface": {
+    "style": "outline"
+  },
+  "background": {
+    "style": "grid",
+    "grain": 0.04,
+    "vignette": 0.4,
+    "patternOpacity": 0.05
+  },
+  "motion": {
+    "personality": "precise",
+    "easing": {
+      "standard": [
+        0.4,
+        0,
+        0.2,
+        1
+      ],
+      "enter": [
+        0.16,
+        1,
+        0.3,
+        1
+      ],
+      "exit": [
+        0.7,
+        0,
+        0.84,
+        0
+      ]
+    },
+    "spring": {
+      "enter": {
+        "damping": 200,
+        "stiffness": 140
+      },
+      "pop": {
+        "damping": 24,
+        "stiffness": 160
+      },
+      "soft": {
+        "damping": 40,
+        "stiffness": 60,
+        "mass": 1.1
+      }
+    },
+    "duration": {
+      "fast": 0.3,
+      "base": 0.55,
+      "slow": 1.0
+    },
+    "stagger": 0.05,
+    "transition": {
+      "type": "wipe",
+      "duration": 0.45
+    },
+    "cameraDrift": 0.25
+  },
+  "three": {
+    "material": "wire",
+    "geometry": "sharp",
+    "edges": true,
+    "fog": {
+      "near": 1.1,
+      "far": 2.8
+    },
+    "lighting": "flat",
+    "bevel": 0.0,
+    "shadows": false,
+    "fov": 26,
+    "exposure": 1.0
+  },
+  "captions": {
+    "enabled": true,
+    "style": "minimal",
+    "position": "bottom",
+    "maxWords": 4,
+    "size": 52,
+    "font": "body",
+    "textTransform": "none",
+    "highlight": "text",
+    "stroke": 0
+  },
+  "brand": {
+    "watermark": "none",
+    "endCard": false
+  },
+  "sound": {
+    "palette": "digital",
+    "sfxGain": 0.28,
+    "musicGain": 0.12,
+    "duckTo": 0.35,
+    "transitionSfx": "swish"
+  }
+}

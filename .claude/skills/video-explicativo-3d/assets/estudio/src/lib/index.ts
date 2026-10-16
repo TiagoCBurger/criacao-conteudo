@@ -1,0 +1,18 @@
+// Biblioteca do estúdio — importe tudo daqui:  import {KineticText, Scene3D, Block, useCue} from "../../lib";
+export * from "./motion";
+export * from "./timeline";
+export * from "./layout";
+export * from "./type";
+export * from "./charts";
+export * from "./diagram";
+export * from "./captions";
+export * from "./audio";
+export * from "./explainer";
+export * from "./three/scene";
+export * from "./three/objects";
+export * from "./three/text";
+export * from "./three/fx";
+export * from "./three/props";
+export * from "./three/forms";
+export * from "./flat";
+export {ds, c, alpha, mix, dataColor, type, radius, dsFile, ttfFor, art, bevelFor, edges3d, geometry3d} from "../ds";
