@@ -13,4 +13,5 @@ export * from "./three/objects";
 export * from "./three/text";
 export * from "./three/fx";
 export * from "./three/props";
-export {ds, c, alpha, mix, dataColor, type, radius, dsFile, ttfFor} from "../ds";
+export * from "./three/forms";
+export {ds, c, alpha, mix, dataColor, type, radius, dsFile, ttfFor, art, bevelFor, edges3d, geometry3d} from "../ds";

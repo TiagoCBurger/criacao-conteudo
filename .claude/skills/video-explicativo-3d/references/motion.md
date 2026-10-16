@@ -44,6 +44,14 @@ O que separa um motion "profissional" de um slide animado é **intenção em cad
 - **Tilt de cima** (câmera alta olhando para baixo, ~35°): ótimo para grades, mapas e fluxos no chão.
 - Evite movimentos de câmera simultâneos a muitas entradas: escolha qual dos dois conduz o olhar.
 
+## Contenção (o que separa "premium" de "fofo")
+
+- **Menos e mais lento.** Um movimento principal por vez, com tempo para o olho acompanhar. Lentidão controlada passa segurança; muitos elementos rápidos passam ansiedade.
+- **Molas amortecidas** em tudo que é grande. Overshoot só em detalhes pequenos e, mesmo assim, discreto (`spring.pop.damping ≥ 14` fora do playful).
+- **A câmera é o movimento.** Em vez de animar dez objetos, mova a câmera devagar sobre uma cena quase parada (push-in, órbita curta, subida). É o recurso mais "cinema" que existe.
+- **Luz como animação.** Acender um objeto (`emissive`, `Glow`) ou passar um feixe (`LightBeam`) é mais elegante que fazê-lo pular.
+- **Saídas limpas.** Quando o texto troca, o anterior sai antes. Não deixe resíduo na tela.
+
 ## Anti-padrões (parece amador)
 
 - Tudo entrando com o mesmo fade, ao mesmo tempo.
@@ -53,3 +61,5 @@ O que separa um motion "profissional" de um slide animado é **intenção em cad
 - Elementos encostados nas bordas ou dentro das zonas de interface do app.
 - Cor de acento espalhada em tudo (perde o papel de sinalizar).
 - 3D decorativo que não diz nada sobre o assunto.
+- Formas arredondadas, cores vivas e bonecos com olhos fora de uma marca lúdica: o vídeo fica infantil.
+- HUD carregado: selo + título + subtítulo + chips + rótulos + legenda ao mesmo tempo.

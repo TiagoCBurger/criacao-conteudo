@@ -16,6 +16,17 @@
 - [ ] Legenda não colide com conteúdo (o `SafeArea` reserva a faixa; conteúdo posicionado à mão precisa respeitar).
 - [ ] Texto na tela é síntese e não repete literalmente a legenda (ou a legenda está escondida naquele trecho).
 
+**HUD mínimo** (com `art.hud: "minimal"`)
+- [ ] Cada quadro tem 1 visual principal e no máximo 1 bloco de texto além da legenda (título ≤ 5 palavras ou número).
+- [ ] Nada fixo na tela (marca d'água, barra de progresso, selos de seção) sem exigência da marca.
+- [ ] Gráficos sem grade, eixo ou legenda separada; só o valor que importa rotulado.
+- [ ] Texto anterior sai antes do próximo entrar (sem acúmulo de linhas).
+
+**Linguagem 3D**
+- [ ] O 3D segue a direção de arte (sem formas arredondadas, bonecos com olhos ou cores de brinquedo fora do playful).
+- [ ] Um único acento por quadro, no objeto ou número em foco.
+- [ ] O 3D não invade a faixa da legenda e nada importante é cortado nas bordas.
+
 **Didática e ritmo**
 - [ ] O 1º quadro (t≈0,25 s) já tem algo forte. Não há vinheta nem tela vazia.
 - [ ] O começo de **cada** cena já tem conteúdo (cenário, objeto ou título). Não há quadro quase vazio logo após um corte esperando o próximo cue.

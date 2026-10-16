@@ -72,14 +72,32 @@ export type Tokens = {
     /** 0..1 — quanto a câmera 3D "respira" quando parada */
     cameraDrift: number;
   };
+  /**
+   * Direção de arte: a "linguagem" visual do vídeo. Opcional — sem ela vale editorial + hud mínimo.
+   *  editorial  → tipografia grande, muito espaço negativo, 3D escultórico de arestas vivas, paleta contida
+   *  cinematic  → escuro, luz dramática com recorte, neblina, metal/vidro, câmera lenta
+   *  technical  → linhas/aramado, grade, precisão, rótulos mono
+   *  playful    → formas arredondadas, cores vivas, personagens "toy" (só quando a marca é lúdica/infantil)
+   */
+  art?: {
+    direction: "editorial" | "cinematic" | "technical" | "playful";
+    /** densidade de elementos na tela além do visual principal */
+    hud: "minimal" | "balanced" | "rich";
+  };
   three: {
-    material: "matte" | "glossy" | "glass" | "clay" | "metal" | "toon";
+    material: "matte" | "glossy" | "glass" | "clay" | "metal" | "toon" | "chrome" | "stone" | "wire";
     roughness?: number;
     metalness?: number;
     clearcoat?: number;
     /** raio do chanfro dos blocos, em unidades 3D */
     bevel: number;
-    lighting: "studio" | "soft" | "dramatic" | "flat";
+    /** sharp = arestas vivas (padrão fora do playful); soft = chanfro do token; round = bem arredondado */
+    geometry?: "sharp" | "soft" | "round";
+    /** contorno em linha nos sólidos (look técnico) */
+    edges?: boolean;
+    /** neblina na cor do fundo; near/far em múltiplos da distância câmera→alvo (ex.: {near: 1.05, far: 2.4}); null desliga */
+    fog?: {near: number; far: number} | null;
+    lighting: "studio" | "soft" | "dramatic" | "flat" | "noir";
     shadows: boolean;
     fov: number;
     exposure: number;

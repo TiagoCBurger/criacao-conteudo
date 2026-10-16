@@ -155,7 +155,10 @@ export const Text3D: React.FC<{
           return (
             <group key={l.i} position={[l.x + cx, l.y + cy + dy + e * size * 0.5, 0]} rotation={[rotX, 0, 0]} scale={[s, s, s]}>
               <mesh geometry={l.geo} position={[-cx, -cy, 0]} castShadow>
-                {sideColor ? (
+                {ds.three.material === "wire" ? (
+                  // no look técnico o letreiro é luz: sólido emissivo na cor (contorno de fonte curva fica sujo)
+                  <meshStandardMaterial color={c(color)} emissive={c(color)} emissiveIntensity={0.55} roughness={0.5} />
+                ) : sideColor ? (
                   <>
                     <meshStandardMaterial attach="material-0" color={c(color)} roughness={0.4} />
                     <meshStandardMaterial attach="material-1" color={c(sideColor)} roughness={0.6} />

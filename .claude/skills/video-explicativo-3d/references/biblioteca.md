@@ -8,7 +8,7 @@ Tudo é importado de `../../lib` dentro de `src/videos/<slug>/index.tsx`. Os tem
 - Tipografia: Reveal, KineticText, Lettering, Counter, Eyebrow, TypeOn
 - Gráficos: BarChart, ColumnChart, LineChart, Donut, Pictogram, ProgressBar
 - Diagramas: Card, IconBadge, FlowSteps, Compare, Checklist, Arrow, Callout
-- 3D: Scene3D, CameraRig, Appear, Block, Orb, Text3D, Label3D, SvgExtrude, Bars3D, Connector3D, Particles, Spin, ThemedMaterial, viewSize, projectToScreen
+- 3D: Scene3D, CameraRig, fitDistance, orbit, Appear, Block, Solid, Orb, Field, Ribbon, Text3D, Label3D, SvgExtrude, Bars3D, Connector3D, Glow, LightBeam, Atmosphere, Character, Diorama, Particles, Spin, ThemedMaterial, viewSize, projectToScreen
 - Som: Sfx, Music, Narration
 - Helpers do design system
 
@@ -62,6 +62,8 @@ const Video: React.FC = () => (
 const def: VideoDef = {id: SLUG, component: Video, duration: B[B.length - 1].end};
 export default def;
 ```
+
+Exemplo completo e realista (HUD mínimo, 3D carregando a ideia): `assets/exemplos/juros-hud-minimo.tsx`. Leia antes de escrever o primeiro vídeo.
 
 `<Explainer>` monta, em camadas: fundo da marca (contínuo), as cenas com transição, `under`/`over` (camadas contínuas opcionais), as legendas, a marca d'água, a narração, a trilha e o som de transição (`sound.transitionSfx`). Por cena, `transition` aceita `"fade" | "slide" | "push" | "zoom" | "wipe" | "blur" | "cut"` e `transitionSfx` aceita um nome ou `null`.
 
@@ -132,6 +134,8 @@ Use para 1–2 palavras ou um número. Frases longas não funcionam com este efe
 
 ## Diagramas
 
+> Com `art.hud: "minimal"` (padrão), os componentes desta seção são **exceção**: use só quando o elemento é a própria mensagem. Veja `didatica-storyboard.md › HUD mínimo`.
+
 - **`<Card delay preset accent width padding exitAt>{…}</Card>`**: superfície no estilo `surface.style` (glass/solid/outline/elevated). `accent` é a faixa lateral colorida.
 - **`<IconBadge icon={Brain} variant="soft|solid|ring" size color delay/>`**: ícones de `lucide-react` (`import {Brain, Coins, Rocket} from "lucide-react"`, com mais de 1.500 ícones).
 - **`<FlowSteps steps={[{title, detail?, icon?}]} at={[t1,t2,…]} focus/>`**: passos verticais que entram no ritmo da fala. O conector se desenha entre eles e o passo atual fica em foco.
@@ -144,10 +148,17 @@ Use para 1–2 palavras ou um número. Frases longas não funcionam com este efe
 
 Leia também `references/3d.md` (regras de determinismo, enquadramento 9:16, câmera, luz).
 
-- **`<Scene3D camera={{position, fov, target}} floor="shadow|grid|none" floorY lighting>`**: canvas 3D transparente em tela cheia, com luz e reflexos do design system. A câmera olha para `target` (padrão: origem). Use um por cena. O texto nítido continua em HTML por cima.
+- **`<Scene3D camera={{position, fov, target}} floor="shadow|grid|none" floorY lighting fog>`**: canvas 3D transparente em tela cheia, com luz, material, neblina e reflexos do design system. A câmera olha para `target` (padrão: origem). Use um por cena. O texto nítido continua em HTML por cima.
+- **`fitDistance(largura, altura, {fill=0.7})`** → distância de câmera para o objeto ocupar ~70% do quadro (indispensável com lente longa). **`orbit(target, distancia, azimute°, elevação°)`** → posição de câmera ao redor do alvo.
+  ```tsx
+  const alvo: V3 = [0, 1.2, 0];
+  <Scene3D camera={{position: orbit(alvo, fitDistance(3, 4), 30, 12), target: alvo}}>
+  ```
 - **`<CameraRig keys={[{t, position, target?, fov?}]} drift/>`**: câmera por keyframes (segundos locais), com easing e "respiração".
 - **`<Appear delay enter="drop|scale|rise|spin|flip|none" exitAt float position rotation scale>{mesh}</Appear>`**: entrada/saída/flutuação para qualquer grupo.
-- **`<Block size={[w,h,d]} color position rotation delay enter exitAt float bevel emissive/>`**: bloco chanfrado (camadas, módulos, pilhas, "dados").
+- **`<Block size={[w,h,d]} color position rotation delay enter exitAt float bevel emissive/>`**: bloco (lajes, camadas, módulos, monólitos). Aresta viva, chanfro ou contorno em linha conforme `three.geometry`/`edges` do design system. **`<Solid size color position/>`** é o sólido sem animação, para montar objetos próprios com o mesmo acabamento.
+- **`<Field rows cols spacing size height={(r, c) => n} highlight={[[r, c]]} delay duration order="wave|row|random|together"/>`**: campo de pilares (paisagem de dados). Linha 0 fica na frente. Use para "muito", crescimento, "um entre muitos".
+- **`<Ribbon points={[[x,y,z], …]} radius color delay duration tip/>`**: fita/tubo que se desenha ao longo dos pontos, com ponta brilhante. É a curva de crescimento em 3D.
 - **`<Orb radius color position delay enter float emissive/>`**: esfera (nós, átomos, ideias). `emissive` de 0.5 a 1 faz o objeto "acender".
 - **`<Text3D text size depth bevel color sideColor delay stagger anim="flip|rise|drop|none" position maxWidth exitAt/>`**: letreiro extrudado letra a letra com a fonte display. Ajusta-se sozinho à largura visível. Ideal para 1–2 palavras ou um número.
 - **`<Label3D size color position anchorX anchorY delay>texto estático</Label3D>`**: texto plano dentro da cena. Não use com valores que mudam a cada frame.
@@ -156,7 +167,7 @@ Leia também `references/3d.md` (regras de determinismo, enquadramento 9:16, câ
 - **`<Connector3D from to lift delay duration color width dashed/>`**: ligação curva que se desenha entre pontos 3D.
 - **`<Particles count spread size colors opacity seed/>`**: poeira de luz sutil (textura, não assunto).
 - **`<Spin speed axis>`**: rotação contínua. **`<ThemedMaterial color emissive opacity/>`**: material do design system para meshes próprios.
-- **`<Character color skin accessory="none|tie|hat|apron|glasses|headset" accessoryColor action="idle|talk|wave|point" actionAt highlight position rotation delay>`**: personagem estilizado (~1,6 de altura) para analogias e situações do cotidiano (cliente, garçom, usuário, cientista). Objetos "na mão" vão como children, em coordenadas locais.
+- **`<Character look="figure|toy" color accessory action="idle|talk|wave|point" actionAt highlight position rotation delay>`**: pessoa em cena (~1,6 de altura). `figure` (padrão fora do playful) é um manequim esguio, monocromático e sem rosto: elegante. `toy` é o boneco fofo com olhos, só para marcas lúdicas. Objetos "na mão" vão como children.
 - **`<Diorama size={[w,d]} walls="none|back|corner" wallHeight position delay>{…}</Diorama>`**: base isométrica (piso + paredes) para montar um pequeno cenário (cozinha, loja, escritório, laboratório). Os filhos ficam sobre o piso (y=0). Use com **`isoCamera({fit, target})`**, que enquadra um diorama de largura `fit` no 9:16.
 - **`<Phone3D screen lit position rotation/>`**: celular 3D simples. **`<PhoneMock width tilt delay>{HTML}</PhoneMock>`**: moldura de celular em HTML para telas de app detalhadas (login, busca, notificação).
 - **`<Glow position size color intensity delay/>`**: halo de luz aditivo (sol, lâmpada, objeto que "acende").
@@ -172,4 +183,4 @@ Leia também `references/3d.md` (regras de determinismo, enquadramento 9:16, câ
 
 ## Helpers do design system
 
-`c(papel)`, `alpha(papel, a)`, `mix(a, b, t)`, `dataColor(i)`, `type(role, size, overrides)` (estilo CSS completo), `radius("sm|md|lg")`, `dsFile("logos/x.svg")`, `ds` (tokens crus). Para estilos próprios, comece de `type()` e `c()` e nunca escreva hex ou `fontFamily` à mão.
+`c(papel)`, `alpha(papel, a)`, `mix(a, b, t)`, `dataColor(i)`, `type(role, size, overrides)` (estilo CSS completo), `radius("sm|md|lg")`, `dsFile("logos/x.svg")`, `ds` (tokens crus), `art` (`{direction, hud}` efetivos), `geometry3d()`, `edges3d()`, `bevelFor(lado)`. Para estilos próprios, comece de `type()` e `c()` e nunca escreva hex ou `fontFamily` à mão. Para decidir algo pela direção de arte: `if (art.direction === "technical") …`.

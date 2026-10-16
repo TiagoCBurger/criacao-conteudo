@@ -1,9 +1,9 @@
 import {RoundedBox} from "@react-three/drei";
 import React from "react";
 import {interpolate, useCurrentFrame, useVideoConfig} from "remotion";
-import {c, ds, mix} from "../../ds";
+import {art, c, ds, mix} from "../../ds";
 import {useTime} from "../motion";
-import {Appear, type Enter3D} from "./objects";
+import {Appear, Solid, type Enter3D} from "./objects";
 import {ThemedMaterial, type V3} from "./scene";
 
 // "Atores" e cenários 3D estilizados, montados de primitivas com o material do design system.
@@ -33,7 +33,8 @@ const ink = () => {
 };
 
 /**
- * Personagem estilizado (corpo de "feijão", cabeça, olhos). ~1,6 unidades de altura.
+ * Personagem estilizado. look="figure" (padrão, exceto playful): manequim esguio, sem rosto, ~1,6 de altura.
+ * look="toy": boneco de corpo de "feijão" com olhos — só para marcas lúdicas/infantis.
  *   <Character color="secondary" accessory="tie" position={[0.8, 0, 0]} rotation={[0, -0.5, 0]} delay={useCue("garçom")} />
  */
 export const Character: React.FC<{
@@ -52,6 +53,8 @@ export const Character: React.FC<{
   /** tempo local (s) em que a ação começa */
   actionAt?: number;
   highlight?: boolean;
+  /** "figure" = manequim esguio e monocromático, sem olhos (padrão fora do playful); "toy" = boneco fofo com olhos */
+  look?: "figure" | "toy";
   children?: React.ReactNode;
   seed?: string;
 }> = ({
@@ -68,14 +71,20 @@ export const Character: React.FC<{
   action = "idle",
   actionAt = 0,
   highlight = false,
+  look,
   children,
   seed = "char",
 }) => {
+  const toy = (look ?? (art.direction === "playful" ? "toy" : "figure")) === "toy";
+  // proporções: toy = cabeçudo e redondo; figure = alongado, cabeça pequena (escultórico)
+  const P = toy
+    ? {bodyR: 0.32, bodyL: 0.5, bodyY: 0.55, headR: 0.27, headY: 1.22, armX: 0.33, armY: 0.78, armR: 0.07, armL: 0.26, tieY: 0.88, tieZ: 0.3}
+    : {bodyR: 0.19, bodyL: 0.95, bodyY: 0.67, headR: 0.155, headY: 1.42, armX: 0.21, armY: 1.02, armR: 0.042, armL: 0.5, tieY: 1.12, tieZ: 0.19};
   const t = useTime();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const head = skin ? c(skin) : mix(color, "#ffffff", 0.35);
-  const breathe = Math.sin(t * 2.2 + seed.length) * 0.015;
+  const head = skin ? c(skin) : toy ? mix(color, "#ffffff", 0.35) : c(color);
+  const breathe = Math.sin(t * 2.2 + seed.length) * (toy ? 0.015 : 0.006);
   const act = interpolate(frame, [actionAt * fps, (actionAt + 0.3) * fps], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
   const talk = action === "talk" ? Math.sin(t * 9) * 0.06 * act : 0;
   const wave = action === "wave" ? (Math.sin(t * 8) * 0.5 + 1.9) * act : action === "point" ? 1.3 * act : 0;
@@ -84,25 +93,25 @@ export const Character: React.FC<{
     <Appear position={position} rotation={rotation} scale={scale} delay={delay} enter={enter} exitAt={exitAt} seed={seed}>
       <group scale={[1, 1 + breathe, 1]}>
         {/* corpo */}
-        <mesh position={[0, 0.55, 0]} castShadow>
-          <capsuleGeometry args={[0.32, 0.5, 8, 24]} />
+        <mesh position={[0, P.bodyY, 0]} castShadow>
+          <capsuleGeometry args={[P.bodyR, P.bodyL, 8, 24]} />
           <ThemedMaterial color={color} emissive={highlight ? 0.25 : 0} />
         </mesh>
         {/* cabeça */}
-        <group position={[0, 1.22, 0]} rotation={[talk, 0, talk * 0.5]}>
+        <group position={[0, P.headY, 0]} rotation={[talk, 0, talk * 0.5]}>
           <mesh castShadow>
-            <sphereGeometry args={[0.27, 32, 32]} />
+            <sphereGeometry args={[P.headR, 32, 32]} />
             <ThemedMaterial color={head} />
           </mesh>
-          {[-0.09, 0.09].map((x) => (
+          {toy && [-0.09, 0.09].map((x) => (
             <mesh key={x} position={[x, 0.03, 0.245]}>
               <sphereGeometry args={[0.035, 12, 12]} />
               <meshBasicMaterial color={eye} />
             </mesh>
           ))}
           {accessory === "hat" && (
-            <mesh position={[0, 0.27, 0]} castShadow>
-              <cylinderGeometry args={[0.2, 0.24, 0.26, 24]} />
+            <mesh position={[0, P.headR, 0]} castShadow>
+              <cylinderGeometry args={[P.headR * 0.75, P.headR * 0.9, P.headR, 24]} />
               <ThemedMaterial color={accessoryColor} />
             </mesh>
           )}
@@ -115,13 +124,13 @@ export const Character: React.FC<{
             ))}
           {accessory === "headset" && (
             <mesh position={[0, 0.05, 0]} rotation={[0, 0, 0]}>
-              <torusGeometry args={[0.29, 0.025, 8, 32, Math.PI]} />
+              <torusGeometry args={[P.headR * 1.08, 0.025, 8, 32, Math.PI]} />
               <ThemedMaterial color={accessoryColor} />
             </mesh>
           )}
         </group>
         {accessory === "tie" && (
-          <group position={[0, 0.88, 0.3]}>
+          <group position={[0, P.tieY, P.tieZ]}>
             {[-1, 1].map((s) => (
               <mesh key={s} position={[s * 0.06, 0, 0]} rotation={[0, 0, (s * Math.PI) / 2]}>
                 <coneGeometry args={[0.05, 0.1, 3]} />
@@ -131,15 +140,15 @@ export const Character: React.FC<{
           </group>
         )}
         {accessory === "apron" && (
-          <mesh position={[0, 0.5, 0.31]}>
-            <boxGeometry args={[0.42, 0.5, 0.02]} />
+          <mesh position={[0, P.bodyY - 0.05, P.bodyR - 0.01]}>
+            <boxGeometry args={[P.bodyR * 1.3, P.bodyL, 0.02]} />
             <ThemedMaterial color={accessoryColor} />
           </mesh>
         )}
         {/* braço direito (acena/aponta) */}
-        <group position={[0.33, 0.78, 0]} rotation={[0, 0, wave]}>
-          <mesh position={[0, -0.2, 0]} castShadow>
-            <capsuleGeometry args={[0.07, 0.26, 6, 12]} />
+        <group position={[P.armX, P.armY, 0]} rotation={[0, 0, wave]}>
+          <mesh position={[0, -P.armL * 0.75, 0]} castShadow>
+            <capsuleGeometry args={[P.armR, P.armL, 6, 12]} />
             <ThemedMaterial color={color} />
           </mesh>
         </group>
@@ -170,18 +179,12 @@ export const Diorama: React.FC<{
   const wall = wallColor ?? mix("surface", "text", 0.18);
   return (
     <Appear position={position} delay={delay} enter="rise">
-      <RoundedBox args={[w, 0.2, d]} radius={0.06} position={[0, -0.1, 0]} receiveShadow>
-        <ThemedMaterial color={floor} />
-      </RoundedBox>
+      <Solid size={[w, 0.2, d]} position={[0, -0.1, 0]} color={floor} />
       {walls !== "none" && (
-        <RoundedBox args={[w, wallHeight, 0.14]} radius={0.04} position={[0, wallHeight / 2, -d / 2 + 0.07]} receiveShadow>
-          <ThemedMaterial color={wall} />
-        </RoundedBox>
+        <Solid size={[w, wallHeight, 0.14]} position={[0, wallHeight / 2, -d / 2 + 0.07]} color={wall} />
       )}
       {walls === "corner" && (
-        <RoundedBox args={[0.14, wallHeight, d]} radius={0.04} position={[-w / 2 + 0.07, wallHeight / 2, 0]} receiveShadow>
-          <ThemedMaterial color={mix(wall, "#000000", 0.06)} />
-        </RoundedBox>
+        <Solid size={[0.14, wallHeight, d]} position={[-w / 2 + 0.07, wallHeight / 2, 0]} color={mix(wall, "#000000", 0.06)} />
       )}
       {children}
     </Appear>

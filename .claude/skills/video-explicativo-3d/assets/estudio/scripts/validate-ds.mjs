@@ -109,6 +109,28 @@ export const validateDesignSystem = (dsDir) => {
   if (m.duration?.base > 5) errors.push("motion.duration está em segundos, não frames (ex.: base: 0.5)");
   if (!m.transition?.type) errors.push("falta motion.transition.{type,duration}");
 
+  // direção de arte e 3D
+  const DIRS = ["cinematic", "technical", "editorial", "playful"];
+  if (!t.art) warnings.push('sem "art" — a biblioteca assume editorial + hud mínimo. Defina art.direction (veja references/design-system.md › Direção de arte)');
+  else {
+    if (!DIRS.includes(t.art.direction)) errors.push(`art.direction deve ser um de: ${DIRS.join(", ")}`);
+    if (t.art.hud && !["minimal", "balanced", "rich"].includes(t.art.hud)) errors.push("art.hud deve ser minimal | balanced | rich");
+    if (t.art.direction === "playful") warnings.push('art.direction "playful" deixa o 3D arredondado e "fofo" — use só para marca lúdica/infantil');
+  }
+  const MATS = ["metal", "chrome", "glass", "stone", "wire", "matte", "glossy", "clay", "toon"];
+  if (!MATS.includes(t.three.material)) errors.push(`three.material deve ser um de: ${MATS.join(", ")}`);
+  if (!["noir", "studio", "soft", "dramatic", "flat"].includes(t.three.lighting)) errors.push("three.lighting deve ser noir | studio | soft | dramatic | flat");
+  if (t.three.geometry && !["sharp", "soft", "round"].includes(t.three.geometry)) errors.push("three.geometry deve ser sharp | soft | round");
+  if (t.three.fog && (typeof t.three.fog.near !== "number" || typeof t.three.fog.far !== "number" || t.three.fog.far <= t.three.fog.near))
+    errors.push("three.fog deve ser {near, far} com far > near (múltiplos da distância câmera→alvo, ex.: {near: 1.05, far: 2.4})");
+  if (t.three.fog && t.three.fog.near > 5) warnings.push("three.fog agora é relativo (múltiplos da distância da câmera): use algo como {near: 1.05, far: 2.4}");
+  if (t.art?.direction !== "playful" && (t.three.material === "clay" || t.three.material === "toon" || t.three.geometry === "round"))
+    warnings.push(`three.material "${t.three.material}"/geometry "${t.three.geometry ?? "-"}" tende ao "fofo" — fora do playful prefira metal, chrome, stone, glass ou wire com arestas vivas`);
+  if ((t.art?.hud ?? "minimal") === "minimal") {
+    if (t.brand?.watermark && t.brand.watermark !== "none") warnings.push("hud mínimo com marca d'água fixa — só mantenha se a marca exigir");
+    if (t.captions?.style && t.captions.style !== "minimal") warnings.push(`hud mínimo com legenda "${t.captions.style}" — "minimal" compete menos com o visual`);
+  }
+
   // marca
   for (const k of ["logo", "logoOnDark"]) {
     if (t.brand?.[k] && !fs.existsSync(path.join(dsDir, t.brand[k]))) errors.push(`brand.${k} não existe: ${t.brand[k]}`);

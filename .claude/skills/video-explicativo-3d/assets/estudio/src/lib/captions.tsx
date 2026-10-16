@@ -91,7 +91,9 @@ export const Captions: React.FC<{
           // karaoke: já dito = texto, ainda por dizer = apagado, palavra atual = destaque
           const color =
             cfg.style === "minimal"
-              ? c("text")
+              ? active
+                ? c("text")
+                : alpha("text", 0.62)
               : active
                 ? c(cfg.highlight)
                 : cfg.style === "karaoke" && !spoken
@@ -106,7 +108,7 @@ export const Captions: React.FC<{
                 margin: "0 0.14em",
                 color: cfg.style === "box" && active ? c(ds.color.textOnPrimary ?? "background") : color,
                 opacity: visible ? 1 : 0,
-                transform: `scale(${cfg.style === "pop" ? interpolate(Math.min(pop, 1.2), [0, 1], [0.6, 1]) : active ? 1.06 : 1})`,
+                transform: `scale(${cfg.style === "pop" ? interpolate(Math.min(pop, 1.2), [0, 1], [0.6, 1]) : active && cfg.style !== "minimal" ? 1.06 : 1})`,
                 WebkitTextStroke: strokePx > 0 ? `${strokePx}px ${alpha("background", 0.95)}` : undefined,
                 paintOrder: "stroke fill",
                 textShadow: `0 6px 24px ${alpha("background", 0.6)}`,

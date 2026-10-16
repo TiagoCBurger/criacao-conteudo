@@ -94,5 +94,24 @@ for (const r of ["display", "body", "mono", "accent"] as const) {
   }
 }
 
+/** Direção de arte efetiva (com padrões neutros quando o design system não define). */
+export const art = {
+  direction: ds.art?.direction ?? "editorial",
+  hud: ds.art?.hud ?? "minimal",
+};
+
+/** Geometria 3D efetiva: fora do "playful" o padrão é aresta viva. */
+export const geometry3d = (): "sharp" | "soft" | "round" => ds.three.geometry ?? (art.direction === "playful" ? "round" : "sharp");
+
+/** Chanfro efetivo para um objeto do tamanho dado. */
+export const bevelFor = (minSide: number) => {
+  const g = geometry3d();
+  const r = g === "sharp" ? 0.012 : g === "round" ? ds.three.bevel * 1.6 : ds.three.bevel;
+  return Math.max(0.001, Math.min(r, minSide / 2 - 0.001));
+};
+
+/** Contorno em linha nos sólidos? (material "wire", tokens three.edges ou direção técnica) */
+export const edges3d = () => ds.three.material === "wire" || ds.three.edges === true || (ds.three.edges === undefined && art.direction === "technical");
+
 export const radius = (k: keyof Tokens["shape"]["radius"] = "md") =>
   ds.shape.corner === "sharp" ? 0 : ds.shape.corner === "pill" && k !== "sm" ? 999 : ds.shape.radius[k];

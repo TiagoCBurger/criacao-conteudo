@@ -4,7 +4,7 @@ import {ThreeCanvas} from "@remotion/three";
 import React, {useLayoutEffect, useState} from "react";
 import {AbsoluteFill, useVideoConfig} from "remotion";
 import * as THREE from "three";
-import {c, ds, mix} from "../../ds";
+import {art, c, ds, mix} from "../../ds";
 import {ease, lerp, useDrift, useTime} from "../motion";
 
 // Regras de ouro do 3D no Remotion:
@@ -23,6 +23,26 @@ export type V3 = [number, number, number];
 export const viewSize = (distance: number, fov: number = ds.three.fov, aspect = 9 / 16) => {
   const height = 2 * distance * Math.tan((fov * Math.PI) / 360);
   return {width: height * aspect, height};
+};
+
+/**
+ * Distância de câmera para um objeto de largura w × altura h ocupar `fill` do quadro 9:16.
+ * Essencial com fov fechado (lente longa, 20–28°), que deixa tudo muito perto.
+ *   const d = fitDistance(2.4, 3.6);   // pilha de 2,4 de largura e 3,6 de altura ocupando 70%
+ */
+export const fitDistance = (w: number, h: number, {fov = ds.three.fov, fill = 0.7, aspect = 9 / 16} = {}) => {
+  const t = Math.tan((fov * Math.PI) / 360);
+  return Math.max(w / (2 * t * aspect * fill), h / (2 * t * fill));
+};
+
+/**
+ * Posição de câmera em órbita do alvo: azimute (graus, 0 = de frente, + = da direita) e elevação (graus, + = de cima).
+ *   <Scene3D camera={{position: orbit([0, 1.5, 0], fitDistance(3, 4), 30, 15), target: [0, 1.5, 0]}}>
+ */
+export const orbit = (target: V3, distance: number, azimuth = 25, elevation = 15): V3 => {
+  const a = (azimuth * Math.PI) / 180;
+  const e = (elevation * Math.PI) / 180;
+  return [target[0] + distance * Math.cos(e) * Math.sin(a), target[1] + distance * Math.sin(e), target[2] + distance * Math.cos(e) * Math.cos(a)];
 };
 
 /**
@@ -56,10 +76,20 @@ export const Scene3D: React.FC<{
   floor?: "shadow" | "grid" | "none";
   floorY?: number;
   lighting?: Tokens3D["lighting"];
+  /** neblina na cor do fundo; near/far em múltiplos da distância câmera→alvo (ex.: {near: 1.05, far: 2.4}).
+   *  Padrão: tokens.three.fog; na direção "cinematic" liga sozinha. */
+  fog?: {near: number; far: number} | null;
   style?: React.CSSProperties;
-}> = ({children, camera, floor = "shadow", floorY = -1.5, lighting, style}) => {
+}> = ({children, camera, floor = "shadow", floorY = -1.5, lighting, fog: fogProp, style}) => {
   const {width, height} = useVideoConfig();
   const shadows = ds.three.shadows;
+  // neblina relativa à distância câmera→alvo: near/far em múltiplos dessa distância (1 = no assunto).
+  // Assim funciona igual com lente curta ou longa; o assunto fica nítido e o fundo some na névoa.
+  const fogK = fogProp !== undefined ? fogProp : ds.three.fog !== undefined ? ds.three.fog : art.direction === "cinematic" ? {near: 1.05, far: 2.4} : null;
+  const camPos = camera?.position ?? [0, 0.6, 9];
+  const tgt = camera?.target ?? [0, 0, 0];
+  const camDist = Math.hypot(camPos[0] - tgt[0], camPos[1] - tgt[1], camPos[2] - tgt[2]);
+  const fog = fogK ? {near: camDist * fogK.near, far: camDist * fogK.far} : null;
   return (
     <AbsoluteFill style={style}>
       <ThreeCanvas
@@ -78,6 +108,7 @@ export const Scene3D: React.FC<{
       >
         <CameraAim target={camera?.target ?? [0, 0, 0]} />
         <Lights mode={lighting ?? ds.three.lighting} />
+        {fog && <fog attach="fog" args={[c(ds.color.background), fog.near, fog.far]} />}
         {children}
         {floor === "shadow" && shadows && (
           <ContactShadows position={[0, floorY, 0]} opacity={0.5} scale={24} blur={2.4} far={8} resolution={512} color={mix("background", "#000000", 0.6)} />
@@ -114,10 +145,25 @@ export const Lights: React.FC<{mode: Tokens3D["lighting"]}> = ({mode}) => {
     soft: {amb: 0.8, key: 1.4, fill: 0.9, rim: 0.6, env: 0.8},
     dramatic: {amb: 0.12, key: 3.2, fill: 0.25, rim: 2.8, env: 0.6},
     flat: {amb: 1.6, key: 0.6, fill: 0.4, rim: 0, env: 0.3},
+    // baixa luz: um cone de luz de cima (pools de luz), recorte forte na cor de acento, quase sem preenchimento
+    noir: {amb: 0.08, key: 1.1, fill: 0.18, rim: 4, env: 0.7},
   }[mode];
   return (
     <>
       <ambientLight intensity={cfg.amb} />
+      {mode === "noir" && (
+        <spotLight
+          position={[2.5, 9, 3]}
+          angle={0.42}
+          penumbra={0.85}
+          intensity={16}
+          decay={0}
+          castShadow={shadowMap}
+          shadow-mapSize={[2048, 2048]}
+          shadow-bias={-0.0004}
+          color={mix(accent, "#ffffff", 0.82)}
+        />
+      )}
       <directionalLight
         position={[5, 8, 6]}
         intensity={cfg.key}
@@ -170,6 +216,18 @@ export const ThemedMaterial: React.FC<{color?: string; emissive?: number; opacit
       return <meshPhysicalMaterial {...common} roughness={t.roughness ?? 0.95} metalness={0} sheen={0.6} sheenRoughness={0.8} sheenColor={"#ffffff"} />;
     case "toon":
       return <meshToonMaterial color={col} transparent={transparent} opacity={opacity ?? 1} />;
+    case "chrome":
+      // espelhado: a cor tinge os reflexos; depende dos Lightformers do ambiente
+      return <meshPhysicalMaterial {...common} roughness={t.roughness ?? 0.08} metalness={1} clearcoat={0.4} envMapIntensity={1.6} />;
+    case "stone":
+      // gesso/concreto/pedra: fosco absoluto, leve brilho de borda — o "escultórico" do editorial
+      return <meshPhysicalMaterial {...common} roughness={t.roughness ?? 1} metalness={0} sheen={0.25} sheenRoughness={1} sheenColor={"#ffffff"} />;
+    case "wire":
+      // sólido escuro quase da cor do fundo; o desenho vem das arestas (<Edges>) adicionadas pelos objetos
+      // polygonOffset empurra o preenchimento para trás: as linhas das arestas ficam sempre por cima
+      return (
+        <meshBasicMaterial color={mix("background", col, 0.12)} transparent opacity={opacity ?? 0.94} polygonOffset polygonOffsetFactor={2} polygonOffsetUnits={2} />
+      );
     case "matte":
     default:
       return <meshStandardMaterial {...common} roughness={t.roughness ?? 0.82} metalness={t.metalness ?? 0} />;

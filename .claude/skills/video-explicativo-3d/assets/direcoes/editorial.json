@@ -1,0 +1,118 @@
+{
+  "_sobre": "Preset de direção de arte EDITORIAL. Mescle no tokens.json do projeto e defina cores/fontes da marca por cima.",
+  "_paleta": "Fundo papel claro (osso/creme, #E9E5DC–#F3F0EA). Texto quase preto. Volumes em gesso (surfaceAlt ~#D8D2C6). UM acento saturado (vermelhão, cobalto, verde-garrafa).",
+  "_tipografia": "Display serifada de revista (Instrument Serif, Fraunces, DM Serif Display) ou grotesca elegante; body sans 500 (Inter Tight).",
+  "art": {
+    "direction": "editorial",
+    "hud": "minimal"
+  },
+  "shape": {
+    "radius": {
+      "sm": 4,
+      "md": 8,
+      "lg": 14
+    },
+    "strokeWidth": 3,
+    "corner": "sharp"
+  },
+  "layout": {
+    "margin": 72,
+    "gap": 40,
+    "safe": {
+      "top": 220,
+      "bottom": 360,
+      "left": 72,
+      "right": 120
+    }
+  },
+  "surface": {
+    "style": "solid"
+  },
+  "background": {
+    "style": "solid",
+    "grain": 0.07,
+    "vignette": 0.12
+  },
+  "motion": {
+    "personality": "calm",
+    "easing": {
+      "standard": [
+        0.45,
+        0,
+        0.55,
+        1
+      ],
+      "enter": [
+        0.16,
+        1,
+        0.3,
+        1
+      ],
+      "exit": [
+        0.7,
+        0,
+        0.84,
+        0
+      ]
+    },
+    "spring": {
+      "enter": {
+        "damping": 200,
+        "stiffness": 80
+      },
+      "pop": {
+        "damping": 22,
+        "stiffness": 120
+      },
+      "soft": {
+        "damping": 40,
+        "stiffness": 50,
+        "mass": 1.2
+      }
+    },
+    "duration": {
+      "fast": 0.35,
+      "base": 0.7,
+      "slow": 1.2
+    },
+    "stagger": 0.09,
+    "transition": {
+      "type": "fade",
+      "duration": 0.6
+    },
+    "cameraDrift": 0.2
+  },
+  "three": {
+    "material": "stone",
+    "geometry": "sharp",
+    "edges": false,
+    "fog": null,
+    "lighting": "soft",
+    "bevel": 0.02,
+    "shadows": true,
+    "fov": 24,
+    "exposure": 1.0
+  },
+  "captions": {
+    "enabled": true,
+    "style": "minimal",
+    "position": "bottom",
+    "maxWords": 4,
+    "size": 54,
+    "font": "body",
+    "textTransform": "none",
+    "highlight": "text",
+    "stroke": 0
+  },
+  "brand": {
+    "watermark": "none",
+    "endCard": false
+  },
+  "sound": {
+    "palette": "soft",
+    "sfxGain": 0.3,
+    "musicGain": 0.12,
+    "duckTo": 0.35,
+    "transitionSfx": "whoosh-soft"
+  }
+}

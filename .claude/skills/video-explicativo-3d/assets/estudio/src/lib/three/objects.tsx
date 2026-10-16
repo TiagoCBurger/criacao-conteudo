@@ -1,8 +1,8 @@
-import {Line, RoundedBox} from "@react-three/drei";
+import {Edges, Line, RoundedBox} from "@react-three/drei";
 import React, {useMemo} from "react";
 import {interpolate, random, spring, useCurrentFrame, useVideoConfig} from "remotion";
 import * as THREE from "three";
-import {c, dataColor, ds, mix} from "../../ds";
+import {art, bevelFor, c, dataColor, ds, edges3d, mix} from "../../ds";
 import {ease, useDrift, useTime} from "../motion";
 import {ThemedMaterial, useFitScale, type V3} from "./scene";
 
@@ -33,7 +33,8 @@ export const Appear: React.FC<{
   const fl = typeof float === "number" ? float : float ? 1 : 0;
   const d = useDrift(seed, fl, 0.35);
   const pc = Math.min(1, p);
-  const over = Math.max(0, p - 1);
+  // "squash" ao pousar é linguagem de desenho animado — forte só na direção playful
+  const over = Math.max(0, p - 1) * (art.direction === "playful" ? 1 : 0.3);
   let pos: V3 = [...position];
   let rot: V3 = [...rotation];
   let sc: V3 = [scale, scale, scale];
@@ -86,12 +87,41 @@ export const Block: React.FC<{
   children?: React.ReactNode;
 }> = ({size = [1, 1, 1], color = "primary", bevel, emissive, children, ...rest}) => (
   <Appear {...rest} seed={rest.seed ?? `block-${color}-${size.join("x")}`}>
-    <RoundedBox args={size} radius={Math.min(bevel ?? ds.three.bevel, Math.min(...size) / 2 - 0.001)} smoothness={4} castShadow receiveShadow>
-      <ThemedMaterial color={color} emissive={emissive} />
-    </RoundedBox>
+    <Solid size={size} color={color} bevel={bevel} emissive={emissive} />
     {children}
   </Appear>
 );
+
+/**
+ * Sólido-base de todos os blocos: respeita a geometria (sharp/soft/round) e o contorno (edges) do design system.
+ * Use em meshes próprios quando quiser o mesmo acabamento dos componentes da biblioteca.
+ */
+export const Solid: React.FC<{size: V3; color?: string; bevel?: number; emissive?: number; position?: V3; rotation?: V3; edgeColor?: string}> = ({
+  size,
+  color = "primary",
+  bevel,
+  emissive,
+  position,
+  rotation,
+  edgeColor,
+}) => {
+  const withEdges = edges3d();
+  const r = bevel ?? bevelFor(Math.min(...size));
+  if (withEdges || r <= 0.002) {
+    return (
+      <mesh position={position} rotation={rotation} castShadow receiveShadow>
+        <boxGeometry args={size} />
+        <ThemedMaterial color={color} emissive={emissive} />
+        {withEdges && <Edges color={c(edgeColor ?? color)} lineWidth={2} threshold={20} />}
+      </mesh>
+    );
+  }
+  return (
+    <RoundedBox args={size} radius={r} smoothness={r < 0.05 ? 2 : 4} position={position} rotation={rotation} castShadow receiveShadow>
+      <ThemedMaterial color={color} emissive={emissive} />
+    </RoundedBox>
+  );
+};
 
 /** Esfera/orbe (átomos, nós de rede, planetas, "ideias"). */
 export const Orb: React.FC<{radius?: number; color?: string; position?: V3; delay?: number; enter?: Enter3D; exitAt?: number; float?: boolean | number; emissive?: number}> = ({
@@ -199,19 +229,7 @@ export const Bars3D: React.FC<{
         const h = Math.max(0.02, (d.value / m) * maxHeight * g);
         const x = -total / 2 + barWidth / 2 + i * (barWidth + gap);
         const col = d.color ?? (anyH ? (d.highlight ? "accent" : mix(ds.color.surfaceAlt ?? "surface", "textMuted", 0.35)) : `data.${i}`);
-        return (
-          <RoundedBox
-            key={i}
-            args={[barWidth, h, barWidth]}
-            radius={Math.min(ds.three.bevel, h / 2 - 0.001, barWidth / 2 - 0.001)}
-            smoothness={3}
-            position={[x, h / 2, 0]}
-            castShadow
-            receiveShadow
-          >
-            <ThemedMaterial color={col} />
-          </RoundedBox>
-        );
+        return <Solid key={i} size={[barWidth, h, barWidth]} position={[x, h / 2, 0]} color={col} emissive={d.highlight ? 0.15 : 0} />;
       })}
     </group>
   );

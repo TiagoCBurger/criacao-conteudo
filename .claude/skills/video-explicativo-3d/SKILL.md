@@ -40,10 +40,12 @@ O projeto tem **um estúdio Remotion compartilhado** por todos os vídeos (`estu
 
 Todos os comandos abaixo rodam dentro de `estudio-video/`.
 
-### 2. Design system → `references/design-system.md`
+### 2. Design system e direção de arte → `references/design-system.md`
 **Antes de qualquer cena.** Encontre `design-system/tokens.json`. Se a identidade existe em outro formato (CSS, Tailwind, manual da marca, outra skill de identidade), converta. Se não existe nada, crie um com intenção e registre as escolhas em `DESIGN.md`. Valide com `npm run ds:check`. Para identidade nova ou convertida, mostre a prancha `npm run check -- design-system --at 3` ao usuário antes de seguir, se ele estiver disponível.
 
-Por quê: tudo no vídeo (cores, fontes, raios, material 3D, curvas de animação, paleta sonora) sai dos tokens. Valor de estilo escrito à mão numa cena quebra a consistência da série.
+**Defina a direção de arte (`tokens.art`)**: `cinematic` (escuro, luz dramática, metal, neblina) ou `technical` (aramado, grade, precisão) são os caminhos padrão para conteúdo explicativo, e podem ser misturados. `editorial` serve a marcas "revista". `playful` (arredondado, bonecos com olhos) fica só para marcas infantis ou explicitamente lúdicas. Os presets em `assets/direcoes/` trazem o 3D, o movimento e as legendas coerentes com cada direção: mescle e ponha as cores e fontes da marca por cima.
+
+Por quê: tudo no vídeo (cores, fontes, material e luz 3D, curvas de animação, paleta sonora) sai dos tokens. Valor de estilo escrito à mão numa cena quebra a consistência da série.
 
 ### 3. Linha do tempo da fala
 ```bash
@@ -62,6 +64,8 @@ Implemente cada beat em `src/videos/<slug>/index.tsx` com a biblioteca (`../../l
 - **Tempo pela fala:** todo `delay` vem de `useCue("palavras faladas")`, nunca de segundos chutados. Assim a animação acompanha a voz e sobrevive a uma regravação.
 - **Determinismo:** anime só a partir do frame (`useCurrentFrame`, `spring`, `interpolate`, helpers da lib). Nada de CSS animation, `setTimeout`, `useFrame` ou `<Float>`. O render é paralelo e fora de ordem.
 - **Estilo só pelo design system:** `c()`, `type()`, `radius()`, `ThemedMaterial`. Precisa de algo novo? Adicione aos tokens.
+- **HUD mínimo: uma mensagem por tela.** 1 visual principal e no máximo 1 bloco curto de texto (≤ 5 palavras ou um número) além da legenda discreta. Nada de selos, etiquetas, chips e assinaturas acumulados. O visual explica; o texto só nomeia.
+- **3D com cara de design, não de brinquedo.** Arestas vivas, paleta contida, um acento de luz no que está em foco, câmera lenta. Siga a linguagem da direção de arte (tabela em `references/3d.md`).
 - **Uma ideia por cena, sempre algo vivo, nada agitado.** Hierarquia de entrada: principal → apoio → destaque.
 - **Zonas seguras do 9:16:** conteúdo dentro de `SafeArea`. Em 3D o quadro é estreito: use `viewSize()` para dimensionar.
 - **Fidelidade:** números, nomes e afirmações na tela vêm do roteiro. Não invente dados.
@@ -86,12 +90,12 @@ Entregue ao usuário: o caminho do MP4, a capa, o `.srt` e um resumo curto com a
 
 | Arquivo | Leia quando |
 |---|---|
-| `references/design-system.md` | etapa 2: encontrar, converter, criar e validar tokens |
-| `references/didatica-storyboard.md` | etapa 4: princípios, catálogo de tratamentos, texto × legenda, ritmo |
+| `references/design-system.md` | etapa 2: encontrar, converter, criar e validar tokens; direção de arte |
+| `references/didatica-storyboard.md` | etapa 4: HUD mínimo, princípios, catálogo de tratamentos, texto × legenda, ritmo |
 | `references/biblioteca.md` | etapa 5: API de todos os componentes, com exemplo de vídeo completo |
 | `references/motion.md` | etapa 5: qualidade de animação, tempos, tipografia cinética, câmera |
-| `references/3d.md` | etapa 5, cenas 3D: regras do R3F no Remotion, enquadramento, receitas |
+| `references/3d.md` | etapa 5, cenas 3D: linguagem por direção de arte, regras do R3F no Remotion, enquadramento, receitas |
 | `references/som.md` | etapa 6: biblioteca de efeitos, posicionamento, níveis |
 | `references/qualidade-e-render.md` | etapas 7–8: checklist, render, solução de problemas |
 
-`assets/estudio/` é o template do estúdio (não edite vídeos ali). `assets/design-system-exemplo/tokens.json` é só uma **referência de formato**: suas cores e fontes são placeholders e não devem aparecer no vídeo de ninguém.
+`assets/estudio/` é o template do estúdio (não edite vídeos ali). `assets/direcoes/*.json` são presets de direção de arte (sem cores/fontes de marca). `assets/design-system-exemplo/tokens.json` é só uma **referência de formato**: suas cores e fontes são placeholders e não devem aparecer no vídeo de ninguém.
