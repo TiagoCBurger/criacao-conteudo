@@ -86,8 +86,19 @@ const SceneTransition: React.FC<{children: React.ReactNode; enterType: Transitio
 }) => {
   const frame = useCurrentFrame();
   const {height} = useVideoConfig();
-  const pin = enterType === "cut" ? 1 : interpolate(frame, [0, T], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease.enter});
-  const pout = exitType === "cut" ? (frame >= exitAt ? 1 : 0) : interpolate(frame, [exitAt, exitAt + T], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease.exit});
+  // Transições de opacidade são escalonadas: quem sai some nos primeiros ~60% da janela e quem entra
+  // aparece a partir de ~25% — evita duas cenas cheias sobrepostas (texto sobre 3D) no meio do corte.
+  // "push" e "wipe" são espaciais e ficam simultâneas.
+  const spatialIn = enterType === "push" || enterType === "wipe";
+  const spatialOut = exitType === "push" || exitType === "wipe";
+  const clamp = {extrapolateLeft: "clamp", extrapolateRight: "clamp"} as const;
+  const pin = enterType === "cut" ? 1 : interpolate(frame, [spatialIn ? 0 : T * 0.25, T], [0, 1], {...clamp, easing: ease.enter});
+  const pout =
+    exitType === "cut"
+      ? frame >= exitAt
+        ? 1
+        : 0
+      : interpolate(frame, [exitAt, exitAt + (spatialOut ? T : T * 0.6)], [0, 1], {...clamp, easing: ease.exit});
   const st: React.CSSProperties = {};
   const tf: string[] = [];
   let opacity = 1;

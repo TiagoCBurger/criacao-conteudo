@@ -422,14 +422,34 @@ const main = async () => {
   };
   fs.writeFileSync(path.join(outDir, "timeline.json"), JSON.stringify(tl, null, 1));
 
-  // legendas .srt (bônus para subir na plataforma)
+  // legendas .srt (para subir na plataforma): um bloco por frase, quebrando em vírgula/pausa
+  // quando passa de ~42 caracteres por linha (2 linhas no máx.)
   const fmt = (ms) => new Date(ms).toISOString().slice(11, 23).replace(".", ",");
-  const lines = [];
-  for (let i = 0, k = 1; i < words.length; i += 6, k++) {
-    const chunk = words.slice(i, i + 6);
-    lines.push(`${k}\n${fmt(chunk[0].startMs)} --> ${fmt(chunk[chunk.length - 1].endMs)}\n${chunk.map((w) => w.text).join(" ")}\n`);
-  }
-  fs.writeFileSync(path.join(outDir, "legendas.srt"), lines.join("\n"));
+  const cues = [];
+  let cur = [];
+  const len = (ws) => ws.reduce((n, w) => n + w.text.length + 1, 0);
+  words.forEach((w, i) => {
+    const next = words[i + 1];
+    cur.push(w);
+    const endSentence = /[.!?…]$/.test(w.text);
+    const softBreak = /[,;:—]$/.test(w.text) || (next && next.startMs - w.endMs > 350);
+    if (!next || endSentence || len(cur) > 84 || (softBreak && len(cur) > 42)) {
+      cues.push(cur);
+      cur = [];
+    }
+  });
+  const wrap = (txt) => {
+    if (txt.length <= 42) return txt;
+    const ws = txt.split(" ");
+    let best = 1, bestDiff = Infinity;
+    for (let k = 1; k < ws.length; k++) {
+      const d = Math.abs(ws.slice(0, k).join(" ").length - ws.slice(k).join(" ").length);
+      if (d < bestDiff) (bestDiff = d), (best = k);
+    }
+    return `${ws.slice(0, best).join(" ")}\n${ws.slice(best).join(" ")}`;
+  };
+  const srt = cues.map((c, k) => `${k + 1}\n${fmt(c[0].startMs)} --> ${fmt(c[c.length - 1].endMs)}\n${wrap(c.map((w) => w.text).join(" "))}\n`);
+  fs.writeFileSync(path.join(outDir, "legendas.srt"), srt.join("\n"));
 
   const wpm = words.length / (durationMs / 60000);
   console.log(`✓ public/videos/${slug}/timeline.json`);

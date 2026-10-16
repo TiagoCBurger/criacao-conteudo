@@ -49,7 +49,7 @@ Por quê: tudo no vídeo (cores, fontes, raios, material 3D, curvas de animaçã
 ```bash
 npm run timeline -- <slug> --audio <narração> --script <roteiro> [--alignment <arquivo>]
 ```
-Gera `public/videos/<slug>/timeline.json` com cada palavra e seus tempos, as seções e as notas do roteiro, normaliza a voz (−16 LUFS) e gera um `.srt`. Confira o resumo: `roteiro × fala` deve ficar ≥ 90%. Se ficar baixo, o roteiro não é a versão gravada.
+Gera `public/videos/<slug>/timeline.json` com cada palavra e seus tempos, as seções e as notas do roteiro, normaliza a voz (−16 LUFS) e gera um `.srt` por frase. Confira o resumo: `roteiro × fala` deve ficar ≥ 90%. Se ficar baixo, o roteiro não é a versão gravada. Sem `--alignment`, a transcrição (whisper.cpp) pode levar minutos em máquina lenta ou compartilhada: rode em segundo plano.
 
 ### 4. Storyboard → `references/didatica-storyboard.md`
 ```bash
