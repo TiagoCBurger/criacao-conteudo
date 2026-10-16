@@ -18,6 +18,8 @@
 
 **Didática e ritmo**
 - [ ] O 1º quadro (t≈0,25 s) já tem algo forte. Não há vinheta nem tela vazia.
+- [ ] O começo de **cada** cena já tem conteúdo (cenário, objeto ou título). Não há quadro quase vazio logo após um corte esperando o próximo cue.
+- [ ] As cenas 3D têm profundidade e foco de luz (veja 3d.md › Cena rica). Analogias do cotidiano estão encenadas, não só escritas.
 - [ ] Cada cena tem **uma** ideia clara, e a ênfase está na palavra/número certo.
 - [ ] Não há trecho > ~3 s visualmente igual (procure quadros vizinhos idênticos na prancha).
 - [ ] Os tratamentos variam entre cenas vizinhas.

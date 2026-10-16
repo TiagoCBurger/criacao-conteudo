@@ -144,7 +144,7 @@ Use para 1–2 palavras ou um número. Frases longas não funcionam com este efe
 
 Leia também `references/3d.md` (regras de determinismo, enquadramento 9:16, câmera, luz).
 
-- **`<Scene3D camera={{position, fov}} floor="shadow|grid|none" floorY lighting>`**: canvas 3D transparente em tela cheia, com luz e reflexos do design system. Use um por cena. O texto nítido continua em HTML por cima.
+- **`<Scene3D camera={{position, fov, target}} floor="shadow|grid|none" floorY lighting>`**: canvas 3D transparente em tela cheia, com luz e reflexos do design system. A câmera olha para `target` (padrão: origem). Use um por cena. O texto nítido continua em HTML por cima.
 - **`<CameraRig keys={[{t, position, target?, fov?}]} drift/>`**: câmera por keyframes (segundos locais), com easing e "respiração".
 - **`<Appear delay enter="drop|scale|rise|spin|flip|none" exitAt float position rotation scale>{mesh}</Appear>`**: entrada/saída/flutuação para qualquer grupo.
 - **`<Block size={[w,h,d]} color position rotation delay enter exitAt float bevel emissive/>`**: bloco chanfrado (camadas, módulos, pilhas, "dados").
@@ -156,6 +156,9 @@ Leia também `references/3d.md` (regras de determinismo, enquadramento 9:16, câ
 - **`<Connector3D from to lift delay duration color width dashed/>`**: ligação curva que se desenha entre pontos 3D.
 - **`<Particles count spread size colors opacity seed/>`**: poeira de luz sutil (textura, não assunto).
 - **`<Spin speed axis>`**: rotação contínua. **`<ThemedMaterial color emissive opacity/>`**: material do design system para meshes próprios.
+- **`<Character color skin accessory="none|tie|hat|apron|glasses|headset" accessoryColor action="idle|talk|wave|point" actionAt highlight position rotation delay>`**: personagem estilizado (~1,6 de altura) para analogias e situações do cotidiano (cliente, garçom, usuário, cientista). Objetos "na mão" vão como children, em coordenadas locais.
+- **`<Diorama size={[w,d]} walls="none|back|corner" wallHeight position delay>{…}</Diorama>`**: base isométrica (piso + paredes) para montar um pequeno cenário (cozinha, loja, escritório, laboratório). Os filhos ficam sobre o piso (y=0). Use com **`isoCamera({fit, target})`**, que enquadra um diorama de largura `fit` no 9:16.
+- **`<Phone3D screen lit position rotation/>`**: celular 3D simples. **`<PhoneMock width tilt delay>{HTML}</PhoneMock>`**: moldura de celular em HTML para telas de app detalhadas (login, busca, notificação).
 - **`<Glow position size color intensity delay/>`**: halo de luz aditivo (sol, lâmpada, objeto que "acende").
 - **`<Atmosphere radius position color thickness intensity/>`**: brilho de borda em volta de uma esfera (planeta, célula, bolha).
 - **`<LightBeam from to width color delay duration/>`**: feixe de luz que se estende (raio de sol, laser, fluxo de dados).

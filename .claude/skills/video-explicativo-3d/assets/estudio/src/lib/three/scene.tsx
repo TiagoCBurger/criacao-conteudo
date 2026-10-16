@@ -39,9 +39,20 @@ export const useFitScale = (contentWidth: number, position: V3 = [0, 0, 0], maxW
   return Math.min(1, fitWidth / Math.max(0.001, contentWidth));
 };
 
+/** Aponta a câmera para o alvo na montagem (sem CameraRig, a câmera do R3F olha reto para -z). */
+const CameraAim: React.FC<{target: V3}> = ({target}) => {
+  const camera = useThree((s) => s.camera);
+  useLayoutEffect(() => {
+    camera.lookAt(target[0], target[1], target[2]);
+    camera.updateMatrixWorld();
+  }, [camera, target[0], target[1], target[2]]); // eslint-disable-line react-hooks/exhaustive-deps
+  return null;
+};
+
 export const Scene3D: React.FC<{
   children: React.ReactNode;
-  camera?: {position?: V3; fov?: number};
+  /** position/fov da câmera; target = para onde ela olha (padrão: origem). Com CameraRig, os keyframes mandam. */
+  camera?: {position?: V3; fov?: number; target?: V3};
   floor?: "shadow" | "grid" | "none";
   floorY?: number;
   lighting?: Tokens3D["lighting"];
@@ -65,6 +76,7 @@ export const Scene3D: React.FC<{
         }}
         style={{background: "transparent"}}
       >
+        <CameraAim target={camera?.target ?? [0, 0, 0]} />
         <Lights mode={lighting ?? ds.three.lighting} />
         {children}
         {floor === "shadow" && shadows && (

@@ -46,6 +46,8 @@ São os princípios de aprendizagem multimídia (Mayer), traduzidos para motion 
 | **Causa → efeito** | objeto A, seta que se desenha, objeto B reagindo | `Arrow` ou `Connector3D` + mudança de estado (cor/escala/emissive) |
 | **A vs B / mito vs fato** | dois lados com ✓/✕, selo "VS" | `Compare` · selo "MITO" com `Reveal preset="pop"` + `Sfx name="error"` |
 | **Um conceito abstrato** | metáfora 3D concreta (dinheiro = blocos que crescem; memória = gavetas; rede = orbes ligados) | `Block`, `Orb`, `SvgExtrude` (ícone/logo em 3D), `Connector3D` |
+| **Uma analogia do cotidiano** ("pense num restaurante…") | a analogia **encenada**: pequeno cenário isométrico com personagens e objetos, cada papel rotulado quando é dito | `Diorama` + `Character` + objetos de primitivas, `isoCamera`, rótulos (`Callout`/`Label3D`) |
+| **Um app / tela / produto digital** | tela de celular com a interface sendo usada | `PhoneMock` (HTML detalhado) · `Phone3D` (objeto na cena) |
 | **Uma definição / termo novo** | termo grande com tratamento tipográfico + rótulo | `Eyebrow` + `Lettering` ou `Text3D` |
 | **Lista de itens / requisitos** | itens entrando e sendo "ticados" | `Checklist` com `at` |
 | **Uma anatomia / partes de um objeto** | objeto 3D central + rótulos com linha-guia | objeto + `Callout` (posicione com `projectToScreen`) |

@@ -313,6 +313,42 @@ export const Callout: React.FC<{
 };
 
 // ---------------------------------------------------------------------------------------------
+// PhoneMock — moldura de celular em HTML para mostrar telas de app (login, busca, notificação).
+// O conteúdo (children) é HTML comum, estilizado com o design system.
+// ---------------------------------------------------------------------------------------------
+export const PhoneMock: React.FC<{children?: React.ReactNode; width?: number; delay?: number; preset?: RevealPreset; tilt?: number; screen?: string}> = ({
+  children,
+  width = 420,
+  delay = 0,
+  preset = "rise",
+  tilt = 0,
+  screen = "surface",
+}) => {
+  const p = useEnter(delay);
+  const h = width * 2.05;
+  return (
+    <div
+      style={{
+        width,
+        height: h,
+        borderRadius: width * 0.14,
+        background: c("text"),
+        padding: width * 0.035,
+        boxShadow: `0 40px 90px ${alpha("text", 0.25)}`,
+        transform: `perspective(1600px) rotateY(${tilt}deg)`,
+        flexShrink: 0,
+        ...revealStyle(p, preset),
+      }}
+    >
+      <div style={{position: "relative", width: "100%", height: "100%", borderRadius: width * 0.11, background: c(screen), overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center", padding: `${width * 0.16}px ${width * 0.08}px`, gap: width * 0.05}}>
+        <div style={{position: "absolute", top: width * 0.04, left: "50%", transform: "translateX(-50%)", width: width * 0.28, height: width * 0.06, borderRadius: 99, background: c("text")}} />
+        {children}
+      </div>
+    </div>
+  );
+};
+
+// ---------------------------------------------------------------------------------------------
 export const Checklist: React.FC<{items: string[]; at?: number[]; delay?: number; gapSec?: number}> = ({items, at, delay = 0, gapSec = 0.5}) => {
   const s = useSafe();
   const times = at ?? items.map((_, i) => delay + i * gapSec);
