@@ -2,7 +2,7 @@ import {ContactShadows, Environment, Grid, Lightformer} from "@react-three/drei"
 import {useThree} from "@react-three/fiber";
 import {ThreeCanvas} from "@remotion/three";
 import React, {useLayoutEffect, useState} from "react";
-import {AbsoluteFill, useVideoConfig} from "remotion";
+import {AbsoluteFill, useCurrentFrame, useVideoConfig} from "remotion";
 import * as THREE from "three";
 import {art, c, ds, mix} from "../../ds";
 import {ease, lerp, useDrift, useTime} from "../motion";
@@ -65,7 +65,29 @@ const CameraAim: React.FC<{target: V3}> = ({target}) => {
   useLayoutEffect(() => {
     camera.lookAt(target[0], target[1], target[2]);
     camera.updateMatrixWorld();
+    camera.userData.target = target;
   }, [camera, target[0], target[1], target[2]]); // eslint-disable-line react-hooks/exhaustive-deps
+  return null;
+};
+
+/**
+ * Neblina que acompanha a câmera: a cada quadro, near/far = múltiplos da distância ATUAL câmera→alvo.
+ * Assim um CameraRig que se afasta (ou chega perto) não afoga o assunto na névoa.
+ * Fica depois dos filhos no Scene3D, então roda depois do CameraRig e antes do render do quadro.
+ */
+const FogFollow: React.FC<{k: {near: number; far: number}}> = ({k}) => {
+  useCurrentFrame(); // re-executa a cada quadro
+  const camera = useThree((s) => s.camera);
+  const scene = useThree((s) => s.scene);
+  useLayoutEffect(() => {
+    // lê na hora: a <fog> é anexada à cena no commit, depois do primeiro render deste componente
+    const fog = scene.fog as THREE.Fog | null;
+    if (!fog) return;
+    const t = (camera.userData.target as V3 | undefined) ?? [0, 0, 0];
+    const d = Math.max(0.01, camera.position.distanceTo(new THREE.Vector3(t[0], t[1], t[2])));
+    fog.near = d * k.near;
+    fog.far = d * k.far;
+  });
   return null;
 };
 
@@ -76,8 +98,9 @@ export const Scene3D: React.FC<{
   floor?: "shadow" | "grid" | "none";
   floorY?: number;
   lighting?: Tokens3D["lighting"];
-  /** neblina na cor do fundo; near/far em múltiplos da distância câmera→alvo (ex.: {near: 1.05, far: 2.4}).
-   *  Padrão: tokens.three.fog; na direção "cinematic" liga sozinha. */
+  /** neblina na cor do fundo; near/far em múltiplos da distância câmera→alvo (ex.: {near: 1.05, far: 2.4}),
+   *  recalculada a cada quadro (acompanha o CameraRig). Padrão: tokens.three.fog; na direção "cinematic" liga sozinha.
+   *  Cena com objetos espalhados em profundidade (órbitas, constelações): afrouxe ({near: 1.4, far: 3.5}) ou null. */
   fog?: {near: number; far: number} | null;
   style?: React.CSSProperties;
 }> = ({children, camera, floor = "shadow", floorY = -1.5, lighting, fog: fogProp, style}) => {
@@ -110,6 +133,7 @@ export const Scene3D: React.FC<{
         <Lights mode={lighting ?? ds.three.lighting} />
         {fog && <fog attach="fog" args={[c(ds.color.background), fog.near, fog.far]} />}
         {children}
+        {fogK && <FogFollow k={fogK} />}
         {floor === "shadow" && shadows && (
           <ContactShadows position={[0, floorY, 0]} opacity={0.5} scale={24} blur={2.4} far={8} resolution={512} color={mix("background", "#000000", 0.6)} />
         )}
@@ -257,6 +281,7 @@ export const CameraRig: React.FC<{keys: {t: number; position: V3; target?: V3; f
   useLayoutEffect(() => {
     camera.position.set(pos[0] + d.x * 0.6, pos[1] + d.y * 0.4, pos[2]);
     camera.lookAt(tgt[0], tgt[1], tgt[2]);
+    camera.userData.target = tgt;
     if ((camera as THREE.PerspectiveCamera).isPerspectiveCamera) {
       const pc = camera as THREE.PerspectiveCamera;
       pc.fov = fov;

@@ -28,14 +28,19 @@ const glowTexture = () => {
   return glowTex;
 };
 
-/** Halo de luz aditivo (sol, lâmpada, objeto "ativo", ponto de energia). */
-export const Glow: React.FC<{position?: V3; size?: number; color?: string; intensity?: number; delay?: number; duration?: number}> = ({
+/**
+ * Halo de luz aditivo (sol, lâmpada, objeto "ativo", ponto de energia).
+ * `overlay`: ignora o teste de profundidade. Use para um ponto SOBRE uma superfície (cidade num globo,
+ * marcador numa peça): sem isso, a superfície corta metade do halo e sobra um disco escuro.
+ */
+export const Glow: React.FC<{position?: V3; size?: number; color?: string; intensity?: number; delay?: number; duration?: number; overlay?: boolean}> = ({
   position = [0, 0, 0],
   size = 2,
   color = "accent",
   intensity = 1,
   delay,
   duration = 0.6,
+  overlay = false,
 }) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -45,7 +50,17 @@ export const Glow: React.FC<{position?: V3; size?: number; color?: string; inten
   if (p <= 0) return null;
   return (
     <sprite position={position} scale={[size * (0.6 + 0.4 * p), size * (0.6 + 0.4 * p), 1]} renderOrder={10}>
-      <spriteMaterial map={tex} color={c(color)} transparent opacity={Math.min(1, intensity * p)} blending={THREE.AdditiveBlending} depthWrite={false} toneMapped={false} />
+      <spriteMaterial
+        map={tex}
+        color={c(color)}
+        transparent
+        opacity={Math.min(1, intensity * p)}
+        blending={THREE.AdditiveBlending}
+        depthWrite={false}
+        depthTest={!overlay}
+        fog={false}
+        toneMapped={false}
+      />
     </sprite>
   );
 };
