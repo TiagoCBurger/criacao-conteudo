@@ -21,3 +21,12 @@ Ajustes feitos depois desta rodada:
 - Base de conhecimento citável (FIN/MKT/NEG/MER/P/APR) e aprendizado em tempo real.
 
 Limites: uma execução por configuração (indica direção, não significância). As afirmações dos evals 2–4 quase não discriminam; próximos testes devem medir duração dos roteiros, concisão, especificidade das ações B2B e uso correto da base (citação de IDs, dado com data).
+
+## Iteração 2 — base de conhecimento e aprendizado em tempo real (só com a skill)
+
+| Eval | Resultado | Destaques |
+|---|---|---|
+| 5. Carrossel de ponto de equilíbrio (mentor, números de uma aluna) | 6/6 | conta certa (R$ 12,88 por pedido; 1.709 pedidos/mês; 57/dia; alavancas para 45/dia), comissão do iFood com tabela pública, fonte e data (MER-01), citação `📚 Base: FIN-04, FIN-06… · MER-01` |
+| 6. Aprendizado em tempo real (resultados, comissão negociada, regra nova) | 7/7 | resultados e comissão de 21% em `marcas/brasa-burger/aprendizados.md` e no perfil; regra geral em `conhecimento/aprendizados.md` do projeto porque a skill estava somente leitura; ep. 2 usa o que funcionou e evita o gancho que falhou |
+
+Observação: a confirmação "Anotei na base" saiu mais longa que uma linha quando havia vários registros; aceitável.
