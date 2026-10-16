@@ -1,0 +1,11 @@
+# chaves (OpenRouter etc.): nunca versionar
+.env
+.env.*
+!.env.example
+
+# mídia gerada por IA (pesada); a configuração do projeto fica versionada
+midia-ia/*
+!midia-ia/config.json
+
+# dependências e saídas dos estúdios
+node_modules/
