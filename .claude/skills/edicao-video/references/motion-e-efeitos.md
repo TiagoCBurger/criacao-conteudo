@@ -72,4 +72,4 @@ Regras para componentes:
 - Respeite a área segura: `areaSegura(width, height)` devolve `{top, bottom, left, right}` em px.
 - Utilitários exportados por `../../lib`: `estilo`, `cor`, `alpha`, `tipo`, `raio`, `areaSegura`, `escalaTipo`, `useEntrada(animacao)`, `useSaida(frames)`, `usePosicao(posicao, padrao)`, `ClipeNoQuadro` (para pôr um clipe do registro dentro do componente), `clipe(id)`.
 
-Para motion graphics mais pesados (cenas 3D, diagramas, gráficos animados), faça o trecho com a skill `video-explicativo-3d`, renderize e traga o MP4 como clipe (`npm run midia -- --pasta estudio-video/out`).
+Para motion graphics mais pesados (cenas 3D, diagramas, gráficos animados), faça o trecho com a skill `video-explicativo-3d`, renderize e traga o MP4 como clipe (`npm run midia -- --pasta estudio-video/out`). Para as legendas saírem com a grafia do roteiro, importe a linha do tempo dele: `npm run midia -- transcrever <id> --alinhamento ../estudio-video/public/videos/<slug>/timeline.json --sem-refinar`.

@@ -24,9 +24,11 @@ O id vem do nome do arquivo (`Entrevista João.MOV` → `entrevista-joao`) e nã
 
 `--idioma pt` é o padrão. Se o vídeo é em outro idioma, passe `--idioma en`, `es`…
 
-**Bordas das palavras.** O reconhecedor costuma esticar a última palavra por cima da pausa seguinte. O script corrige início e fim de cada palavra com os silêncios medidos no áudio, porque é ali que os cortes acontecem. Mesmo assim, a transcrição pode errar palavras (nomes próprios, gírias). Para âncoras de corte, use as palavras **como aparecem no registro/`npm run cortes`**, não como deveriam ser.
+**Bordas das palavras.** O reconhecedor costuma esticar a última palavra por cima da pausa seguinte e, em voz sintética (TTS), às vezes desloca frases inteiras em até 1 s. O script casa cada pausa medida no áudio com o vão entre palavras mais provável (de preferência depois de pontuação) e reescala as palavras de cada trecho entre pausas, porque é ali que os cortes e as legendas acontecem. Mesmo assim, a transcrição pode errar palavras (nomes próprios, gírias). Para âncoras de corte, use as palavras **como aparecem no registro/`npm run cortes`**, não como deveriam ser.
 
 Retranscrever um clipe: `npm run midia -- transcrever <id> [--stt openrouter] [--modelo small]`.
+
+**Alinhamento pronto, sem transcrever.** Se já existem palavras com tempo, importe em vez de transcrever: `npm run midia -- transcrever <id> --alinhamento <arquivo> [--desloc 0] [--sem-refinar]`. Aceita o `timeline.json` da skill `video-explicativo-3d` (com a grafia do roteiro, melhor que qualquer transcrição), o JSON de transcrição do `or.mjs transcrever`/OpenAI (`verbose_json`), ElevenLabs (TTS with-timestamps ou Speech-to-Text), captions do Remotion, JSON do whisper.cpp e `.srt`/`.vtt`. `--desloc` soma segundos (quando o clipe começa antes da fala). Use `--sem-refinar` quando o alinhamento já é exato ou quando o clipe tem efeitos sonoros e trilha (os silêncios do áudio misturado não batem com os da fala), como num vídeo explicativo renderizado.
 
 ## Como você (Claude) vê o material
 

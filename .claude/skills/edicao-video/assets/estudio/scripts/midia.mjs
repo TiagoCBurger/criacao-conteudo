@@ -7,6 +7,8 @@
 //   npm run midia -- ver <id> [--de 10 --ate 40] [--cada 1]   → prancha de um trecho em out/ver/ (para olhar de perto)
 //   npm run midia -- quadro <id> 12.5[,30.2]       → quadro(s) em resolução cheia em out/ver/
 //   npm run midia -- transcrever <id> [--stt openrouter] [--modelo …] [--idioma pt]
+//   npm run midia -- transcrever <id> --alinhamento timeline.json [--desloc 0] [--sem-refinar]   → usa palavras já alinhadas
+//        (timeline da skill video-explicativo-3d, .srt/.vtt, verbose_json do OpenAI/OpenRouter, ElevenLabs)
 //   npm run midia -- remover <id>
 //
 // Opções: --sem-transcricao · --stt whisper|openrouter · --modelo <nome> · --idioma pt · --transcrever-audio
@@ -19,6 +21,7 @@ import {execFileSync} from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import {cfg, ffprobe, fmtBytes, fmtTime, loadRegistro, parseArgs, projectRoot, pubMidia, refinarComSilencios, root, run, runErr, saveRegistro, slugify, tipoDe} from "./lib/util.mjs";
+import {carregarAlinhamento} from "./lib/alinhamento.mjs";
 import {transcribeOpenRouter, transcribeWhisper} from "./lib/stt.mjs";
 
 const {pos, opts} = parseArgs();
@@ -31,7 +34,7 @@ const r2 = (x) => Math.round(x * 100) / 100;
 const ignorar = new Set([...(cfg.ignorar ?? []), "node_modules", ".git"]);
 const findMedia = (dirs) => {
   const found = [];
-  const walk = (dir, explicit) => {
+  const walk = (dir) => {
     let ents;
     try {
       ents = fs.readdirSync(dir, {withFileTypes: true});
@@ -42,16 +45,18 @@ const findMedia = (dirs) => {
       const p = path.join(dir, e.name);
       if (e.isDirectory()) {
         if (e.name.startsWith(".") || ignorar.has(e.name) || path.resolve(p) === root) continue;
+        // conferências dos estúdios (out/check, out/ver) não são mídia
+        if (["check", "ver"].includes(e.name) && path.basename(dir) === "out") continue;
         // pastas geradas por outras ferramentas (Remotion public/out, caches) não são mídia bruta
         if (fs.existsSync(path.join(p, "remotion.config.ts")) || fs.existsSync(path.join(p, "studio.config.json"))) continue;
-        walk(p, false);
+        walk(p);
       } else if (e.isFile() && tipoDe(e.name)) {
         if (fs.statSync(p).size < 2048) continue;
         found.push(p);
       }
     }
   };
-  for (const d of dirs) walk(d, true);
+  for (const d of dirs) walk(d);
   return found;
 };
 
@@ -231,6 +236,16 @@ const speechless = (e) => {
 };
 
 const transcribe = async (e) => {
+  if (opts.alinhamento) {
+    const res = carregarAlinhamento(path.resolve(String(opts.alinhamento)), +(opts.desloc ?? 0));
+    res.idioma = opts.idioma ?? "pt";
+    console.log(`  → ${e.id}: ${res.palavras.length} palavras de ${path.basename(String(opts.alinhamento))} (${res.fonte})`);
+    // alinhamento que já vem ajustado (ex.: timeline da skill 3D): --sem-refinar evita reajustar pelos silêncios
+    // do clipe, que num vídeo com efeitos sonoros podem estar cobertos
+    e.transcricao = opts["sem-refinar"] ? {...res, refinado: true} : refinar(res, e);
+    delete e.semFala;
+    return;
+  }
   const src = path.join(root, "public", e.arquivo);
   const stt = opts.stt ?? "whisper";
   const language = opts.idioma ?? "pt";
@@ -250,7 +265,7 @@ const transcribe = async (e) => {
   e.transcricao = refinar(res, e);
 };
 
-const refinar = (t, e) => ({...t, palavras: refinarComSilencios(t.palavras, e.silencios ?? []), refinado: true});
+const refinar = (t, e) => ({...t, palavras: refinarComSilencios(t.palavras, e.silencios ?? [], e.duracao), refinado: true});
 
 // ---------------------------------------------------------------- comandos
 const table = () => {

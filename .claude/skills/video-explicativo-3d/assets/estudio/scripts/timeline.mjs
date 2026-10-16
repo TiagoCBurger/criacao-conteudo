@@ -3,13 +3,15 @@
 //
 // Uso:
 //   node scripts/timeline.mjs <slug> --audio narracao.mp3 [--script roteiro.md] [--alignment arquivo]
-//                             [--language pt] [--model small] [--no-normalize]
+//                             [--language pt] [--model small] [--no-normalize] [--no-refine]
 //
 // --alignment aceita: ElevenLabs (TTS with-timestamps ou Speech-to-Text), OpenAI Whisper verbose_json,
 //   whisper.cpp JSON, legendas .srt/.vtt, captions do Remotion ou outro timeline.json.
 // Sem --alignment, transcreve com whisper.cpp (instala na 1ª vez em .whisper/, ~2–5 min).
 // Com --script, as palavras saem com a grafia do roteiro (nomes, números, acentos) e os tempos da fala.
-import {execFileSync} from "node:child_process";
+// Os tempos são ajustados pelas pausas medidas no áudio (o reconhecedor desloca palavras perto delas);
+// --no-refine desliga.
+import {execFileSync, spawnSync} from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -381,6 +383,98 @@ const alignToScript = (scriptWords, spokenWords, totalMs) => {
   return {words: out, rate: out.filter((w) => w.matched).length / Math.max(1, out.length)};
 };
 
+// ---------------------------------------------------------------- bordas das palavras pelos silêncios
+/**
+ * O reconhecedor erra os tempos justamente perto das pausas: estica a palavra por cima do silêncio e, em voz
+ * sintética, desloca frases inteiras. Os silêncios medidos no áudio são precisos, então eles mandam:
+ * 1. cada pausa (≥ 0,2 s) é casada com um vão entre duas palavras — o mais próximo no tempo, de preferência
+ *    depois de pontuação — por programação dinâmica (as pausas ficam em ordem; uma pausa pode ficar sem par,
+ *    como uma respiração no meio da frase);
+ * 2. as palavras de cada trecho entre pausas casadas são reescaladas para ocupar exatamente esse trecho.
+ */
+const refinarComSilencios = (words, silences = [], duracao) => {
+  const N = words.length;
+  if (!N) return words;
+  const P = silences.filter(([a, b]) => b - a >= 0.2).sort((x, y) => x[0] - y[0]);
+  if (!P.length) return words;
+  const fim = duracao ?? Math.max(words[N - 1].endMs / 1000, P[P.length - 1][1]);
+  const ini = (i) => words[i].startMs / 1000, ter = (i) => words[i].endMs / 1000;
+  const vaoT = (g) => (g === 0 ? ini(0) : g === N ? ter(N - 1) : (ter(g - 1) + ini(g)) / 2);
+  const penal = (g) => {
+    if (g === 0 || g === N) return 0;
+    const t = words[g - 1].text;
+    return /[.!?…]["'”)\]]*$/.test(t) ? 0 : /[,;:—]["'”)\]]*$/.test(t) ? 0.25 : 0.6;
+  };
+  const SEM_PAR = 0.7, JANELA = 3;
+  const G = N + 1; // vãos 0..N; estado = último vão usado + 1 (0 = nenhum)
+  let f = new Float64Array(G + 1).fill(Infinity);
+  f[0] = 0;
+  const volta = [];
+  for (const [a, b] of P) {
+    const meio = (a + b) / 2;
+    const nf = new Float64Array(G + 1).fill(Infinity);
+    const bk = new Int32Array(G + 1).fill(-2);
+    for (let st = 0; st <= G; st++) if (f[st] + SEM_PAR < nf[st]) (nf[st] = f[st] + SEM_PAR), (bk[st] = -1);
+    let melhor = Infinity, melhorSt = -1;
+    for (let g = 0; g < G; g++) {
+      if (f[g] < melhor) (melhor = f[g]), (melhorSt = g);
+      const d = Math.abs(vaoT(g) - meio);
+      if (d > JANELA || melhor === Infinity) continue;
+      const custo = melhor + d + penal(g);
+      if (custo < nf[g + 1]) (nf[g + 1] = custo), (bk[g + 1] = melhorSt);
+    }
+    volta.push(bk);
+    f = nf;
+  }
+  let st = 0;
+  for (let i = 1; i <= G; i++) if (f[i] < f[st]) st = i;
+  const vaoDe = new Array(P.length).fill(-1);
+  for (let k = P.length - 1; k >= 0; k--) {
+    const b = volta[k][st];
+    if (b === -1) continue;
+    vaoDe[k] = st - 1;
+    st = b;
+  }
+  const cortes = P.map(([a, b], k) => ({g: vaoDe[k], a, b})).filter((c) => c.g >= 0);
+  const out = words.map((w) => ({...w}));
+  let i0 = 0;
+  for (let c = 0; c <= cortes.length; c++) {
+    const i1 = c < cortes.length ? cortes[c].g : N;
+    if (i1 > i0) {
+      const T0 = c === 0 ? ini(i0) : cortes[c - 1].b;
+      const T1 = c < cortes.length ? cortes[c].a : Math.min(fim, Math.max(ter(N - 1), T0 + 0.1));
+      const s0 = ini(i0), e0 = ter(i1 - 1);
+      if (e0 - s0 > 0.05) {
+        const k = (T1 - T0) / (e0 - s0);
+        for (let i = i0; i < i1; i++) (out[i].startMs = (T0 + (ini(i) - s0) * k) * 1000), (out[i].endMs = (T0 + (ter(i) - s0) * k) * 1000);
+      } else {
+        const peso = words.slice(i0, i1).reduce((n, w) => n + w.text.length + 1, 0);
+        let t = T0;
+        for (let i = i0; i < i1; i++) {
+          const d = ((words[i].text.length + 1) / peso) * (T1 - T0);
+          (out[i].startMs = t * 1000), (out[i].endMs = (t + d) * 1000);
+          t += d;
+        }
+      }
+    }
+    i0 = i1;
+  }
+  return out;
+};
+
+/** Silêncios da narração (ffmpeg silencedetect), em segundos. */
+const silencesOf = (file) => {
+  const {stderr} = spawnSync("ffmpeg", ["-hide_banner", "-nostats", "-i", file, "-af", "silencedetect=noise=-38dB:d=0.25", "-f", "null", "-"], {encoding: "utf8"});
+  const out = [];
+  let st = null;
+  for (const line of (stderr ?? "").split("\n")) {
+    const a = line.match(/silence_start:\s*(-?[\d.]+)/), b = line.match(/silence_end:\s*(-?[\d.]+)/);
+    if (a) st = Math.max(0, +a[1]);
+    if (b && st !== null) out.push([st, +b[1]]), (st = null);
+  }
+  return out;
+};
+
 // ---------------------------------------------------------------- principal
 const main = async () => {
   const spoken = alignIn ? loadAlignment(alignIn) : await transcribe();
@@ -395,19 +489,28 @@ const main = async () => {
     const al = alignToScript(sc.words, words, durationMs);
     rate = al.rate;
     words = al.words.map((w) => ({text: w.text, startMs: w.startMs, endMs: w.endMs, ...(w.em ? {em: true} : {}), ...(w.matched ? {} : {estimated: true})}));
+    // índices das palavras de cada seção (os tempos são lidos depois do ajuste pelas pausas)
     sections = sc.sections
       .map((s, i) => {
-        const ws = al.words.filter((w) => w.section === i);
-        if (!ws.length) return null;
-        return {id: s.id, title: s.title, startMs: ws[0].startMs, endMs: ws[ws.length - 1].endMs, notes: s.notes.filter(Boolean)};
+        const idx = al.words.map((w, k) => (w.section === i ? k : -1)).filter((k) => k >= 0);
+        if (!idx.length) return null;
+        return {id: s.id, title: s.title, first: idx[0], last: idx[idx.length - 1], notes: s.notes.filter(Boolean)};
       })
       .filter(Boolean);
+  }
+  // o reconhecedor desloca tempos perto das pausas (muito em voz sintética); os silêncios medidos corrigem
+  let silences = [];
+  if (!flag("no-refine")) {
+    silences = silencesOf(audioOut);
+    words = refinarComSilencios(words, silences, durationMs / 1000);
   }
   // monotonia e duração mínima
   for (let i = 0; i < words.length; i++) {
     if (i > 0 && words[i].startMs < words[i - 1].startMs) words[i].startMs = words[i - 1].startMs;
     if (words[i].endMs < words[i].startMs + 60) words[i].endMs = words[i].startMs + 60;
   }
+  words = words.map((w) => ({...w, startMs: Math.round(w.startMs), endMs: Math.round(w.endMs)}));
+  sections = sections.map(({first, last, ...s}) => ({id: s.id, title: s.title, startMs: words[first].startMs, endMs: words[last].endMs, notes: s.notes}));
   const tl = {
     version: 1,
     audio: "narracao.wav",
@@ -453,7 +556,7 @@ const main = async () => {
 
   const wpm = words.length / (durationMs / 60000);
   console.log(`✓ public/videos/${slug}/timeline.json`);
-  console.log(`  ${(durationMs / 1000).toFixed(1)}s · ${words.length} palavras · ${wpm.toFixed(0)} palavras/min · fonte: ${spoken.source}`);
+  console.log(`  ${(durationMs / 1000).toFixed(1)}s · ${words.length} palavras · ${wpm.toFixed(0)} palavras/min · fonte: ${spoken.source}${silences.length ? ` · tempos ajustados por ${silences.length} pausa(s)` : ""}`);
   if (rate !== null) {
     console.log(`  roteiro × fala: ${(rate * 100).toFixed(0)}% das palavras casadas${rate < 0.8 ? "  ⚠ baixo — confira se o roteiro é o mesmo da narração" : ""}`);
   }

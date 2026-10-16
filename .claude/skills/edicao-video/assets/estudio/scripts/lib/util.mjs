@@ -111,59 +111,79 @@ export const whisperCppWords = (j) => {
 };
 
 /**
- * O reconhecedor costuma esticar as palavras por cima das pausas (o fim de "pessoal." vai até a próxima
- * palavra). Os silêncios medidos no áudio corrigem as bordas: é nelas que os cortes acontecem.
+ * O reconhecedor erra os tempos justamente perto das pausas: estica a palavra por cima do silêncio e, em voz
+ * sintética, desloca frases inteiras. Os silêncios medidos no áudio são precisos, então eles mandam:
+ * 1. cada pausa (≥ 0,2 s) é casada com um vão entre duas palavras — o mais próximo no tempo, de preferência
+ *    depois de pontuação — por programação dinâmica (as pausas ficam em ordem; uma pausa pode ficar sem par,
+ *    como uma respiração no meio da frase);
+ * 2. as palavras de cada trecho entre pausas casadas são reescaladas para ocupar exatamente esse trecho.
  */
-export const refinarComSilencios = (words, silences = []) => {
+export const refinarComSilencios = (words, silences = [], duracao) => {
+  const N = words.length;
+  if (!N) return cleanWords(words);
+  const P = silences.filter(([a, b]) => b - a >= 0.2).sort((x, y) => x[0] - y[0]);
+  if (!P.length) return cleanWords(words);
+  const fim = duracao ?? Math.max(words[N - 1].endMs / 1000, P[P.length - 1][1]);
+  const ini = (i) => words[i].startMs / 1000, ter = (i) => words[i].endMs / 1000;
+  const vaoT = (g) => (g === 0 ? ini(0) : g === N ? ter(N - 1) : (ter(g - 1) + ini(g)) / 2);
+  const penal = (g) => {
+    if (g === 0 || g === N) return 0;
+    const t = words[g - 1].text;
+    return /[.!?…]["'”)\]]*$/.test(t) ? 0 : /[,;:—]["'”)\]]*$/.test(t) ? 0.25 : 0.6;
+  };
+  const SEM_PAR = 0.7, JANELA = 3;
+  const G = N + 1; // vãos 0..N; estado = último vão usado + 1 (0 = nenhum)
+  let f = new Float64Array(G + 1).fill(Infinity);
+  f[0] = 0;
+  const volta = [];
+  for (const [a, b] of P) {
+    const meio = (a + b) / 2;
+    const nf = new Float64Array(G + 1).fill(Infinity);
+    const bk = new Int32Array(G + 1).fill(-2);
+    for (let st = 0; st <= G; st++) if (f[st] + SEM_PAR < nf[st]) (nf[st] = f[st] + SEM_PAR), (bk[st] = -1);
+    let melhor = Infinity, melhorSt = -1;
+    for (let g = 0; g < G; g++) {
+      if (f[g] < melhor) (melhor = f[g]), (melhorSt = g);
+      const d = Math.abs(vaoT(g) - meio);
+      if (d > JANELA || melhor === Infinity) continue;
+      const custo = melhor + d + penal(g);
+      if (custo < nf[g + 1]) (nf[g + 1] = custo), (bk[g + 1] = melhorSt);
+    }
+    volta.push(bk);
+    f = nf;
+  }
+  let st = 0;
+  for (let i = 1; i <= G; i++) if (f[i] < f[st]) st = i;
+  const vaoDe = new Array(P.length).fill(-1);
+  for (let k = P.length - 1; k >= 0; k--) {
+    const b = volta[k][st];
+    if (b === -1) continue;
+    vaoDe[k] = st - 1;
+    st = b;
+  }
+  const cortes = P.map(([a, b], k) => ({g: vaoDe[k], a, b})).filter((c) => c.g >= 0);
   const out = words.map((w) => ({...w}));
-  for (const w of out) {
-    let s = w.startMs / 1000, e = w.endMs / 1000;
-    for (const [a, b] of silences) {
-      if (b <= s || a >= e) continue;
-      if (a <= s && b >= e) {
-        // palavra inteira dentro do silêncio: vai para a borda mais próxima
-        const c = (s + e) / 2, d = Math.max(0.08, Math.min(0.4, e - s));
-        if (c - a < b - c) (e = a), (s = Math.max(0, a - d));
-        else (s = b), (e = b + d);
-      } else if (a > s && b >= e) e = a;
-      else if (a <= s && b < e) s = b;
-      else if (a - s >= e - b) e = a;
-      else s = b;
-    }
-    w.startMs = Math.round(s * 1000);
-    w.endMs = Math.round(e * 1000);
-  }
-  // palavras empurradas para a mesma borda: em sequência, sem sobrepor
-  for (let i = 1; i < out.length; i++) {
-    if (out[i].startMs < out[i - 1].endMs) out[i].startMs = Math.min(out[i - 1].endMs, out[i].endMs - 40);
-  }
-  // as que ficaram espremidas (< 70 ms) dividem o tempo com a vizinha encostada, pelo número de letras
-  const dur = (w) => w.endMs - w.startMs;
-  for (let i = 0; i < out.length; ) {
-    if (dur(out[i]) >= 70) {
-      i++;
-      continue;
-    }
-    let j = i;
-    while (j < out.length && dur(out[j]) < 70) j++;
-    const prev = out[i - 1], next = out[j];
-    const gapAntes = prev ? out[i].startMs - prev.endMs : Infinity;
-    const gapDepois = next ? next.startMs - out[j - 1].endMs : Infinity;
-    let grupo = null;
-    if (prev && gapAntes < 50 && gapDepois >= gapAntes) grupo = out.slice(i - 1, j);
-    else if (next && gapDepois < 50) grupo = out.slice(i, j + 1);
-    if (grupo) {
-      const a = grupo[0].startMs, b = grupo[grupo.length - 1].endMs;
-      const peso = grupo.reduce((n, w) => n + w.text.length + 1, 0);
-      let t = a;
-      for (const w of grupo) {
-        const d = ((w.text.length + 1) / peso) * (b - a);
-        w.startMs = Math.round(t);
-        w.endMs = Math.round(t + d);
-        t += d;
+  let i0 = 0;
+  for (let c = 0; c <= cortes.length; c++) {
+    const i1 = c < cortes.length ? cortes[c].g : N;
+    if (i1 > i0) {
+      const T0 = c === 0 ? ini(i0) : cortes[c - 1].b;
+      const T1 = c < cortes.length ? cortes[c].a : Math.min(fim, Math.max(ter(N - 1), T0 + 0.1));
+      const s0 = ini(i0), e0 = ter(i1 - 1);
+      if (e0 - s0 > 0.05) {
+        const k = (T1 - T0) / (e0 - s0);
+        for (let i = i0; i < i1; i++) (out[i].startMs = (T0 + (ini(i) - s0) * k) * 1000), (out[i].endMs = (T0 + (ter(i) - s0) * k) * 1000);
+      } else {
+        const peso = words.slice(i0, i1).reduce((n, w) => n + w.text.length + 1, 0);
+        let t = T0;
+        for (let i = i0; i < i1; i++) {
+          const d = ((words[i].text.length + 1) / peso) * (T1 - T0);
+          (out[i].startMs = t * 1000), (out[i].endMs = (t + d) * 1000);
+          t += d;
+        }
       }
     }
-    i = j;
+    i0 = i1;
   }
   return cleanWords(out);
 };

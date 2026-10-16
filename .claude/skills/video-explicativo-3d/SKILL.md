@@ -49,9 +49,9 @@ Por quê: tudo no vídeo (cores, fontes, material e luz 3D, curvas de animação
 
 ### 3. Linha do tempo da fala
 ```bash
-npm run timeline -- <slug> --audio <narração> --script <roteiro> [--alignment <arquivo>]
+npm run timeline -- <slug> --audio <narração> --script <roteiro> [--alignment <arquivo>] [--no-refine]
 ```
-Gera `public/videos/<slug>/timeline.json` com cada palavra e seus tempos, as seções e as notas do roteiro, normaliza a voz (−16 LUFS) e gera um `.srt` por frase. Confira o resumo: `roteiro × fala` deve ficar ≥ 90%. Se ficar baixo, o roteiro não é a versão gravada. Sem `--alignment`, a transcrição (whisper.cpp) pode levar minutos em máquina lenta ou compartilhada: rode em segundo plano.
+Gera `public/videos/<slug>/timeline.json` com cada palavra e seus tempos, as seções e as notas do roteiro, normaliza a voz (−16 LUFS) e gera um `.srt` por frase. Confira o resumo: `roteiro × fala` deve ficar ≥ 90%. Se ficar baixo, o roteiro não é a versão gravada. Os tempos são ajustados pelas pausas medidas na narração (o whisper erra perto das pausas e, em voz sintética, desloca frases inteiras); o resumo mostra quantas pausas foram usadas. Passe `--no-refine` só quando o alinhamento vier exato do TTS. Sem `--alignment`, a transcrição (whisper.cpp) pode levar minutos em máquina lenta ou compartilhada: rode em segundo plano.
 
 ### 4. Storyboard → `references/didatica-storyboard.md`
 ```bash
