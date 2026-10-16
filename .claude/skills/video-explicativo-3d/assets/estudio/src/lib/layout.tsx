@@ -117,11 +117,14 @@ export const SafeArea: React.FC<{
 }> = ({children, align = "center", gap = ds.layout.gap, style, reserveCaptions = true}) => {
   const s = useSafe();
   const captionsSpace = reserveCaptions && ds.captions.enabled && ds.captions.position === "bottom" ? ds.captions.size * 3.2 : 0;
+  const hasMark = ds.brand.watermark !== "none" && Boolean(ds.brand.logo || ds.brand.logoOnDark || ds.brand.handle);
+  const markTop = hasMark && ds.brand.watermark.startsWith("top") ? 84 : 0;
+  const markBottom = hasMark && ds.brand.watermark === "bottom" ? 84 : 0;
   return (
     <AbsoluteFill
       style={{
-        paddingTop: s.top,
-        paddingBottom: s.bottom + captionsSpace,
+        paddingTop: s.top + markTop,
+        paddingBottom: s.bottom + Math.max(captionsSpace, markBottom),
         paddingLeft: s.left,
         paddingRight: s.right,
         display: "flex",
@@ -157,12 +160,13 @@ export const Watermark: React.FC<{opacity?: number}> = ({opacity = 0.85}) => {
   const w = ds.brand.watermark;
   const logo = ds.brand.logoOnDark ?? ds.brand.logo;
   if (w === "none" || (!logo && !ds.brand.handle)) return null;
+  // dentro da área segura (nunca sob a interface do app); SafeArea reserva espaço para ela
   const pos: React.CSSProperties =
     w === "top-left"
-      ? {top: s.top * 0.55, left: s.left}
+      ? {top: s.top, left: s.left}
       : w === "top-right"
-        ? {top: s.top * 0.55, right: s.right}
-        : {bottom: s.bottom * 0.45, left: 0, right: 0, justifyContent: "center"};
+        ? {top: s.top, right: s.right}
+        : {bottom: s.bottom, left: 0, right: 0, justifyContent: "center"};
   return (
     <div style={{position: "absolute", display: "flex", alignItems: "center", gap: 16, opacity, ...pos}}>
       {logo ? (
