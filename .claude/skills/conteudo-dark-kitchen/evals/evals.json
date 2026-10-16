@@ -8,16 +8,46 @@
       "expected_output": "3 roteiros de Reels com humor e estrutura de retenção (gancho nos primeiros segundos, tabela por tempo com imagem/fala/texto na tela/som, payoff no fim), ganchos alternativos, legenda, CTA para iFood/WhatsApp, lista de takes viável com celular + Marcão; perfil da marca salvo com suposições marcadas; nenhum preço/cupom inventado.",
       "files": [],
       "assertions": [
-        {"id": "tres-roteiros", "text": "Entrega exatamente 3 roteiros de vídeo completos"},
-        {"id": "gancho-3s", "text": "Cada roteiro define o gancho nos primeiros ~3 s e nenhum começa com logo, saudação ou apresentação"},
-        {"id": "tabela-tempo", "text": "Cada roteiro é marcado por tempo e traz texto na tela separado da fala"},
-        {"id": "ganchos-alternativos", "text": "Cada roteiro traz pelo menos 2 ganchos alternativos para teste"},
-        {"id": "comida-cedo", "text": "Em cada roteiro a comida aparece até ~5 s"},
-        {"id": "legenda-cta", "text": "Cada roteiro tem legenda pronta e CTA dizendo onde pedir (iFood e/ou WhatsApp)"},
-        {"id": "lista-takes", "text": "Cada roteiro tem lista de takes/gravação viável com celular, dono e Marcão"},
-        {"id": "sem-dado-inventado", "text": "Nenhum preço, desconto, cupom com valor ou prazo de entrega é apresentado como fato sem ter vindo do usuário (fica como placeholder ou suposição declarada)"},
-        {"id": "seguranca-marca", "text": "Nenhuma piada envolve higiene/contaminação, humilha entregador ou cliente, ou expõe dados de cliente"},
-        {"id": "perfil-salvo", "text": "Salvou um perfil da marca reutilizável no projeto, com as suposições marcadas"}
+        {
+          "id": "tres-roteiros",
+          "text": "Entrega exatamente 3 roteiros de vídeo completos"
+        },
+        {
+          "id": "gancho-3s",
+          "text": "Cada roteiro define o gancho nos primeiros ~3 s e nenhum começa com logo, saudação ou apresentação"
+        },
+        {
+          "id": "tabela-tempo",
+          "text": "Cada roteiro é marcado por tempo e traz texto na tela separado da fala"
+        },
+        {
+          "id": "ganchos-alternativos",
+          "text": "Cada roteiro traz pelo menos 2 ganchos alternativos para teste"
+        },
+        {
+          "id": "comida-cedo",
+          "text": "Em cada roteiro a comida aparece até ~5 s"
+        },
+        {
+          "id": "legenda-cta",
+          "text": "Cada roteiro tem legenda pronta e CTA dizendo onde pedir (iFood e/ou WhatsApp)"
+        },
+        {
+          "id": "lista-takes",
+          "text": "Cada roteiro tem lista de takes/gravação viável com celular, dono e Marcão"
+        },
+        {
+          "id": "sem-dado-inventado",
+          "text": "Nenhum preço, desconto, cupom com valor ou prazo de entrega é apresentado como fato sem ter vindo do usuário (fica como placeholder ou suposição declarada)"
+        },
+        {
+          "id": "seguranca-marca",
+          "text": "Nenhuma piada envolve higiene/contaminação, humilha entregador ou cliente, ou expõe dados de cliente"
+        },
+        {
+          "id": "perfil-salvo",
+          "text": "Salvou um perfil da marca reutilizável no projeto, com as suposições marcadas"
+        }
       ]
     },
     {
@@ -27,14 +57,38 @@
       "expected_output": "Calendário de 12 peças em novembro/2026 com data, horário, pilar, formato, ideia e gancho; mistura de humor, desejo e bastidores; madrugada como tema; Black Friday (27/11/2026) com humor e oferta como placeholder; nenhuma peça exige rosto; peças prioritárias desenvolvidas.",
       "files": [],
       "assertions": [
-        {"id": "doze-pecas", "text": "O calendário tem 12 peças com datas em novembro de 2026"},
-        {"id": "colunas", "text": "Cada peça tem data, pilar, formato, ideia e gancho"},
-        {"id": "mix-pilares", "text": "Há peças de humor, de desejo/apetite e de bastidores, e nenhum pilar passa de metade do calendário"},
-        {"id": "black-friday-honesta", "text": "Há conteúdo de Black Friday na data correta (27/11/2026 ou no entorno) e o desconto/condição não é inventado (placeholder ou pedido ao usuário)"},
-        {"id": "madrugada", "text": "O horário da madrugada (até 3h) é explorado como tema e/ou horário de postagem"},
-        {"id": "sem-rosto", "text": "Nenhuma peça depende de alguém aparecendo de rosto"},
-        {"id": "roteiros-prioritarios", "text": "Pelo menos 3 peças são desenvolvidas em roteiro/peça completa além da tabela"},
-        {"id": "seguranca-marca", "text": "Nenhuma piada envolve higiene/peixe estragado/contaminação, humilha entregador ou cliente"}
+        {
+          "id": "doze-pecas",
+          "text": "O calendário tem 12 peças com datas em novembro de 2026"
+        },
+        {
+          "id": "colunas",
+          "text": "Cada peça tem data, pilar, formato, ideia e gancho"
+        },
+        {
+          "id": "mix-pilares",
+          "text": "Há peças de humor, de desejo/apetite e de bastidores, e nenhum pilar passa de metade do calendário"
+        },
+        {
+          "id": "black-friday-honesta",
+          "text": "Há conteúdo de Black Friday na data correta (27/11/2026 ou no entorno) e o desconto/condição não é inventado (placeholder ou pedido ao usuário)"
+        },
+        {
+          "id": "madrugada",
+          "text": "O horário da madrugada (até 3h) é explorado como tema e/ou horário de postagem"
+        },
+        {
+          "id": "sem-rosto",
+          "text": "Nenhuma peça depende de alguém aparecendo de rosto"
+        },
+        {
+          "id": "roteiros-prioritarios",
+          "text": "Pelo menos 3 peças são desenvolvidas em roteiro/peça completa além da tabela"
+        },
+        {
+          "id": "seguranca-marca",
+          "text": "Nenhuma piada envolve higiene/peixe estragado/contaminação, humilha entregador ou cliente"
+        }
       ]
     },
     {
@@ -44,13 +98,34 @@
       "expected_output": "Roteiro de ~40 s para público dono de delivery, com humor de identificação sobre dependência de app, ponto prático e CTA de conversa; carrossel com slide de gancho, desenvolvimento, virada e CTA; sem percentuais de comissão apresentados como fato sem fonte; sem ataque depreciativo ao app.",
       "files": [],
       "assertions": [
-        {"id": "roteiro-40s", "text": "Entrega 1 roteiro marcado por tempo com duração total entre 35 e 50 s"},
-        {"id": "carrossel", "text": "Entrega 1 carrossel com texto slide a slide, com slide 1 de gancho e último slide de CTA"},
-        {"id": "publico-dono", "text": "O conteúdo fala com o dono de restaurante (dores de operação/margem), não com o consumidor final"},
-        {"id": "util", "text": "O conteúdo ensina pelo menos um ponto prático acionável para reduzir a dependência do app"},
-        {"id": "sem-percentual-inventado", "text": "Nenhum percentual de comissão/taxa do app é apresentado como fato sem fonte (usa placeholder, faixa declarada como exemplo ou pede o número)"},
-        {"id": "cta-conversa", "text": "Há CTA de conversa/engajamento para o público B2B (comentar palavra, seguir, direct, salvar)"},
-        {"id": "sem-ataque", "text": "O humor não ridiculariza o cliente final nem entregadores e não ataca o app de forma depreciativa"}
+        {
+          "id": "roteiro-40s",
+          "text": "Entrega 1 roteiro marcado por tempo com duração total entre 35 e 50 s"
+        },
+        {
+          "id": "carrossel",
+          "text": "Entrega 1 carrossel com texto slide a slide, com slide 1 de gancho e último slide de CTA"
+        },
+        {
+          "id": "publico-dono",
+          "text": "O conteúdo fala com o dono de restaurante (dores de operação/margem), não com o consumidor final"
+        },
+        {
+          "id": "util",
+          "text": "O conteúdo ensina pelo menos um ponto prático acionável para reduzir a dependência do app"
+        },
+        {
+          "id": "sem-percentual-inventado",
+          "text": "Nenhum percentual de comissão/taxa do app é apresentado como fato sem fonte (usa placeholder, faixa declarada como exemplo ou pede o número)"
+        },
+        {
+          "id": "cta-conversa",
+          "text": "Há CTA de conversa/engajamento para o público B2B (comentar palavra, seguir, direct, salvar)"
+        },
+        {
+          "id": "sem-ataque",
+          "text": "O humor não ridiculariza o cliente final nem entregadores e não ataca o app de forma depreciativa"
+        }
       ]
     },
     {
@@ -60,12 +135,102 @@
       "expected_output": "8 bilhetes curtos e engraçados no tom de marca fit (humor leve) e 4 nomes de combo divertidos que mantêm a palavra de busca e a quantidade; sem body shaming; alerta sobre regras do app se algum bilhete levar ao site próprio.",
       "files": [],
       "assertions": [
-        {"id": "oito-bilhetes", "text": "Entrega 8 bilhetes curtos (cabem num cartão)"},
-        {"id": "quatro-combos", "text": "Renomeia os 4 combos mantendo a quantidade de marmitas de cada um"},
-        {"id": "combos-encontraveis", "text": "Os novos nomes mantêm uma palavra que o cliente buscaria no app (ex.: combo/marmita/low carb/fit) ou indicam um subtítulo descritivo"},
-        {"id": "sem-body-shaming", "text": "Nenhum bilhete ou nome faz piada com corpo, peso ou aparência de alguém"},
-        {"id": "aviso-regras-app", "text": "Se algum bilhete leva o cliente do iFood para o site próprio, avisa para conferir as regras do app"},
-        {"id": "sem-promessa-saude", "text": "Nenhum texto faz promessa de saúde/emagrecimento/resultado (ex.: 'perde X kg', 'cura', 'garante')"}
+        {
+          "id": "oito-bilhetes",
+          "text": "Entrega 8 bilhetes curtos (cabem num cartão)"
+        },
+        {
+          "id": "quatro-combos",
+          "text": "Renomeia os 4 combos mantendo a quantidade de marmitas de cada um"
+        },
+        {
+          "id": "combos-encontraveis",
+          "text": "Os novos nomes mantêm uma palavra que o cliente buscaria no app (ex.: combo/marmita/low carb/fit) ou indicam um subtítulo descritivo"
+        },
+        {
+          "id": "sem-body-shaming",
+          "text": "Nenhum bilhete ou nome faz piada com corpo, peso ou aparência de alguém"
+        },
+        {
+          "id": "aviso-regras-app",
+          "text": "Se algum bilhete leva o cliente do iFood para o site próprio, avisa para conferir as regras do app"
+        },
+        {
+          "id": "sem-promessa-saude",
+          "text": "Nenhum texto faz promessa de saúde/emagrecimento/resultado (ex.: 'perde X kg', 'cura', 'garante')"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "carrossel-ponto-equilibrio",
+      "prompt": "sou mentor de donos de dark kitchen. faz um carrossel educativo, com humor, explicando quantos pedidos por dia o dono precisa vender só pra empatar. usa como exemplo os números de uma aluna: custo fixo de R$ 22 mil por mês, margem de contribuição média de 28% e ticket médio de R$ 46. e aproveita pra me dizer: quanto o iFood cobra hoje de comissão?",
+      "expected_output": "Carrossel B2B com a conta certa do ponto de equilíbrio (≈ R$ 78,6 mil/mês; R$ 12,88 de MC por pedido; ≈ 1.708 pedidos/mês; ≈ 57/dia em 30 dias), humor com o dono, citação dos IDs da base (FIN-06, FIN-04) e resposta sobre comissão do iFood com os planos públicos, fonte e data (MER-01), orientando conferir o contrato.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "conta-certa",
+          "text": "O ponto de equilíbrio está certo: ≈ R$ 78,6 mil/mês, R$ 12,88 de MC por pedido, ≈ 1.708 pedidos/mês e ≈ 57 pedidos/dia em 30 dias (ou o equivalente correto para outro número de dias declarado)"
+        },
+        {
+          "id": "cita-ids",
+          "text": "A entrega cita os IDs da base usados (ex.: FIN-06, FIN-04, MER-01)"
+        },
+        {
+          "id": "comissao-fonte-data",
+          "text": "A resposta sobre a comissão do iFood traz os planos públicos (12% e 23%, + 3,2% no pagamento online) com fonte e data, e orienta conferir o próprio contrato"
+        },
+        {
+          "id": "carrossel-estrutura",
+          "text": "Carrossel com texto slide a slide, slide 1 de gancho, desenvolvimento, virada e último slide de CTA"
+        },
+        {
+          "id": "humor-sem-alvo",
+          "text": "O humor é com o dono e a rotina e não ridiculariza cliente final, entregador nem app"
+        },
+        {
+          "id": "sem-numero-inventado",
+          "text": "Além dos números da aluna e dos dados da base com fonte, nenhum número é apresentado como fato"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "aprendizado-tempo-real",
+      "prompt": "voltei! resultados: o Marcão Amassa ep. 1 segurou 62% das pessoas nos 3 primeiros segundos e teve 3x mais compartilhamento que a média da conta. o Calúnia foi mal, 31%. ah, e corrige uma coisa: no nosso contrato a comissão do plano com entrega do iFood é 21%, a gente negociou. outra coisa que aprendi e vale pra qualquer um: no Instagram, Reels de teste (que só aparece pra não seguidor) não conta pra métrica de seguidores, então não dá pra comparar direto com os normais. me faz o ep. 2 do Marcão Amassa com o que você aprendeu.",
+      "expected_output": "Registra na hora os aprendizados da marca (resultados, comissão negociada) em marcas/brasa-burger/aprendizados.md e no perfil; registra o aprendizado geral fora da pasta da skill (somente leitura) em conhecimento/aprendizados.md do projeto; confirma em uma linha; entrega o ep. 2 usando o que funcionou.",
+      "files": [
+        "projeto com marcas/brasa-burger/perfil.md e roteiros da iteração 1"
+      ],
+      "assertions": [
+        {
+          "id": "aprendizado-marca",
+          "text": "Registrou em marcas/brasa-burger/aprendizados.md os resultados (62% aos 3 s, 3× compartilhamentos, Calúnia 31%) e a comissão negociada de 21%"
+        },
+        {
+          "id": "aprendizado-geral-fallback",
+          "text": "Registrou o aprendizado geral (Reels de teste) fora da pasta da skill, em conhecimento/aprendizados.md do projeto (ou mostrou a linha pronta), sem alterar a skill"
+        },
+        {
+          "id": "confirma",
+          "text": "Avisa o usuário, em poucas linhas, o que foi anotado e onde"
+        },
+        {
+          "id": "perfil-atualizado",
+          "text": "Atualizou o perfil da marca com a comissão de 21% e o que funcionou/não funcionou"
+        },
+        {
+          "id": "ep2-usa-aprendizado",
+          "text": "O ep. 2 mantém os elementos que funcionaram no ep. 1 (gancho do smash, Marcão deadpan, estrutura de série) e não repete o que falhou no Calúnia sem justificar"
+        },
+        {
+          "id": "ep2-estrutura",
+          "text": "O ep. 2 tem tabela por tempo, ganchos alternativos, legenda, CTA e lista de takes"
+        },
+        {
+          "id": "escopo-confianca",
+          "text": "Não transforma um único resultado da marca em regra geral (registra como da marca ou com confiança baixa)"
+        }
       ]
     }
   ]
