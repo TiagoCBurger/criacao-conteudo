@@ -35,10 +35,17 @@ Pautas prontas para virar Reels, carrossel ou stories com humor, cada uma amarra
 | P29 | Comida que viaja bem | NEG-02 | "Nem toda comida aguenta 30 minutos de moto." | a batata frita "chegando" murcha e dramática (sem culpar o entregador) | Reels |
 | P30 | Antes de abrir a segunda marca | NEG-09 | "Quer abrir mais uma marca? Responde 5 perguntas antes." | o dono empolgado sendo freado por um checklist | Carrossel checklist |
 | P31 | Ponto de equilíbrio em pedidos por dia para a equipe | FIN-06, NEG-07 | "Minha equipe sabe a meta do dia? Sabe: 40 pedidos." | placar de jogo na parede da cozinha | Reels |
-| P32 | O que muda com a Reforma Tributária para o delivery | `mercado-e-regras.md` | "Imposto novo chegando. O que muda pro seu delivery?" | plantão urgente com tom calmo | Carrossel (dados com data e fonte) |
+| P32 | O que muda com a Reforma Tributária para o delivery | MER-08 | "Imposto novo chegando. O que muda pro seu delivery?" | plantão urgente com tom calmo | Carrossel (dados com data e fonte) |
+| P33 | IBS/CBS dentro ou fora do DAS em 2027 (prazo 30/10/2026) | MER-08 | "Seu contador já te perguntou isso? O prazo é 30 de outubro." | o dono descobrindo o prazo pelo Reels, e não pelo contador | Reels curto / stories — **perde validade em 30/10/2026** |
+| P34 | Lacre e "consumo imediato" na embalagem (SP, a partir de 01/02/2027) | MER-09 | "Em fevereiro, sua embalagem precisa de duas coisas novas." | velório dramático da bisnaga de molho | Reels / carrossel — só para quem opera no estado de SP |
+| P35 | Quanto o app leva de verdade | MER-01, FIN-03, FIN-04 | "12% ou 23%? Depende de quem entrega. E não para aí." | a nota fiscal do lanche "fatiada" na frente do dono | Carrossel com a tabela pública e a data |
+| P36 | Lucro no papel, repasse em 4 semanas | MER-02, FIN-08 | "Vendeu hoje. Recebe daqui a um mês. E o fornecedor?" | o dono pagando o fornecedor com promessa | Reels |
+| P37 | "Frete grátis*" com asterisco | MER-11 | "Escreveu 'grátis' e cobrou taxa? Isso tem nome." | o asterisco crescendo na tela | Carrossel |
+| P38 | Sorteio de "comenta e concorre" | MER-11 | "Fez sorteio no Instagram? Precisava de autorização." | o dono sorteando e o papel com o carimbo chegando | Reels — oriente a regularizar ou trocar por ação sem sorteio |
 
 Regras para usar as pautas:
 - O humor é com o dono e a rotina da operação; nunca com o cliente final ou o entregador (`humor.md` §8).
 - Números ilustrativos aparecem como exemplo ("num lanche de R$ 38…"). Percentual de app, imposto ou mercado só com fonte e data (`mercado-e-regras.md`) ou o número do usuário.
 - Quando o conteúdo ensinar algo regulatório ou tributário, termine com "confirme com seu contador / a vigilância da sua cidade".
+- Pautas que dependem de `mercado-e-regras.md` envelhecem: confira a data do item antes de usar e não poste pauta com prazo vencido.
 - Crie pautas novas a partir de qualquer seção da base; se uma pauta nova performar bem, registre em `aprendizados.md`.

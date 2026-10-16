@@ -71,6 +71,7 @@ Leituras:
 - "Faturamento é vaidade; margem é o que paga o boleto." Vender muito com MC baixa não fecha a conta.
 - O canal próprio parece muito melhor, mas tem custos que não aparecem por pedido: entrega própria, marketing para trazer o cliente (CAC, `marketing.md` MKT-10), sistema. Compare o canal próprio **depois** desses custos.
 - Compare MC **por item**: é a base da engenharia de cardápio (`negocios.md` NEG-03).
+- Referência real: o suposto de 25% fica perto do Plano Entrega do iFood na tabela pública (23% + 3,2% do pagamento online, `mercado-e-regras.md` MER-01). Use a tabela do plano e da cidade do usuário.
 
 ## FIN-05 Precificação (markup divisor)
 
@@ -111,7 +112,7 @@ Feche todo mês, no mesmo dia. Um DRE por canal mostra se o app está pagando a 
 
 ## FIN-08 Caixa, repasse e capital de giro
 
-- **Lucro não é caixa.** O app repassa o dinheiro com prazo (semanal, quinzenal ou mensal, conforme o plano); antecipar costuma ter custo. O fornecedor cobra à vista ou em poucos dias. Esse descompasso é o **capital de giro** que a operação precisa ter.
+- **Lucro não é caixa.** O app repassa o dinheiro com prazo (semanal, quinzenal ou mensal, conforme o plano; prazos atuais em `mercado-e-regras.md` MER-02); antecipar costuma ter custo. O fornecedor cobra à vista ou em poucos dias. Esse descompasso é o **capital de giro** que a operação precisa ter.
 - **Projeção de caixa** semanal para as próximas 4–8 semanas: entradas previstas (repasses por data) × saídas (fornecedores, folha, aluguel, impostos, parcelas).
 - **Conta PJ separada da PF.** Misturar é a forma mais rápida de não saber se o negócio dá lucro.
 - **Pró-labore fixo**, como custo fixo. "Tirar do caixa quando sobra" esconde o prejuízo.

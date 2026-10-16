@@ -67,6 +67,8 @@ Use quando combinarem com a marca e **confirme a data no ano corrente** antes de
 - Datas da categoria: Dia do Hambúrguer (28/05), Dia do Sushi (18/06), Dia da Pizza (10/07) — e outras do nicho que o usuário indicar.
 - Comerciais: Dia das Mães, Dia dos Namorados (12/06), Dia dos Pais, Dia das Crianças, Black Friday (novembro), Natal e Réveillon.
 - Sazonais: férias, verão (açaí, poke, saladas), inverno (caldos, massas, pizza), carnaval.
+- **Marcas de madrugada:** datas que começam à 00h (Black Friday, Réveillon, lançamentos "à meia-noite") caem no meio do turno da noite anterior. Aproveite: "a Black começa aqui antes de começar em qualquer lugar".
+- **Sensibilidade de calendário:** evite trocadilhos com "black"/"negro" perto do Dia da Consciência Negra (20/11), e piadas com datas de luto ou tragédias recentes.
 - **Black Friday e promoções:** humor ajuda a furar o ruído ("Black Friday de verdade: o desconto não é na metade do dobro"), mas o desconto, as condições e o prazo vêm do usuário. Sem oferta definida, deixe `[PREENCHER: oferta e condições]`.
 
 ## 7. Multimarca

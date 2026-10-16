@@ -46,6 +46,10 @@ Cria conteúdo de **alta retenção e com humor** para dark kitchens e restauran
 
 Ela é acionada quando alguém pede conteúdo, roteiro, vídeo curto, post, ideia ou calendário para hamburgueria, pizzaria, marmita, açaí, sushi ou qualquer comida de delivery — mesmo sem falar em "humor" ou "retenção".
 
+Também ensina **negócios, marketing e finanças de dark kitchen** (CMV, ficha técnica, preço com comissão de app, margem, ponto de equilíbrio, promoções, avaliações, canal próprio) a partir de uma **base de conhecimento** em `references/conhecimento/`. Cada seção tem um ID (`FIN-04`, `MKT-02`, `NEG-03`, `MER-01`…) e o Claude cita esses IDs ao entregar conteúdo ou responder dúvidas, para o time conferir de onde veio cada afirmação. Os dados que mudam (comissões dos apps, tributos, Reforma Tributária, regras sanitárias, CDC/CONAR, meios de pagamento) ficam em `mercado-e-regras.md` com fonte, data e nível de confiança; se um dado tiver mais de 6 meses, o Claude confirma antes de usar.
+
+**Aprendizado em tempo real:** quando alguém corrige algo, traz um dado novo ou conta o resultado de um post, o Claude registra na hora: o que vale para todos vai para `references/conhecimento/aprendizados.md`, e o que vale só para uma marca vai para `marcas/<slug>/aprendizados.md`. Ele avisa em uma linha ("Anotei na base: …") e já usa na resposta seguinte. Para o time inteiro receber o aprendizado, é preciso fazer commit. De tempos em tempos, os aprendizados são consolidados nos arquivos principais.
+
 Como funciona: monta (ou reaproveita) o perfil da marca em `marcas/<slug>/perfil.md`, gera 3× mais ideias do que vai entregar e filtra (identificação, "teste da troca", fome, viabilidade de gravação, risco), roteiriza com a anatomia de retenção e revisa com checklist. Tem regras fixas de segurança de marca: nada de piada com higiene, entregador ou cliente, dados de cliente sempre borrados e nenhum preço, cupom ou número inventado (o que falta vira `[PREENCHER]`). Roteiros narrados saem também no formato que a `video-explicativo-3d` lê.
 
 Arquivos:
@@ -58,9 +62,16 @@ Arquivos:
 │   ├── humor.md                     ← mecânicas, timing, formatos de esquete, personagens, banco de situações, limites
 │   ├── publico-consumidor.md        ← pilares, apetite no celular, estigma da dark kitchen, momentos de pedido, datas
 │   ├── publico-dono-de-delivery.md  ← conteúdo B2B: dores, humor da operação, autoridade sem inventar números
-│   └── formatos.md                  ← modelos de roteiro (com exemplo completo), carrossel, stories, calendário, embalagem, avaliações
+│   ├── formatos.md                  ← modelos de roteiro (com exemplo completo), carrossel, stories, calendário, embalagem, avaliações
+│   └── conhecimento/                ← base de conhecimento citável
+│       ├── financas.md              ← FIN-01…11: ficha técnica, CMV, margem, preço, ponto de equilíbrio, DRE, caixa, promoções
+│       ├── marketing.md             ← MKT-01…10: posicionamento, loja no app, avaliações, recompra, canal próprio, anúncios
+│       ├── negocios.md              ← NEG-01…09: modelos, multimarca, engenharia de cardápio, operação, entrega, expansão
+│       ├── mercado-e-regras.md      ← MER-01…12: dados com fonte e data (apps, tributos, Anvisa/CVS, CDC/CONAR, Pix)
+│       ├── pautas-educativas.md     ← P01…P38: pautas prontas com gancho e humor, ligadas às seções
+│       └── aprendizados.md          ← memória viva: o que o time ensinou e ainda não foi consolidado
 ├── assets/perfil-marca-modelo.md    ← modelo do perfil da marca
-└── evals/                           ← casos de teste
+└── evals/                           ← casos de teste e benchmark (iteração 1: 100% com a skill × 74% sem)
 ```
 
 Não precisa de instalação nem de programas extras: funciona no Claude Code (clonando este repositório) e também no claude.ai/app. Para usar no claude.ai, compacte a pasta `conteudo-dark-kitchen` em `.zip`, ative **"Code execution and file creation"** em **Settings → Capabilities** e envie em **Customize → Skills → + → Create skill → Upload a skill** (no plano Team/Enterprise, o owner pode enviar para todos em **Organization settings → Plugins & skills**).
