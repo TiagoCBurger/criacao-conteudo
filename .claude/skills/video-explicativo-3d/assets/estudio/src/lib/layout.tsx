@@ -43,12 +43,14 @@ export const Stage: React.FC<{children?: React.ReactNode; tone?: "default" | "al
       : bg;
   const patternOpacity = b.patternOpacity ?? 0.08;
   const glowColor = ds.color.glow ?? ds.color.primary;
+  // intensidade do brilho do fundo: token background.glow (0–1); padrão mais contido em grade/pontos
+  const glowAmount = ds.background.glow ?? (b.style === "radial" || b.style === "gradient" ? 0.32 : 0.16);
   return (
     <AbsoluteFill style={{background: base, overflow: "hidden"}}>
       {glow && (b.style === "radial" || b.style === "grid" || b.style === "dots" || b.style === "gradient") && (
         <AbsoluteFill
           style={{
-            background: `radial-gradient(circle at ${50 + d.x * 12}% ${28 + d.y * 8}%, ${alpha(glowColor, 0.32)} 0%, ${alpha(
+            background: `radial-gradient(circle at ${50 + d.x * 12}% ${28 + d.y * 8}%, ${alpha(glowColor, glowAmount)} 0%, ${alpha(
               glowColor,
               0,
             )} 55%)`,

@@ -59,6 +59,8 @@ export type Tokens = {
     grain?: number;
     vignette?: number;
     patternOpacity?: number;
+    /** intensidade (0–1) do brilho que respira no fundo; 0 desliga */
+    glow?: number;
   };
   motion: {
     personality: "calm" | "confident" | "energetic" | "playful" | "precise";

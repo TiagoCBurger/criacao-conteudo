@@ -239,7 +239,7 @@ export const Funnel: React.FC<{
     let yy = y;
     let op = 1;
     let col = mix("background", color, 0.75);
-    let r = 7;
+    let r = 9;
     if (leakAt < stages && y > yLeak) {
       // vazou: sai de lado e some
       const dt = (y - yLeak) / speed;
@@ -255,7 +255,7 @@ export const Funnel: React.FC<{
       yy = H + dt * speed * 0.6;
       op = Math.max(0, 1 - dt * 1.2);
       col = c(accent);
-      r = 10;
+      r = 12;
     } else {
       x = W / 2 + xoff * halfW(y) * 0.85;
       if (leakAt === stages && y > H * 0.7) col = c(accent);
