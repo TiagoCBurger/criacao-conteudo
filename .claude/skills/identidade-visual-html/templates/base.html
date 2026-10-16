@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[TÍTULO DA APRESENTAÇÃO] — [Cliente] | [Período]</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg-0:#0e0203;
+    --bg-1:#2c0608;
+    --bg-2:#4a0d10;
+    --red:#c81e2c;
+    --red-bright:#ea3b28;
+    --orange:#ff7a45;
+    --rose-muted:#8a4a4d;
+    --panel:rgba(38,9,11,0.6);
+    --panel-solid:#26090b;
+    --panel-light:rgba(255,255,255,0.05);
+    --border:rgba(255,255,255,0.14);
+    --text:#ffffff;
+    --text-dim:rgba(255,255,255,0.72);
+    --text-faint:rgba(255,255,255,0.5);
+    --yellow:#f4c430;
+    --yellow-text:#2b1600;
+    --green:#31c46a;
+    --green-text:#04220f;
+    --table-header:#7c1015;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Manrope', sans-serif;
+    background:#120306;
+    color:var(--text);
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  .display{font-family:'Anton', sans-serif; font-weight:400; letter-spacing:0.5px;}
+  .eyebrow{text-transform:uppercase; letter-spacing:6px; font-size:12px; font-weight:700; color:var(--text-dim);}
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+
+  /* ---------- reveal animation ---------- */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s cubic-bezier(.2,.7,.3,1), transform .8s cubic-bezier(.2,.7,.3,1);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .reveal.d1{transition-delay:.08s;} .reveal.d2{transition-delay:.16s;} .reveal.d3{transition-delay:.24s;}
+  .reveal.d4{transition-delay:.32s;} .reveal.d5{transition-delay:.4s;} .reveal.d6{transition-delay:.48s;}
+
+  @keyframes pulseGlow{
+    0%,100%{opacity:.55;} 50%{opacity:1;}
+  }
+  @keyframes floatSlow{
+    0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);}
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 5vw;
+    background:rgba(14,2,3,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  nav .brand{display:flex; align-items:center; gap:12px;}
+  nav .brand img{height:34px; width:auto; filter:drop-shadow(0 0 2px rgba(255,255,255,0.85));}
+  nav .brand span{font-weight:800; letter-spacing:2px; font-size:13px; color:var(--text-dim); text-transform:uppercase;}
+  nav ul{list-style:none; display:flex; gap:24px;}
+  nav ul a{font-size:13px; font-weight:600; color:var(--text-dim); text-decoration:none; transition:color .2s;}
+  nav ul a:hover{color:#fff;}
+  @media (max-width:960px){ nav ul{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .sunburst{
+    position:relative;
+    background:
+      radial-gradient(ellipse 1100px 850px at 78% 8%, var(--orange) 0%, var(--red-bright) 20%, var(--red) 40%, var(--bg-1) 68%, var(--bg-0) 100%);
+    overflow:hidden;
+  }
+  .sunburst::before{
+    content:"";
+    position:absolute; inset:0;
+    background:repeating-radial-gradient(circle at 78% 8%, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 2px, transparent 2px, transparent 90px);
+    animation:pulseGlow 6s ease-in-out infinite;
+    pointer-events:none;
+  }
+  .hero{padding:110px 7vw 60px; display:grid; grid-template-columns:1.3fr 0.9fr; gap:40px; align-items:center;}
+  .hero h1{font-size:clamp(48px, 7vw, 92px); line-height:0.98; text-transform:uppercase;}
+  .hero .subtitle{margin-top:18px; font-size:22px; font-weight:800; color:var(--orange);}
+  .hero .client{margin-top:8px; font-size:16px; color:var(--text-dim);}
+  .hero .agenda{margin-top:34px; display:flex; flex-wrap:wrap; gap:10px;}
+  .chip{border:1px solid rgba(255,255,255,0.35); padding:8px 16px; border-radius:999px; font-size:13px; font-weight:700; text-decoration:none; color:#fff; background:rgba(255,255,255,0.06); transition:background .2s, transform .2s;}
+  .chip:hover{background:rgba(255,255,255,0.16); transform:translateY(-2px);}
+  .hero-card{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px;
+    animation:floatSlow 5s ease-in-out infinite;
+  }
+  .hero-card img{width:100%; max-width:340px; filter:drop-shadow(0 0 3px rgba(255,255,255,0.9)) drop-shadow(0 0 14px rgba(0,0,0,0.35));}
+  @media (max-width:900px){ .hero{grid-template-columns:1fr; padding:90px 6vw 40px;} }
+
+  .hero-stats{padding:0 7vw 90px; display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  .hero-stat{
+    background:rgba(0,0,0,0.28); border:1px solid rgba(255,255,255,0.18); border-radius:18px;
+    padding:22px 24px; backdrop-filter:blur(4px);
+  }
+  .hero-stat .v{font-size:34px; font-weight:800;}
+  .hero-stat .l{margin-top:4px; font-size:12.5px; color:rgba(255,255,255,0.75); text-transform:uppercase; letter-spacing:1px; font-weight:700;}
+  @media (max-width:700px){ .hero-stats{grid-template-columns:1fr;} }
+
+  /* ---------- CONTENT SECTIONS ---------- */
+  section.content{padding:90px 7vw; background:linear-gradient(180deg, var(--bg-0) 0%, #1a0406 100%); border-top:1px solid rgba(255,255,255,0.06);}
+  section.content.alt{background:linear-gradient(180deg, #1a0406 0%, var(--bg-0) 100%);}
+  .section-head{margin-bottom:44px; max-width:820px;}
+  .section-head .eyebrow{margin-bottom:10px;}
+  .section-head h2{font-size:clamp(30px,4vw,46px); text-transform:uppercase; line-height:1.05;}
+  .section-head p{margin-top:16px; color:var(--text-dim); font-size:16px; max-width:720px;}
+
+  /* stat hero row */
+  .stat-row{display:grid; grid-template-columns:1.1fr 1fr; gap:28px; margin-bottom:50px;}
+  .stat-big{background:var(--panel); border:1px solid var(--border); border-radius:24px; padding:38px;}
+  .stat-big .num{font-size:clamp(52px,6vw,84px); font-weight:800; line-height:1;}
+  .stat-big .label{margin-top:10px; font-size:15px; color:var(--text-dim); font-weight:700;}
+  .stat-mini-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .stat-mini{background:var(--panel-solid); border:1px solid var(--border); border-radius:16px; padding:20px; transition:transform .25s, border-color .25s;}
+  .stat-mini:hover{transform:translateY(-4px); border-color:var(--orange);}
+  .stat-mini .v{font-size:26px; font-weight:800;}
+  .stat-mini .l{font-size:12px; color:var(--text-faint); text-transform:uppercase; letter-spacing:1px; margin-top:4px;}
+  @media (max-width:820px){ .stat-row{grid-template-columns:1fr;} }
+
+  /* charts */
+  .charts-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:24px; margin-bottom:20px;}
+  .charts-grid.even{grid-template-columns:1fr 1fr;}
+  .chart-card{background:var(--panel); border:1px solid var(--border); border-radius:22px; padding:26px;}
+  .chart-card .ct-title{font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-dim); margin-bottom:18px;}
+  .chart-card canvas{max-height:280px;}
+  @media (max-width:960px){ .charts-grid, .charts-grid.even{grid-template-columns:1fr;} }
+
+  /* tables */
+  .table-wrap{background:var(--panel); border:1px solid var(--border); border-radius:20px; overflow:hidden; margin-bottom:36px;}
+  .table-wrap .table-title{padding:16px 24px; font-weight:800; font-size:14px; letter-spacing:1px; text-transform:uppercase; color:var(--text-dim); border-bottom:1px solid var(--border);}
+  table{width:100%; border-collapse:collapse; font-size:14.5px;}
+  thead th{background:var(--table-header); color:#fff; text-align:left; padding:14px 18px; font-size:13px; text-transform:uppercase; letter-spacing:0.5px; white-space:nowrap;}
+  tbody td{padding:12px 18px; border-bottom:1px solid rgba(255,255,255,0.06); color:var(--text-dim); white-space:nowrap;}
+  tbody tr:nth-child(even){background:rgba(255,255,255,0.03);}
+  tbody td:first-child{font-weight:700; color:#fff;}
+  tbody tr:last-child td{border-bottom:none;}
+  .pos{color:var(--green); font-weight:800;}
+  .neg{color:#ff7a68; font-weight:800;}
+  .table-scroll{overflow-x:auto;}
+  details.table-details summary{cursor:pointer; padding:16px 24px; font-weight:800; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:var(--text-dim); list-style:none; display:flex; align-items:center; gap:10px;}
+  details.table-details summary::-webkit-details-marker{display:none;}
+  details.table-details summary::before{content:"+"; font-size:16px; color:var(--orange); font-weight:800; width:18px;}
+  details.table-details[open] summary::before{content:"–";}
+
+  .note{font-size:13.5px; color:var(--text-faint); font-style:italic; margin-top:-16px; margin-bottom:36px;}
+  .insight{background:var(--panel-solid); border-left:3px solid var(--orange); border-radius:0 14px 14px 0; padding:20px 24px; color:var(--text-dim); font-size:15px; margin-bottom:36px;}
+
+  /* VS side-by-side */
+  .vs-grid{display:grid; grid-template-columns:1fr auto 1fr; gap:0; align-items:stretch; margin-bottom:40px;}
+  .vs-col{background:var(--panel); border:1px solid var(--border); border-radius:22px; padding:30px;}
+  .vs-col.now{border-color:var(--orange); background:linear-gradient(160deg, rgba(255,122,69,0.12), var(--panel));}
+  .vs-col h3{font-size:14px; text-transform:uppercase; letter-spacing:1px; color:var(--text-dim); margin-bottom:18px;}
+  .vs-col h3 b{color:#fff; font-size:20px; display:block; margin-top:4px;}
+  .vs-row{display:flex; justify-content:space-between; align-items:center; padding:11px 0; border-bottom:1px solid rgba(255,255,255,0.07); font-size:14.5px;}
+  .vs-row:last-child{border-bottom:none;}
+  .vs-row .val{font-weight:800;}
+  .vs-badge{width:56px; height:56px; border-radius:50%; background:var(--red-bright); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; align-self:center; margin:0 -1px; box-shadow:0 0 0 6px var(--bg-0), 0 10px 20px rgba(0,0,0,.4); z-index:2;}
+  @media (max-width:820px){ .vs-grid{grid-template-columns:1fr;} .vs-badge{margin:14px auto;} }
+
+  /* funnel */
+  .funnel-tabs{display:flex; gap:10px; margin-bottom:30px;}
+  .funnel-tab{
+    padding:10px 22px; border-radius:999px; border:1px solid var(--border); background:var(--panel-solid);
+    color:var(--text-dim); font-weight:800; font-size:13px; cursor:pointer; transition:all .25s;
+  }
+  .funnel-tab.active{background:var(--red-bright); color:#fff; border-color:var(--red-bright);}
+  .funnel-wrap{background:var(--panel); border:1px solid var(--border); border-radius:24px; padding:34px 30px; margin-bottom:36px;}
+  .funnel-row{display:grid; grid-template-columns:190px 1fr 120px; align-items:center; gap:18px;}
+  .funnel-label{font-weight:800; font-size:14.5px;}
+  .funnel-label small{display:block; font-weight:600; color:var(--text-faint); font-size:11.5px; text-transform:uppercase; letter-spacing:.5px; margin-top:2px;}
+  .funnel-bar-track{height:38px; background:rgba(255,255,255,0.06); border-radius:9px; overflow:hidden; position:relative;}
+  .funnel-bar-fill{height:100%; border-radius:9px; width:0%; background:linear-gradient(90deg,var(--red-bright),var(--orange)); transition:width 1s cubic-bezier(.4,0,.2,1); display:flex; align-items:center; justify-content:flex-end; padding-right:12px;}
+  .funnel-value{text-align:right; font-weight:800; font-size:15px; font-variant-numeric:tabular-nums;}
+  .funnel-drop{grid-column:2/3; text-align:center; font-size:12px; color:var(--text-faint); padding:6px 0; display:flex; align-items:center; gap:8px; justify-content:center;}
+  .funnel-drop::before, .funnel-drop::after{content:""; height:1px; flex:1; background:rgba(255,255,255,0.1);}
+  .funnel-drop b{color:var(--orange);}
+  .funnel-benchmark{margin-top:6px; font-size:11px;}
+  @media (max-width:640px){
+    .funnel-row{grid-template-columns:1fr; gap:6px;}
+    .funnel-value{text-align:left;}
+    .funnel-wrap{padding:26px 18px;}
+  }
+  .status-dot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px;}
+  .status-dot.ok{background:var(--green);} .status-dot.bad{background:#ff5b47;}
+
+  /* trava cards with sparkline */
+  .trava-grid{display:grid; grid-template-columns:1.15fr 1fr 1fr; gap:22px;}
+  .trava-card{background:var(--panel); border:1px solid var(--border); border-radius:22px; padding:30px 26px; display:flex; flex-direction:column; gap:14px; transition:transform .3s, box-shadow .3s;}
+  .trava-card:hover{transform:translateY(-6px); box-shadow:0 22px 40px rgba(0,0,0,0.35);}
+  .trava-card.primary{border-color:var(--orange); background:linear-gradient(160deg, rgba(255,122,69,0.14), var(--panel));}
+  .trava-card .tag{align-self:flex-start; background:var(--yellow); color:var(--yellow-text); font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:1px; padding:5px 12px; border-radius:999px;}
+  .trava-card h3{font-size:20px; line-height:1.2;}
+  .trava-card .desc{font-size:14px; color:var(--text-dim);}
+  .trava-card ul{margin-top:2px; padding-left:18px; font-size:13.5px; color:var(--text-dim); display:flex; flex-direction:column; gap:6px;}
+  .spark-wrap{background:rgba(0,0,0,0.2); border-radius:12px; padding:10px 12px; margin-top:4px;}
+  .spark-wrap .spark-label{display:flex; justify-content:space-between; font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.5px; margin-bottom:6px;}
+  .spark-wrap canvas{height:54px !important;}
+  @media (max-width:1000px){ .trava-grid{grid-template-columns:1fr;} }
+
+  /* objetivo smart */
+  .smart-card{background:var(--panel); border:1px solid var(--border); border-radius:22px; padding:32px; margin-bottom:40px;}
+  .smart-row{display:grid; grid-template-columns:170px 1fr; gap:18px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.07);}
+  .smart-row:last-child{border-bottom:none;}
+  .smart-row .k{font-weight:800; color:var(--orange); font-size:14px; text-transform:uppercase; letter-spacing:0.5px;}
+  .smart-row .v{color:var(--text-dim); font-size:15px;}
+
+  .kr-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .kr-card{background:var(--panel-solid); border:1px solid var(--border); border-radius:20px; padding:26px 22px; display:flex; flex-direction:column; gap:12px; transition:transform .25s;}
+  .kr-card:hover{transform:translateY(-5px);}
+  .kr-top{display:flex; align-items:center; gap:12px;}
+  .kr-badge{width:44px; height:44px; min-width:44px; border-radius:50%; background:var(--red-bright); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px;}
+  .kr-card p{font-size:13.5px; color:var(--text-dim); font-weight:600;}
+  .kr-progress-track{height:9px; border-radius:99px; background:rgba(255,255,255,0.08); overflow:hidden;}
+  .kr-progress-fill{height:100%; border-radius:99px; width:0%; transition:width 1.2s cubic-bezier(.4,0,.2,1);}
+  .kr-progress-label{display:flex; justify-content:space-between; font-size:11.5px; color:var(--text-faint); font-weight:700;}
+  @media (max-width:900px){ .kr-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:600px){ .kr-grid{grid-template-columns:1fr;} }
+
+  /* plano de acao */
+  .plan-table thead th{white-space:normal;}
+  .plan-table tbody td{white-space:normal; vertical-align:top; font-size:13.5px;}
+  .plan-table tbody td:first-child{min-width:170px;}
+
+  footer{padding:80px 7vw 50px; background:radial-gradient(ellipse 900px 500px at 85% 20%, var(--red-bright) 0%, var(--bg-1) 45%, var(--bg-0) 100%); display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;}
+  footer h2{font-size:clamp(34px,5vw,56px); text-transform:uppercase;}
+  footer .foot-meta{font-size:13px; color:var(--text-faint);}
+</style>
+</head>
+<body>
+<!--
+  TEMPLATE BASE — Identidade Visual de Apresentações HTML
+  =========================================================
+  Este arquivo é um esqueleto funcional com dados de EXEMPLO.
+  Antes de entregar ao cliente:
+    1. Troque o src="data:image/png;base64,..." das duas tags <img> (navbar
+       e hero — hoje com um placeholder transparente) pela logo real do
+       cliente em base64.
+    2. Substitua os textos entre [colchetes] pelo conteúdo real.
+    3. Substitua os números de exemplo (tabelas, gráficos, funil, KRs) pelos
+       dados reais do cliente. Os valores atuais são só para o layout
+       renderizar corretamente — não são dados reais de ninguém.
+    4. Remova as seções que não se aplicam ao pedido (ex: nem toda
+       apresentação precisa de funil ou de comparativo ano a ano).
+    5. Não altere as variáveis de cor em :root nem a tipografia sem pedido
+       explícito do usuário — ver references/design-tokens.md.
+    6. Rode o checklist de validação do SKILL.md antes de entregar.
+-->
+
+
+<nav>
+  <div class="brand">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAB4CAYAAADc36SXAAAA0UlEQVR4nO3BAQ0AAADCoPdPbQ43oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD4M7pYAAQwIx0kAAAAASUVORK5CYII=" alt="Infinity">
+    <span>Check-in Quarter</span>
+  </div>
+  <ul>
+    <li><a href="#performance">Performance</a></li>
+    <li><a href="#comparativo">Comparativo</a></li>
+    <li><a href="#funil">Funil</a></li>
+    <li><a href="#trava">Trava</a></li>
+    <li><a href="#objetivo">Objetivo &amp; KRs</a></li>
+    <li><a href="#plano">Plano de Ação</a></li>
+  </ul>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header id="topo" class="sunburst">
+  <div class="hero">
+    <div class="reveal in">
+      <div class="eyebrow">Check-in · Performance · Trava · Objetivo · Plano</div>
+      <h1 class="display">Check-in<br>Quarter</h1>
+      <div class="subtitle">Abril – Junho 2026</div>
+      <div class="client">[Cliente] — [Subtítulo/objetivo da apresentação]</div>
+      <div class="agenda">
+        <a class="chip" href="#performance">1. Performance</a>
+        <a class="chip" href="#comparativo">2. Comparativo Ano a Ano</a>
+        <a class="chip" href="#funil">3. Visão do Funil</a>
+        <a class="chip" href="#trava">4. Trava</a>
+        <a class="chip" href="#objetivo">5. Objetivo &amp; KRs</a>
+        <a class="chip" href="#plano">6. Plano de Ação</a>
+      </div>
+    </div>
+    <div class="hero-card reveal in d2" style="justify-content:center;">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAB4CAYAAADc36SXAAAA0UlEQVR4nO3BAQ0AAADCoPdPbQ43oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD4M7pYAAQwIx0kAAAAASUVORK5CYII=" alt="Infinity">
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat reveal"><div class="v" data-count="123240" data-prefix="R$ ">R$ 0</div><div class="l">Faturamento do trimestre</div></div>
+    <div class="hero-stat reveal d1"><div class="v" data-count="9.24" data-decimals="2" data-suffix="x">0x</div><div class="l">ROAS médio do trimestre</div></div>
+    <div class="hero-stat reveal d2"><div class="v" data-count="38" data-suffix=" vendas">0 vendas</div><div class="l">Vendas ganhas no trimestre</div></div>
+  </div>
+</header>
+
+<!-- ================= 1. PERFORMANCE ================= -->
+<section id="performance" class="content">
+  <div class="section-head reveal">
+    <div class="eyebrow">01 · Performance</div>
+    <h2 class="display">Performance Consolidada do Trimestre</h2>
+    <p>Visão mensal dos indicadores de marketing e comercial ao longo de Abril, Maio e Junho de 2026.</p>
+  </div>
+
+  <div class="stat-row reveal">
+    <div class="stat-big">
+      <div class="num" data-count="123240" data-prefix="R$ ">R$ 0</div>
+      <div class="label">Faturamento total do trimestre</div>
+    </div>
+    <div class="stat-mini-grid">
+      <div class="stat-mini"><div class="v" data-count="13337.63" data-prefix="R$ " data-decimals="2">R$ 0</div><div class="l">Investimento total</div></div>
+      <div class="stat-mini"><div class="v" data-count="9.24" data-decimals="2" data-suffix="x">0x</div><div class="l">ROAS médio</div></div>
+      <div class="stat-mini"><div class="v" data-count="38">0</div><div class="l">Vendas ganhas</div></div>
+      <div class="stat-mini"><div class="v" data-count="75">0</div><div class="l">Vendas perdidas</div></div>
+    </div>
+  </div>
+
+  <div class="charts-grid reveal">
+    <div class="chart-card">
+      <div class="ct-title">Faturamento (barras) × ROAS (linha) por mês</div>
+      <canvas id="chartFatRoas"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="ct-title">Vendas Ganhas × Perdidas — Trimestre</div>
+      <canvas id="chartDonutVendas"></canvas>
+    </div>
+  </div>
+
+  <details class="table-details table-wrap reveal">
+    <summary>Ver tabelas detalhadas (marketing e comercial)</summary>
+    <div style="padding:0 24px 24px;">
+      <div class="table-scroll">
+      <table>
+        <thead><tr><th>Marketing</th><th>Abril</th><th>Maio</th><th>Junho</th></tr></thead>
+        <tbody>
+          <tr><td>Investimento</td><td>R$ 3.867,85</td><td>R$ 5.143,92</td><td>R$ 4.325,86</td></tr>
+          <tr><td>Impressões</td><td>209.889</td><td>210.851</td><td>184.392</td></tr>
+          <tr><td>Cliques</td><td>2.276</td><td>1.937</td><td>1.428</td></tr>
+          <tr><td>CTR</td><td>1,08%</td><td>0,92%</td><td>0,77%</td></tr>
+          <tr><td>CPC</td><td>R$ 1,70</td><td>R$ 2,66</td><td>R$ 3,03</td></tr>
+          <tr><td>CPM</td><td>R$ 18,43</td><td>R$ 24,40</td><td>R$ 23,46</td></tr>
+          <tr><td>Leads</td><td>922</td><td>737</td><td>518</td></tr>
+          <tr><td>CPL</td><td>R$ 4,20</td><td>R$ 6,98</td><td>R$ 8,35</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div style="height:22px;"></div>
+      <div class="table-scroll">
+      <table>
+        <thead><tr><th>Comercial</th><th>Abril</th><th>Maio</th><th>Junho</th></tr></thead>
+        <tbody>
+          <tr><td>MQL</td><td>103</td><td>177</td><td>87</td></tr>
+          <tr><td>CPMQL</td><td>R$ 37,55</td><td>R$ 29,06</td><td>R$ 49,72</td></tr>
+          <tr><td>SQL</td><td>69</td><td>51</td><td>30</td></tr>
+          <tr><td>CPSQL</td><td>R$ 56,06</td><td>R$ 100,86</td><td>R$ 144,20</td></tr>
+          <tr><td>Orçamentos enviados</td><td>41</td><td>42</td><td>30</td></tr>
+          <tr><td>Custo por orçamento</td><td>R$ 94,34</td><td>R$ 122,47</td><td>R$ 144,20</td></tr>
+          <tr><td>Vendas ganhas</td><td>23</td><td>11</td><td>4</td></tr>
+          <tr><td>Custo por venda</td><td>R$ 168,17</td><td>R$ 467,63</td><td>R$ 1.081,47</td></tr>
+          <tr><td>Vendas perdidas</td><td>18</td><td>31</td><td>26</td></tr>
+          <tr><td>Ticket médio</td><td>R$ 3.303,04</td><td>R$ 3.108,18</td><td>R$ 3.270,00</td></tr>
+          <tr><td>Faturamento</td><td>R$ 75.970,00</td><td>R$ 34.190,00</td><td>R$ 13.080,00</td></tr>
+          <tr><td>ROAS</td><td>19,64x</td><td>6,65x</td><td>3,02x</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </details>
+
+  <div class="insight reveal">Investimento se manteve estável (entre R$ 3,9 mil e R$ 5,1 mil por mês), mas todos os indicadores de resultado caíram mês a mês: cliques -37%, leads -44%, vendas -83% (de 23 para 4) e faturamento -83% (de R$ 75.970 para R$ 13.080). O ROAS despencou de 19,64x para 3,02x no mesmo período.</div>
+</section>
+
+<!-- ================= 2. COMPARATIVO ANO A ANO ================= -->
+<section id="comparativo" class="content alt">
+  <div class="section-head reveal">
+    <div class="eyebrow">02 · Comparativo Ano a Ano</div>
+    <h2 class="display">2025 vs 2026</h2>
+    <p>Comparação de Janeiro a Maio nos dois anos (período equivalente). O ano de 2025 completo é apresentado como referência de contexto.</p>
+  </div>
+
+  <div class="vs-grid reveal">
+    <div class="vs-col">
+      <h3>Jan–Mai <b>2025</b></h3>
+      <div class="vs-row"><span>Investimento</span><span class="val" data-count="20333" data-prefix="R$ ">R$ 0</span></div>
+      <div class="vs-row"><span>Faturamento</span><span class="val" data-count="283373" data-prefix="R$ ">R$ 0</span></div>
+      <div class="vs-row"><span>Vendas</span><span class="val" data-count="44">0</span></div>
+      <div class="vs-row"><span>CAC médio</span><span class="val" data-count="462.11" data-prefix="R$ " data-decimals="2">R$ 0</span></div>
+      <div class="vs-row"><span>Ticket médio</span><span class="val" data-count="6440.30" data-prefix="R$ " data-decimals="2">R$ 0</span></div>
+      <div class="vs-row"><span>ROAS médio</span><span class="val" data-count="13.94" data-decimals="2" data-suffix="x">0x</span></div>
+    </div>
+    <div class="vs-badge">VS</div>
+    <div class="vs-col now">
+      <h3>Jan–Mai <b>2026</b></h3>
+      <div class="vs-row"><span>Investimento</span><span class="val" data-count="24454" data-prefix="R$ ">R$ 0</span></div>
+      <div class="vs-row"><span>Faturamento</span><span class="val" data-count="351713" data-prefix="R$ ">R$ 0</span></div>
+      <div class="vs-row"><span>Vendas</span><span class="val" data-count="82">0</span></div>
+      <div class="vs-row"><span>CAC médio</span><span class="val" data-count="298.22" data-prefix="R$ " data-decimals="2">R$ 0</span></div>
+      <div class="vs-row"><span>Ticket médio</span><span class="val" data-count="4289.18" data-prefix="R$ " data-decimals="2">R$ 0</span></div>
+      <div class="vs-row"><span>ROAS médio</span><span class="val" data-count="14.39" data-decimals="2" data-suffix="x">0x</span></div>
+    </div>
+  </div>
+
+  <div class="charts-grid even reveal">
+    <div class="chart-card">
+      <div class="ct-title">Faturamento por mês — 2025 × 2026</div>
+      <canvas id="chartFatYoy"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="ct-title">Vendas por mês — 2025 × 2026</div>
+      <canvas id="chartVendasYoy"></canvas>
+    </div>
+  </div>
+
+  <div class="insight reveal">2026 cresceu em faturamento (+24,1%) e, principalmente, em volume de vendas (+86,4%), investindo apenas 20,3% a mais. O CAC caiu 35,5% e o ROAS se manteve estável (~14x). Em contrapartida, o ticket médio caiu 33,4% — o crescimento veio de mais vendas de ticket menor. Vale validar com o time se essa mudança de mix é estratégica ou um efeito colateral a corrigir. O ponto de atenção é <b style="color:#fff">maio</b>: foi o único mês em que 2026 perdeu de 2025 (faturamento -62,1%, vendas -38,9%), mesmo com 28,2% a mais de investimento — o mesmo sinal de perda de eficiência que aparece na leitura do funil.</div>
+  <div class="note reveal">* Fevereiro/25 foi atípico (1 venda, R$ 3.800 faturados) — o salto percentual de fevereiro/26 é inflado por efeito de base baixa e não deve ser lido como referência de crescimento típico.</div>
+</section>
+
+<!-- ================= 3. VISÃO DO FUNIL ================= -->
+<section id="funil" class="content">
+  <div class="section-head reveal">
+    <div class="eyebrow">03 · Visão do Funil</div>
+    <h2 class="display">Funil de Conversão por Mês</h2>
+    <p>Impressões → Cliques → Leads → MQL → SQL → Orçamento → Vendas. Selecione o mês para ver o funil e a taxa de conversão entre cada etapa.</p>
+  </div>
+
+  <div class="funnel-tabs reveal">
+    <button class="funnel-tab active" data-month="abril">Abril</button>
+    <button class="funnel-tab" data-month="maio">Maio</button>
+    <button class="funnel-tab" data-month="junho">Junho</button>
+  </div>
+
+  <div class="funnel-wrap reveal" id="funnelWrap"></div>
+
+  <div class="table-wrap reveal">
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>Etapa</th><th>Abril</th><th>Maio</th><th>Junho</th><th>Benchmark</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Clique &gt; Lead</td><td>40,51%</td><td>38,05%</td><td>36,27%</td><td>15–35% / 30–45% / 50–65%</td><td><span class="status-dot ok"></span>Faixa realista</td></tr>
+        <tr><td>Lead &gt; MQL</td><td>11,17%</td><td>24,02%</td><td>16,80%</td><td>25% / 40% / 55%</td><td><span class="status-dot bad"></span>Abaixo do piso</td></tr>
+        <tr><td>MQL &gt; SQL</td><td>66,99%</td><td>28,81%</td><td>34,48%</td><td>30% / 45% / 60%</td><td><span class="status-dot bad"></span>Volátil, abaixo do piso em mai/jun</td></tr>
+        <tr><td>SQL &gt; Orçamento</td><td>59,42%</td><td>82,35%</td><td>100,00%</td><td>50% / 70% / 85%</td><td><span class="status-dot ok"></span>Acima do piso</td></tr>
+        <tr><td>Orçamento &gt; Venda Ganha</td><td>56,10%</td><td>26,19%</td><td>13,33%</td><td>4% / 9% / 15%</td><td><span class="status-dot bad"></span>Maior colapso do funil</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="insight reveal">Dois pontos se destacam: (1) Lead &gt; MQL ficou o trimestre inteiro abaixo do piso de mercado — problema crônico de qualificação, não sazonal; (2) Orçamento &gt; Venda Ganha começou muito acima do otimista (56%) e terminou em forte queda (13%) — a maior variação em pontos percentuais de todo o funil.</div>
+</section>
+
+<!-- ================= 4. TRAVA DO FUNIL ================= -->
+<section id="trava" class="content alt">
+  <div class="section-head reveal">
+    <div class="eyebrow">04 · Diagnóstico</div>
+    <h2 class="display">Identificamos a Trava</h2>
+    <p>Com base nos dados do funil e do comparativo ano a ano, esta é a restrição que mais limita o faturamento do trimestre.</p>
+  </div>
+
+  <div class="trava-grid">
+    <div class="trava-card primary reveal">
+      <span class="tag">Restrição principal</span>
+      <h3>Fechamento<br>Orçamento → Venda Ganha</h3>
+      <p class="desc">Quem chega até a proposta não está fechando. A conversão caiu de 56,10% (abril) para 13,33% (junho), enquanto vendas perdidas subiram de 43,90% para 86,67% dos orçamentos.</p>
+      <div class="spark-wrap"><div class="spark-label"><span>Abr → Jun</span><span>56% → 13%</span></div><canvas id="sparkFechamento"></canvas></div>
+      <ul><li>Isolando a queda de leads, o funil ainda geraria ~13 vendas em junho — mais de 3x o resultado real (4)</li></ul>
+    </div>
+    <div class="trava-card reveal d1">
+      <span class="tag">Fator agravante</span>
+      <h3>Qualificação<br>Lead → MQL</h3>
+      <p class="desc">Ficou abaixo do piso de mercado (25%) nos três meses, restringindo a base de oportunidades qualificadas.</p>
+      <div class="spark-wrap"><div class="spark-label"><span>Abr → Jun</span><span>11% → 17%</span></div><canvas id="sparkQualificacao"></canvas></div>
+      <ul><li>Pergunta de qualificação e/ou segmentação de público podem estar trazendo leads fora do perfil</li></ul>
+    </div>
+    <div class="trava-card reveal d2">
+      <span class="tag">Fator agravante</span>
+      <h3>Fadiga<br>Topo de Funil</h3>
+      <p class="desc">CTR caiu de 1,08% para 0,77% (-29%) e CPC subiu de R$ 1,70 para R$ 3,03 (+78%).</p>
+      <div class="spark-wrap"><div class="spark-label"><span>CTR Abr → Jun</span><span>1,08% → 0,77%</span></div><canvas id="sparkFadiga"></canvas></div>
+      <ul><li>Padrão típico de fadiga de criativo / saturação de público, que encarece toda a cadeia seguinte</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5. OBJETIVO SMART & KRs ================= -->
+<section id="objetivo" class="content">
+  <div class="section-head reveal">
+    <div class="eyebrow">05 · Para Onde Vamos</div>
+    <h2 class="display">Objetivo do Próximo Trimestre — Jul–Set/2026</h2>
+    <p>Este não é um resultado do trimestre que passou — é o objetivo que queremos alcançar daqui para frente. A proposta abaixo usa o histórico real de faturamento como referência de dimensionamento (o quanto já provamos ser capazes de entregar) para definir uma meta ambiciosa e realista para Julho–Setembro/2026, a ser validada com o time antes de virar compromisso oficial.</p>
+  </div>
+
+  <div class="smart-card reveal">
+    <div class="smart-row"><div class="k">Específico</div><div class="v">Faturar R$ 240.000 no trimestre Jul–Set/2026 (média de R$ 80.000/mês).</div></div>
+    <div class="smart-row"><div class="k">Mensurável</div><div class="v">Faturamento mensal e trimestral acompanhado no Histórico Mensal Completo.</div></div>
+    <div class="smart-row"><div class="k">Atingível</div><div class="v">Patamar já demonstrado: o melhor trimestre corrido até aqui (Fev–Abr/26) somou R$ 255.012, e Fevereiro/26 sozinho faturou R$ 106.806.</div></div>
+    <div class="smart-row"><div class="k">Relevante</div><div class="v">Reverte a queda registrada em Maio/Junho e recoloca 2026 na trajetória de crescimento observada frente a 2025.</div></div>
+    <div class="smart-row"><div class="k">Temporal</div><div class="v">Até 30/09/2026.</div></div>
+  </div>
+
+  <p class="reveal" style="color:var(--text-dim); font-size:15px; margin-bottom:20px;">Os KRs abaixo partem de onde estamos hoje (ponto de partida) em direção à meta que queremos bater no próximo trimestre:</p>
+
+  <div class="kr-grid reveal">
+    <div class="kr-card"><div class="kr-top"><div class="kr-badge">KR1</div><p>Vendas ≥ 15/mês (≥ 45 no trimestre)</p></div><div class="kr-progress-label"><span>Ponto de partida: 12,7/mês</span><span data-progress="84">84%</span></div><div class="kr-progress-track"><div class="kr-progress-fill" data-fill="84"></div></div></div>
+    <div class="kr-card"><div class="kr-top"><div class="kr-badge">KR2</div><p>Fechamento Orç. → Venda ≥ 30%</p></div><div class="kr-progress-label"><span>Ponto de partida: 13,3%</span><span data-progress="44">44%</span></div><div class="kr-progress-track"><div class="kr-progress-fill" data-fill="44"></div></div></div>
+    <div class="kr-card"><div class="kr-top"><div class="kr-badge">KR3</div><p>CAC médio ≤ R$ 300</p></div><div class="kr-progress-label"><span>Ponto de partida: R$ 298</span><span data-progress="100">na meta</span></div><div class="kr-progress-track"><div class="kr-progress-fill" data-fill="100"></div></div></div>
+    <div class="kr-card"><div class="kr-top"><div class="kr-badge">KR4</div><p>ROAS médio trimestral ≥ 14x</p></div><div class="kr-progress-label"><span>Ponto de partida: 14,39x</span><span data-progress="100">na meta</span></div><div class="kr-progress-track"><div class="kr-progress-fill" data-fill="100"></div></div></div>
+    <div class="kr-card"><div class="kr-top"><div class="kr-badge">KR5</div><p>Lead → MQL ≥ 25%</p></div><div class="kr-progress-label"><span>Ponto de partida: 17,3%</span><span data-progress="69">69%</span></div><div class="kr-progress-track"><div class="kr-progress-fill" data-fill="69"></div></div></div>
+    <div class="kr-card"><div class="kr-top"><div class="kr-badge">KR6</div><p>Ticket médio ≥ R$ 4.300</p></div><div class="kr-progress-label"><span>Ponto de partida: R$ 4.289</span><span data-progress="99">99%</span></div><div class="kr-progress-track"><div class="kr-progress-fill" data-fill="99"></div></div></div>
+  </div>
+</section>
+
+<!-- ================= 6. PLANO DE AÇÃO ================= -->
+<section id="plano" class="content alt">
+  <div class="section-head reveal">
+    <div class="eyebrow">06 · Plano de Ação</div>
+    <h2 class="display">5W2H</h2>
+    <p>Ações organizadas por prioridade, conectadas à restrição identificada. Devem ser tratadas como opções para revisão do time, não como decisão final.</p>
+  </div>
+
+  <div class="table-wrap reveal">
+    <div class="table-scroll">
+    <table class="plan-table">
+      <thead><tr><th>What</th><th>Why</th><th>Where</th><th>When</th><th>Who</th><th>How</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Recuperar a taxa de fechamento <em>(prioridade máxima)</em></td>
+          <td>Orçamento → Venda Ganha caiu de 56% para 13%; Venda Perdida subiu de 44% para 87% dos orçamentos</td>
+          <td>Time comercial / CRM</td>
+          <td>Início imediato, checkpoint semanal</td>
+          <td>Liderança comercial + closers</td>
+          <td>Auditar propostas perdidas de maio/junho, mapear objeções, revisar script e condições comerciais</td>
+        </tr>
+        <tr>
+          <td>Ajustar a qualificação Lead → MQL</td>
+          <td>Lead &gt; MQL abaixo do piso de mercado (25%) nos três meses</td>
+          <td>Marketing (mídia/criativo) + pré-vendas</td>
+          <td>Próximo ciclo de campanha</td>
+          <td>Time de mídia + SDR/pré-vendas</td>
+          <td>Testar novos públicos e criativos; refinar a pergunta de qualificação</td>
+        </tr>
+        <tr>
+          <td>Renovar criativos e conter a fadiga de topo de funil</td>
+          <td>CTR caiu 29% e CPC subiu 78%, reduzindo leads em 44%</td>
+          <td>Meta Ads / Google Ads</td>
+          <td>Imediato</td>
+          <td>Time de mídia</td>
+          <td>Testes A/B de criativo, revisar públicos saturados, novos formatos/canais</td>
+        </tr>
+        <tr>
+          <td>Reengajar oportunidades perdidas</td>
+          <td>SQL e orçamentos caíram progressivamente, reduzindo a base ativa de negociação</td>
+          <td>CRM / Comercial</td>
+          <td>Próximas 2 semanas</td>
+          <td>Comercial</td>
+          <td>Lista de remarketing por estágio do CRM (SQL/orçamento perdido em 60 dias) com nova condição</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <h2 class="display">Obrigado!</h2>
+  <div>
+    <div class="foot-meta" style="margin-top:10px;">[Título] · [Período] · Atualizado em [data]</div>
+  </div>
+</footer>
+
+<script>
+/* ================= REVEAL ON SCROLL ================= */
+const revealEls = document.querySelectorAll('.reveal:not(.in)');
+const revealObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('in'); revealObserver.unobserve(e.target); }
+  });
+}, {threshold:0.01, rootMargin:'0px 0px -40px 0px'});
+revealEls.forEach(el=>revealObserver.observe(el));
+/* Safety net: guarantee nothing stays hidden (printing, PDF export, slow devices, etc.) */
+window.addEventListener('beforeprint', ()=>{ document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')); });
+setTimeout(()=>{ document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')); }, 3500);
+
+/* ================= COUNT UP ================= */
+function formatNumber(n, decimals){
+  return n.toLocaleString('pt-BR', {minimumFractionDigits:decimals, maximumFractionDigits:decimals});
+}
+function runCount(el){
+  if(el.dataset.counted) return;
+  el.dataset.counted = '1';
+  const target = parseFloat(el.getAttribute('data-count'));
+  const decimals = parseInt(el.getAttribute('data-decimals')||'0');
+  const prefix = el.getAttribute('data-prefix')||'';
+  const suffix = el.getAttribute('data-suffix')||'';
+  const dur = 1400;
+  const start = performance.now();
+  function step(now){
+    const p = Math.min((now-start)/dur, 1);
+    const eased = 1 - Math.pow(1-p, 3);
+    const val = target*eased;
+    el.textContent = prefix + formatNumber(val, decimals) + suffix;
+    if(p<1) requestAnimationFrame(step);
+    else el.textContent = prefix + formatNumber(target, decimals) + suffix;
+  }
+  requestAnimationFrame(step);
+}
+const countEls = document.querySelectorAll('[data-count]');
+const countObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ runCount(e.target); countObserver.unobserve(e.target); }
+  });
+}, {threshold:0.01, rootMargin:'0px 0px -40px 0px'});
+countEls.forEach(el=>countObserver.observe(el));
+setTimeout(()=>{ countEls.forEach(runCount); }, 3500);
+window.addEventListener('beforeprint', ()=>{ countEls.forEach(runCount); });
+
+/* ================= KR PROGRESS BARS ================= */
+function colorForProgress(p){
+  if(p>=90) return '#31c46a';
+  if(p>=60) return '#f4c430';
+  return '#ea3b28';
+}
+const krFills = document.querySelectorAll('.kr-progress-fill');
+function fillKr(el){
+  if(el.dataset.filled) return;
+  el.dataset.filled = '1';
+  const p = parseFloat(el.getAttribute('data-fill'));
+  el.style.background = colorForProgress(p);
+  requestAnimationFrame(()=>{ el.style.width = p+'%'; });
+}
+const krObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ fillKr(e.target); krObserver.unobserve(e.target); } });
+}, {threshold:0.01, rootMargin:'0px 0px -40px 0px'});
+krFills.forEach(el=>krObserver.observe(el));
+setTimeout(()=>{ krFills.forEach(fillKr); }, 3500);
+window.addEventListener('beforeprint', ()=>{ krFills.forEach(fillKr); });
+
+/* ================= CHART.JS GLOBAL THEME ================= */
+Chart.defaults.color = 'rgba(255,255,255,0.68)';
+Chart.defaults.font.family = "'Manrope', sans-serif";
+Chart.defaults.font.size = 12;
+const gridColor = 'rgba(255,255,255,0.07)';
+
+/* Chart 1: Faturamento (bar) x ROAS (line) */
+new Chart(document.getElementById('chartFatRoas'), {
+  data: {
+    labels: ['Abril','Maio','Junho'],
+    datasets: [
+      {
+        type:'bar', label:'Faturamento (R$)',
+        data:[75970.00, 34190.00, 13080.00],
+        backgroundColor:['#ea3b28','#ea3b28','#ea3b28'],
+        borderRadius:8, yAxisID:'y', order:2,
+        maxBarThickness:70
+      },
+      {
+        type:'line', label:'ROAS',
+        data:[19.64, 6.65, 3.02],
+        borderColor:'#f4c430', backgroundColor:'#f4c430',
+        yAxisID:'y1', tension:.35, pointRadius:5, pointBackgroundColor:'#f4c430',
+        borderWidth:3, order:1
+      }
+    ]
+  },
+  options:{
+    responsive:true,
+    plugins:{ legend:{ labels:{ usePointStyle:true } } },
+    scales:{
+      y:{ position:'left', grid:{color:gridColor}, ticks:{callback:v=>'R$ '+(v/1000)+'k'} },
+      y1:{ position:'right', grid:{display:false}, ticks:{callback:v=>v+'x'} },
+      x:{ grid:{display:false} }
+    }
+  }
+});
+
+/* Chart 2: Donut vendas ganhas x perdidas */
+new Chart(document.getElementById('chartDonutVendas'), {
+  type:'doughnut',
+  data:{
+    labels:['Vendas Ganhas','Vendas Perdidas'],
+    datasets:[{ data:[38,75], backgroundColor:['#31c46a','#ea3b28'], borderColor:'#1a0406', borderWidth:4 }]
+  },
+  options:{
+    responsive:true, cutout:'68%',
+    plugins:{ legend:{ position:'bottom', labels:{usePointStyle:true} } }
+  }
+});
+
+/* Chart 3: Faturamento YoY */
+new Chart(document.getElementById('chartFatYoy'), {
+  type:'bar',
+  data:{
+    labels:['Jan','Fev','Mar','Abr','Mai'],
+    datasets:[
+      { label:'2025', data:[33314,3800,81756,70988,93515], backgroundColor:'#8a4a4d', borderRadius:6 },
+      { label:'2026', data:[61241,106806,64419,83787,35460], backgroundColor:'#ea3b28', borderRadius:6 }
+    ]
+  },
+  options:{
+    responsive:true,
+    plugins:{ legend:{ labels:{usePointStyle:true} } },
+    scales:{
+      y:{ grid:{color:gridColor}, ticks:{callback:v=>'R$ '+(v/1000)+'k'} },
+      x:{ grid:{display:false} }
+    }
+  }
+});
+
+/* Chart 4: Vendas YoY */
+new Chart(document.getElementById('chartVendasYoy'), {
+  type:'bar',
+  data:{
+    labels:['Jan','Fev','Mar','Abr','Mai'],
+    datasets:[
+      { label:'2025', data:[5,1,11,9,18], backgroundColor:'#8a4a4d', borderRadius:6 },
+      { label:'2026', data:[17,18,13,23,11], backgroundColor:'#ff7a45', borderRadius:6 }
+    ]
+  },
+  options:{
+    responsive:true,
+    plugins:{ legend:{ labels:{usePointStyle:true} } },
+    scales:{
+      y:{ grid:{color:gridColor}, ticks:{ precision:0 } },
+      x:{ grid:{display:false} }
+    }
+  }
+});
+
+/* Sparklines nos cards de trava */
+function sparkline(id, data, color){
+  new Chart(document.getElementById(id), {
+    type:'line',
+    data:{ labels:['Abr','Mai','Jun'], datasets:[{ data:data, borderColor:color, backgroundColor:color+'33', fill:true, tension:.4, pointRadius:3, pointBackgroundColor:color, borderWidth:2 }] },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false}, tooltip:{enabled:true} },
+      scales:{ y:{display:false}, x:{display:false} }
+    }
+  });
+}
+sparkline('sparkFechamento', [56.10, 26.19, 13.33], '#ea3b28');
+sparkline('sparkQualificacao', [11.17, 24.02, 16.80], '#f4c430');
+sparkline('sparkFadiga', [1.08, 0.92, 0.77], '#ff7a45');
+
+/* ================= FUNIL INTERATIVO ================= */
+const funnelData = {
+  abril: [
+    {label:'Impressões', value:209889},
+    {label:'Cliques', value:2276},
+    {label:'Leads', value:922},
+    {label:'MQL', value:103},
+    {label:'SQL', value:69},
+    {label:'Orçamento', value:41},
+    {label:'Vendas', value:23}
+  ],
+  maio: [
+    {label:'Impressões', value:210851},
+    {label:'Cliques', value:1937},
+    {label:'Leads', value:737},
+    {label:'MQL', value:177},
+    {label:'SQL', value:51},
+    {label:'Orçamento', value:42},
+    {label:'Vendas', value:11}
+  ],
+  junho: [
+    {label:'Impressões', value:184392},
+    {label:'Cliques', value:1428},
+    {label:'Leads', value:518},
+    {label:'MQL', value:87},
+    {label:'SQL', value:30},
+    {label:'Orçamento', value:30},
+    {label:'Vendas', value:4}
+  ]
+};
+const FUNNEL_MIN = 4, FUNNEL_MAX = 210851;
+function widthForValue(v){
+  const logMin = Math.log10(FUNNEL_MIN), logMax = Math.log10(FUNNEL_MAX);
+  const ratio = (Math.log10(v) - logMin) / (logMax - logMin);
+  return Math.max(18, Math.min(100, 18 + ratio*82));
+}
+function renderFunnel(month){
+  const stages = funnelData[month];
+  const wrap = document.getElementById('funnelWrap');
+  wrap.innerHTML = '';
+  stages.forEach((s, i)=>{
+    const row = document.createElement('div');
+    row.className = 'funnel-row';
+    row.innerHTML = `
+      <div class="funnel-label">${s.label}</div>
+      <div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:0%"></div></div>
+      <div class="funnel-value">${s.value.toLocaleString('pt-BR')}</div>
+    `;
+    wrap.appendChild(row);
+    requestAnimationFrame(()=>{
+      setTimeout(()=>{ row.querySelector('.funnel-bar-fill').style.width = widthForValue(s.value)+'%'; }, i*80);
+    });
+    if(i < stages.length-1){
+      const next = stages[i+1];
+      const pct = ((next.value/s.value)*100).toFixed(1).replace('.', ',');
+      const drop = document.createElement('div');
+      drop.className = 'funnel-drop';
+      drop.innerHTML = `conversão <b>${pct}%</b>`;
+      wrap.appendChild(drop);
+    }
+  });
+}
+renderFunnel('abril');
+document.querySelectorAll('.funnel-tab').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.funnel-tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    renderFunnel(btn.getAttribute('data-month'));
+  });
+});
+</script>
+
+</body>
+</html>
