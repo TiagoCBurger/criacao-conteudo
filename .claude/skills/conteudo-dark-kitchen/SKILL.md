@@ -89,7 +89,7 @@ Releia cada peça como o espectador mais impaciente do mundo:
 - [ ] Passa no teste da troca (a piada é desta marca)?
 - [ ] O CTA é natural e diz onde pedir (app, link, WhatsApp) do jeito que está no perfil?
 - [ ] Texto na tela curto (≤ 7 palavras por bloco) e fora das zonas de interface do 9:16 (faixa de baixo e lateral direita)?
-- [ ] Todo preço, prazo, desconto, horário e número veio do usuário/perfil? O que faltar fica como `[PREENCHER: …]`.
+- [ ] Todo preço, prazo, desconto, horário, número, item do cardápio e ingrediente veio do usuário/perfil? O que faltar fica como `[PREENCHER: …]` ou suposição declarada.
 - [ ] Passa nas regras de segurança de marca?
 
 ## Base de conhecimento: negócios, marketing e finanças
@@ -139,7 +139,7 @@ Uma piada errada em delivery custa avaliação, denúncia e pedido. Detalhes e e
 
 ## Entrega
 
-Responda em português do Brasil, no tom da marca. Entregue as peças prontas para gravar/postar, sem teoria. No fim, em poucas linhas: suposições feitas, o que precisa ser preenchido (`[PREENCHER]`) e uma sugestão do que testar primeiro.
+Responda em português do Brasil, no tom da marca. Entregue as peças prontas para gravar/postar, sem teoria, e sem repetir em cada peça o que vale para todas (luz, ordem de gravação, zonas seguras): isso vai uma vez só, antes das peças. O usuário costuma ler no celular. No fim, em poucas linhas: suposições feitas, o que precisa ser preenchido (`[PREENCHER]`) e uma sugestão do que testar primeiro.
 
 Com sistema de arquivos e muitas peças (calendário, lote de roteiros), salve também em `marcas/<slug>/conteudo/<AAAA-MM>-<tema>.md` e informe o caminho.
 

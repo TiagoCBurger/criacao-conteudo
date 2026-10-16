@@ -63,7 +63,7 @@ Dono de delivery conhece os números da própria operação e percebe na hora um
 |---|---|---|
 | 0–3 s | Dor em uma frase + imagem de identificação | Dono olhando o painel do app às 23h: "Vendi muito hoje. Então por que não sobrou nada?" |
 | 3–10 s | Piada de identificação que confirma a dor | Corte para a conta: comissão, embalagem, cupom, entregador — cada item "come" um pedaço do lanche |
-| 10–40 s | 2–3 pontos práticos, um por beat, cada um com exemplo concreto | "1. Ficha técnica: …" (texto na tela com o número do ponto) |
+| 10–40 s | 2–3 pontos práticos, um por beat, cada um com uma ação concreta (o que o dono faz amanhã) e, quando couber, a conta da base (`financas.md`) | "1. Pega o relatório do app e soma comissão + taxa + cupom do mês (FIN-03)." (texto na tela com o número do ponto) |
 | 40–50 s | Frase de efeito / virada | "Faturamento é vaidade; margem é o que paga o boleto." |
 | 50–60 s | CTA de conversa | "Comenta FICHA que eu te mando o modelo." |
 
