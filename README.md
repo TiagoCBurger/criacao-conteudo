@@ -37,12 +37,21 @@ Ela é acionada quando alguém pede uma apresentação ou relatório em HTML "no
 
 **Claude Code (terminal, VS Code, desktop):** clone este repositório e abra o Claude Code dentro da pasta. A skill em `.claude/skills/` é carregada automaticamente — não precisa instalar nada.
 
-**claude.ai / app Claude (desktop ou web):**
+**claude.ai — para o time inteiro de uma vez (plano Team/Enterprise, só o owner da organização):**
 
 1. Baixe o arquivo [`pacotes/identidade-visual-html.zip`](pacotes/identidade-visual-html.zip).
-2. No Claude, abra **Configurações → Capabilities → Skills**.
-3. Clique em **Upload skill** e selecione o `.zip`.
+2. Em **Organization settings → Policy**, ative **"Cloud code execution and file creation"** e **"Skills"**.
+3. Em **Organization settings → Plugins & skills**, clique em **Add → Upload a skill** e selecione o `.zip`.
+4. A skill fica ativada para todos os membros (cada um pode desligar, mas não apagar).
+
+**claude.ai — cada pessoa na própria conta (qualquer plano):**
+
+1. Baixe o arquivo [`pacotes/identidade-visual-html.zip`](pacotes/identidade-visual-html.zip).
+2. Em **Settings → Capabilities**, ative **"Code execution and file creation"**.
+3. Em **Customize → Skills**, clique em **+ → Create skill → Upload a skill** e selecione o `.zip`.
 4. Confirme que a skill aparece ativada na lista.
+
+> Os nomes dos menus seguem a [Central de Ajuda da Anthropic](https://support.claude.com/en/articles/12512180-using-skills-in-claude) ([admin](https://support.claude.com/en/articles/13119606-managing-skills-as-an-admin)) e podem mudar um pouco entre versões do app.
 
 > Se você editar a skill em `.claude/skills/identidade-visual-html/`, gere o `.zip` de novo para manter os dois iguais:
 >
@@ -56,7 +65,7 @@ A `identidade-visual-html` cuida só do **visual**. Para a narrativa/conteúdo d
 
 ## 3. Skills nativas da Anthropic
 
-Estas **não estão copiadas aqui de propósito**: a licença das skills `pptx`, `docx`, `pdf` e `xlsx` proíbe copiar ou redistribuir os arquivos, e todas já vêm prontas na conta de cada pessoa. Cada um só precisa conferir se estão ativadas em **Configurações → Capabilities → Skills**.
+Estas **não estão copiadas aqui de propósito**: a licença das skills `pptx`, `docx`, `pdf` e `xlsx` proíbe copiar ou redistribuir os arquivos, e todas já vêm prontas na conta de cada pessoa. Cada um só precisa ativar **"Code execution and file creation"** em **Settings → Capabilities** e conferir se estão ligadas em **Customize → Skills**. (No plano Team/Enterprise, o owner precisa antes ativar "Cloud code execution and file creation" e "Skills" em **Organization settings → Policy**.)
 
 - **`pptx`** — criar e editar apresentações PowerPoint.
 - **`docx`** — criar e editar documentos Word.
