@@ -2,6 +2,8 @@
 
 Para consultores, mentores, fornecedores (embalagem, sistema, cardápio digital, insumos) e marcas que contam os bastidores do próprio negócio. O espectador aqui não está com fome: está cansado, apertado de margem e reconhece cada dor na hora.
 
+**O conteúdo técnico vem da base de conhecimento** (`conhecimento/`): finanças (`FIN-`), marketing (`MKT-`), negócio e operação (`NEG-`), dados atuais com fonte (`mercado-e-regras.md`) e um banco de 30+ pautas prontas (`pautas-educativas.md`). Leia a seção antes de ensinar e cite os IDs na entrega.
+
 Sumário: 1. O que o conteúdo precisa fazer · 2. Dores que geram identificação · 3. Pilares · 4. Humor da operação · 5. Autoridade sem inventar números · 6. Estrutura do vídeo educativo com humor · 7. CTA
 
 ## 1. O que o conteúdo precisa fazer
@@ -52,7 +54,8 @@ Dono de delivery conhece os números da própria operação e percebe na hora um
 - **Comissões, taxas e planos dos apps mudam** e variam por plano, cidade e contrato. Use o número que o usuário informar, ou deixe `[PREENCHER: % de comissão do plano X, fonte]`. Nunca apresente percentual de app como fato sem fonte.
 - **Exemplos de cálculo** podem usar números redondos **declarados como exemplo** ("num lanche de R$ 40, se a comissão for X%…"). Deixe claro que é ilustrativo.
 - **Cases e resultados de clientes** só com dados reais fornecidos e autorização.
-- Prefira ensinar **o raciocínio** (como calcular o CMV, como olhar a margem por item) a jogar números de mercado.
+- Prefira ensinar **o raciocínio** (como calcular o CMV, como olhar a margem por item) a jogar números de mercado. As fórmulas e os exemplos ilustrativos já conferidos estão em `conhecimento/financas.md`; use-os em vez de recalcular do zero.
+- Dados de mercado, comissões e regras com data e fonte: `conhecimento/mercado-e-regras.md`. Se o dado tiver mais de 6 meses, confirme antes de usar.
 
 ## 6. Estrutura do vídeo educativo com humor (30–60 s)
 
