@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "name": "Padrão neutro do estúdio de edição",
+    "notes": "Usado quando o projeto não tem design-system/tokens.json. Os campos do design system do projeto entram por cima destes."
+  },
+  "color": {
+    "background": "#0B0C0F",
+    "surface": "#16181D",
+    "text": "#FFFFFF",
+    "textMuted": "#C9CDD4",
+    "textOnPrimary": "#0B0C0F",
+    "primary": "#FFFFFF",
+    "secondary": "#8E97A4",
+    "accent": "#FFD23F",
+    "positive": "#3DD68C",
+    "negative": "#FF5C6C"
+  },
+  "typography": {
+    "display": {
+      "family": "Inter",
+      "fallback": "sans-serif",
+      "weight": 800,
+      "files": [{"src": "padrao/fontes/inter-latin-800-normal.woff2", "weight": 800}],
+      "letterSpacing": -0.02,
+      "lineHeight": 1.04
+    },
+    "body": {
+      "family": "Inter",
+      "fallback": "sans-serif",
+      "weight": 600,
+      "files": [
+        {"src": "padrao/fontes/inter-latin-400-normal.woff2", "weight": 400},
+        {"src": "padrao/fontes/inter-latin-600-normal.woff2", "weight": 600}
+      ],
+      "lineHeight": 1.2
+    },
+    "scale": {"hero": 132, "h1": 96, "h2": 72, "h3": 56, "body": 44, "small": 36, "label": 30}
+  },
+  "shape": {"radius": {"sm": 10, "md": 18, "lg": 28}, "corner": "rounded"},
+  "layout": {"margin": 72, "safe": {"top": 210, "bottom": 380, "left": 64, "right": 150}},
+  "motion": {
+    "spring": {
+      "enter": {"damping": 200, "stiffness": 170, "mass": 0.9},
+      "pop": {"damping": 13, "stiffness": 190, "mass": 0.6}
+    }
+  },
+  "captions": {
+    "enabled": true,
+    "style": "pop",
+    "position": "bottom",
+    "maxWords": 3,
+    "size": 76,
+    "font": "display",
+    "textTransform": "uppercase",
+    "highlight": "accent",
+    "stroke": 10
+  },
+  "brand": {},
+  "sound": {
+    "palette": "crisp",
+    "sfxGain": 0.4,
+    "musicGain": 0.12,
+    "duckTo": 0.3,
+    "transitionSfx": "whoosh-soft"
+  }
+}

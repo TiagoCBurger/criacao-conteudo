@@ -1,0 +1,7 @@
+node_modules/
+out/
+# gerados (npm run midia / npm run estilo): cópias de trabalho dos vídeos, miniaturas, fontes e sons
+public/midia/
+public/estilo/
+public/sfx/
+# o registro (src/midia/registro.json, com transcrições) e as edições (src/edicoes) ficam versionados

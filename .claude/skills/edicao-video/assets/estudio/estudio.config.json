@@ -1,0 +1,5 @@
+{
+  "designSystem": "../design-system",
+  "pastasMidia": [".."],
+  "ignorar": ["node_modules", ".git", "out", "estudio-edicao", "estudio-video", ".cache"]
+}

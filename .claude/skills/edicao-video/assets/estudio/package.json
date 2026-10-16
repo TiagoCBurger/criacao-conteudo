@@ -1,0 +1,33 @@
+{
+  "name": "estudio-edicao",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Estúdio Remotion para editar os vídeos gravados do projeto: cortes, transições, legendas, textos, b-roll, zoom, efeitos sonoros e trilha.",
+  "scripts": {
+    "midia": "node scripts/midia.mjs",
+    "galeria": "node scripts/galeria.mjs",
+    "cortes": "node scripts/cortes.mjs",
+    "nova": "node scripts/nova.mjs",
+    "estilo": "node scripts/sync-estilo.mjs",
+    "studio": "npm run estilo --silent && remotion studio",
+    "typecheck": "npm run estilo --silent && tsc --noEmit",
+    "check": "node scripts/check.mjs",
+    "render": "node scripts/render.mjs"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.535",
+    "@remotion/fonts": "4.0.535",
+    "@remotion/media": "4.0.535",
+    "@remotion/transitions": "4.0.535",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.535"
+  },
+  "devDependencies": {
+    "@remotion/bundler": "4.0.535",
+    "@remotion/install-whisper-cpp": "4.0.535",
+    "@remotion/renderer": "4.0.535",
+    "@types/react": "19.2.2",
+    "typescript": "5.9.3"
+  }
+}
