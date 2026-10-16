@@ -1,22 +1,24 @@
 ---
 name: conteudo-dark-kitchen
 description: >-
-  Cria conteúdo de alta retenção e com humor para dark kitchens, restaurantes de delivery e marcas
-  que vendem por iFood, 99Food, Keeta, Rappi ou canal próprio: roteiros de Reels/TikTok/Shorts
-  (POV, esquete, bastidores, "tipos de cliente", trend adaptada), carrosséis, stories, legendas,
-  calendário/pauta de conteúdo, bilhetes de embalagem, nomes de combos e respostas a avaliações.
-  Também cobre conteúdo para donos de delivery (consultores, mentores, fornecedores). Use sempre que
-  o pedido envolver hamburgueria, pizzaria, marmita, açaí, sushi, lanchonete ou qualquer comida de
-  delivery e falar em conteúdo, roteiro, vídeo curto, post, ideia, gancho, viralizar, engajamento,
-  "algo engraçado" ou "que prenda a atenção" — mesmo sem dizer "dark kitchen", "humor" ou "retenção".
-  Para transformar roteiro + narração prontos em vídeo animado, use a skill video-explicativo-3d.
+  Cria conteúdo de alta retenção e com humor para dark kitchens e restaurantes de delivery (iFood,
+  99Food, Keeta, Rappi, canal próprio): roteiros de Reels/TikTok/Shorts, carrosséis, stories,
+  legendas, calendário, bilhetes de embalagem, nomes de combos e respostas a avaliações. Também faz
+  conteúdo educativo para donos de dark kitchen sobre negócios, marketing e finanças (CMV, ficha
+  técnica, preço com comissão de app, margem, ponto de equilíbrio, promoções) e responde dúvidas de
+  gestão citando uma base de conhecimento que aprende com o que o time ensina na conversa. Use sempre
+  que o pedido envolver hamburgueria, pizzaria, marmita, açaí, sushi ou qualquer comida de delivery e
+  falar em conteúdo, roteiro, vídeo curto, post, ideia, gancho, viralizar, "algo engraçado" ou "que
+  prenda a atenção", ou quando um dono de delivery perguntar de margem, preço, CMV ou marketing —
+  mesmo sem dizer "dark kitchen", "humor" ou "retenção". Vídeo animado a partir de roteiro + narração
+  prontos é com a skill video-explicativo-3d.
 ---
 
 # Conteúdo de dark kitchen e delivery: retenção + humor
 
 Cria conteúdo que **segura a atenção até o fim, faz rir e dá fome** — e, no fim das contas, gera pedido. Humor sem venda vira só entretenimento grátis; venda sem humor ninguém assiste. O trabalho desta skill é juntar os dois.
 
-**Faz:** ideias, roteiros de vídeo curto (com tempos, falas, texto na tela, som e lista de takes), carrosséis, sequências de stories, legendas, calendários, bilhetes de embalagem, nomes e descrições de combos, respostas a avaliações.
+**Faz:** ideias, roteiros de vídeo curto (com tempos, falas, texto na tela, som e lista de takes), carrosséis, sequências de stories, legendas, calendários, bilhetes de embalagem, nomes e descrições de combos, respostas a avaliações. Ensina negócios, marketing e finanças de dark kitchen com uma base de conhecimento citável, que cresce com o que o time ensina nas conversas.
 **Não faz:** gravar, editar ou animar vídeo (para vídeo narrado com motion graphics, entregue o roteiro e indique a skill `video-explicativo-3d`), nem inventar dados da marca (preço, prazo, desconto, avaliação, número).
 
 ## Para quem é o conteúdo
@@ -26,7 +28,7 @@ Descubra antes de escrever, porque muda o humor, o desejo e o CTA:
 | Público | Quem pede o conteúdo | Objetivo | Leia |
 |---|---|---|---|
 | **Consumidor** (padrão) | dark kitchen, hamburgueria, pizzaria, marmita… | fome → pedido no app/canal próprio | `references/publico-consumidor.md` |
-| **Dono de delivery** | consultor, mentor, fornecedor (embalagem, sistema), a própria marca falando de bastidores do negócio | identificação → seguir, comentar, chamar no direct | `references/publico-dono-de-delivery.md` |
+| **Dono de delivery** | consultor, mentor, fornecedor (embalagem, sistema), a própria marca falando de bastidores do negócio | identificação + ensino → seguir, comentar, chamar no direct | `references/publico-dono-de-delivery.md` + base de conhecimento (abaixo) |
 
 ## Fluxo
 
@@ -90,6 +92,38 @@ Releia cada peça como o espectador mais impaciente do mundo:
 - [ ] Todo preço, prazo, desconto, horário e número veio do usuário/perfil? O que faltar fica como `[PREENCHER: …]`.
 - [ ] Passa nas regras de segurança de marca?
 
+## Base de conhecimento: negócios, marketing e finanças
+
+Conteúdo educativo (e qualquer dúvida de gestão que aparecer na conversa) sai da base em `references/conhecimento/`, não da memória. Cada seção tem um ID estável para ser citada.
+
+| Arquivo | IDs | Assuntos |
+|---|---|---|
+| `conhecimento/aprendizados.md` | `APR-…` | o que o time ensinou nas conversas e ainda não foi consolidado — **leia primeiro** |
+| `conhecimento/financas.md` | `FIN-01…11` | ficha técnica, CMV, custos do pedido, margem de contribuição, precificação, ponto de equilíbrio, DRE, caixa e repasse, indicadores, promoções, tributos |
+| `conhecimento/marketing.md` | `MKT-01…10` | posicionamento, loja no app, avaliações, promoções, recompra, canal próprio, conteúdo, anúncios locais, parcerias, métricas |
+| `conhecimento/negocios.md` | `NEG-01…09` | modelos de dark kitchen, categoria e multimarca, engenharia de cardápio, operação, entrega, indicadores, equipe, formalização, expansão |
+| `conhecimento/mercado-e-regras.md` | `MER-…` | dados que mudam (apps, comissões, mercado, tributos, regras sanitárias e de publicidade), cada um com fonte e data |
+| `conhecimento/pautas-educativas.md` | `P01…` | pautas prontas com gancho e ângulo de humor, ligadas às seções |
+
+Como usar:
+1. **Aprendizados antes de tudo:** `conhecimento/aprendizados.md` e, se houver marca, `marcas/<slug>/aprendizados.md`. Eles valem mais que o texto geral (a marca vale mais que o geral).
+2. **Leia só a seção necessária** pelo sumário de cada arquivo.
+3. **Cite as fontes na entrega ao usuário** (não na tela do vídeo), numa linha no fim: `📚 Base: FIN-04, FIN-10 · MER-02 (fonte, mês/ano) · APR-20261016-01`. Assim o usuário confere e o time sabe de onde veio cada afirmação. Ao responder uma dúvida direta, cite o ID junto da afirmação.
+4. **Dado com validade:** se o item de `mercado-e-regras.md` foi verificado há mais de 6 meses, confirme de novo (pesquisa na web, se houver ferramenta) antes de usar; sem como confirmar, use com "(dado de mês/ano, confirmar)" ou deixe `[VERIFICAR]`.
+5. **A base não cobre o assunto?** Diga isso, responda com conhecimento geral marcado como tal ("fora da base") e ofereça registrar o que for confirmado.
+6. Números dos exemplos da base são **ilustrativos**: no conteúdo, apresente-os como exemplo ou troque pelos números reais da marca.
+
+## Aprendizado em tempo real
+
+A base aprende durante a conversa. Registre **na hora** quando o usuário corrigir algo, trouxer um dado novo com fonte, contar o resultado de um conteúdo ou definir uma regra do time:
+
+- **Vale só para uma marca** (o público dela, a comissão do plano dela, o vídeo que bombou nela) → `marcas/<slug>/aprendizados.md` no projeto (crie com a mesma tabela de `conhecimento/aprendizados.md`).
+- **Vale para qualquer dark kitchen** (regra de app que mudou, erro na base, formato que funcionou em várias marcas) → `references/conhecimento/aprendizados.md` desta skill. Se a pasta da skill não puder ser editada (skill instalada no claude.ai, por exemplo), registre em `conhecimento/aprendizados.md` na raiz do projeto; sem sistema de arquivos, mostre a linha pronta para o usuário guardar.
+- Confirme em uma linha: "Anotei na base: … (APR-…)". Se o usuário não quiser, apague.
+- Use o aprendizado já na resposta seguinte, sem esperar consolidação.
+- Em repositório compartilhado, lembre que o time só recebe o aprendizado depois do commit.
+- A consolidação nos arquivos principais segue as regras do próprio `aprendizados.md`.
+
 ## Segurança de marca (não negociável)
 
 Uma piada errada em delivery custa avaliação, denúncia e pedido. Detalhes e exemplos em `references/humor.md` (seção "Onde o humor não vai").
@@ -98,6 +132,7 @@ Uma piada errada em delivery custa avaliação, denúncia e pedido. Detalhes e e
 - **Entregador e cliente não são alvo.** Nada de piada com renda, aparência, sotaque, corpo, gênero, raça, religião ou orientação. Situações do pedido (a observação estranha, a fome, a ansiedade do mapa) podem; a pessoa, não.
 - **Dados de cliente nunca aparecem.** Comanda, print de pedido, avaliação ou conversa vão para a tela com nome, telefone e endereço borrados (LGPD).
 - **Nada inventado apresentado como real.** Avaliação, comentário, depoimento ou número fictício só em esquete claramente encenada. Promoção, cupom, frete grátis e prazo de entrega só como o usuário informou, com as condições (CDC/CONAR).
+- **Comida fit/saudável sem promessa de resultado.** Nada de "emagrece", "perde X kg", "cura", "garante"; informação nutricional só da ficha/rótulo real da marca. Piada com corpo e peso também fica de fora.
 - **Concorrente sem nome.** Piada com "o hambúrguer da foto do app" genérico pode; ridicularizar uma marca identificável, não.
 - **Áudio com direitos:** use áudios da biblioteca da própria plataforma ou originais. Não indique música comercial para usar fora dela.
 - **Regras dos apps:** antes de propor CTA que leva o cliente do app para o canal próprio (bilhete na sacola, mensagem no chat do app), avise que o usuário deve conferir as regras do app em que vende.
@@ -119,4 +154,5 @@ Se o roteiro for **narrado** (locução) e for virar vídeo animado, entregue ta
 | `references/publico-consumidor.md` | o público for quem pede comida: pilares, apetite no celular, estigma da dark kitchen, momentos de pico, datas |
 | `references/publico-dono-de-delivery.md` | o público for dono de restaurante/delivery: dores, temas, humor da operação, autoridade sem inventar números |
 | `references/formatos.md` | for montar a entrega: modelos de roteiro, carrossel, stories, legenda, calendário, embalagem/app, resposta a avaliação |
+| `references/conhecimento/*` | o conteúdo ensinar negócios, marketing ou finanças, ou o usuário tiver uma dúvida de gestão (ver "Base de conhecimento") |
 | `assets/perfil-marca-modelo.md` | não houver perfil da marca |
