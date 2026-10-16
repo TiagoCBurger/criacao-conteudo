@@ -7,6 +7,7 @@ Este repositório reúne as skills do Claude que o time de criação de conteúd
 | Skill | Tipo | Precisa? | Como conseguir |
 |---|---|---|---|
 | `identidade-visual-html` | **Nossa (customizada)** | ✅ Sim | Está neste repositório (veja abaixo) |
+| `video-explicativo-3d` | **Nossa (customizada)** | ✅ Para quem faz vídeo | Está neste repositório (veja abaixo) |
 | `gerar-checkin-quarter` | Nossa (customizada) | ⚠️ Pendente | Citada pela `identidade-visual-html`, mas ainda não está aqui |
 | `pptx` | Nativa da Anthropic | ✅ Sim | Ativar na própria conta |
 | `docx` | Nativa da Anthropic | ✅ Sim | Ativar na própria conta |
@@ -59,11 +60,34 @@ Ela é acionada quando alguém pede uma apresentação ou relatório em HTML "no
 > cd .claude/skills && rm -f ../../pacotes/identidade-visual-html.zip && zip -rX ../../pacotes/identidade-visual-html.zip identidade-visual-html
 > ```
 
-## 2. Pendente: `gerar-checkin-quarter`
+## 2. Skill do time: `video-explicativo-3d`
+
+Transforma **roteiro + narração prontos** em vídeo vertical 9:16 (Reels, TikTok, Shorts) com animação 3D, gráficos, diagramas, tipografia cinética, legendas e efeitos sonoros sincronizados palavra a palavra com a fala. Usa Remotion + React Three Fiber e segue o design system do projeto (`design-system/tokens.json`); se não houver um, converte ou cria antes de começar. Também faz motion graphics só em 2D (`art.medium: "2d"`).
+
+Ela é acionada quando alguém pede "vídeo explicativo", "vídeo didático", "motion graphics", "reels animado", "animar esse roteiro/narração" etc.
+
+Arquivos:
+
+```
+.claude/skills/video-explicativo-3d/
+├── SKILL.md                 ← instruções e fluxo (estúdio → design system → timeline → storyboard → cenas → som → conferência → render)
+├── references/              ← guias de cada etapa (design system, storyboard, biblioteca, motion, 3D, 2D, som, render)
+├── assets/estudio/          ← template do estúdio Remotion (biblioteca de componentes e scripts)
+├── assets/direcoes/         ← presets de direção de arte: cinematic, technical, editorial
+├── assets/exemplos/         ← vídeos de referência (funil 2D, juros com HUD mínimo)
+├── scripts/init-estudio.mjs ← cria ou atualiza o estúdio no projeto
+└── evals/                   ← casos de teste e benchmarks (iteração 2: 91% de aprovação)
+```
+
+### Como usar
+
+Use pelo **Claude Code** (terminal, VS Code ou desktop): clone este repositório e abra o Claude Code dentro da pasta. A skill em `.claude/skills/` é carregada automaticamente. Ela precisa de Node.js e roda `npm install` no estúdio na primeira vez; a transcrição automática da fala (whisper.cpp) precisa também de `git`, `make`, `cmake` e compilador C++. Se o TTS já entregar o alinhamento (ElevenLabs with-timestamps) ou um `.srt`, a transcrição não é necessária.
+
+## 3. Pendente: `gerar-checkin-quarter`
 
 A `identidade-visual-html` cuida só do **visual**. Para a narrativa/conteúdo do check-in quarter ela manda usar em conjunto a skill `gerar-checkin-quarter`, que **não está na conta de onde estas skills foram exportadas**. Quem tiver essa skill deve adicioná-la em `.claude/skills/gerar-checkin-quarter/` (e gerar o `.zip` em `pacotes/`). Sem ela, o visual funciona normalmente; só a estrutura do check-in quarter precisa ser descrita no pedido.
 
-## 3. Skills nativas da Anthropic
+## 4. Skills nativas da Anthropic
 
 Estas **não estão copiadas aqui de propósito**: a licença das skills `pptx`, `docx`, `pdf` e `xlsx` proíbe copiar ou redistribuir os arquivos, e todas já vêm prontas na conta de cada pessoa. Cada um só precisa ativar **"Code execution and file creation"** em **Settings → Capabilities** e conferir se estão ligadas em **Customize → Skills**. (No plano Team/Enterprise, o owner precisa antes ativar "Cloud code execution and file creation" e "Skills" em **Organization settings → Policy**.)
 

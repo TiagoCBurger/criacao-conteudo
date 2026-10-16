@@ -1,0 +1,335 @@
+{
+  "skill_name": "video-explicativo-3d",
+  "evals": [
+    {
+      "id": 1,
+      "name": "juros-sem-identidade",
+      "prompt": "Chegou da skill de roteiro o episódio 3 do Grana Clara (canal de educação financeira pra quem tá começando a investir): roteiro e narração estão em episodios/03-juros-compostos/. Monta o vídeo vertical pra Reels/TikTok — didático, com gráficos e elementos 3D, tipografia caprichada e efeitos sonoros. A gente ainda não tem identidade visual nenhuma; público jovem adulto, tom confiável mas leve. Pode seguir sem me perguntar nada.",
+      "expected_output": "MP4 vertical 1080x1920 sincronizado com a narração (~26 s), com gráfico de crescimento, elementos 3D, tipografia cinética, legendas e efeitos sonoros; design system criado e salvo no projeto (tokens + fontes locais + DESIGN.md) para reuso nos próximos episódios.",
+      "files": [
+        "projects/juros/episodios/03-juros-compostos/roteiro.md",
+        "projects/juros/episodios/03-juros-compostos/narracao.mp3"
+      ],
+      "assertions": [
+        {
+          "id": "mp4-vertical",
+          "text": "Entrega um MP4 H.264 vertical 1080×1920"
+        },
+        {
+          "id": "duracao-cobre-narracao",
+          "text": "A duração cobre toda a narração (≥ narração e ≤ narração + 4 s)"
+        },
+        {
+          "id": "loudness-redes",
+          "text": "Áudio entre −16 e −12 LUFS integrados, sem clipping (pico ≤ −0,5 dBFS)"
+        },
+        {
+          "id": "3d-real",
+          "text": "Há elementos 3D de verdade (volume, luz e sombra) em pelo menos 2 momentos do vídeo"
+        },
+        {
+          "id": "grafico-didatico",
+          "text": "Há ao menos um gráfico ou diagrama ligado ao conteúdo (ex.: crescimento dos juros ao longo do tempo)"
+        },
+        {
+          "id": "legendas-sincronizadas",
+          "text": "Há legendas sincronizadas com a fala ao longo do vídeo"
+        },
+        {
+          "id": "nada-cortado",
+          "text": "Nos quadros amostrados, nenhum texto está cortado nas bordas nem dentro das zonas de interface do 9:16"
+        },
+        {
+          "id": "sfx",
+          "text": "Há efeitos sonoros sincronizados com eventos visuais (evidência no projeto/código ou no áudio)"
+        },
+        {
+          "id": "ds-criado-salvo",
+          "text": "Criou e salvou no projeto um design system reutilizável (tokens com cores/tipografia/motion + fontes locais + registro das decisões)"
+        },
+        {
+          "id": "numeros-fieis",
+          "text": "Os números mostrados batem com o roteiro (R$ 1.000; 1% ao mês; ~R$ 3.300 em 10 anos; ~R$ 36.000 em 30 anos) e nenhum dado foi inventado"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "ceu-identidade-css",
+      "prompt": "faz o vídeo do 'por que o céu é azul' pro Curioso Lab. o áudio e o roteiro tão em conteudo/ceu-azul/ e a identidade do canal tá na pasta marca/. quero 9:16 com 3D, bem animado e didático, com sfx. não precisa me consultar, segue direto",
+      "expected_output": "MP4 vertical com a identidade do Curioso Lab (fundo #0A1F2E, teal #22C7B8, amarelo só em destaques, Outfit/Nunito Sans), convertida para um design system reutilizável; cenas 3D ilustrando luz/partículas/espalhamento, legendas e SFX.",
+      "files": [
+        "projects/ceu/conteudo/ceu-azul/roteiro.md",
+        "projects/ceu/conteudo/ceu-azul/narracao.mp3",
+        "projects/ceu/marca/brand.css",
+        "projects/ceu/marca/logo.svg"
+      ],
+      "assertions": [
+        {
+          "id": "mp4-vertical",
+          "text": "Entrega um MP4 H.264 vertical 1080×1920"
+        },
+        {
+          "id": "duracao-cobre-narracao",
+          "text": "A duração cobre toda a narração (≥ narração e ≤ narração + 4 s)"
+        },
+        {
+          "id": "loudness-redes",
+          "text": "Áudio entre −16 e −12 LUFS integrados, sem clipping (pico ≤ −0,5 dBFS)"
+        },
+        {
+          "id": "3d-real",
+          "text": "Há elementos 3D de verdade (volume, luz e sombra) em pelo menos 2 momentos do vídeo"
+        },
+        {
+          "id": "grafico-didatico",
+          "text": "Há ao menos um diagrama/ilustração didática do fenômeno (luz branca = cores; espalhamento; caminho maior no pôr do sol)"
+        },
+        {
+          "id": "legendas-sincronizadas",
+          "text": "Há legendas sincronizadas com a fala ao longo do vídeo"
+        },
+        {
+          "id": "nada-cortado",
+          "text": "Nos quadros amostrados, nenhum texto está cortado nas bordas nem dentro das zonas de interface do 9:16"
+        },
+        {
+          "id": "sfx",
+          "text": "Há efeitos sonoros sincronizados com eventos visuais (evidência no projeto/código ou no áudio)"
+        },
+        {
+          "id": "identidade-da-marca",
+          "text": "Usa a identidade de marca/brand.css: fundo predominante ≈ #0A1F2E, teal #22C7B8 como cor principal, amarelo #FFD23F só em destaques, fontes Outfit (títulos) e Nunito Sans (texto)"
+        },
+        {
+          "id": "ds-convertido-salvo",
+          "text": "Converteu a identidade para um design system de vídeo reutilizável salvo no projeto (sem inventar cores fora da marca)"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "api-design-system-pronto",
+      "prompt": "Roteiro + locução do 'O que é uma API' prontos em roteiros/o-que-e-api/ (veio também o JSON de timestamps da ElevenLabs). O design system do Byte Simples tá em design-system/. Produz o vídeo explicativo vertical com animações 3D, diagramas e lettering, com efeitos sonoros. Segue sem perguntar.",
+      "expected_output": "MP4 vertical no design system Byte Simples (tema claro creme, Sora/DM Sans, legenda em caixa laranja, 3D 'clay'), usando os timestamps da ElevenLabs para sincronizar; diagrama do fluxo cliente → API → sistema → resposta; lettering no termo 'API'; SFX.",
+      "files": [
+        "projects/api/roteiros/o-que-e-api/roteiro.md",
+        "projects/api/roteiros/o-que-e-api/narracao.wav",
+        "projects/api/roteiros/o-que-e-api/narracao_alignment.json",
+        "projects/api/design-system/tokens.json"
+      ],
+      "assertions": [
+        {
+          "id": "mp4-vertical",
+          "text": "Entrega um MP4 H.264 vertical 1080×1920"
+        },
+        {
+          "id": "duracao-cobre-narracao",
+          "text": "A duração cobre toda a narração (≥ narração e ≤ narração + 4 s)"
+        },
+        {
+          "id": "loudness-redes",
+          "text": "Áudio entre −16 e −12 LUFS integrados, sem clipping (pico ≤ −0,5 dBFS)"
+        },
+        {
+          "id": "3d-real",
+          "text": "Há elementos 3D de verdade (volume, luz e sombra) em pelo menos 2 momentos do vídeo"
+        },
+        {
+          "id": "grafico-didatico",
+          "text": "Há um diagrama do fluxo pedido → API → sistema → resposta (ou equivalente didático)"
+        },
+        {
+          "id": "legendas-sincronizadas",
+          "text": "Há legendas sincronizadas com a fala ao longo do vídeo"
+        },
+        {
+          "id": "nada-cortado",
+          "text": "Nos quadros amostrados, nenhum texto está cortado nas bordas nem dentro das zonas de interface do 9:16"
+        },
+        {
+          "id": "sfx",
+          "text": "Há efeitos sonoros sincronizados com eventos visuais (evidência no projeto/código ou no áudio)"
+        },
+        {
+          "id": "usa-ds-existente",
+          "text": "Usa o design system existente sem alterá-lo: fundo creme ≈ #F5F1E8, Sora/DM Sans, legenda em caixa com destaque #FF5A2E, assinatura @bytesimples"
+        },
+        {
+          "id": "usa-timestamps",
+          "text": "Usa o JSON de timestamps fornecido (alinhamento ElevenLabs) para sincronizar, em vez de tempos chutados ou nova transcrição"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "gps-sem-identidade-tech",
+      "prompt": "Roteiro e locução do 'Como o celular sabe onde você está' chegaram em conteudo/gps/. É para o canal Sinal (tecnologia explicada, público 18–35). Ainda não temos identidade visual — quero algo sério, tech, nada infantil. Faz o vídeo vertical com 3D, animação caprichada e sfx. Segue sem me perguntar.",
+      "expected_output": "Design system criado com direção técnica ou cinematográfica (art.direction salvo), vídeo com satélites/esferas de distância, HUD mínimo.",
+      "files": [
+        "projects2/gps/conteudo/gps/roteiro.md",
+        "projects2/gps/conteudo/gps/narracao.mp3"
+      ],
+      "assertions": [
+        {
+          "id": "mp4-vertical",
+          "text": "Entrega um MP4 H.264 vertical 1080×1920"
+        },
+        {
+          "id": "duracao-cobre-narracao",
+          "text": "A duração cobre toda a narração (≥ narração e ≤ narração + 4 s)"
+        },
+        {
+          "id": "loudness-redes",
+          "text": "Áudio entre −16 e −12 LUFS integrados, sem clipping (pico ≤ −0,5 dBFS)"
+        },
+        {
+          "id": "hud-minimo",
+          "text": "HUD mínimo: em todos os quadros amostrados há no máximo 1 bloco de texto além da legenda, e nada fixo na tela (marca d'água, barra de progresso, selos de seção)"
+        },
+        {
+          "id": "3d-nao-infantil",
+          "text": "3D com linguagem adulta: arestas vivas, paleta contida com um acento, sem bonecos com olhos, formas de bala de goma ou cores de brinquedo"
+        },
+        {
+          "id": "3d-carrega-ideia",
+          "text": "O 3D carrega a ideia em pelo menos 2 cenas (não é decoração atrás de texto)"
+        },
+        {
+          "id": "legendas-sincronizadas",
+          "text": "Há legendas discretas sincronizadas com a fala ao longo do vídeo"
+        },
+        {
+          "id": "nada-cortado",
+          "text": "Nos quadros amostrados, nenhum texto está cortado nem dentro das zonas de interface do 9:16, e o 3D não invade a faixa da legenda"
+        },
+        {
+          "id": "sfx",
+          "text": "Há efeitos sonoros sincronizados com eventos visuais"
+        },
+        {
+          "id": "fiel-ao-roteiro",
+          "text": "Nada na tela contradiz ou extrapola o roteiro (sem dados, rótulos explicativos ou CTA inventados)"
+        },
+        {
+          "id": "ds-direcao-salva",
+          "text": "Criou e salvou um design system reutilizável com art.direction técnico ou cinematográfico (coerente com 'sério, tech, nada infantil')"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "estufa-figma-tokens",
+      "prompt": "monta o vídeo do efeito estufa (episodios/efeito-estufa/) pro Planeta em Dados. a identidade tá exportada do figma em brand/figma-tokens.json. 9:16, 3D, didático, sem poluir a tela. vai direto",
+      "expected_output": "Tokens do Figma convertidos (hex e fontes Sora/Inter preservados), direção de arte escolhida e registrada, vídeo com luz/infravermelho/CO2 e comparação 280×420 ppm.",
+      "files": [
+        "projects2/estufa/episodios/efeito-estufa/roteiro.md",
+        "projects2/estufa/episodios/efeito-estufa/narracao.mp3",
+        "projects2/estufa/brand/figma-tokens.json"
+      ],
+      "assertions": [
+        {
+          "id": "mp4-vertical",
+          "text": "Entrega um MP4 H.264 vertical 1080×1920"
+        },
+        {
+          "id": "duracao-cobre-narracao",
+          "text": "A duração cobre toda a narração (≥ narração e ≤ narração + 4 s)"
+        },
+        {
+          "id": "loudness-redes",
+          "text": "Áudio entre −16 e −12 LUFS integrados, sem clipping (pico ≤ −0,5 dBFS)"
+        },
+        {
+          "id": "hud-minimo",
+          "text": "HUD mínimo: em todos os quadros amostrados há no máximo 1 bloco de texto além da legenda, e nada fixo na tela (marca d'água, barra de progresso, selos de seção)"
+        },
+        {
+          "id": "3d-nao-infantil",
+          "text": "3D com linguagem adulta: arestas vivas, paleta contida com um acento, sem bonecos com olhos, formas de bala de goma ou cores de brinquedo"
+        },
+        {
+          "id": "3d-carrega-ideia",
+          "text": "O 3D carrega a ideia em pelo menos 2 cenas (não é decoração atrás de texto)"
+        },
+        {
+          "id": "legendas-sincronizadas",
+          "text": "Há legendas discretas sincronizadas com a fala ao longo do vídeo"
+        },
+        {
+          "id": "nada-cortado",
+          "text": "Nos quadros amostrados, nenhum texto está cortado nem dentro das zonas de interface do 9:16, e o 3D não invade a faixa da legenda"
+        },
+        {
+          "id": "sfx",
+          "text": "Há efeitos sonoros sincronizados com eventos visuais"
+        },
+        {
+          "id": "fiel-ao-roteiro",
+          "text": "Nada na tela contradiz ou extrapola o roteiro (sem dados, rótulos explicativos ou CTA inventados)"
+        },
+        {
+          "id": "figma-convertido",
+          "text": "Converteu brand/figma-tokens.json preservando os hex e as fontes (Sora/Inter), com direção de arte definida e registrada"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "vacina-ds-cinematico",
+      "prompt": "O episódio 'Como uma vacina treina seu corpo' está em roteiros/vacina/ (roteiro + narração). O design system do Corpo em Foco está em design-system/. Produza o vídeo explicativo vertical com 3D e efeitos sonoros. Pode seguir sem perguntar.",
+      "expected_output": "Vídeo no design system existente (cinematográfico, vidro, acento carmim) sem alterá-lo; HUD mínimo; células/anticorpos em 3D sem visual infantil.",
+      "files": [
+        "projects2/vacina/roteiros/vacina/roteiro.md",
+        "projects2/vacina/roteiros/vacina/narracao.wav",
+        "projects2/vacina/design-system/tokens.json"
+      ],
+      "assertions": [
+        {
+          "id": "mp4-vertical",
+          "text": "Entrega um MP4 H.264 vertical 1080×1920"
+        },
+        {
+          "id": "duracao-cobre-narracao",
+          "text": "A duração cobre toda a narração (≥ narração e ≤ narração + 4 s)"
+        },
+        {
+          "id": "loudness-redes",
+          "text": "Áudio entre −16 e −12 LUFS integrados, sem clipping (pico ≤ −0,5 dBFS)"
+        },
+        {
+          "id": "hud-minimo",
+          "text": "HUD mínimo: em todos os quadros amostrados há no máximo 1 bloco de texto além da legenda, e nada fixo na tela (marca d'água, barra de progresso, selos de seção)"
+        },
+        {
+          "id": "3d-nao-infantil",
+          "text": "3D com linguagem adulta: arestas vivas, paleta contida com um acento, sem bonecos com olhos, formas de bala de goma ou cores de brinquedo"
+        },
+        {
+          "id": "3d-carrega-ideia",
+          "text": "O 3D carrega a ideia em pelo menos 2 cenas (não é decoração atrás de texto)"
+        },
+        {
+          "id": "legendas-sincronizadas",
+          "text": "Há legendas discretas sincronizadas com a fala ao longo do vídeo"
+        },
+        {
+          "id": "nada-cortado",
+          "text": "Nos quadros amostrados, nenhum texto está cortado nem dentro das zonas de interface do 9:16, e o 3D não invade a faixa da legenda"
+        },
+        {
+          "id": "sfx",
+          "text": "Há efeitos sonoros sincronizados com eventos visuais"
+        },
+        {
+          "id": "fiel-ao-roteiro",
+          "text": "Nada na tela contradiz ou extrapola o roteiro (sem dados, rótulos explicativos ou CTA inventados)"
+        },
+        {
+          "id": "usa-ds-existente",
+          "text": "Usa o design system existente sem alterá-lo (fundo #0A090E, Manrope/Inter, acento #FF4D6D só no foco, material vidro)"
+        }
+      ]
+    }
+  ]
+}

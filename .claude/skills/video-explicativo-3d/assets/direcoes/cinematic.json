@@ -1,0 +1,122 @@
+{
+  "_sobre": "Preset de direção de arte CINEMATOGRÁFICA. Mescle no tokens.json do projeto e defina cores/fontes da marca por cima.",
+  "_paleta": "Fundo quase preto (frio ou quente, #06080B–#121418). Volumes em cinza metálico neutro (primary ~#B8C0CC). UM acento de luz (âmbar/ouro, laranja, ciano elétrico...) que só aparece no que está em foco. textMuted ~#8A93A0.",
+  "_tipografia": "Display grotesca pesada (700–900, ex.: Archivo, Inter Tight, Space Grotesk, Manrope); body sans 500.",
+  "art": {
+    "direction": "cinematic",
+    "hud": "minimal"
+  },
+  "shape": {
+    "radius": {
+      "sm": 6,
+      "md": 12,
+      "lg": 20
+    },
+    "strokeWidth": 3,
+    "corner": "sharp"
+  },
+  "layout": {
+    "margin": 72,
+    "gap": 40,
+    "safe": {
+      "top": 220,
+      "bottom": 360,
+      "left": 72,
+      "right": 120
+    }
+  },
+  "surface": {
+    "style": "solid"
+  },
+  "background": {
+    "style": "radial",
+    "grain": 0.08,
+    "vignette": 0.55
+  },
+  "motion": {
+    "personality": "confident",
+    "easing": {
+      "standard": [
+        0.45,
+        0,
+        0.55,
+        1
+      ],
+      "enter": [
+        0.16,
+        1,
+        0.3,
+        1
+      ],
+      "exit": [
+        0.7,
+        0,
+        0.84,
+        0
+      ]
+    },
+    "spring": {
+      "enter": {
+        "damping": 200,
+        "stiffness": 90
+      },
+      "pop": {
+        "damping": 20,
+        "stiffness": 120
+      },
+      "soft": {
+        "damping": 40,
+        "stiffness": 50,
+        "mass": 1.2
+      }
+    },
+    "duration": {
+      "fast": 0.35,
+      "base": 0.7,
+      "slow": 1.2
+    },
+    "stagger": 0.09,
+    "transition": {
+      "type": "blur",
+      "duration": 0.6
+    },
+    "cameraDrift": 0.4
+  },
+  "three": {
+    "material": "metal",
+    "roughness": 0.32,
+    "geometry": "sharp",
+    "edges": false,
+    "fog": {
+      "near": 1.05,
+      "far": 2.4
+    },
+    "lighting": "noir",
+    "bevel": 0.02,
+    "shadows": true,
+    "fov": 26,
+    "exposure": 1.1
+  },
+  "captions": {
+    "enabled": true,
+    "style": "minimal",
+    "position": "bottom",
+    "maxWords": 4,
+    "size": 54,
+    "font": "body",
+    "textTransform": "none",
+    "highlight": "text",
+    "stroke": 0
+  },
+  "brand": {
+    "watermark": "none",
+    "endCard": false
+  },
+  "sound": {
+    "palette": "soft",
+    "sfxGain": 0.3,
+    "musicGain": 0.12,
+    "duckTo": 0.35,
+    "transitionSfx": "whoosh-soft"
+  }
+}
