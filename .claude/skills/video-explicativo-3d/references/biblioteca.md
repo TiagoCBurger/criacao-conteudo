@@ -175,6 +175,17 @@ Leia também `references/3d.md` (regras de determinismo, enquadramento 9:16, câ
 - **`<LightBeam from to width color delay duration/>`**: feixe de luz que se estende (raio de sol, laser, fluxo de dados).
 - **`viewSize(dist, fov?)`** → `{width, height}` visíveis. **`useFitScale(w, pos)`**. **`projectToScreen([x,y,z], {position, target, fov}, 1080, 1920)`** → px na tela, para ancorar `Callout`/`Counter` em objetos 3D.
 
+## 2D (motion graphics planos)
+
+Para `art.medium: "2d"` (veja `references/2d.md`):
+- **`<FitText lines={["TAPE OS", "*VAZAMENTOS*"]} delay stagger maxSize align exitAt/>`**: cada linha ocupa a largura útil inteira (cartaz). `*…*` = linha em acento.
+- **`<DotField count cols lit litAt dimAt delay/>`**: população de pontos; `lit` acendem em acento em `litAt`, os demais apagam em `dimAt`.
+- **`<Funnel stages height at activeAt flowFrom flowTo rate survive/>`**: funil que se desenha, com fluxo de pontos que vaza a cada etapa (`survive[i]` = fração que passa) e sai pelo fundo em acento. A etapa ativa (por `activeAt`) fica em acento.
+- **`<BlockWipe at duration color direction/>`**: bloco de cor que varre a tela (cobre e revela).
+- **`<DrawPath d width height delay duration color stroke/>`**: qualquer traço SVG que se desenha.
+- **`<Shape2D kind="circle|square|ring|line" size color delay exitAt/>`**: forma de acento.
+- `KineticText` aceita `emphasis="strike"` (risco) e `emphasisAt` (instante da ênfase, ex.: no "mas").
+
 ## Som
 
 - **`<Sfx name at volume rate/>`**: efeito em `at` segundos locais. Nomes: `whoosh whoosh-soft swish slide pop click tick thud boom riser reverse ding success sparkle error type typing glitch swell`, mais os sons da marca (`sound.library`). Veja `references/som.md`.

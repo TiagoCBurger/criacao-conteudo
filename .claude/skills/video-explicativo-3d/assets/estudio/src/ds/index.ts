@@ -98,6 +98,7 @@ for (const r of ["display", "body", "mono", "accent"] as const) {
 export const art = {
   direction: ds.art?.direction ?? "editorial",
   hud: ds.art?.hud ?? "minimal",
+  medium: ds.art?.medium ?? "3d",
 };
 
 /** Geometria 3D efetiva: fora do "playful" o padrão é aresta viva. */

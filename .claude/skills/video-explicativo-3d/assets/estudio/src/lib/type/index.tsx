@@ -51,7 +51,7 @@ const tokenize = (text: string): Token[] => {
   return out;
 };
 
-export type EmphasisStyle = "color" | "marker" | "underline" | "outline";
+export type EmphasisStyle = "color" | "marker" | "underline" | "outline" | "strike";
 
 export const KineticText: React.FC<{
   text: string;
@@ -64,6 +64,8 @@ export const KineticText: React.FC<{
   /** segundos entre palavras (padrão: stagger do design system) */
   stagger?: number;
   preset?: "mask" | "rise" | "blur" | "pop" | "fade";
+  /** instante (s) em que a ênfase (marcador/sublinhado/risco) acontece; padrão: logo após a palavra entrar */
+  emphasisAt?: number;
   exitAt?: number;
   align?: "center" | "left" | "right";
   maxWidth?: number;
@@ -78,6 +80,7 @@ export const KineticText: React.FC<{
   delay = 0,
   stagger,
   preset = "mask",
+  emphasisAt,
   exitAt,
   align = "center",
   maxWidth,
@@ -104,8 +107,9 @@ export const KineticText: React.FC<{
                 fps,
                 config: ds.motion.spring[preset === "pop" ? "pop" : "enter"],
               });
+              const emStart = emphasisAt ?? delay + t.i * step + 0.18;
               const emP = t.em
-                ? interpolate(frame, [(delay + t.i * step + 0.18) * fps, (delay + t.i * step + 0.18 + ds.motion.duration.base) * fps], [0, 1], {
+                ? interpolate(frame, [emStart * fps, (emStart + ds.motion.duration.base) * fps], [0, 1], {
                     extrapolateLeft: "clamp",
                     extrapolateRight: "clamp",
                     easing: ease.standard,
@@ -115,7 +119,7 @@ export const KineticText: React.FC<{
                 preset === "mask"
                   ? {transform: `translateY(${(1 - p) * 105}%)`, display: "inline-block"}
                   : {...revealStyle(p, preset === "fade" ? "fade" : preset === "blur" ? "blur" : preset === "pop" ? "pop" : "rise"), display: "inline-block"};
-              const wordColor = t.em && emphasis === "color" ? c(emphasisColor) : undefined;
+              const wordColor = t.em && emphasis === "color" ? c(emphasisColor) : t.em && emphasis === "strike" ? alpha(color, 0.5 + 0.5 * (1 - emP)) : undefined;
               return (
                 <span
                   key={t.i}
@@ -141,6 +145,21 @@ export const KineticText: React.FC<{
                           transform: `scaleX(${emP})`,
                           transformOrigin: "left center",
                           zIndex: 0,
+                        }}
+                      />
+                    )}
+                    {t.em && emphasis === "strike" && (
+                      <span
+                        style={{
+                          position: "absolute",
+                          left: "-0.04em",
+                          right: "-0.04em",
+                          top: "52%",
+                          height: "0.08em",
+                          background: c(emphasisColor),
+                          transform: `scaleX(${emP})`,
+                          transformOrigin: "left center",
+                          zIndex: 2,
                         }}
                       />
                     )}

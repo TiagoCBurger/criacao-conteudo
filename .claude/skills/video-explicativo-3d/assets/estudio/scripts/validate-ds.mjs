@@ -96,7 +96,8 @@ export const validateDesignSystem = (dsDir) => {
   for (const k of ["hero", "h1", "h2", "h3", "body", "small", "label"]) if (!sc[k]) errors.push(`falta typography.scale.${k}`);
   if (sc.body && sc.body < 38) warnings.push(`typography.scale.body = ${sc.body}px — no celular, abaixo de ~40px fica difícil de ler`);
   if (sc.small && sc.small < 28) warnings.push(`typography.scale.small = ${sc.small}px — muito pequeno para 9:16`);
-  if (t.captions?.size && t.captions.size < 52) warnings.push(`captions.size = ${t.captions.size}px — legendas verticais costumam usar 56–80px`);
+  const minCap = t.captions?.style === "minimal" ? 44 : 52;
+  if (t.captions?.size && t.captions.size < minCap) warnings.push(`captions.size = ${t.captions.size}px — pequeno demais para celular (mínimo ~${minCap}px neste estilo)`);
 
   // motion
   const m = t.motion;
@@ -115,6 +116,7 @@ export const validateDesignSystem = (dsDir) => {
   else {
     if (!DIRS.includes(t.art.direction)) errors.push(`art.direction deve ser um de: ${DIRS.join(", ")}`);
     if (t.art.hud && !["minimal", "balanced", "rich"].includes(t.art.hud)) errors.push("art.hud deve ser minimal | balanced | rich");
+    if (t.art.medium && !["3d", "2d"].includes(t.art.medium)) errors.push('art.medium deve ser "3d" ou "2d"');
     if (t.art.direction === "playful") warnings.push('art.direction "playful" deixa o 3D arredondado e "fofo" — use só para marca lúdica/infantil');
   }
   const MATS = ["metal", "chrome", "glass", "stone", "wire", "matte", "glossy", "clay", "toon"];

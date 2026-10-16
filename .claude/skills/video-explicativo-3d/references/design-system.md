@@ -90,6 +90,7 @@ Regras:
 - **Sem `art`, a biblioteca assume editorial + HUD mínimo.** Não deixe a direção implícita: escreva-a.
 - **Pode misturar.** Um técnico com luz `noir` e `fog` fica um "técnico cinematográfico". Um cinematográfico com `edges: true` ganha contorno. Registre a mistura no DESIGN.md.
 - **`playful` não é padrão.** Quando a marca não pede ludicidade, formas redondas, bonecos com olhos e molas com quique fazem o vídeo parecer infantil, mesmo com conteúdo sério.
+- `art.medium: "2d"` troca o 3D por motion graphics planos (tipografia, formas, gráficos, fluxos). A direção continua valendo: técnico e editorial funcionam muito bem em 2D. Veja `references/2d.md`.
 - `art.hud` controla a densidade de texto e elementos na tela. Use `"minimal"` (padrão), a não ser que a marca peça mais informação. Veja `didatica-storyboard.md › HUD mínimo`.
 
 ## 4. Esquema dos tokens
@@ -99,7 +100,7 @@ Os tamanhos são em px num quadro de 1080 de largura. Tempos em **segundos**.
 ```jsonc
 {
   "meta": {"name": "Canal X", "version": "1.0.0", "source": "convertido de brand/tokens.css"},
-  "art": {"direction": "cinematic|technical|editorial|playful", "hud": "minimal|balanced|rich"},
+  "art": {"direction": "cinematic|technical|editorial|playful", "hud": "minimal|balanced|rich", "medium": "3d|2d"},
   "color": {
     "background": "#RRGGBB", "backgroundAlt": "#…",
     "surface": "#…", "surfaceAlt": "#…", "border": "#…",

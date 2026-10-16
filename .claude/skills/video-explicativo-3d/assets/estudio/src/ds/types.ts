@@ -83,6 +83,8 @@ export type Tokens = {
     direction: "editorial" | "cinematic" | "technical" | "playful";
     /** densidade de elementos na tela além do visual principal */
     hud: "minimal" | "balanced" | "rich";
+    /** "3d" (padrão): cenas com Scene3D. "2d": motion graphics planos (lib/flat), sem WebGL */
+    medium?: "3d" | "2d";
   };
   three: {
     material: "matte" | "glossy" | "glass" | "clay" | "metal" | "toon" | "chrome" | "stone" | "wire";

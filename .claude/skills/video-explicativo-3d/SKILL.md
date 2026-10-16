@@ -43,7 +43,7 @@ Todos os comandos abaixo rodam dentro de `estudio-video/`.
 ### 2. Design system e direção de arte → `references/design-system.md`
 **Antes de qualquer cena.** Encontre `design-system/tokens.json`. Se a identidade existe em outro formato (CSS, Tailwind, manual da marca, outra skill de identidade), converta. Se não existe nada, crie um com intenção e registre as escolhas em `DESIGN.md`. Valide com `npm run ds:check`. Para identidade nova ou convertida, mostre a prancha `npm run check -- design-system --at 3` ao usuário antes de seguir, se ele estiver disponível.
 
-**Defina a direção de arte (`tokens.art`)**: `cinematic` (escuro, luz dramática, metal, neblina) ou `technical` (aramado, grade, precisão) são os caminhos padrão para conteúdo explicativo, e podem ser misturados. `editorial` serve a marcas "revista". `playful` (arredondado, bonecos com olhos) fica só para marcas infantis ou explicitamente lúdicas. Os presets em `assets/direcoes/` trazem o 3D, o movimento e as legendas coerentes com cada direção: mescle e ponha as cores e fontes da marca por cima.
+**Defina a direção de arte (`tokens.art`)**: `cinematic` (escuro, luz dramática, metal, neblina) ou `technical` (aramado, grade, precisão) são os caminhos padrão para conteúdo explicativo, e podem ser misturados. `editorial` serve a marcas "revista". `playful` (arredondado, bonecos com olhos) fica só para marcas infantis ou explicitamente lúdicas. Para motion graphics **sem 3D** (tipografia, formas, gráficos e fluxos), use `art.medium: "2d"` → `references/2d.md`. Os presets em `assets/direcoes/` trazem o 3D, o movimento e as legendas coerentes com cada direção: mescle e ponha as cores e fontes da marca por cima.
 
 Por quê: tudo no vídeo (cores, fontes, material e luz 3D, curvas de animação, paleta sonora) sai dos tokens. Valor de estilo escrito à mão numa cena quebra a consistência da série.
 
@@ -95,6 +95,7 @@ Entregue ao usuário: o caminho do MP4, a capa, o `.srt` e um resumo curto com a
 | `references/biblioteca.md` | etapa 5: API de todos os componentes, com exemplo de vídeo completo |
 | `references/motion.md` | etapa 5: qualidade de animação, tempos, tipografia cinética, câmera |
 | `references/3d.md` | etapa 5, cenas 3D: linguagem por direção de arte, regras do R3F no Remotion, enquadramento, receitas |
+| `references/2d.md` | etapa 5, quando `art.medium` é `"2d"`: linguagem e componentes de motion graphics planos |
 | `references/som.md` | etapa 6: biblioteca de efeitos, posicionamento, níveis |
 | `references/qualidade-e-render.md` | etapas 7–8: checklist, render, solução de problemas |
 
