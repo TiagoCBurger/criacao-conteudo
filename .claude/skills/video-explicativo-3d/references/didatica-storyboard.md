@@ -26,6 +26,7 @@ Regra por quadro (com `art.hud: "minimal"`, o padrão):
 Na prática:
 - `Eyebrow`, `Callout`, `Label3D`, `Card`, `IconBadge`, `Checklist` e `Compare` são exceção, não rotina. Use quando o elemento **é** a mensagem (ex.: o nome da parte que está sendo apontada), não como decoração.
 - **Gráficos:** sem grade, eixos ou legenda separada. Rotule só o valor que importa, direto no elemento.
+- **Comparação de dois valores** (antes × hoje): os rótulos colados às barras **são** o bloco de texto da tela, então nada de título junto. Só número + unidade; o valor em foco grande e no acento, o outro menor e apagado. O contexto ("antes da indústria", "hoje") já está na fala e na legenda: no máximo uma palavra pequena, nunca um sobretítulo em cada barra.
 - **Diagramas:** no máximo 3 nós visíveis ao mesmo tempo. O resto entra e sai com a fala.
 - **Troque em vez de acumular.** Quando a fala avança, o texto anterior sai (`exitAt`) antes do próximo entrar. Não empilhe uma linha por frase.
 - **Uma cor de acento por quadro**, no objeto ou número em foco.
@@ -86,7 +87,7 @@ Regras práticas:
 
 Quando o texto na tela é literalmente a fala (a pergunta do gancho, a frase final), esconda a legenda naquele trecho com `<Explainer hideCaptions={[[ini, fim]]} />`. No resto, escreva **síntese**, não transcrição: a fala diz "o cérebro consome um quinto da energia do corpo" e a tela mostra "20%".
 
-Composição vertical: texto no terço superior **ou** inferior (nunca nos dois), visual no centro, faixa da legenda livre. Mantenha o 3D fora da faixa da legenda (enquadre com `target` e `fitDistance`).
+Composição vertical: texto no terço superior **ou** inferior (nunca nos dois), visual no centro, faixa da legenda livre. Mantenha o 3D fora da faixa da legenda: enquadre com `frameSafe`, inclusive no fim de cada movimento de câmera.
 
 ## 6. Gancho, ritmo e fechamento
 

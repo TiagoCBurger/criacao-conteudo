@@ -65,6 +65,12 @@ for (const [i, t] of times.entries()) {
       `drawbox=x=0:y=${H - s.bottom * k}:w=${W}:h=${s.bottom * k}:color=red@0.16:t=fill`,
       `drawbox=x=${W - s.right * k}:y=0:w=${s.right * k}:h=${H}:color=red@0.12:t=fill`,
     );
+    // faixa da legenda (amarela): o 3D e os textos da cena não devem entrar aqui
+    const cap = ds.captions;
+    if (cap?.enabled && cap.position === "bottom") {
+      const ch = cap.size * 3.2 * k;
+      filters.push(`drawbox=x=0:y=${H - s.bottom * k - ch}:w=${W}:h=${ch}:color=yellow@0.5:t=3`);
+    }
   }
   if (fontFile && !atList) filters.push(`drawtext=fontfile=${fontFile}:text='${t.toFixed(2)}s':x=14:y=14:fontsize=30:fontcolor=white:box=1:boxcolor=black@0.6:boxborderw=8`);
   if (filters.length) {

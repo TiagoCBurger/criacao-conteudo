@@ -96,7 +96,7 @@ export const Block: React.FC<{
  * Sólido-base de todos os blocos: respeita a geometria (sharp/soft/round) e o contorno (edges) do design system.
  * Use em meshes próprios quando quiser o mesmo acabamento dos componentes da biblioteca.
  */
-export const Solid: React.FC<{size: V3; color?: string; bevel?: number; emissive?: number; position?: V3; rotation?: V3; edgeColor?: string}> = ({
+export const Solid: React.FC<{size: V3; color?: string; bevel?: number; emissive?: number; position?: V3; rotation?: V3; edgeColor?: string; opaque?: boolean}> = ({
   size,
   color = "primary",
   bevel,
@@ -104,6 +104,7 @@ export const Solid: React.FC<{size: V3; color?: string; bevel?: number; emissive
   position,
   rotation,
   edgeColor,
+  opaque,
 }) => {
   const withEdges = edges3d();
   const r = bevel ?? bevelFor(Math.min(...size));
@@ -111,29 +112,34 @@ export const Solid: React.FC<{size: V3; color?: string; bevel?: number; emissive
     return (
       <mesh position={position} rotation={rotation} castShadow receiveShadow>
         <boxGeometry args={size} />
-        <ThemedMaterial color={color} emissive={emissive} />
+        <ThemedMaterial color={color} emissive={emissive} opaque={opaque} />
         {withEdges && <Edges color={c(edgeColor ?? color)} lineWidth={2} threshold={20} />}
       </mesh>
     );
   }
   return (
     <RoundedBox args={size} radius={r} smoothness={r < 0.05 ? 2 : 4} position={position} rotation={rotation} castShadow receiveShadow>
-      <ThemedMaterial color={color} emissive={emissive} />
+      <ThemedMaterial color={color} emissive={emissive} opaque={opaque} />
     </RoundedBox>
   );
 };
 
 /** Esfera/orbe (átomos, nós de rede, planetas, "ideias"). */
-export const Orb: React.FC<{radius?: number; color?: string; position?: V3; delay?: number; enter?: Enter3D; exitAt?: number; float?: boolean | number; emissive?: number}> = ({
-  radius = 0.6,
-  color = "accent",
-  emissive,
-  ...rest
-}) => (
+export const Orb: React.FC<{
+  radius?: number;
+  color?: string;
+  position?: V3;
+  delay?: number;
+  enter?: Enter3D;
+  exitAt?: number;
+  float?: boolean | number;
+  emissive?: number;
+  opaque?: boolean;
+}> = ({radius = 0.6, color = "accent", emissive, opaque, ...rest}) => (
   <Appear {...rest} seed={`orb-${color}-${radius}`}>
     <mesh castShadow>
       <sphereGeometry args={[radius, 64, 64]} />
-      <ThemedMaterial color={color} emissive={emissive} />
+      <ThemedMaterial color={color} emissive={emissive} opaque={opaque} />
     </mesh>
   </Appear>
 );

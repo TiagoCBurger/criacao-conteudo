@@ -3,7 +3,7 @@
 ## Ciclo de conferência
 
 1. `npm run typecheck`: zero erros antes de qualquer render.
-2. `npm run check -- <slug>`: prancha com um quadro a cada 1,5 s (`--every 1` para mais detalhe, `--safe` para ver as zonas de interface). **Abra a imagem e leia de verdade** (ferramenta de leitura de imagem). A prancha é o seu olho: o que não aparece nela, o espectador também não vê.
+2. `npm run check -- <slug>`: prancha com um quadro a cada 1,5 s (`--every 1` para mais detalhe, `--safe` para ver as zonas de interface em vermelho e a faixa da legenda em amarelo). **Abra a imagem e leia de verdade** (ferramenta de leitura de imagem). A prancha é o seu olho: o que não aparece nela, o espectador também não vê.
 3. `npm run check -- <slug> --at 3.2,7.9` mostra instantes específicos em resolução cheia (pico de uma animação, momento de sobreposição).
 4. Corrija e repita até a prancha passar no checklist abaixo. Só então faça o render final.
 
@@ -25,7 +25,7 @@
 **Linguagem 3D**
 - [ ] O 3D segue a direção de arte (sem formas arredondadas, bonecos com olhos ou cores de brinquedo fora do playful).
 - [ ] Um único acento por quadro, no objeto ou número em foco.
-- [ ] O 3D não invade a faixa da legenda e nada importante é cortado nas bordas.
+- [ ] O 3D não invade a faixa da legenda (amarela no `--safe`), nem no fim de um *push-in*, e nada importante é cortado nas bordas.
 
 **Didática e ritmo**
 - [ ] O 1º quadro (t≈0,25 s) já tem algo forte. Não há vinheta nem tela vazia.

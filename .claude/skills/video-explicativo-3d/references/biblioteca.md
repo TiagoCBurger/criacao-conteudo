@@ -8,7 +8,7 @@ Tudo é importado de `../../lib` dentro de `src/videos/<slug>/index.tsx`. Os tem
 - Tipografia: Reveal, KineticText, Lettering, Counter, Eyebrow, TypeOn
 - Gráficos: BarChart, ColumnChart, LineChart, Donut, Pictogram, ProgressBar
 - Diagramas: Card, IconBadge, FlowSteps, Compare, Checklist, Arrow, Callout
-- 3D: Scene3D, CameraRig, fitDistance, orbit, Appear, Block, Solid, Orb, Field, Ribbon, Text3D, Label3D, SvgExtrude, Bars3D, Connector3D, Glow, LightBeam, Atmosphere, Character, Diorama, Particles, Spin, ThemedMaterial, viewSize, projectToScreen
+- 3D: Scene3D, CameraRig, frameSafe, contentBand, fitDistance, orbit, TransmissionBackdrop, Appear, Block, Solid, Orb, Field, Ribbon, Text3D, Label3D, SvgExtrude, Bars3D, Connector3D, Glow, LightBeam, Atmosphere, Character, Diorama, Particles, Spin, ThemedMaterial, viewSize, projectToScreen
 - Som: Sfx, Music, Narration
 - Helpers do design system
 
@@ -148,15 +148,16 @@ Use para 1–2 palavras ou um número. Frases longas não funcionam com este efe
 
 Leia também `references/3d.md` (regras de determinismo, enquadramento 9:16, câmera, luz).
 
-- **`<Scene3D camera={{position, fov, target}} floor="shadow|grid|none" floorY lighting fog>`**: canvas 3D transparente em tela cheia, com luz, material, neblina (relativa à câmera, acompanha o `CameraRig`) e reflexos do design system. A câmera olha para `target` (padrão: origem). Use um por cena. O texto nítido continua em HTML por cima.
-- **`fitDistance(largura, altura, {fill=0.7})`** → distância de câmera para o objeto ocupar ~70% do quadro (indispensável com lente longa). **`orbit(target, distancia, azimute°, elevação°)`** → posição de câmera ao redor do alvo.
+- **`<Scene3D camera={{position, fov, target}} floor="shadow|grid|none" floorY lighting fog backdrop>`**: canvas 3D transparente em tela cheia, com luz, material, neblina (relativa à câmera, acompanha o `CameraRig`) e reflexos do design system. A câmera olha para `target` (padrão: origem). Use um por cena. O texto nítido continua em HTML por cima.
+- **`frameSafe({center, size: [l, a, p?], azimuth=25, elevation=15, fill=0.85, title=true})`** → `{position, target}` para o objeto caber na faixa livre (abaixo do título, acima da legenda), contando profundidade e perspectiva. É o jeito padrão de enquadrar: `<Scene3D camera={frameSafe(...)}>` e `keys={[{t: 0, ...frameSafe(a)}, {t: 3, ...frameSafe(b)}]}`. `contentBand(title)` devolve essa faixa em frações da altura.
+- **`fitDistance(largura, altura, {fill=0.7})`** → distância de câmera para o objeto ocupar ~70% do quadro inteiro (indispensável com lente longa). **`orbit(target, distancia, azimute°, elevação°)`** → posição de câmera ao redor do alvo.
   ```tsx
   const alvo: V3 = [0, 1.2, 0];
   <Scene3D camera={{position: orbit(alvo, fitDistance(3, 4), 30, 12), target: alvo}}>
   ```
 - **`<CameraRig keys={[{t, position, target?, fov?}]} drift/>`**: câmera por keyframes (segundos locais), com easing e "respiração".
 - **`<Appear delay enter="drop|scale|rise|spin|flip|none" exitAt float position rotation scale>{mesh}</Appear>`**: entrada/saída/flutuação para qualquer grupo.
-- **`<Block size={[w,h,d]} color position rotation delay enter exitAt float bevel emissive/>`**: bloco (lajes, camadas, módulos, monólitos). Aresta viva, chanfro ou contorno em linha conforme `three.geometry`/`edges` do design system. **`<Solid size color position/>`** é o sólido sem animação, para montar objetos próprios com o mesmo acabamento.
+- **`<Block size={[w,h,d]} color position rotation delay enter exitAt float bevel emissive/>`**: bloco (lajes, camadas, módulos, monólitos). Aresta viva, chanfro ou contorno em linha conforme `three.geometry`/`edges` do design system. **`<Solid size color position opaque/>`** é o sólido sem animação, para montar objetos próprios com o mesmo acabamento. `opaque` (em `Solid`, `Orb` e `ThemedMaterial`): versão sólida do material, para o que fica dentro/atrás do vidro.
 - **`<Field rows cols spacing size height={(r, c) => n} highlight={[[r, c]]} delay duration order="wave|row|random|together"/>`**: campo de pilares (paisagem de dados). Linha 0 fica na frente. Use para "muito", crescimento, "um entre muitos".
 - **`<Ribbon points={[[x,y,z], …]} radius color delay duration tip/>`**: fita/tubo que se desenha ao longo dos pontos, com ponta brilhante. É a curva de crescimento em 3D.
 - **`<Orb radius color position delay enter float emissive/>`**: esfera (nós, átomos, ideias). `emissive` de 0.5 a 1 faz o objeto "acender".

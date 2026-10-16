@@ -46,6 +46,67 @@ export const orbit = (target: V3, distance: number, azimuth = 25, elevation = 15
 };
 
 /**
+ * Faixa vertical livre para o 3D, em frações da altura do quadro (0 = topo):
+ * abaixo do bloco de texto do terço superior (`title`) e acima da faixa da legenda.
+ */
+export const contentBand = (title = true) => {
+  const H = 1920; // tokens de layout/legenda estão em px de 1080×1920
+  const s = ds.layout.safe;
+  const cap = ds.captions.enabled && ds.captions.position === "bottom" ? ds.captions.size * 3.2 : 0;
+  const capTop = ds.captions.enabled && ds.captions.position === "top" ? ds.captions.size * 3.2 : 0;
+  const top = s.top + Math.max(capTop, title ? 300 : 0);
+  const bottom = H - s.bottom - cap;
+  return {top: top / H, bottom: bottom / H};
+};
+
+/**
+ * Enquadramento seguro: câmera (position + target) para um objeto centrado em `center` caber na faixa livre
+ * (`contentBand`): fora da faixa da legenda e abaixo do título. `size` = [largura, altura, profundidade?] do objeto
+ * (com profundidade, conta o topo/lado que aparecem pela elevação/azimute e a perspectiva da face da frente).
+ * Use em CADA keyframe de um CameraRig que se aproxima, para o "push-in" não jogar o objeto atrás da legenda.
+ *   const a = frameSafe({center: [0, 0, 0], size: [3, 3, 3], fill: 0.7});
+ *   const b = frameSafe({center: [0, 0, 0], size: [3, 3, 3], fill: 0.95, azimuth: 10});
+ *   <CameraRig keys={[{t: 0, ...a}, {t: 3, ...b}]} />
+ */
+export const frameSafe = ({
+  center,
+  size,
+  azimuth = 25,
+  elevation = 15,
+  fill = 0.85,
+  fov = ds.three.fov,
+  title = true,
+}: {
+  center: V3;
+  size: [number, number] | [number, number, number];
+  azimuth?: number;
+  elevation?: number;
+  fill?: number;
+  fov?: number;
+  title?: boolean;
+}): {position: V3; target: V3} => {
+  const band = contentBand(title);
+  const t = Math.tan((fov * Math.PI) / 360);
+  const a = (azimuth * Math.PI) / 180;
+  const e = (elevation * Math.PI) / 180;
+  const [w, h, dep = 0] = size;
+  // extensão aparente: a profundidade aparece de lado (azimute) e por cima (elevação)
+  const pw = w * Math.abs(Math.cos(a)) + dep * Math.abs(Math.sin(a));
+  const ph = h * Math.cos(e) + dep * Math.abs(Math.sin(e));
+  const fitD = (k: number) => Math.max((pw * k) / (2 * t * (9 / 16) * fill), (ph * k) / (2 * t * (band.bottom - band.top) * fill));
+  let d = fitD(1);
+  // perspectiva: a parte da frente está mais perto (meia profundidade) e aparece maior
+  const half = Math.max(w * Math.abs(Math.sin(a)) + dep * Math.abs(Math.cos(a)), 0) / 2;
+  if (half > 0) d = fitD(d / Math.max(0.2 * d, d - half));
+  // quanto o centro da faixa está acima do centro do quadro, em unidades do mundo na distância do objeto
+  const shift = (0.5 - (band.top + band.bottom) / 2) * 2 * d * t;
+  // desloca o alvo para "baixo da tela" (vetor up da câmera), o que sobe o objeto no quadro
+  const up: V3 = [-Math.sin(e) * Math.sin(a), Math.cos(e), -Math.sin(e) * Math.cos(a)];
+  const target: V3 = [center[0] - up[0] * shift, center[1] - up[1] * shift, center[2] - up[2] * shift];
+  return {position: orbit(target, d, azimuth, elevation), target};
+};
+
+/**
  * Escala (≤ 1) para um conteúdo de largura `contentWidth` caber em `margin` da largura visível
  * na profundidade de `position`. Calculada uma vez na montagem (não "respira" com a câmera).
  */
@@ -68,6 +129,32 @@ const CameraAim: React.FC<{target: V3}> = ({target}) => {
     camera.userData.target = target;
   }, [camera, target[0], target[1], target[2]]); // eslint-disable-line react-hooks/exhaustive-deps
   return null;
+};
+
+/**
+ * Fundo para o vidro. O three.js limpa o buffer de transmissão (o que o vidro "enxerga" atrás dele) com branco
+ * semitransparente quando o canvas é transparente, e o vidro vira plástico leitoso. Esta esfera invisível pinta
+ * a cor de fundo da marca SÓ nesse buffer (no quadro final não escreve nada, o <Stage> continua aparecendo).
+ * O Scene3D inclui sozinho quando three.material = "glass"; use à mão se tiver vidro com outro material.
+ */
+export const TransmissionBackdrop: React.FC<{color?: string}> = ({color = "background"}) => {
+  const mat = React.useMemo(
+    () => new THREE.MeshBasicMaterial({color: c(color), side: THREE.BackSide, depthWrite: false, fog: false, toneMapped: false}),
+    [color],
+  );
+  return (
+    <mesh
+      renderOrder={-100}
+      frustumCulled={false}
+      material={mat}
+      // só escreve cor quando há render target (passe de transmissão); no canvas final fica invisível
+      onBeforeRender={(gl) => {
+        mat.colorWrite = gl.getRenderTarget() !== null;
+      }}
+    >
+      <sphereGeometry args={[150, 24, 12]} />
+    </mesh>
+  );
 };
 
 /**
@@ -102,8 +189,10 @@ export const Scene3D: React.FC<{
    *  recalculada a cada quadro (acompanha o CameraRig). Padrão: tokens.three.fog; na direção "cinematic" liga sozinha.
    *  Cena com objetos espalhados em profundidade (órbitas, constelações): afrouxe ({near: 1.4, far: 3.5}) ou null. */
   fog?: {near: number; far: number} | null;
+  /** fundo para o vidro refratar a cor da marca (padrão: ligado quando three.material = "glass") */
+  backdrop?: boolean;
   style?: React.CSSProperties;
-}> = ({children, camera, floor = "shadow", floorY = -1.5, lighting, fog: fogProp, style}) => {
+}> = ({children, camera, floor = "shadow", floorY = -1.5, lighting, fog: fogProp, backdrop, style}) => {
   const {width, height} = useVideoConfig();
   const shadows = ds.three.shadows;
   // neblina relativa à distância câmera→alvo: near/far em múltiplos dessa distância (1 = no assunto).
@@ -132,6 +221,7 @@ export const Scene3D: React.FC<{
         <CameraAim target={camera?.target ?? [0, 0, 0]} />
         <Lights mode={lighting ?? ds.three.lighting} />
         {fog && <fog attach="fog" args={[c(ds.color.background), fog.near, fog.far]} />}
+        {(backdrop ?? ds.three.material === "glass") && <TransmissionBackdrop />}
         {children}
         {fogK && <FogFollow k={fogK} />}
         {floor === "shadow" && shadows && (
@@ -212,11 +302,18 @@ export const Lights: React.FC<{mode: Tokens3D["lighting"]}> = ({mode}) => {
 };
 
 /** Material com o acabamento do design system (tokens.three.material). */
-export const ThemedMaterial: React.FC<{color?: string; emissive?: number; opacity?: number}> = ({color = "primary", emissive = 0, opacity}) => {
+/**
+ * Material do design system (three.material). `opaque`: versão sólida do material — no DS de vidro, use no que fica
+ * DENTRO ou ATRÁS do vidro (núcleo, líquido, objeto em foco): vidro só refrata objetos opacos, vidro atrás de vidro some.
+ */
+export const ThemedMaterial: React.FC<{color?: string; emissive?: number; opacity?: number; opaque?: boolean}> = ({color = "primary", emissive = 0, opacity, opaque}) => {
   const col = c(color);
   const t = ds.three;
   const transparent = opacity !== undefined && opacity < 1;
   const common = {color: col, transparent, opacity: opacity ?? 1, emissive: col, emissiveIntensity: emissive};
+  if (opaque && t.material === "glass") {
+    return <meshPhysicalMaterial {...common} roughness={0.3} metalness={0.1} clearcoat={1} clearcoatRoughness={0.15} />;
+  }
   switch (t.material) {
     case "glossy":
       return <meshPhysicalMaterial {...common} roughness={t.roughness ?? 0.22} metalness={t.metalness ?? 0} clearcoat={t.clearcoat ?? 1} clearcoatRoughness={0.12} />;
