@@ -114,15 +114,21 @@ const parseScript = (file) => {
     }
   }
   function pushText(text) {
-    // **negrito** / *itálico* do roteirista = ênfase falada
-    const re = /(\*\*|__|\*|_)(.+?)\1|(\S+)/g;
+    // **negrito** / *itálico* do roteirista = ênfase falada. A pontuação colada depois do fechamento
+    // (**todas as cores**.) pertence à última palavra — sem ela a legenda emenda frases.
+    const re = /(\*\*|__|\*|_)(.+?)\1([^\s\p{L}\p{N}]*)|(\S+)/gu;
     let m;
     while ((m = re.exec(text))) {
-      const chunk = m[2] ?? m[3];
-      const em = Boolean(m[2]);
-      for (const w of chunk.split(/\s+/).filter(Boolean)) {
+      const em = m[2] !== undefined;
+      const parts = (em ? m[2] : m[4]).split(/\s+/).filter(Boolean);
+      if (em && m[3] && parts.length) parts[parts.length - 1] += m[3];
+      for (const w of parts) {
         const clean = w.replace(/[`*_]/g, "");
-        if (clean.replace(/[^\p{L}\p{N}]/gu, "").length === 0) continue;
+        if (clean.replace(/[^\p{L}\p{N}]/gu, "").length === 0) {
+          // pontuação solta ("—", ".") gruda na palavra anterior
+          if (words.length && /[.!?;:,]/.test(clean)) words[words.length - 1].text += clean.replace(/[^.!?;:,]/g, "");
+          continue;
+        }
         words.push({text: clean, em, section: sections.length - 1});
       }
     }
