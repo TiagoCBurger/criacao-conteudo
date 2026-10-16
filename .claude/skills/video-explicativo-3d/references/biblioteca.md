@@ -156,6 +156,9 @@ Leia também `references/3d.md` (regras de determinismo, enquadramento 9:16, câ
 - **`<Connector3D from to lift delay duration color width dashed/>`**: ligação curva que se desenha entre pontos 3D.
 - **`<Particles count spread size colors opacity seed/>`**: poeira de luz sutil (textura, não assunto).
 - **`<Spin speed axis>`**: rotação contínua. **`<ThemedMaterial color emissive opacity/>`**: material do design system para meshes próprios.
+- **`<Glow position size color intensity delay/>`**: halo de luz aditivo (sol, lâmpada, objeto que "acende").
+- **`<Atmosphere radius position color thickness intensity/>`**: brilho de borda em volta de uma esfera (planeta, célula, bolha).
+- **`<LightBeam from to width color delay duration/>`**: feixe de luz que se estende (raio de sol, laser, fluxo de dados).
 - **`viewSize(dist, fov?)`** → `{width, height}` visíveis. **`useFitScale(w, pos)`**. **`projectToScreen([x,y,z], {position, target, fov}, 1080, 1920)`** → px na tela, para ancorar `Callout`/`Counter` em objetos 3D.
 
 ## Som

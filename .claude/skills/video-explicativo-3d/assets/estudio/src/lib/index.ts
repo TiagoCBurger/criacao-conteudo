@@ -11,4 +11,5 @@ export * from "./explainer";
 export * from "./three/scene";
 export * from "./three/objects";
 export * from "./three/text";
+export * from "./three/fx";
 export {ds, c, alpha, mix, dataColor, type, radius, dsFile, ttfFor} from "../ds";
