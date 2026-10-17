@@ -1,0 +1,51 @@
+{
+  "imageModel": "google/gemini-3-pro-image",
+  "style": "Cinematic still, dark luxurious mood, color palette restricted to near-black (#07080B), warm pewter metal (#B9B4AA) and one warm amber-gold light (#FFB23E). Anamorphic lens look, volumetric haze, rich deep shadows, fine film grain, ultra detailed, photorealistic. No text, no letters, no logos, no watermark, no people.",
+  "objectStyle": "Product render of ONE single object only, fully visible and centered with generous margin, three-quarter view seen slightly from above, isolated on a plain uniform light gray studio background (#B4B4B4), soft even diffuse lighting, no cast shadow, no floor reflection, no props, no text, no logos. Crisp clean silhouette, premium industrial design, photorealistic materials.",
+  "images": [
+    {
+      "name": "salao",
+      "relief": true,
+      "aspect_ratio": "9:16",
+      "resolution": "2K",
+      "prompt": "Interior of a grand, empty auction house at night, seen from the back of the room. Rows of dark velvet chairs lead in strong perspective to a dark wooden auctioneer's podium on a low stage. A single warm amber spotlight falls from above onto the podium, with a visible volumetric light cone in the haze. Polished dark wood floor reflecting the light, tall heavy dark curtains on the sides. Vertical composition: the podium sits in the center of the frame at mid-height; the top third is dark negative space; the foreground chairs are softly out of focus."
+    },
+    {
+      "name": "martelo",
+      "to3d": {
+        "smooth": 6
+      },
+      "aspect_ratio": "1:1",
+      "resolution": "1K",
+      "prompt": "An auctioneer's gavel standing upright like a capital letter T: the cylindrical head is horizontal at the top and the slim turned handle points straight down. Dark polished walnut head with two brushed brass bands. Seen from the front, turned slightly so one round end face of the head is visible. Elegant, heavy, premium."
+    },
+    {
+      "name": "moeda",
+      "to3d": {
+        "smooth": 4
+      },
+      "aspect_ratio": "1:1",
+      "resolution": "1K",
+      "prompt": "A single thick gold coin standing upright on its edge, turned three-quarters toward the camera. Brushed and polished gold, a minimal embossed design of concentric rings, finely reeded rim, noticeable thickness."
+    },
+    {
+      "name": "joia",
+      "to3d": {
+        "smooth": 1,
+        "faces": 20000
+      },
+      "aspect_ratio": "1:1",
+      "resolution": "1K",
+      "prompt": "A large faceted gemstone standing upright: brilliant cut with a flat table on top and a pointed pavilion below, crisp flat facets and razor-sharp edges, opaque polished amber-gold crystal with a satin finish."
+    },
+    {
+      "name": "placa",
+      "to3d": {
+        "smooth": 4
+      },
+      "aspect_ratio": "1:1",
+      "resolution": "1K",
+      "prompt": "An auction bidding paddle held upright: a round flat paddle about 25 cm wide with a blank matte off-white face and a thin brass rim, mounted on a short dark walnut handle below it. Front view turned slightly to the side so its thickness is visible."
+    }
+  ]
+}

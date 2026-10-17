@@ -1,0 +1,90 @@
+1
+00:00:00,040 --> 00:00:03,440
+Toda vez que você pesquisa no
+Google, acontece um leilão.
+
+2
+00:00:03,440 --> 00:00:05,000
+Antes de a página carregar.
+
+3
+00:00:05,000 --> 00:00:06,890
+E quem paga mais nem sempre ganha.
+
+4
+00:00:06,890 --> 00:00:09,740
+Cada anunciante dá um
+lance pelo seu clique.
+
+5
+00:00:09,740 --> 00:00:13,840
+Mas o Google não olha só o dinheiro: ele
+combina o lance com a qualidade do anúncio.
+
+6
+00:00:13,840 --> 00:00:17,080
+E qualidade aqui é medida em três
+coisas: a chance de você clicar,
+
+7
+00:00:17,080 --> 00:00:21,200
+o quanto o anúncio combina com a busca
+e se a página entrega o que promete.
+
+8
+00:00:21,200 --> 00:00:24,670
+Num exemplo simplificado: a Ana
+dá um lance de quatro reais,
+
+9
+00:00:24,670 --> 00:00:26,270
+com nota de qualidade dez.
+
+10
+00:00:26,270 --> 00:00:27,800
+Quarenta pontos.
+
+11
+00:00:27,840 --> 00:00:31,040
+O Bruno oferece oito
+reais, mas com nota três.
+
+12
+00:00:31,040 --> 00:00:32,320
+Vinte e quatro pontos.
+
+13
+00:00:32,320 --> 00:00:35,470
+A Ana fica em primeiro,
+mesmo oferecendo a metade.
+
+14
+00:00:35,470 --> 00:00:37,480
+E ela nem paga os quatro reais.
+
+15
+00:00:37,480 --> 00:00:40,550
+Paga só o necessário para superar o Bruno:
+
+16
+00:00:40,720 --> 00:00:41,860
+dois reais e quarenta e um centavos.
+
+17
+00:00:41,800 --> 00:00:44,260
+No Instagram e no Facebook,
+a lógica é parecida:
+
+18
+00:00:44,260 --> 00:00:48,320
+a Meta pesa o lance, a chance de a
+pessoa agir e a qualidade do anúncio.
+
+19
+00:00:48,320 --> 00:00:50,800
+Moral do leilão: relevância vale dinheiro.
+
+20
+00:00:50,800 --> 00:00:53,040
+Antes de aumentar o
+lance, melhore o anúncio.

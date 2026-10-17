@@ -1,0 +1,982 @@
+{
+ "version": 1,
+ "audio": "narracao.wav",
+ "sourceAudio": ".ia/provisorio/narracao-provisoria.wav",
+ "sourceScript": "../roteiros/leilao-de-anuncios.md",
+ "durationMs": 53160,
+ "language": "pt",
+ "source": "whisper.cpp small",
+ "scriptMatch": 0.91,
+ "words": [
+  {
+   "text": "Toda",
+   "startMs": 40,
+   "endMs": 240
+  },
+  {
+   "text": "vez",
+   "startMs": 240,
+   "endMs": 480
+  },
+  {
+   "text": "que",
+   "startMs": 480,
+   "endMs": 630
+  },
+  {
+   "text": "você",
+   "startMs": 630,
+   "endMs": 1020
+  },
+  {
+   "text": "pesquisa",
+   "startMs": 1020,
+   "endMs": 1470
+  },
+  {
+   "text": "no",
+   "startMs": 1470,
+   "endMs": 1600
+  },
+  {
+   "text": "Google,",
+   "startMs": 1600,
+   "endMs": 2120
+  },
+  {
+   "text": "acontece",
+   "startMs": 2120,
+   "endMs": 2640
+  },
+  {
+   "text": "um",
+   "startMs": 2640,
+   "endMs": 2858,
+   "estimated": true
+  },
+  {
+   "text": "leilão.",
+   "startMs": 2858,
+   "endMs": 3440,
+   "estimated": true
+  },
+  {
+   "text": "Antes",
+   "startMs": 3440,
+   "endMs": 3770
+  },
+  {
+   "text": "de",
+   "startMs": 3770,
+   "endMs": 3920
+  },
+  {
+   "text": "a",
+   "startMs": 3920,
+   "endMs": 3980
+  },
+  {
+   "text": "página",
+   "startMs": 3960,
+   "endMs": 4460
+  },
+  {
+   "text": "carregar.",
+   "startMs": 4460,
+   "endMs": 5000
+  },
+  {
+   "text": "E",
+   "startMs": 5000,
+   "endMs": 5060
+  },
+  {
+   "text": "quem",
+   "startMs": 5060,
+   "endMs": 5310
+  },
+  {
+   "text": "paga",
+   "startMs": 5310,
+   "endMs": 5560
+  },
+  {
+   "text": "mais",
+   "startMs": 5560,
+   "endMs": 5820
+  },
+  {
+   "text": "nem",
+   "startMs": 5820,
+   "endMs": 6020
+  },
+  {
+   "text": "sempre",
+   "startMs": 6020,
+   "endMs": 6380
+  },
+  {
+   "text": "ganha.",
+   "startMs": 6380,
+   "endMs": 6890
+  },
+  {
+   "text": "Cada",
+   "startMs": 6890,
+   "endMs": 7090
+  },
+  {
+   "text": "anunciante",
+   "startMs": 7090,
+   "endMs": 7620
+  },
+  {
+   "text": "dá",
+   "startMs": 7620,
+   "endMs": 7830
+  },
+  {
+   "text": "um",
+   "startMs": 7830,
+   "endMs": 7980,
+   "estimated": true
+  },
+  {
+   "text": "lance",
+   "startMs": 7980,
+   "endMs": 8280,
+   "estimated": true
+  },
+  {
+   "text": "pelo",
+   "startMs": 8280,
+   "endMs": 8730
+  },
+  {
+   "text": "seu",
+   "startMs": 8730,
+   "endMs": 8910
+  },
+  {
+   "text": "clique.",
+   "startMs": 8910,
+   "endMs": 9740
+  },
+  {
+   "text": "Mas",
+   "startMs": 9740,
+   "endMs": 9910
+  },
+  {
+   "text": "o",
+   "startMs": 9910,
+   "endMs": 9970
+  },
+  {
+   "text": "Google",
+   "startMs": 9960,
+   "endMs": 10310
+  },
+  {
+   "text": "não",
+   "startMs": 10310,
+   "endMs": 10560
+  },
+  {
+   "text": "olha",
+   "startMs": 10560,
+   "endMs": 10640,
+   "estimated": true
+  },
+  {
+   "text": "só",
+   "startMs": 10640,
+   "endMs": 10810
+  },
+  {
+   "text": "o",
+   "startMs": 10810,
+   "endMs": 10870
+  },
+  {
+   "text": "dinheiro:",
+   "startMs": 10860,
+   "endMs": 11480
+  },
+  {
+   "text": "ele",
+   "startMs": 11480,
+   "endMs": 11630
+  },
+  {
+   "text": "combina",
+   "startMs": 11630,
+   "endMs": 12010
+  },
+  {
+   "text": "o",
+   "startMs": 12010,
+   "endMs": 12070
+  },
+  {
+   "text": "lance",
+   "startMs": 12060,
+   "endMs": 12350
+  },
+  {
+   "text": "com",
+   "startMs": 12350,
+   "endMs": 12570
+  },
+  {
+   "text": "a",
+   "startMs": 12570,
+   "endMs": 12980
+  },
+  {
+   "text": "qualidade",
+   "startMs": 12980,
+   "endMs": 13090,
+   "em": true
+  },
+  {
+   "text": "do",
+   "startMs": 13090,
+   "endMs": 13200
+  },
+  {
+   "text": "anúncio.",
+   "startMs": 13200,
+   "endMs": 13840
+  },
+  {
+   "text": "E",
+   "startMs": 13840,
+   "endMs": 13900
+  },
+  {
+   "text": "qualidade",
+   "startMs": 13890,
+   "endMs": 14390
+  },
+  {
+   "text": "aqui",
+   "startMs": 14390,
+   "endMs": 14610
+  },
+  {
+   "text": "é",
+   "startMs": 14610,
+   "endMs": 14720
+  },
+  {
+   "text": "medida",
+   "startMs": 14720,
+   "endMs": 15050
+  },
+  {
+   "text": "em",
+   "startMs": 15050,
+   "endMs": 15160
+  },
+  {
+   "text": "três",
+   "startMs": 15160,
+   "endMs": 15430
+  },
+  {
+   "text": "coisas:",
+   "startMs": 15430,
+   "endMs": 15870
+  },
+  {
+   "text": "a",
+   "startMs": 15870,
+   "endMs": 15930
+  },
+  {
+   "text": "chance",
+   "startMs": 15920,
+   "endMs": 16250
+  },
+  {
+   "text": "de",
+   "startMs": 16250,
+   "endMs": 16360
+  },
+  {
+   "text": "você",
+   "startMs": 16360,
+   "endMs": 16740
+  },
+  {
+   "text": "clicar,",
+   "startMs": 16740,
+   "endMs": 17080
+  },
+  {
+   "text": "o",
+   "startMs": 17080,
+   "endMs": 17140
+  },
+  {
+   "text": "quanto",
+   "startMs": 17120,
+   "endMs": 17450
+  },
+  {
+   "text": "o",
+   "startMs": 17450,
+   "endMs": 17570
+  },
+  {
+   "text": "anúncio",
+   "startMs": 17570,
+   "endMs": 18040
+  },
+  {
+   "text": "combina",
+   "startMs": 18040,
+   "endMs": 18520
+  },
+  {
+   "text": "com",
+   "startMs": 18520,
+   "endMs": 18670
+  },
+  {
+   "text": "a",
+   "startMs": 18670,
+   "endMs": 18740
+  },
+  {
+   "text": "busca",
+   "startMs": 18740,
+   "endMs": 19060
+  },
+  {
+   "text": "e",
+   "startMs": 19060,
+   "endMs": 19120
+  },
+  {
+   "text": "se",
+   "startMs": 19120,
+   "endMs": 19250
+  },
+  {
+   "text": "a",
+   "startMs": 19250,
+   "endMs": 19310
+  },
+  {
+   "text": "página",
+   "startMs": 19310,
+   "endMs": 19780
+  },
+  {
+   "text": "entrega",
+   "startMs": 19780,
+   "endMs": 20220
+  },
+  {
+   "text": "o",
+   "startMs": 20220,
+   "endMs": 20280
+  },
+  {
+   "text": "que",
+   "startMs": 20280,
+   "endMs": 20470
+  },
+  {
+   "text": "promete.",
+   "startMs": 20470,
+   "endMs": 21200
+  },
+  {
+   "text": "Num",
+   "startMs": 21200,
+   "endMs": 21380
+  },
+  {
+   "text": "exemplo",
+   "startMs": 21380,
+   "endMs": 21820
+  },
+  {
+   "text": "simplificado:",
+   "startMs": 21820,
+   "endMs": 22680
+  },
+  {
+   "text": "a",
+   "startMs": 22680,
+   "endMs": 22740
+  },
+  {
+   "text": "Ana",
+   "startMs": 22740,
+   "endMs": 22940
+  },
+  {
+   "text": "dá",
+   "startMs": 22940,
+   "endMs": 23100
+  },
+  {
+   "text": "um",
+   "startMs": 23100,
+   "endMs": 23280,
+   "estimated": true
+  },
+  {
+   "text": "lance",
+   "startMs": 23280,
+   "endMs": 23640,
+   "estimated": true
+  },
+  {
+   "text": "de",
+   "startMs": 23640,
+   "endMs": 23760
+  },
+  {
+   "text": "quatro",
+   "startMs": 23880,
+   "endMs": 24078
+  },
+  {
+   "text": "reais,",
+   "startMs": 24078,
+   "endMs": 24670,
+   "estimated": true
+  },
+  {
+   "text": "com",
+   "startMs": 24670,
+   "endMs": 24930
+  },
+  {
+   "text": "nota",
+   "startMs": 24930,
+   "endMs": 25100
+  },
+  {
+   "text": "de",
+   "startMs": 25100,
+   "endMs": 25220
+  },
+  {
+   "text": "qualidade",
+   "startMs": 25220,
+   "endMs": 25740
+  },
+  {
+   "text": "dez.",
+   "startMs": 25740,
+   "endMs": 26270
+  },
+  {
+   "text": "Quarenta",
+   "startMs": 26270,
+   "endMs": 26800
+  },
+  {
+   "text": "pontos.",
+   "startMs": 26800,
+   "endMs": 27800
+  },
+  {
+   "text": "O",
+   "startMs": 27840,
+   "endMs": 27900
+  },
+  {
+   "text": "Bruno",
+   "startMs": 27870,
+   "endMs": 28280
+  },
+  {
+   "text": "oferece",
+   "startMs": 28280,
+   "endMs": 28730
+  },
+  {
+   "text": "oito",
+   "startMs": 28870,
+   "endMs": 29110
+  },
+  {
+   "text": "reais,",
+   "startMs": 29110,
+   "endMs": 29830,
+   "estimated": true
+  },
+  {
+   "text": "mas",
+   "startMs": 29830,
+   "endMs": 30020
+  },
+  {
+   "text": "com",
+   "startMs": 30020,
+   "endMs": 30210
+  },
+  {
+   "text": "nota",
+   "startMs": 30210,
+   "endMs": 30490
+  },
+  {
+   "text": "três.",
+   "startMs": 30490,
+   "endMs": 31040
+  },
+  {
+   "text": "Vinte",
+   "startMs": 31040,
+   "endMs": 31120
+  },
+  {
+   "text": "e",
+   "startMs": 31120,
+   "endMs": 31200
+  },
+  {
+   "text": "quatro",
+   "startMs": 31200,
+   "endMs": 31280
+  },
+  {
+   "text": "pontos.",
+   "startMs": 31280,
+   "endMs": 32320
+  },
+  {
+   "text": "A",
+   "startMs": 32320,
+   "endMs": 32390
+  },
+  {
+   "text": "Ana",
+   "startMs": 32390,
+   "endMs": 32600
+  },
+  {
+   "text": "fica",
+   "startMs": 32600,
+   "endMs": 32880
+  },
+  {
+   "text": "em",
+   "startMs": 32880,
+   "endMs": 33020
+  },
+  {
+   "text": "primeiro,",
+   "startMs": 33020,
+   "endMs": 33720
+  },
+  {
+   "text": "mesmo",
+   "startMs": 33720,
+   "endMs": 34070
+  },
+  {
+   "text": "oferecendo",
+   "startMs": 34070,
+   "endMs": 34770
+  },
+  {
+   "text": "a",
+   "startMs": 34770,
+   "endMs": 34840
+  },
+  {
+   "text": "metade.",
+   "startMs": 34840,
+   "endMs": 35470
+  },
+  {
+   "text": "E",
+   "startMs": 35470,
+   "endMs": 35560
+  },
+  {
+   "text": "ela",
+   "startMs": 35560,
+   "endMs": 35680
+  },
+  {
+   "text": "nem",
+   "startMs": 35680,
+   "endMs": 35890
+  },
+  {
+   "text": "paga",
+   "startMs": 35890,
+   "endMs": 36170
+  },
+  {
+   "text": "os",
+   "startMs": 36170,
+   "endMs": 36310
+  },
+  {
+   "text": "quatro",
+   "startMs": 36450,
+   "endMs": 36708
+  },
+  {
+   "text": "reais.",
+   "startMs": 36708,
+   "endMs": 37480,
+   "estimated": true
+  },
+  {
+   "text": "Paga",
+   "startMs": 37480,
+   "endMs": 37790
+  },
+  {
+   "text": "só",
+   "startMs": 37790,
+   "endMs": 38030
+  },
+  {
+   "text": "o",
+   "startMs": 38030,
+   "endMs": 38110
+  },
+  {
+   "text": "necessário",
+   "startMs": 38110,
+   "endMs": 38970
+  },
+  {
+   "text": "para",
+   "startMs": 38970,
+   "endMs": 39290
+  },
+  {
+   "text": "superar",
+   "startMs": 39290,
+   "endMs": 39840
+  },
+  {
+   "text": "o",
+   "startMs": 39840,
+   "endMs": 39920
+  },
+  {
+   "text": "Bruno:",
+   "startMs": 39920,
+   "endMs": 40550
+  },
+  {
+   "text": "dois",
+   "startMs": 40720,
+   "endMs": 40990
+  },
+  {
+   "text": "reais",
+   "startMs": 40990,
+   "endMs": 41161,
+   "estimated": true
+  },
+  {
+   "text": "e",
+   "startMs": 41161,
+   "endMs": 41221,
+   "estimated": true
+  },
+  {
+   "text": "quarenta",
+   "startMs": 41217,
+   "endMs": 41473,
+   "estimated": true
+  },
+  {
+   "text": "e",
+   "startMs": 41473,
+   "endMs": 41533,
+   "estimated": true
+  },
+  {
+   "text": "um",
+   "startMs": 41530,
+   "endMs": 41800
+  },
+  {
+   "text": "centavos.",
+   "startMs": 41800,
+   "endMs": 41860,
+   "estimated": true
+  },
+  {
+   "text": "No",
+   "startMs": 41800,
+   "endMs": 41920
+  },
+  {
+   "text": "Instagram",
+   "startMs": 41920,
+   "endMs": 42450
+  },
+  {
+   "text": "e",
+   "startMs": 42450,
+   "endMs": 42520
+  },
+  {
+   "text": "no",
+   "startMs": 42520,
+   "endMs": 42640
+  },
+  {
+   "text": "Facebook,",
+   "startMs": 42640,
+   "endMs": 43240
+  },
+  {
+   "text": "a",
+   "startMs": 43240,
+   "endMs": 43300
+  },
+  {
+   "text": "lógica",
+   "startMs": 43300,
+   "endMs": 43540,
+   "estimated": true
+  },
+  {
+   "text": "é",
+   "startMs": 43540,
+   "endMs": 43690
+  },
+  {
+   "text": "parecida:",
+   "startMs": 43690,
+   "endMs": 44260
+  },
+  {
+   "text": "a",
+   "startMs": 44260,
+   "endMs": 44320
+  },
+  {
+   "text": "Meta",
+   "startMs": 44320,
+   "endMs": 44560
+  },
+  {
+   "text": "pesa",
+   "startMs": 44560,
+   "endMs": 44860
+  },
+  {
+   "text": "o",
+   "startMs": 44860,
+   "endMs": 45040
+  },
+  {
+   "text": "lance,",
+   "startMs": 45040,
+   "endMs": 45280
+  },
+  {
+   "text": "a",
+   "startMs": 45280,
+   "endMs": 45340
+  },
+  {
+   "text": "chance",
+   "startMs": 45340,
+   "endMs": 45700
+  },
+  {
+   "text": "de",
+   "startMs": 45700,
+   "endMs": 45820
+  },
+  {
+   "text": "a",
+   "startMs": 45820,
+   "endMs": 45920
+  },
+  {
+   "text": "pessoa",
+   "startMs": 45920,
+   "endMs": 46280
+  },
+  {
+   "text": "agir",
+   "startMs": 46280,
+   "endMs": 46560
+  },
+  {
+   "text": "e",
+   "startMs": 46560,
+   "endMs": 46630
+  },
+  {
+   "text": "a",
+   "startMs": 46630,
+   "endMs": 46760
+  },
+  {
+   "text": "qualidade",
+   "startMs": 46760,
+   "endMs": 47350
+  },
+  {
+   "text": "do",
+   "startMs": 47350,
+   "endMs": 47490
+  },
+  {
+   "text": "anúncio.",
+   "startMs": 47490,
+   "endMs": 48320
+  },
+  {
+   "text": "Moral",
+   "startMs": 48320,
+   "endMs": 48600
+  },
+  {
+   "text": "do",
+   "startMs": 48600,
+   "endMs": 48730
+  },
+  {
+   "text": "leilão:",
+   "startMs": 48730,
+   "endMs": 49210
+  },
+  {
+   "text": "relevância",
+   "startMs": 49210,
+   "endMs": 49720,
+   "em": true
+  },
+  {
+   "text": "vale",
+   "startMs": 49890,
+   "endMs": 50120,
+   "em": true
+  },
+  {
+   "text": "dinheiro.",
+   "startMs": 50120,
+   "endMs": 50800,
+   "em": true
+  },
+  {
+   "text": "Antes",
+   "startMs": 50800,
+   "endMs": 51080
+  },
+  {
+   "text": "de",
+   "startMs": 51080,
+   "endMs": 51210
+  },
+  {
+   "text": "aumentar",
+   "startMs": 51210,
+   "endMs": 51640
+  },
+  {
+   "text": "o",
+   "startMs": 51640,
+   "endMs": 51700
+  },
+  {
+   "text": "lance,",
+   "startMs": 51690,
+   "endMs": 52080
+  },
+  {
+   "text": "melhore",
+   "startMs": 52080,
+   "endMs": 52520
+  },
+  {
+   "text": "o",
+   "startMs": 52520,
+   "endMs": 52580
+  },
+  {
+   "text": "anúncio.",
+   "startMs": 52540,
+   "endMs": 53040
+  }
+ ],
+ "sections": [
+  {
+   "id": "gancho",
+   "title": "Gancho",
+   "startMs": 40,
+   "endMs": 6890,
+   "notes": [
+    "VISUAL: salão de leilão escuro gerado por IA, com relevo 3D (profundidade); o martelo 3D gerado desce e bate."
+   ]
+  },
+  {
+   "id": "a-disputa",
+   "title": "A disputa",
+   "startMs": 6890,
+   "endMs": 13840,
+   "notes": [
+    "VISUAL: placas de lance 3D (geradas) sobem; moedas de ouro caem como lances; espaços de anúncio como lajes."
+   ]
+  },
+  {
+   "id": "qualidade",
+   "title": "Qualidade",
+   "startMs": 13840,
+   "endMs": 21200,
+   "notes": [
+    "VISUAL: a joia 3D (gerada) gira sob um feixe de luz; cada faceta acende com um dos três critérios."
+   ]
+  },
+  {
+   "id": "o-exemplo",
+   "title": "O exemplo",
+   "startMs": 21200,
+   "endMs": 35470,
+   "notes": [
+    "VISUAL: dois pedestais (Ana e Bruno); lance × nota vira altura; a coluna da Ana ultrapassa a do Bruno."
+   ]
+  },
+  {
+   "id": "o-preco",
+   "title": "O preço",
+   "startMs": 35470,
+   "endMs": 41800,
+   "notes": [
+    "VISUAL: a moeda de R$ 4 encolhe até R$ 2,41."
+   ]
+  },
+  {
+   "id": "na-meta",
+   "title": "Na Meta",
+   "startMs": 41800,
+   "endMs": 48320,
+   "notes": [
+    "VISUAL: celular 3D com o feed; os mesmos três ingredientes orbitam."
+   ]
+  },
+  {
+   "id": "fechamento",
+   "title": "Fechamento",
+   "startMs": 48320,
+   "endMs": 53040,
+   "notes": [
+    "VISUAL: o martelo bate de novo; a joia fica em repouso no centro da luz."
+   ]
+  }
+ ]
+}

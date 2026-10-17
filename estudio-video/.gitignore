@@ -1,0 +1,12 @@
+node_modules/
+out/
+.whisper/
+# gerados a partir do design system (npm run ds:sync)
+public/ds/
+public/sfx/
+# áudio de trabalho (a origem fica com a skill de roteiro); timeline.json e storyboard ficam versionados
+public/videos/*/narracao.wav
+public/videos/*/.fala-reconhecida.json
+
+# ferramentas de IA locais (TripoSR, venv, pesos) — recriadas por scripts/ia/setup-3d.sh
+.ia/

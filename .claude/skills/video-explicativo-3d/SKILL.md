@@ -47,6 +47,9 @@ Todos os comandos abaixo rodam dentro de `estudio-video/`.
 
 Por quê: tudo no vídeo (cores, fontes, material e luz 3D, curvas de animação, paleta sonora) sai dos tokens. Valor de estilo escrito à mão numa cena quebra a consistência da série.
 
+### 2b. Ativos gerados por IA (opcional) → `references/ia-generativa.md`
+Quando o usuário pede narração por IA, imagens geradas ou 3D único: descreva as imagens em `src/videos/<slug>/ia.json` e rode `npm run ia -- <slug> --script <roteiro>`. Isso gera a narração (OpenRouter), as imagens (OpenRouter), os modelos 3D (TripoSR, local) e os cenários 2.5D (profundidade, local), e roda a timeline no fim. Precisa de `OPENROUTER_API_KEY` no ambiente.
+
 ### 3. Linha do tempo da fala
 ```bash
 npm run timeline -- <slug> --audio <narração> --script <roteiro> [--alignment <arquivo>]
@@ -97,6 +100,7 @@ Entregue ao usuário: o caminho do MP4, a capa, o `.srt` e um resumo curto com a
 | `references/3d.md` | etapa 5, cenas 3D: linguagem por direção de arte, regras do R3F no Remotion, enquadramento, receitas |
 | `references/2d.md` | etapa 5, quando `art.medium` é `"2d"`: linguagem e componentes de motion graphics planos |
 | `references/som.md` | etapa 6: biblioteca de efeitos, posicionamento, níveis |
+| `references/ia-generativa.md` | etapa 2b: narração e imagens via OpenRouter, imagem→3D (TripoSR), cenário 2.5D, `GenModel`/`Relevo` |
 | `references/qualidade-e-render.md` | etapas 7–8: checklist, render, solução de problemas |
 
 `assets/estudio/` é o template do estúdio (não edite vídeos ali). `assets/direcoes/*.json` são presets de direção de arte (sem cores/fontes de marca). `assets/design-system-exemplo/tokens.json` é só uma **referência de formato**: suas cores e fontes são placeholders e não devem aparecer no vídeo de ninguém.

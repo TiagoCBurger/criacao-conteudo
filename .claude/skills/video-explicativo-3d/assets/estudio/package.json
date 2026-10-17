@@ -11,7 +11,9 @@
     "timeline": "node scripts/timeline.mjs",
     "new": "node scripts/new-video.mjs",
     "check": "node scripts/check.mjs",
-    "render": "node scripts/render.mjs"
+    "render": "node scripts/render.mjs",
+    "ia": "node scripts/ia/pipeline.mjs",
+    "ia:setup": "bash scripts/ia/setup-3d.sh"
   },
   "dependencies": {
     "@react-three/drei": "10.7.6",
