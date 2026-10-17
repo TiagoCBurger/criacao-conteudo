@@ -1,0 +1,655 @@
+{
+ "text": "Todo dia, antes do primeiro pedido, o seu delivery já está perdendo de cinquenta e sete a zero. Pega um pedido de quarenta e seis reais. Tira insumo, embalagem, app e imposto. Sobram R$ 12,88. E isso nem é lucro. Primeiro, paga os vinte e dois mil de custo fixo do mês. Vinte e dois mil divididos por doze e oitenta e oito, mil setecentos e nove pedidos no mês, cinquenta e sete por dia, só pra empatar. Aquele dia de quarenta pedidos que você comemorou? Perdeu de quarenta a cinquenta e sete. Pra virar o jogo: combo sobe o ticket, ficha técnica sobe a margem, custo fixo no osso. Juntos, a meta cai pra quarenta e cinco. Comenta \"placar\" que eu te mando a planilha pra calcular o seu",
+ "words": [
+  {
+   "word": "Todo",
+   "start": 0.1,
+   "end": 0.3
+  },
+  {
+   "word": "dia,",
+   "start": 0.4,
+   "end": 0.66
+  },
+  {
+   "word": "antes",
+   "start": 0.96,
+   "end": 1.28
+  },
+  {
+   "word": "do",
+   "start": 1.3,
+   "end": 1.34
+  },
+  {
+   "word": "primeiro",
+   "start": 1.42,
+   "end": 1.74
+  },
+  {
+   "word": "pedido,",
+   "start": 1.8,
+   "end": 2.22
+  },
+  {
+   "word": "o",
+   "start": 2.38,
+   "end": 2.4
+  },
+  {
+   "word": "seu",
+   "start": 2.48,
+   "end": 2.6
+  },
+  {
+   "word": "delivery",
+   "start": 2.62,
+   "end": 3
+  },
+  {
+   "word": "já",
+   "start": 3.02,
+   "end": 3.1
+  },
+  {
+   "word": "está",
+   "start": 3.12,
+   "end": 3.32
+  },
+  {
+   "word": "perdendo",
+   "start": 3.36,
+   "end": 3.74
+  },
+  {
+   "word": "de",
+   "start": 3.76,
+   "end": 3.86
+  },
+  {
+   "word": "cinquenta",
+   "start": 3.9,
+   "end": 4.34
+  },
+  {
+   "word": "e",
+   "start": 4.36,
+   "end": 4.4
+  },
+  {
+   "word": "sete",
+   "start": 4.54,
+   "end": 4.94
+  },
+  {
+   "word": "a",
+   "start": 5.02,
+   "end": 5.06
+  },
+  {
+   "word": "zero.",
+   "start": 5.24,
+   "end": 5.54
+  },
+  {
+   "word": "Pega",
+   "start": 6.04,
+   "end": 6.18
+  },
+  {
+   "word": "um",
+   "start": 6.2,
+   "end": 6.28
+  },
+  {
+   "word": "pedido",
+   "start": 6.3,
+   "end": 6.6
+  },
+  {
+   "word": "de",
+   "start": 6.64,
+   "end": 6.72
+  },
+  {
+   "word": "quarenta",
+   "start": 6.76,
+   "end": 7.06
+  },
+  {
+   "word": "e",
+   "start": 7.1,
+   "end": 7.14
+  },
+  {
+   "word": "seis",
+   "start": 7.22,
+   "end": 7.38
+  },
+  {
+   "word": "reais.",
+   "start": 7.42,
+   "end": 7.8
+  },
+  {
+   "word": "Tira",
+   "start": 8.16,
+   "end": 8.3
+  },
+  {
+   "word": "insumo,",
+   "start": 8.34,
+   "end": 8.82
+  },
+  {
+   "word": "embalagem,",
+   "start": 8.98,
+   "end": 9.66
+  },
+  {
+   "word": "app",
+   "start": 9.9,
+   "end": 10.12
+  },
+  {
+   "word": "e",
+   "start": 10.22,
+   "end": 10.26
+  },
+  {
+   "word": "imposto.",
+   "start": 10.3,
+   "end": 10.8
+  },
+  {
+   "word": "Sobram",
+   "start": 11.16,
+   "end": 11.44
+  },
+  {
+   "word": "R$",
+   "start": 11.56,
+   "end": 11.56
+  },
+  {
+   "word": "12,88.",
+   "start": 11.58,
+   "end": 12.9
+  },
+  {
+   "word": "E",
+   "start": 13.26,
+   "end": 13.3
+  },
+  {
+   "word": "isso",
+   "start": 13.36,
+   "end": 13.6
+  },
+  {
+   "word": "nem",
+   "start": 13.7,
+   "end": 13.86
+  },
+  {
+   "word": "é",
+   "start": 13.9,
+   "end": 13.96
+  },
+  {
+   "word": "lucro.",
+   "start": 14.02,
+   "end": 14.32
+  },
+  {
+   "word": "Primeiro,",
+   "start": 14.84,
+   "end": 15.18
+  },
+  {
+   "word": "paga",
+   "start": 15.32,
+   "end": 15.5
+  },
+  {
+   "word": "os",
+   "start": 15.54,
+   "end": 15.66
+  },
+  {
+   "word": "vinte",
+   "start": 15.72,
+   "end": 15.9
+  },
+  {
+   "word": "e",
+   "start": 15.92,
+   "end": 15.94
+  },
+  {
+   "word": "dois",
+   "start": 16,
+   "end": 16.18
+  },
+  {
+   "word": "mil",
+   "start": 16.26,
+   "end": 16.36
+  },
+  {
+   "word": "de",
+   "start": 16.4,
+   "end": 16.46
+  },
+  {
+   "word": "custo",
+   "start": 16.54,
+   "end": 16.76
+  },
+  {
+   "word": "fixo",
+   "start": 16.9,
+   "end": 17.14
+  },
+  {
+   "word": "do",
+   "start": 17.18,
+   "end": 17.24
+  },
+  {
+   "word": "mês.",
+   "start": 17.3,
+   "end": 17.58
+  },
+  {
+   "word": "Vinte",
+   "start": 18.08,
+   "end": 18.24
+  },
+  {
+   "word": "e",
+   "start": 18.26,
+   "end": 18.3
+  },
+  {
+   "word": "dois",
+   "start": 18.34,
+   "end": 18.5
+  },
+  {
+   "word": "mil",
+   "start": 18.58,
+   "end": 18.76
+  },
+  {
+   "word": "divididos",
+   "start": 18.82,
+   "end": 19.32
+  },
+  {
+   "word": "por",
+   "start": 19.34,
+   "end": 19.46
+  },
+  {
+   "word": "doze",
+   "start": 19.56,
+   "end": 19.8
+  },
+  {
+   "word": "e",
+   "start": 19.82,
+   "end": 19.86
+  },
+  {
+   "word": "oitenta",
+   "start": 19.9,
+   "end": 20.2
+  },
+  {
+   "word": "e",
+   "start": 20.26,
+   "end": 20.28
+  },
+  {
+   "word": "oito,",
+   "start": 20.38,
+   "end": 20.62
+  },
+  {
+   "word": "mil",
+   "start": 21.12,
+   "end": 21.3
+  },
+  {
+   "word": "setecentos",
+   "start": 21.42,
+   "end": 22.06
+  },
+  {
+   "word": "e",
+   "start": 22.08,
+   "end": 22.12
+  },
+  {
+   "word": "nove",
+   "start": 22.2,
+   "end": 22.46
+  },
+  {
+   "word": "pedidos",
+   "start": 22.48,
+   "end": 22.88
+  },
+  {
+   "word": "no",
+   "start": 22.9,
+   "end": 23
+  },
+  {
+   "word": "mês,",
+   "start": 23.06,
+   "end": 23.34
+  },
+  {
+   "word": "cinquenta",
+   "start": 23.7,
+   "end": 24.16
+  },
+  {
+   "word": "e",
+   "start": 24.2,
+   "end": 24.22
+  },
+  {
+   "word": "sete",
+   "start": 24.36,
+   "end": 24.58
+  },
+  {
+   "word": "por",
+   "start": 24.68,
+   "end": 24.82
+  },
+  {
+   "word": "dia,",
+   "start": 24.94,
+   "end": 25.18
+  },
+  {
+   "word": "só",
+   "start": 25.64,
+   "end": 25.78
+  },
+  {
+   "word": "pra",
+   "start": 25.78,
+   "end": 25.86
+  },
+  {
+   "word": "empatar.",
+   "start": 25.88,
+   "end": 26.28
+  },
+  {
+   "word": "Aquele",
+   "start": 26.86,
+   "end": 27.12
+  },
+  {
+   "word": "dia",
+   "start": 27.14,
+   "end": 27.26
+  },
+  {
+   "word": "de",
+   "start": 27.3,
+   "end": 27.4
+  },
+  {
+   "word": "quarenta",
+   "start": 27.42,
+   "end": 27.76
+  },
+  {
+   "word": "pedidos",
+   "start": 27.84,
+   "end": 28.22
+  },
+  {
+   "word": "que",
+   "start": 28.24,
+   "end": 28.3
+  },
+  {
+   "word": "você",
+   "start": 28.32,
+   "end": 28.5
+  },
+  {
+   "word": "comemorou?",
+   "start": 28.54,
+   "end": 28.94
+  },
+  {
+   "word": "Perdeu",
+   "start": 29.3,
+   "end": 29.58
+  },
+  {
+   "word": "de",
+   "start": 29.62,
+   "end": 29.7
+  },
+  {
+   "word": "quarenta",
+   "start": 29.76,
+   "end": 30.3
+  },
+  {
+   "word": "a",
+   "start": 30.34,
+   "end": 30.36
+  },
+  {
+   "word": "cinquenta",
+   "start": 30.44,
+   "end": 30.82
+  },
+  {
+   "word": "e",
+   "start": 30.86,
+   "end": 30.9
+  },
+  {
+   "word": "sete.",
+   "start": 31.02,
+   "end": 31.36
+  },
+  {
+   "word": "Pra",
+   "start": 31.8,
+   "end": 31.9
+  },
+  {
+   "word": "virar",
+   "start": 31.94,
+   "end": 32.1
+  },
+  {
+   "word": "o",
+   "start": 32.119,
+   "end": 32.159
+  },
+  {
+   "word": "jogo:",
+   "start": 32.22,
+   "end": 32.479
+  },
+  {
+   "word": "combo",
+   "start": 32.94,
+   "end": 33.24
+  },
+  {
+   "word": "sobe",
+   "start": 33.3,
+   "end": 33.46
+  },
+  {
+   "word": "o",
+   "start": 33.5,
+   "end": 33.52
+  },
+  {
+   "word": "ticket,",
+   "start": 33.6,
+   "end": 33.96
+  },
+  {
+   "word": "ficha",
+   "start": 34.18,
+   "end": 34.38
+  },
+  {
+   "word": "técnica",
+   "start": 34.5,
+   "end": 34.98
+  },
+  {
+   "word": "sobe",
+   "start": 35.06,
+   "end": 35.24
+  },
+  {
+   "word": "a",
+   "start": 35.28,
+   "end": 35.3
+  },
+  {
+   "word": "margem,",
+   "start": 35.36,
+   "end": 35.72
+  },
+  {
+   "word": "custo",
+   "start": 35.9,
+   "end": 36.14
+  },
+  {
+   "word": "fixo",
+   "start": 36.32,
+   "end": 36.64
+  },
+  {
+   "word": "no",
+   "start": 36.82,
+   "end": 36.96
+  },
+  {
+   "word": "osso.",
+   "start": 37.08,
+   "end": 37.4
+  },
+  {
+   "word": "Juntos,",
+   "start": 37.9,
+   "end": 38.26
+  },
+  {
+   "word": "a",
+   "start": 38.42,
+   "end": 38.44
+  },
+  {
+   "word": "meta",
+   "start": 38.52,
+   "end": 38.78
+  },
+  {
+   "word": "cai",
+   "start": 38.82,
+   "end": 38.96
+  },
+  {
+   "word": "pra",
+   "start": 38.98,
+   "end": 39.1
+  },
+  {
+   "word": "quarenta",
+   "start": 39.12,
+   "end": 39.48
+  },
+  {
+   "word": "e",
+   "start": 39.52,
+   "end": 39.54
+  },
+  {
+   "word": "cinco.",
+   "start": 39.68,
+   "end": 39.98
+  },
+  {
+   "word": "Comenta",
+   "start": 40.42,
+   "end": 40.7
+  },
+  {
+   "word": "\"placar\"",
+   "start": 40.78,
+   "end": 41.22
+  },
+  {
+   "word": "que",
+   "start": 41.3,
+   "end": 41.34
+  },
+  {
+   "word": "eu",
+   "start": 41.36,
+   "end": 41.4
+  },
+  {
+   "word": "te",
+   "start": 41.46,
+   "end": 41.52
+  },
+  {
+   "word": "mando",
+   "start": 41.58,
+   "end": 41.7
+  },
+  {
+   "word": "a",
+   "start": 41.72,
+   "end": 41.74
+  },
+  {
+   "word": "planilha",
+   "start": 41.8,
+   "end": 42.18
+  },
+  {
+   "word": "pra",
+   "start": 42.2,
+   "end": 42.3
+  },
+  {
+   "word": "calcular",
+   "start": 42.32,
+   "end": 42.62
+  },
+  {
+   "word": "o",
+   "start": 42.66,
+   "end": 42.68
+  },
+  {
+   "word": "seu",
+   "start": 42.76,
+   "end": 42.94
+  }
+ ]
+}

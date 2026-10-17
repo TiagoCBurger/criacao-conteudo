@@ -1,0 +1,555 @@
+{
+ "text": "Deu 20% de desconto? Parabéns! Agora você precisa vender quase o dobro. Um lanche de R$ 38. Tira insumo, embalagem, app e imposto. Sobram R$ 11,52. Com 20% off, sai a R$ 30,40. Mas o insumo não deu desconto, nem a embalagem. Sobram R$ 6,28. O desconto saiu quase todo da sua margem. Pra ganhar o mesmo, você precisa de 83% mais pedidos. Vendeu cem lanches com desconto? Ganhou o mesmo que cinquenta e cinco sem. Os outros quarenta e cinco saíram de graça. Antes da próxima promoção: objetivo, prazo e conta feita. Ou troca por um combo. Comenta \"placar\" que eu te mando a planilha que faz essa conta",
+ "words": [
+  {
+   "word": "Deu",
+   "start": 0.1,
+   "end": 0.22
+  },
+  {
+   "word": "20%",
+   "start": 0.44,
+   "end": 1.16
+  },
+  {
+   "word": "de",
+   "start": 1.18,
+   "end": 1.26
+  },
+  {
+   "word": "desconto?",
+   "start": 1.28,
+   "end": 1.86
+  },
+  {
+   "word": "Parabéns!",
+   "start": 2.36,
+   "end": 2.9
+  },
+  {
+   "word": "Agora",
+   "start": 3.36,
+   "end": 3.68
+  },
+  {
+   "word": "você",
+   "start": 3.72,
+   "end": 3.92
+  },
+  {
+   "word": "precisa",
+   "start": 3.94,
+   "end": 4.28
+  },
+  {
+   "word": "vender",
+   "start": 4.3,
+   "end": 4.7
+  },
+  {
+   "word": "quase",
+   "start": 4.76,
+   "end": 5.04
+  },
+  {
+   "word": "o",
+   "start": 5.08,
+   "end": 5.1
+  },
+  {
+   "word": "dobro.",
+   "start": 5.3,
+   "end": 5.7
+  },
+  {
+   "word": "Um",
+   "start": 6.32,
+   "end": 6.4
+  },
+  {
+   "word": "lanche",
+   "start": 6.44,
+   "end": 6.74
+  },
+  {
+   "word": "de",
+   "start": 6.78,
+   "end": 6.84
+  },
+  {
+   "word": "R$",
+   "start": 6.96,
+   "end": 6.96
+  },
+  {
+   "word": "38.",
+   "start": 7.08,
+   "end": 7.72
+  },
+  {
+   "word": "Tira",
+   "start": 8.119,
+   "end": 8.26
+  },
+  {
+   "word": "insumo,",
+   "start": 8.3,
+   "end": 8.82
+  },
+  {
+   "word": "embalagem,",
+   "start": 9.02,
+   "end": 9.7
+  },
+  {
+   "word": "app",
+   "start": 9.94,
+   "end": 10.18
+  },
+  {
+   "word": "e",
+   "start": 10.3,
+   "end": 10.32
+  },
+  {
+   "word": "imposto.",
+   "start": 10.36,
+   "end": 10.88
+  },
+  {
+   "word": "Sobram",
+   "start": 11.3,
+   "end": 11.58
+  },
+  {
+   "word": "R$",
+   "start": 11.72,
+   "end": 11.72
+  },
+  {
+   "word": "11,52.",
+   "start": 11.78,
+   "end": 12.88
+  },
+  {
+   "word": "Com",
+   "start": 13.34,
+   "end": 13.46
+  },
+  {
+   "word": "20%",
+   "start": 13.6,
+   "end": 14.16
+  },
+  {
+   "word": "off,",
+   "start": 14.26,
+   "end": 14.48
+  },
+  {
+   "word": "sai",
+   "start": 14.66,
+   "end": 14.8
+  },
+  {
+   "word": "a",
+   "start": 14.84,
+   "end": 14.86
+  },
+  {
+   "word": "R$",
+   "start": 14.98,
+   "end": 14.98
+  },
+  {
+   "word": "30,40.",
+   "start": 15.12,
+   "end": 15.8
+  },
+  {
+   "word": "Mas",
+   "start": 16.3,
+   "end": 16.44
+  },
+  {
+   "word": "o",
+   "start": 16.46,
+   "end": 16.5
+  },
+  {
+   "word": "insumo",
+   "start": 16.54,
+   "end": 17.02
+  },
+  {
+   "word": "não",
+   "start": 17.08,
+   "end": 17.24
+  },
+  {
+   "word": "deu",
+   "start": 17.3,
+   "end": 17.42
+  },
+  {
+   "word": "desconto,",
+   "start": 17.48,
+   "end": 18.02
+  },
+  {
+   "word": "nem",
+   "start": 18.3,
+   "end": 18.4
+  },
+  {
+   "word": "a",
+   "start": 18.44,
+   "end": 18.48
+  },
+  {
+   "word": "embalagem.",
+   "start": 18.5,
+   "end": 19.08
+  },
+  {
+   "word": "Sobram",
+   "start": 19.4,
+   "end": 19.66
+  },
+  {
+   "word": "R$",
+   "start": 19.8,
+   "end": 19.8
+  },
+  {
+   "word": "6,28.",
+   "start": 20.14,
+   "end": 20.92
+  },
+  {
+   "word": "O",
+   "start": 21.34,
+   "end": 21.38
+  },
+  {
+   "word": "desconto",
+   "start": 21.44,
+   "end": 21.86
+  },
+  {
+   "word": "saiu",
+   "start": 21.94,
+   "end": 22.24
+  },
+  {
+   "word": "quase",
+   "start": 22.3,
+   "end": 22.62
+  },
+  {
+   "word": "todo",
+   "start": 22.8,
+   "end": 23.06
+  },
+  {
+   "word": "da",
+   "start": 23.1,
+   "end": 23.16
+  },
+  {
+   "word": "sua",
+   "start": 23.22,
+   "end": 23.34
+  },
+  {
+   "word": "margem.",
+   "start": 23.42,
+   "end": 23.76
+  },
+  {
+   "word": "Pra",
+   "start": 24.1,
+   "end": 24.2
+  },
+  {
+   "word": "ganhar",
+   "start": 24.24,
+   "end": 24.42
+  },
+  {
+   "word": "o",
+   "start": 24.46,
+   "end": 24.54
+  },
+  {
+   "word": "mesmo,",
+   "start": 24.58,
+   "end": 24.94
+  },
+  {
+   "word": "você",
+   "start": 25.02,
+   "end": 25.24
+  },
+  {
+   "word": "precisa",
+   "start": 25.26,
+   "end": 25.6
+  },
+  {
+   "word": "de",
+   "start": 25.66,
+   "end": 25.7
+  },
+  {
+   "word": "83%",
+   "start": 26.1,
+   "end": 27.24
+  },
+  {
+   "word": "mais",
+   "start": 27.28,
+   "end": 27.56
+  },
+  {
+   "word": "pedidos.",
+   "start": 27.6,
+   "end": 28.1
+  },
+  {
+   "word": "Vendeu",
+   "start": 28.64,
+   "end": 28.88
+  },
+  {
+   "word": "cem",
+   "start": 29.06,
+   "end": 29.26
+  },
+  {
+   "word": "lanches",
+   "start": 29.32,
+   "end": 29.62
+  },
+  {
+   "word": "com",
+   "start": 29.66,
+   "end": 29.74
+  },
+  {
+   "word": "desconto?",
+   "start": 29.78,
+   "end": 30.24
+  },
+  {
+   "word": "Ganhou",
+   "start": 30.6,
+   "end": 30.82
+  },
+  {
+   "word": "o",
+   "start": 30.86,
+   "end": 30.9
+  },
+  {
+   "word": "mesmo",
+   "start": 31.04,
+   "end": 31.4
+  },
+  {
+   "word": "que",
+   "start": 31.42,
+   "end": 31.54
+  },
+  {
+   "word": "cinquenta",
+   "start": 31.56,
+   "end": 31.98
+  },
+  {
+   "word": "e",
+   "start": 32.04,
+   "end": 32.06
+  },
+  {
+   "word": "cinco",
+   "start": 32.18,
+   "end": 32.4
+  },
+  {
+   "word": "sem.",
+   "start": 32.52,
+   "end": 32.7
+  },
+  {
+   "word": "Os",
+   "start": 33.1,
+   "end": 33.22
+  },
+  {
+   "word": "outros",
+   "start": 33.26,
+   "end": 33.5
+  },
+  {
+   "word": "quarenta",
+   "start": 33.52,
+   "end": 33.78
+  },
+  {
+   "word": "e",
+   "start": 33.8,
+   "end": 33.84
+  },
+  {
+   "word": "cinco",
+   "start": 33.94,
+   "end": 34.16
+  },
+  {
+   "word": "saíram",
+   "start": 34.26,
+   "end": 34.58
+  },
+  {
+   "word": "de",
+   "start": 34.62,
+   "end": 34.68
+  },
+  {
+   "word": "graça.",
+   "start": 34.8,
+   "end": 35.24
+  },
+  {
+   "word": "Antes",
+   "start": 35.68,
+   "end": 35.9
+  },
+  {
+   "word": "da",
+   "start": 35.92,
+   "end": 35.98
+  },
+  {
+   "word": "próxima",
+   "start": 36.04,
+   "end": 36.32
+  },
+  {
+   "word": "promoção:",
+   "start": 36.4,
+   "end": 36.88
+  },
+  {
+   "word": "objetivo,",
+   "start": 37.2,
+   "end": 37.8
+  },
+  {
+   "word": "prazo",
+   "start": 38.04,
+   "end": 38.5
+  },
+  {
+   "word": "e",
+   "start": 38.52,
+   "end": 38.56
+  },
+  {
+   "word": "conta",
+   "start": 38.72,
+   "end": 38.96
+  },
+  {
+   "word": "feita.",
+   "start": 39.08,
+   "end": 39.36
+  },
+  {
+   "word": "Ou",
+   "start": 39.8,
+   "end": 39.94
+  },
+  {
+   "word": "troca",
+   "start": 40.02,
+   "end": 40.32
+  },
+  {
+   "word": "por",
+   "start": 40.34,
+   "end": 40.42
+  },
+  {
+   "word": "um",
+   "start": 40.44,
+   "end": 40.52
+  },
+  {
+   "word": "combo.",
+   "start": 40.56,
+   "end": 40.84
+  },
+  {
+   "word": "Comenta",
+   "start": 41.22,
+   "end": 41.62
+  },
+  {
+   "word": "\"placar\"",
+   "start": 41.62,
+   "end": 42.14
+  },
+  {
+   "word": "que",
+   "start": 42.24,
+   "end": 42.28
+  },
+  {
+   "word": "eu",
+   "start": 42.3,
+   "end": 42.34
+  },
+  {
+   "word": "te",
+   "start": 42.38,
+   "end": 42.46
+  },
+  {
+   "word": "mando",
+   "start": 42.5,
+   "end": 42.64
+  },
+  {
+   "word": "a",
+   "start": 42.66,
+   "end": 42.68
+  },
+  {
+   "word": "planilha",
+   "start": 42.74,
+   "end": 43.08
+  },
+  {
+   "word": "que",
+   "start": 43.12,
+   "end": 43.22
+  },
+  {
+   "word": "faz",
+   "start": 43.24,
+   "end": 43.38
+  },
+  {
+   "word": "essa",
+   "start": 43.4,
+   "end": 43.6
+  },
+  {
+   "word": "conta",
+   "start": 43.64,
+   "end": 43.92
+  }
+ ]
+}
