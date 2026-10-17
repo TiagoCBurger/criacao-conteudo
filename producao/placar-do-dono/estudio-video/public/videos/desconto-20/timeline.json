@@ -1,0 +1,746 @@
+{
+ "version": 1,
+ "audio": "narracao.wav",
+ "sourceAudio": "../episodios/desconto-20/narracao-eleven.mp3",
+ "sourceScript": "../episodios/desconto-20/roteiro.md",
+ "durationMs": 44080,
+ "language": "pt",
+ "source": "openai-whisper",
+ "scriptMatch": 0.937,
+ "words": [
+  {
+   "text": "Deu",
+   "startMs": 100,
+   "endMs": 220
+  },
+  {
+   "text": "vinte",
+   "startMs": 440,
+   "endMs": 680
+  },
+  {
+   "text": "por",
+   "startMs": 680,
+   "endMs": 920
+  },
+  {
+   "text": "cento",
+   "startMs": 920,
+   "endMs": 1160
+  },
+  {
+   "text": "de",
+   "startMs": 1180,
+   "endMs": 1260
+  },
+  {
+   "text": "desconto?",
+   "startMs": 1280,
+   "endMs": 1860
+  },
+  {
+   "text": "Parabéns:",
+   "startMs": 2360,
+   "endMs": 2900
+  },
+  {
+   "text": "agora",
+   "startMs": 3360,
+   "endMs": 3680
+  },
+  {
+   "text": "você",
+   "startMs": 3720,
+   "endMs": 3920
+  },
+  {
+   "text": "precisa",
+   "startMs": 3940,
+   "endMs": 4280
+  },
+  {
+   "text": "vender",
+   "startMs": 4300,
+   "endMs": 4700
+  },
+  {
+   "text": "quase",
+   "startMs": 4760,
+   "endMs": 5040,
+   "em": true
+  },
+  {
+   "text": "o",
+   "startMs": 5080,
+   "endMs": 5140,
+   "em": true
+  },
+  {
+   "text": "dobro.",
+   "startMs": 5300,
+   "endMs": 5700,
+   "em": true
+  },
+  {
+   "text": "Um",
+   "startMs": 6320,
+   "endMs": 6400
+  },
+  {
+   "text": "lanche",
+   "startMs": 6440,
+   "endMs": 6740
+  },
+  {
+   "text": "de",
+   "startMs": 6780,
+   "endMs": 6840
+  },
+  {
+   "text": "trinta",
+   "startMs": 7080,
+   "endMs": 7293
+  },
+  {
+   "text": "e",
+   "startMs": 7293,
+   "endMs": 7507
+  },
+  {
+   "text": "oito.",
+   "startMs": 7507,
+   "endMs": 7720
+  },
+  {
+   "text": "Tira",
+   "startMs": 8119,
+   "endMs": 8260
+  },
+  {
+   "text": "insumo,",
+   "startMs": 8300,
+   "endMs": 8820
+  },
+  {
+   "text": "embalagem,",
+   "startMs": 9020,
+   "endMs": 9700
+  },
+  {
+   "text": "app",
+   "startMs": 9940,
+   "endMs": 10180
+  },
+  {
+   "text": "e",
+   "startMs": 10300,
+   "endMs": 10360
+  },
+  {
+   "text": "imposto:",
+   "startMs": 10360,
+   "endMs": 10880
+  },
+  {
+   "text": "sobram",
+   "startMs": 11300,
+   "endMs": 11580
+  },
+  {
+   "text": "onze",
+   "startMs": 11780,
+   "endMs": 12055,
+   "em": true
+  },
+  {
+   "text": "e",
+   "startMs": 12055,
+   "endMs": 12134,
+   "em": true,
+   "estimated": true
+  },
+  {
+   "text": "cinquenta",
+   "startMs": 12134,
+   "endMs": 12526,
+   "em": true,
+   "estimated": true
+  },
+  {
+   "text": "e",
+   "startMs": 12526,
+   "endMs": 12605,
+   "em": true,
+   "estimated": true
+  },
+  {
+   "text": "dois.",
+   "startMs": 12605,
+   "endMs": 12880,
+   "em": true
+  },
+  {
+   "text": "Com",
+   "startMs": 13340,
+   "endMs": 13460
+  },
+  {
+   "text": "vinte",
+   "startMs": 13600,
+   "endMs": 13787
+  },
+  {
+   "text": "por",
+   "startMs": 13787,
+   "endMs": 13973
+  },
+  {
+   "text": "cento",
+   "startMs": 13973,
+   "endMs": 14160
+  },
+  {
+   "text": "off,",
+   "startMs": 14260,
+   "endMs": 14480
+  },
+  {
+   "text": "sai",
+   "startMs": 14660,
+   "endMs": 14800
+  },
+  {
+   "text": "a",
+   "startMs": 14840,
+   "endMs": 14900
+  },
+  {
+   "text": "trinta",
+   "startMs": 15120,
+   "endMs": 15290
+  },
+  {
+   "text": "e",
+   "startMs": 15290,
+   "endMs": 15458,
+   "estimated": true
+  },
+  {
+   "text": "quarenta.",
+   "startMs": 15458,
+   "endMs": 16300,
+   "estimated": true
+  },
+  {
+   "text": "Mas",
+   "startMs": 16300,
+   "endMs": 16440
+  },
+  {
+   "text": "o",
+   "startMs": 16460,
+   "endMs": 16520
+  },
+  {
+   "text": "insumo",
+   "startMs": 16540,
+   "endMs": 17020
+  },
+  {
+   "text": "não",
+   "startMs": 17080,
+   "endMs": 17240
+  },
+  {
+   "text": "deu",
+   "startMs": 17300,
+   "endMs": 17420
+  },
+  {
+   "text": "desconto.",
+   "startMs": 17480,
+   "endMs": 18020
+  },
+  {
+   "text": "Nem",
+   "startMs": 18300,
+   "endMs": 18400
+  },
+  {
+   "text": "a",
+   "startMs": 18440,
+   "endMs": 18500
+  },
+  {
+   "text": "embalagem.",
+   "startMs": 18500,
+   "endMs": 19080
+  },
+  {
+   "text": "Sobram",
+   "startMs": 19400,
+   "endMs": 19660
+  },
+  {
+   "text": "seis",
+   "startMs": 20140,
+   "endMs": 20335,
+   "em": true
+  },
+  {
+   "text": "e",
+   "startMs": 20335,
+   "endMs": 20413,
+   "em": true,
+   "estimated": true
+  },
+  {
+   "text": "vinte",
+   "startMs": 20413,
+   "endMs": 20647,
+   "em": true,
+   "estimated": true
+  },
+  {
+   "text": "e",
+   "startMs": 20647,
+   "endMs": 20725,
+   "em": true,
+   "estimated": true
+  },
+  {
+   "text": "oito.",
+   "startMs": 20725,
+   "endMs": 20920,
+   "em": true
+  },
+  {
+   "text": "O",
+   "startMs": 21340,
+   "endMs": 21400
+  },
+  {
+   "text": "desconto",
+   "startMs": 21440,
+   "endMs": 21860
+  },
+  {
+   "text": "saiu",
+   "startMs": 21940,
+   "endMs": 22240
+  },
+  {
+   "text": "quase",
+   "startMs": 22300,
+   "endMs": 22620
+  },
+  {
+   "text": "todo",
+   "startMs": 22800,
+   "endMs": 23060
+  },
+  {
+   "text": "da",
+   "startMs": 23100,
+   "endMs": 23160
+  },
+  {
+   "text": "sua",
+   "startMs": 23220,
+   "endMs": 23340
+  },
+  {
+   "text": "margem.",
+   "startMs": 23420,
+   "endMs": 23760
+  },
+  {
+   "text": "Pra",
+   "startMs": 24100,
+   "endMs": 24200
+  },
+  {
+   "text": "ganhar",
+   "startMs": 24240,
+   "endMs": 24420
+  },
+  {
+   "text": "o",
+   "startMs": 24460,
+   "endMs": 24540
+  },
+  {
+   "text": "mesmo,",
+   "startMs": 24580,
+   "endMs": 24940
+  },
+  {
+   "text": "você",
+   "startMs": 25020,
+   "endMs": 25240
+  },
+  {
+   "text": "precisa",
+   "startMs": 25260,
+   "endMs": 25600
+  },
+  {
+   "text": "de",
+   "startMs": 25660,
+   "endMs": 25720
+  },
+  {
+   "text": "oitenta",
+   "startMs": 26100,
+   "endMs": 26328,
+   "em": true
+  },
+  {
+   "text": "e",
+   "startMs": 26328,
+   "endMs": 26556,
+   "em": true
+  },
+  {
+   "text": "três",
+   "startMs": 26556,
+   "endMs": 26784,
+   "em": true
+  },
+  {
+   "text": "por",
+   "startMs": 26784,
+   "endMs": 27012,
+   "em": true
+  },
+  {
+   "text": "cento",
+   "startMs": 27012,
+   "endMs": 27240,
+   "em": true
+  },
+  {
+   "text": "mais",
+   "startMs": 27280,
+   "endMs": 27560
+  },
+  {
+   "text": "pedidos.",
+   "startMs": 27600,
+   "endMs": 28100
+  },
+  {
+   "text": "Vendeu",
+   "startMs": 28640,
+   "endMs": 28880
+  },
+  {
+   "text": "cem",
+   "startMs": 29060,
+   "endMs": 29260
+  },
+  {
+   "text": "lanches",
+   "startMs": 29320,
+   "endMs": 29620
+  },
+  {
+   "text": "com",
+   "startMs": 29660,
+   "endMs": 29740
+  },
+  {
+   "text": "desconto?",
+   "startMs": 29780,
+   "endMs": 30240
+  },
+  {
+   "text": "Ganhou",
+   "startMs": 30600,
+   "endMs": 30820
+  },
+  {
+   "text": "o",
+   "startMs": 30860,
+   "endMs": 30920
+  },
+  {
+   "text": "mesmo",
+   "startMs": 31040,
+   "endMs": 31400
+  },
+  {
+   "text": "que",
+   "startMs": 31420,
+   "endMs": 31540
+  },
+  {
+   "text": "cinquenta",
+   "startMs": 31560,
+   "endMs": 31980,
+   "em": true
+  },
+  {
+   "text": "e",
+   "startMs": 32040,
+   "endMs": 32100,
+   "em": true
+  },
+  {
+   "text": "cinco",
+   "startMs": 32180,
+   "endMs": 32400,
+   "em": true
+  },
+  {
+   "text": "sem.",
+   "startMs": 32520,
+   "endMs": 32700
+  },
+  {
+   "text": "Os",
+   "startMs": 33100,
+   "endMs": 33220
+  },
+  {
+   "text": "outros",
+   "startMs": 33260,
+   "endMs": 33500
+  },
+  {
+   "text": "quarenta",
+   "startMs": 33520,
+   "endMs": 33780
+  },
+  {
+   "text": "e",
+   "startMs": 33800,
+   "endMs": 33860
+  },
+  {
+   "text": "cinco",
+   "startMs": 33940,
+   "endMs": 34160
+  },
+  {
+   "text": "saíram",
+   "startMs": 34260,
+   "endMs": 34580
+  },
+  {
+   "text": "de",
+   "startMs": 34620,
+   "endMs": 34680
+  },
+  {
+   "text": "graça.",
+   "startMs": 34800,
+   "endMs": 35240
+  },
+  {
+   "text": "Antes",
+   "startMs": 35680,
+   "endMs": 35900
+  },
+  {
+   "text": "da",
+   "startMs": 35920,
+   "endMs": 35980
+  },
+  {
+   "text": "próxima",
+   "startMs": 36040,
+   "endMs": 36320
+  },
+  {
+   "text": "promoção:",
+   "startMs": 36400,
+   "endMs": 36880
+  },
+  {
+   "text": "objetivo,",
+   "startMs": 37200,
+   "endMs": 37800
+  },
+  {
+   "text": "prazo",
+   "startMs": 38040,
+   "endMs": 38500
+  },
+  {
+   "text": "e",
+   "startMs": 38520,
+   "endMs": 38580
+  },
+  {
+   "text": "conta",
+   "startMs": 38720,
+   "endMs": 38960
+  },
+  {
+   "text": "feita.",
+   "startMs": 39080,
+   "endMs": 39360
+  },
+  {
+   "text": "Ou",
+   "startMs": 39800,
+   "endMs": 39940
+  },
+  {
+   "text": "troca",
+   "startMs": 40020,
+   "endMs": 40320
+  },
+  {
+   "text": "por",
+   "startMs": 40340,
+   "endMs": 40420
+  },
+  {
+   "text": "um",
+   "startMs": 40440,
+   "endMs": 40520
+  },
+  {
+   "text": "combo.",
+   "startMs": 40560,
+   "endMs": 40840
+  },
+  {
+   "text": "Comenta",
+   "startMs": 41220,
+   "endMs": 41620
+  },
+  {
+   "text": "PLACAR",
+   "startMs": 41620,
+   "endMs": 42140,
+   "em": true
+  },
+  {
+   "text": "que",
+   "startMs": 42240,
+   "endMs": 42300
+  },
+  {
+   "text": "eu",
+   "startMs": 42300,
+   "endMs": 42360
+  },
+  {
+   "text": "te",
+   "startMs": 42380,
+   "endMs": 42460
+  },
+  {
+   "text": "mando",
+   "startMs": 42500,
+   "endMs": 42640
+  },
+  {
+   "text": "a",
+   "startMs": 42660,
+   "endMs": 42720
+  },
+  {
+   "text": "planilha",
+   "startMs": 42740,
+   "endMs": 43080
+  },
+  {
+   "text": "que",
+   "startMs": 43120,
+   "endMs": 43220
+  },
+  {
+   "text": "faz",
+   "startMs": 43240,
+   "endMs": 43380
+  },
+  {
+   "text": "essa",
+   "startMs": 43400,
+   "endMs": 43600
+  },
+  {
+   "text": "conta.",
+   "startMs": 43640,
+   "endMs": 43920
+  }
+ ],
+ "sections": [
+  {
+   "id": "gancho",
+   "title": "Gancho",
+   "startMs": 100,
+   "endMs": 5700,
+   "notes": [
+    "TELA: placar de LED de estádio à noite: \"VOCÊ 0 × 20% OFF\""
+   ]
+  },
+  {
+   "id": "o-lanche",
+   "title": "O lanche",
+   "startMs": 6320,
+   "endMs": 12880,
+   "notes": [
+    "TELA: barra do preço R$ 38 fatiada: insumo e embalagem R$ 14,70 · app R$ 9,50 · imposto R$ 2,28 · sobra R$ 11,52 (verde). Selo pequeno \"exemplo\"."
+   ]
+  },
+  {
+   "id": "com-desconto",
+   "title": "Com desconto",
+   "startMs": 13340,
+   "endMs": 19080,
+   "notes": [
+    "TELA: a barra encolhe para R$ 30,40; o bloco de insumo e embalagem (R$ 14,70) fica do mesmo tamanho"
+   ]
+  },
+  {
+   "id": "quanto-sobra",
+   "title": "Quanto sobra",
+   "startMs": 19400,
+   "endMs": 23760,
+   "notes": [
+    "TELA: duas barras verdes lado a lado: R$ 11,52 × R$ 6,28; o pedaço perdido em coral: −45%"
+   ]
+  },
+  {
+   "id": "a-conta",
+   "title": "A conta",
+   "startMs": 24100,
+   "endMs": 28100,
+   "notes": [
+    "TELA: 11,52 ÷ 6,28 = 1,83 → placar \"PRECISA 183 × ANTES 100\""
+   ]
+  },
+  {
+   "id": "a-piada",
+   "title": "A piada",
+   "startMs": 28640,
+   "endMs": 35240,
+   "notes": [
+    "TELA: grade de 100 hambúrgueres; 45 apagam em coral"
+   ]
+  },
+  {
+   "id": "a-virada",
+   "title": "A virada",
+   "startMs": 35680,
+   "endMs": 40840,
+   "notes": [
+    "TELA: prancheta de técnico com checklist (objetivo · prazo · conta feita) e a jogada \"combo\""
+   ]
+  },
+  {
+   "id": "cta",
+   "title": "CTA",
+   "startMs": 41220,
+   "endMs": 43920,
+   "notes": [
+    "TELA: placar \"VOCÊ 0 × ?? BOLETOS\" + \"Comenta PLACAR\""
+   ]
+  }
+ ]
+}

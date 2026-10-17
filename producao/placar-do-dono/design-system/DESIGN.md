@@ -40,6 +40,12 @@ Nada de gradiente arco-íris: o fundo é radial discreto, com grão (0.06) e vin
 ## Som
 - Paleta **crisp** (transientes limpos, pouco reverb): combina com placar eletrônico e não briga com a voz. sfxGain 0.3; transição `whoosh-soft`. Sem trilha (nenhuma fornecida).
 
+## B-roll (vídeo gerado)
+- Entra como base, nunca como mensagem: `BrollPlate` (`estudio-video/src/serie-placar/broll.tsx`) com `<OffthreadVideo muted>`, saturação 0.82, brilho 0.78, véu no fundo da marca, vinheta, base escurecida atrás da legenda e zoom lento (1.00→1.12).
+- O placar/número fica por cima e legível; o b-roll ocupa a faixa livre entre o placar e a legenda, e some (preso à fala) antes do número-chave.
+- Velocidade 1× (clipes de 24 fps desacelerados trepidam); cortes internos só nas fronteiras limpas do clipe.
+- Higiene: nada que pareça falta de higiene (mãos sempre de luva; pessoas sem touca ficam fora do quadro ou cobertas pelo fundo).
+
 ## Regras
 - Um número protagonista por tela; no máximo 1 bloco de texto além da legenda.
 - Âmbar só no que está em foco; verde e coral só para ganho × custo.

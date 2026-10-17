@@ -5,8 +5,8 @@ Conteúdo educativo para donos de dark kitchen (negócios, marketing, finanças)
 
 | Peça | Fonte | Estado |
 |---|---|---|
-| Vídeo "57 pedidos só pra empatar" (~45 s) | `episodios/57-pedidos/roteiro.md` | em produção no estúdio (`estudio-video/src/videos/57-pedidos`) |
-| Vídeo "Desconto de 20%" (~44 s) | `episodios/desconto-20/roteiro.md` | roteiro, voz ElevenLabs e b-roll prontos; em animação |
+| Vídeo "57 pedidos só pra empatar" (44,4 s) | `episodios/57-pedidos/roteiro.md` | pronto (voz ElevenLabs + b-roll), −14 LUFS |
+| Vídeo "Desconto de 20%" (45,3 s) | `episodios/desconto-20/roteiro.md` | pronto (voz ElevenLabs + b-roll), −14 LUFS |
 | Planilha "Placar do Dono" | `entregas/planilha/Placar-do-Dono-calculadora.xlsx` | pronta (124 fórmulas, 0 erros) |
 
 Textos, legendas, ganchos alternativos e plano de postagem: `marcas/placar-do-dono/conteudo/2026-10-kit-educativo.md`.
@@ -26,9 +26,16 @@ Perfil e aprendizados da série: `marcas/placar-do-dono/`. Identidade: `identida
 - B-roll de comida gerado (ex.: `google/veo-3.1`, `kwaivgi/kling-v3.0-pro`, `bytedance/seedance-2.5`) para os primeiros segundos (o gancho com comida segura mais) e para o "pedido fatiado".
 - Trilha original curta: `google/lyria-3-clip-preview`.
 
-## Retomar
+## Retomar / renderizar de novo
+Os MP4 finais não são versionados (≈ 26 MB cada); refaça a partir daqui. Componentes da série: `estudio-video/src/serie-placar/`.
 ```bash
-cd producao/placar-do-dono/estudio-video && npm install   # node_modules não é versionado
+cd producao/placar-do-dono/estudio-video && npm install            # node_modules não é versionado
+for s in 57-pedidos desconto-20; do                                 # áudio de trabalho e b-roll não são versionados no public/
+  ffmpeg -y -i ../episodios/$s/narracao-eleven.mp3 -ar 48000 public/videos/$s/narracao.wav
+done
+mkdir -p public/videos/57-pedidos/broll public/videos/desconto-20/broll
+cp ../broll/v1-*.mp4 public/videos/57-pedidos/broll/ && cp ../broll/v2-*.mp4 public/videos/desconto-20/broll/
 npm run ds:sync && npm run typecheck
-npm run check -- 57-pedidos && npm run render -- 57-pedidos
+npm run render -- 57-pedidos && npm run render -- desconto-20      # ~34 min cada com WebGL em software
 ```
+(O `timeline` normaliza a voz para −16 LUFS ao gerar o `narracao.wav`; se preferir, rode `npm run timeline -- <slug> --audio ../episodios/<slug>/narracao-eleven.mp3 --script ../episodios/<slug>/roteiro.md --alignment ../episodios/<slug>/narracao-eleven.words.json`.) Em ambiente sem Chrome do Remotion, use `BROWSER_EXECUTABLE` apontando para o Chromium local.

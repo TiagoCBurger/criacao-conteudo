@@ -1,711 +1,714 @@
 {
  "version": 1,
  "audio": "narracao.wav",
- "sourceAudio": "../episodios/57-pedidos/narracao.mp3",
+ "sourceAudio": "../episodios/57-pedidos/narracao-eleven.mp3",
  "sourceScript": "../episodios/57-pedidos/roteiro.md",
- "durationMs": 45144,
+ "durationMs": 43120,
  "language": "pt",
  "source": "openai-whisper",
- "scriptMatch": 1,
+ "scriptMatch": 0.977,
  "words": [
   {
    "text": "Todo",
-   "startMs": 94,
-   "endMs": 368
+   "startMs": 100,
+   "endMs": 300
   },
   {
    "text": "dia,",
-   "startMs": 379,
-   "endMs": 642
+   "startMs": 400,
+   "endMs": 660
   },
   {
    "text": "antes",
-   "startMs": 850,
-   "endMs": 1125
+   "startMs": 960,
+   "endMs": 1280
   },
   {
    "text": "do",
-   "startMs": 1136,
-   "endMs": 1212
+   "startMs": 1300,
+   "endMs": 1360
   },
   {
    "text": "primeiro",
-   "startMs": 1223,
-   "endMs": 1508
+   "startMs": 1420,
+   "endMs": 1740
   },
   {
    "text": "pedido,",
-   "startMs": 1519,
-   "endMs": 1936
+   "startMs": 1800,
+   "endMs": 2220
   },
   {
    "text": "o",
-   "startMs": 2177,
-   "endMs": 2237
+   "startMs": 2380,
+   "endMs": 2440
   },
   {
    "text": "seu",
-   "startMs": 2243,
-   "endMs": 2407
+   "startMs": 2480,
+   "endMs": 2600
   },
   {
    "text": "delivery",
-   "startMs": 2418,
-   "endMs": 2802
+   "startMs": 2620,
+   "endMs": 3000
   },
   {
    "text": "já",
-   "startMs": 2813,
-   "endMs": 2934
+   "startMs": 3020,
+   "endMs": 3100
   },
   {
    "text": "está",
-   "startMs": 2945,
-   "endMs": 3120
+   "startMs": 3120,
+   "endMs": 3320
   },
   {
    "text": "perdendo",
-   "startMs": 3131,
-   "endMs": 3570
+   "startMs": 3360,
+   "endMs": 3740
   },
   {
    "text": "de",
-   "startMs": 3581,
-   "endMs": 3668
+   "startMs": 3760,
+   "endMs": 3860
   },
   {
    "text": "cinquenta",
-   "startMs": 3679,
-   "endMs": 4118,
+   "startMs": 3900,
+   "endMs": 4340,
    "em": true
   },
   {
    "text": "e",
-   "startMs": 4129,
-   "endMs": 4189,
+   "startMs": 4360,
+   "endMs": 4420,
    "em": true
   },
   {
    "text": "sete",
-   "startMs": 4162,
-   "endMs": 4414,
+   "startMs": 4540,
+   "endMs": 4940,
    "em": true
   },
   {
    "text": "a",
-   "startMs": 4425,
-   "endMs": 4485
+   "startMs": 5020,
+   "endMs": 5080
   },
   {
    "text": "zero.",
-   "startMs": 4469,
-   "endMs": 4776
+   "startMs": 5240,
+   "endMs": 5540
   },
   {
    "text": "Pega",
-   "startMs": 5526,
-   "endMs": 5746
+   "startMs": 6040,
+   "endMs": 6180
   },
   {
    "text": "um",
-   "startMs": 5757,
-   "endMs": 5822
+   "startMs": 6200,
+   "endMs": 6280
   },
   {
    "text": "pedido",
-   "startMs": 5833,
-   "endMs": 6151
+   "startMs": 6300,
+   "endMs": 6600
   },
   {
    "text": "de",
-   "startMs": 6162,
-   "endMs": 6239
+   "startMs": 6640,
+   "endMs": 6720
   },
   {
    "text": "quarenta",
-   "startMs": 6250,
-   "endMs": 6612
+   "startMs": 6760,
+   "endMs": 7060
   },
   {
    "text": "e",
-   "startMs": 6623,
-   "endMs": 6683
+   "startMs": 7100,
+   "endMs": 7160
   },
   {
    "text": "seis",
-   "startMs": 6656,
-   "endMs": 6831
+   "startMs": 7220,
+   "endMs": 7380
   },
   {
    "text": "reais.",
-   "startMs": 6842,
-   "endMs": 7281
+   "startMs": 7420,
+   "endMs": 7800
   },
   {
    "text": "Tira",
-   "startMs": 8037,
-   "endMs": 8278
+   "startMs": 8160,
+   "endMs": 8300
   },
   {
    "text": "insumo,",
-   "startMs": 8289,
-   "endMs": 8739
+   "startMs": 8340,
+   "endMs": 8820
   },
   {
    "text": "embalagem,",
-   "startMs": 8925,
-   "endMs": 9485
+   "startMs": 8980,
+   "endMs": 9660
   },
   {
    "text": "app",
-   "startMs": 9649,
-   "endMs": 9825
+   "startMs": 9900,
+   "endMs": 10120
   },
   {
    "text": "e",
-   "startMs": 9836,
-   "endMs": 9896
+   "startMs": 10220,
+   "endMs": 10280
   },
   {
    "text": "imposto:",
-   "startMs": 9857,
-   "endMs": 10340
+   "startMs": 10300,
+   "endMs": 10800
   },
   {
    "text": "sobram",
-   "startMs": 10570,
-   "endMs": 10932
+   "startMs": 11160,
+   "endMs": 11440
   },
   {
    "text": "doze",
-   "startMs": 10943,
-   "endMs": 11305,
+   "startMs": 11580,
+   "endMs": 11910,
    "em": true
   },
   {
    "text": "e",
-   "startMs": 11316,
-   "endMs": 11376,
-   "em": true
+   "startMs": 11910,
+   "endMs": 12020,
+   "em": true,
+   "estimated": true
   },
   {
    "text": "oitenta",
-   "startMs": 11360,
-   "endMs": 11667,
-   "em": true
+   "startMs": 12020,
+   "endMs": 12460,
+   "em": true,
+   "estimated": true
   },
   {
    "text": "e",
-   "startMs": 11678,
-   "endMs": 11738,
-   "em": true
+   "startMs": 12460,
+   "endMs": 12570,
+   "em": true,
+   "estimated": true
   },
   {
    "text": "oito.",
-   "startMs": 11711,
-   "endMs": 11996,
+   "startMs": 12570,
+   "endMs": 12900,
    "em": true
   },
   {
    "text": "E",
-   "startMs": 12752,
-   "endMs": 12928
+   "startMs": 13260,
+   "endMs": 13320
   },
   {
    "text": "isso",
-   "startMs": 12939,
-   "endMs": 13169
+   "startMs": 13360,
+   "endMs": 13600
   },
   {
    "text": "nem",
-   "startMs": 13180,
-   "endMs": 13421
+   "startMs": 13700,
+   "endMs": 13860
   },
   {
    "text": "é",
-   "startMs": 13432,
-   "endMs": 13492
+   "startMs": 13900,
+   "endMs": 13960
   },
   {
    "text": "lucro.",
-   "startMs": 13498,
-   "endMs": 13871
+   "startMs": 14020,
+   "endMs": 14320
   },
   {
    "text": "Primeiro,",
-   "startMs": 14627,
-   "endMs": 15033
+   "startMs": 14840,
+   "endMs": 15180
   },
   {
    "text": "paga",
-   "startMs": 15274,
-   "endMs": 15504
+   "startMs": 15320,
+   "endMs": 15500
   },
   {
    "text": "os",
-   "startMs": 15515,
-   "endMs": 15636
+   "startMs": 15540,
+   "endMs": 15660
   },
   {
    "text": "vinte",
-   "startMs": 15647,
-   "endMs": 15855,
+   "startMs": 15720,
+   "endMs": 15900,
    "em": true
   },
   {
    "text": "e",
-   "startMs": 15866,
-   "endMs": 15926,
+   "startMs": 15920,
+   "endMs": 15980,
    "em": true
   },
   {
    "text": "dois",
-   "startMs": 15888,
-   "endMs": 16064,
+   "startMs": 16000,
+   "endMs": 16180,
    "em": true
   },
   {
    "text": "mil",
-   "startMs": 16075,
-   "endMs": 16239,
+   "startMs": 16260,
+   "endMs": 16360,
    "em": true
   },
   {
    "text": "de",
-   "startMs": 16250,
-   "endMs": 16349
+   "startMs": 16400,
+   "endMs": 16460
   },
   {
    "text": "custo",
-   "startMs": 16360,
-   "endMs": 16700
+   "startMs": 16540,
+   "endMs": 16760
   },
   {
    "text": "fixo",
-   "startMs": 16711,
-   "endMs": 17072
+   "startMs": 16900,
+   "endMs": 17140
   },
   {
    "text": "do",
-   "startMs": 17083,
-   "endMs": 17204
+   "startMs": 17180,
+   "endMs": 17240
   },
   {
    "text": "mês.",
-   "startMs": 17215,
-   "endMs": 17588
+   "startMs": 17300,
+   "endMs": 17580
   },
   {
    "text": "Vinte",
-   "startMs": 18344,
-   "endMs": 18596
+   "startMs": 18080,
+   "endMs": 18240
   },
   {
    "text": "e",
-   "startMs": 18607,
-   "endMs": 18667
+   "startMs": 18260,
+   "endMs": 18320
   },
   {
    "text": "dois",
-   "startMs": 18629,
-   "endMs": 18783
+   "startMs": 18340,
+   "endMs": 18500
   },
   {
    "text": "mil",
-   "startMs": 18794,
-   "endMs": 18925
+   "startMs": 18580,
+   "endMs": 18760
   },
   {
    "text": "divididos",
-   "startMs": 18936,
-   "endMs": 19430
+   "startMs": 18820,
+   "endMs": 19320
   },
   {
    "text": "por",
-   "startMs": 19441,
-   "endMs": 19605
+   "startMs": 19340,
+   "endMs": 19460
   },
   {
    "text": "doze",
-   "startMs": 19616,
-   "endMs": 19912
+   "startMs": 19560,
+   "endMs": 19800
   },
   {
    "text": "e",
-   "startMs": 19923,
-   "endMs": 19983
+   "startMs": 19820,
+   "endMs": 19880
   },
   {
    "text": "oitenta",
-   "startMs": 19956,
-   "endMs": 20230
+   "startMs": 19900,
+   "endMs": 20200
   },
   {
    "text": "e",
-   "startMs": 20241,
-   "endMs": 20301
+   "startMs": 20260,
+   "endMs": 20320
   },
   {
    "text": "oito:",
-   "startMs": 20285,
-   "endMs": 20548
+   "startMs": 20380,
+   "endMs": 20620
   },
   {
    "text": "mil",
-   "startMs": 20757,
-   "endMs": 20921
+   "startMs": 21120,
+   "endMs": 21300
   },
   {
    "text": "setecentos",
-   "startMs": 20932,
-   "endMs": 21480
+   "startMs": 21420,
+   "endMs": 22060
   },
   {
    "text": "e",
-   "startMs": 21491,
-   "endMs": 21568
+   "startMs": 22080,
+   "endMs": 22140
   },
   {
    "text": "nove",
-   "startMs": 21579,
-   "endMs": 21809
+   "startMs": 22200,
+   "endMs": 22460
   },
   {
    "text": "pedidos",
-   "startMs": 21820,
-   "endMs": 22248
+   "startMs": 22480,
+   "endMs": 22880
   },
   {
    "text": "no",
-   "startMs": 22259,
-   "endMs": 22336
+   "startMs": 22900,
+   "endMs": 23000
   },
   {
    "text": "mês.",
-   "startMs": 22346,
-   "endMs": 22686
+   "startMs": 23060,
+   "endMs": 23340
   },
   {
    "text": "Cinquenta",
-   "startMs": 23443,
-   "endMs": 23969,
+   "startMs": 23700,
+   "endMs": 24160,
    "em": true
   },
   {
    "text": "e",
-   "startMs": 23980,
-   "endMs": 24040,
+   "startMs": 24200,
+   "endMs": 24260,
    "em": true
   },
   {
    "text": "sete",
-   "startMs": 24024,
-   "endMs": 24353,
+   "startMs": 24360,
+   "endMs": 24580,
    "em": true
   },
   {
    "text": "por",
-   "startMs": 24364,
-   "endMs": 24496,
+   "startMs": 24680,
+   "endMs": 24820,
    "em": true
   },
   {
    "text": "dia.",
-   "startMs": 24507,
-   "endMs": 24803,
+   "startMs": 24940,
+   "endMs": 25180,
    "em": true
   },
   {
    "text": "Só",
-   "startMs": 25559,
-   "endMs": 25800
+   "startMs": 25640,
+   "endMs": 25780
   },
   {
    "text": "pra",
-   "startMs": 25811,
-   "endMs": 25943
+   "startMs": 25780,
+   "endMs": 25860
   },
   {
    "text": "empatar.",
-   "startMs": 25954,
-   "endMs": 26382
+   "startMs": 25880,
+   "endMs": 26280
   },
   {
    "text": "Aquele",
-   "startMs": 27138,
-   "endMs": 27489
+   "startMs": 26860,
+   "endMs": 27120
   },
   {
    "text": "dia",
-   "startMs": 27500,
-   "endMs": 27708
+   "startMs": 27140,
+   "endMs": 27260
   },
   {
    "text": "de",
-   "startMs": 27719,
-   "endMs": 27796
+   "startMs": 27300,
+   "endMs": 27400
   },
   {
    "text": "quarenta",
-   "startMs": 27807,
-   "endMs": 28224
+   "startMs": 27420,
+   "endMs": 27760
   },
   {
    "text": "pedidos",
-   "startMs": 28235,
-   "endMs": 28618
+   "startMs": 27840,
+   "endMs": 28220
   },
   {
    "text": "que",
-   "startMs": 28629,
-   "endMs": 28706
+   "startMs": 28240,
+   "endMs": 28300
   },
   {
    "text": "você",
-   "startMs": 28717,
-   "endMs": 28936
+   "startMs": 28320,
+   "endMs": 28500
   },
   {
    "text": "comemorou?",
-   "startMs": 28947,
-   "endMs": 29441
+   "startMs": 28540,
+   "endMs": 28940
   },
   {
    "text": "Perdeu",
-   "startMs": 30197,
-   "endMs": 30592
+   "startMs": 29300,
+   "endMs": 29580
   },
   {
    "text": "de",
-   "startMs": 30603,
-   "endMs": 30691
+   "startMs": 29620,
+   "endMs": 29700
   },
   {
    "text": "quarenta",
-   "startMs": 30702,
-   "endMs": 31096,
+   "startMs": 29760,
+   "endMs": 30300,
    "em": true
   },
   {
    "text": "a",
-   "startMs": 31107,
-   "endMs": 31167,
+   "startMs": 30340,
+   "endMs": 30400,
    "em": true
   },
   {
    "text": "cinquenta",
-   "startMs": 31140,
-   "endMs": 31568,
+   "startMs": 30440,
+   "endMs": 30820,
    "em": true
   },
   {
    "text": "e",
-   "startMs": 31579,
-   "endMs": 31639,
+   "startMs": 30860,
+   "endMs": 30920,
    "em": true
   },
   {
    "text": "sete.",
-   "startMs": 31623,
-   "endMs": 32018,
+   "startMs": 31020,
+   "endMs": 31360,
    "em": true
   },
   {
    "text": "Pra",
-   "startMs": 32774,
-   "endMs": 32961
+   "startMs": 31800,
+   "endMs": 31900
   },
   {
    "text": "virar",
-   "startMs": 32971,
-   "endMs": 33235
+   "startMs": 31940,
+   "endMs": 32100
   },
   {
    "text": "o",
-   "startMs": 33246,
-   "endMs": 33306
+   "startMs": 32119,
+   "endMs": 32179
   },
   {
    "text": "jogo:",
-   "startMs": 33311,
-   "endMs": 33662
+   "startMs": 32220,
+   "endMs": 32479
   },
   {
    "text": "combo",
-   "startMs": 33991,
-   "endMs": 34243
+   "startMs": 32940,
+   "endMs": 33240
   },
   {
    "text": "sobe",
-   "startMs": 34254,
-   "endMs": 34550
+   "startMs": 33300,
+   "endMs": 33460
   },
   {
    "text": "o",
-   "startMs": 34561,
-   "endMs": 34621
+   "startMs": 33500,
+   "endMs": 33560
   },
   {
    "text": "ticket,",
-   "startMs": 34616,
-   "endMs": 35033
+   "startMs": 33600,
+   "endMs": 33960
   },
   {
    "text": "ficha",
-   "startMs": 35263,
-   "endMs": 35548
+   "startMs": 34180,
+   "endMs": 34380
   },
   {
    "text": "técnica",
-   "startMs": 35559,
-   "endMs": 35987
+   "startMs": 34500,
+   "endMs": 34980
   },
   {
    "text": "sobe",
-   "startMs": 35998,
-   "endMs": 36305
+   "startMs": 35060,
+   "endMs": 35240
   },
   {
    "text": "a",
-   "startMs": 36316,
-   "endMs": 36376
+   "startMs": 35280,
+   "endMs": 35340
   },
   {
    "text": "margem,",
-   "startMs": 36371,
-   "endMs": 36754
+   "startMs": 35360,
+   "endMs": 35720
   },
   {
    "text": "custo",
-   "startMs": 36974,
-   "endMs": 37303
+   "startMs": 35900,
+   "endMs": 36140
   },
   {
    "text": "fixo",
-   "startMs": 37314,
-   "endMs": 37664
+   "startMs": 36320,
+   "endMs": 36640
   },
   {
    "text": "no",
-   "startMs": 37675,
-   "endMs": 37774
+   "startMs": 36820,
+   "endMs": 36960
   },
   {
    "text": "osso.",
-   "startMs": 37785,
-   "endMs": 38114
+   "startMs": 37080,
+   "endMs": 37400
   },
   {
    "text": "Juntos,",
-   "startMs": 38871,
-   "endMs": 39342
+   "startMs": 37900,
+   "endMs": 38260
   },
   {
    "text": "a",
-   "startMs": 39452,
-   "endMs": 39512
+   "startMs": 38420,
+   "endMs": 38480
   },
   {
    "text": "meta",
-   "startMs": 39518,
-   "endMs": 39814
+   "startMs": 38520,
+   "endMs": 38780
   },
   {
    "text": "cai",
-   "startMs": 39825,
-   "endMs": 39989
+   "startMs": 38820,
+   "endMs": 38960
   },
   {
    "text": "pra",
-   "startMs": 40000,
-   "endMs": 40121
+   "startMs": 38980,
+   "endMs": 39100
   },
   {
    "text": "quarenta",
-   "startMs": 40132,
-   "endMs": 40461,
+   "startMs": 39120,
+   "endMs": 39480,
    "em": true
   },
   {
    "text": "e",
-   "startMs": 40471,
-   "endMs": 40531,
+   "startMs": 39520,
+   "endMs": 39580,
    "em": true
   },
   {
    "text": "cinco.",
-   "startMs": 40515,
-   "endMs": 40844,
+   "startMs": 39680,
+   "endMs": 39980,
    "em": true
   },
   {
    "text": "Comenta",
-   "startMs": 41601,
-   "endMs": 42018
+   "startMs": 40420,
+   "endMs": 40700
   },
   {
    "text": "PLACAR",
-   "startMs": 42029,
-   "endMs": 42423,
+   "startMs": 40780,
+   "endMs": 41220,
    "em": true
   },
   {
    "text": "que",
-   "startMs": 42434,
-   "endMs": 42500
+   "startMs": 41300,
+   "endMs": 41360
   },
   {
    "text": "eu",
-   "startMs": 42511,
-   "endMs": 42577
+   "startMs": 41360,
+   "endMs": 41420
   },
   {
    "text": "te",
-   "startMs": 42588,
-   "endMs": 42686
+   "startMs": 41460,
+   "endMs": 41520
   },
   {
    "text": "mando",
-   "startMs": 42697,
-   "endMs": 42884
+   "startMs": 41580,
+   "endMs": 41700
   },
   {
    "text": "a",
-   "startMs": 42895,
-   "endMs": 42955
+   "startMs": 41720,
+   "endMs": 41780
   },
   {
    "text": "planilha",
-   "startMs": 42950,
-   "endMs": 43355
+   "startMs": 41800,
+   "endMs": 42180
   },
   {
    "text": "pra",
-   "startMs": 43366,
-   "endMs": 43509
+   "startMs": 42200,
+   "endMs": 42300
   },
   {
    "text": "calcular",
-   "startMs": 43520,
-   "endMs": 43991
+   "startMs": 42320,
+   "endMs": 42620
   },
   {
    "text": "o",
-   "startMs": 44002,
-   "endMs": 44062
+   "startMs": 42660,
+   "endMs": 42720
   },
   {
    "text": "seu.",
-   "startMs": 44057,
-   "endMs": 44375
+   "startMs": 42760,
+   "endMs": 42940
   }
  ],
  "sections": [
   {
    "id": "gancho",
    "title": "Gancho",
-   "startMs": 94,
-   "endMs": 4776,
+   "startMs": 100,
+   "endMs": 5540,
    "notes": [
     "TELA: placar de LED de estádio à noite: \"VOCÊ 0 × 57 BOLETOS\" · 1º tempo"
    ]
@@ -713,8 +716,8 @@
   {
    "id": "quanto-sobra",
    "title": "Quanto sobra",
-   "startMs": 5526,
-   "endMs": 11996,
+   "startMs": 6040,
+   "endMs": 12900,
    "notes": [
     "TELA: pedido de R$ 46 que se divide em fatias (insumo, embalagem, app, imposto); a fatia fina que sobra (28%) acende: \"R$ 12,88\". Selo pequeno \"exemplo\"."
    ]
@@ -722,8 +725,8 @@
   {
    "id": "os-boletos",
    "title": "Os boletos",
-   "startMs": 12752,
-   "endMs": 17588,
+   "startMs": 13260,
+   "endMs": 17580,
    "notes": [
     "TELA: pilha de boletos entrando em campo, em fila; \"custo fixo: R$ 22 mil/mês\""
    ]
@@ -731,8 +734,8 @@
   {
    "id": "a-conta",
    "title": "A conta",
-   "startMs": 18344,
-   "endMs": 26382,
+   "startMs": 18080,
+   "endMs": 26280,
    "notes": [
     "TELA: conta montada em tipografia de placar: 22.000 ÷ 12,88 = 1.709/mês → ÷ 30 dias = 57/dia"
    ]
@@ -740,8 +743,8 @@
   {
    "id": "o-dia-bom",
    "title": "O dia bom",
-   "startMs": 27138,
-   "endMs": 32018,
+   "startMs": 26860,
+   "endMs": 31360,
    "notes": [
     "TELA: placar \"40 × 57\"; o confete da comemoração cai e murcha"
    ]
@@ -749,8 +752,8 @@
   {
    "id": "a-virada",
    "title": "A virada",
-   "startMs": 32774,
-   "endMs": 40844,
+   "startMs": 31800,
+   "endMs": 39980,
    "notes": [
     "TELA: prancheta de técnico com três jogadas (ticket R$ 50 · margem 30% · fixo R$ 20 mil); o placar desce de 57 para 45"
    ]
@@ -758,8 +761,8 @@
   {
    "id": "cta",
    "title": "CTA",
-   "startMs": 41601,
-   "endMs": 44375,
+   "startMs": 40420,
+   "endMs": 42940,
    "notes": [
     "TELA: placar \"VOCÊ 0 × ?? BOLETOS\" + \"Comenta PLACAR\""
    ]

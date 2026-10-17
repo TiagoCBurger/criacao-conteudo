@@ -1,6 +1,6 @@
 import React from "react";
 import {AbsoluteFill, Easing, interpolate, staticFile} from "remotion";
-import type {VideoDef} from "../../config";
+import {FPS, type VideoDef} from "../../config";
 import {
   beats,
   c,
@@ -19,11 +19,13 @@ import {
   useTime,
 } from "../../lib";
 import tlJson from "../../../public/videos/57-pedidos/timeline.json";
-import {BoletoLineup, PitchLines} from "./boletos";
-import {Confetti} from "./confete";
-import {type LedRect, type LedText, Scoreboard, Stadium} from "./led";
-import {SlicedOrder} from "./pedido";
-import {ContaPlacar, Prancheta, SeloExemplo} from "./placar2d";
+import {BoletoLineup, PitchLines} from "../../serie-placar/boletos";
+import {BrollPlate} from "../../serie-placar/broll";
+import {Confetti} from "../../serie-placar/confete";
+import {type LedRect, type LedText, Scoreboard, Stadium} from "../../serie-placar/led";
+import {BOARD_W, boardCam, COLS, CtaPlacar, FLOOR_Y, L, layer, POSTS, R, ROWS, subLabel, TopBlock, versus} from "../../serie-placar/placar";
+import {SlicedOrder} from "../../serie-placar/pedido";
+import {ContaPlacar, Prancheta, SeloExemplo} from "../../serie-placar/placar2d";
 
 const SLUG = "57-pedidos";
 const tl = timeline(tlJson as never);
@@ -42,53 +44,7 @@ const B = beats(tl, [
 
 const clamp = {extrapolateLeft: "clamp", extrapolateRight: "clamp"} as const;
 
-// ---------------------------------------------------------------------------------------------
-// Layout do placar "VOCÊ × BOLETOS" (unidades de LED: 120 colunas × 90 linhas)
-// ---------------------------------------------------------------------------------------------
-const COLS = 120;
-const ROWS = 90;
-const BOARD_W = 3;
-const BOARD_H = (BOARD_W * ROWS) / COLS;
-const POSTS = 2.2;
-const FLOOR_Y = -BOARD_H / 2 - 0.13 - POSTS;
-const L = 31; // centro da coluna "VOCÊ"
-const R = 89; // centro da coluna "BOLETOS"
-
-const versus = ({
-  you,
-  them,
-  top,
-  youLevel = 1,
-  themLevel = 1,
-  themColor = "accent",
-  youColor = "accent",
-}: {
-  you: string;
-  them: string;
-  top?: string;
-  youLevel?: number;
-  themLevel?: number;
-  themColor?: string;
-  youColor?: string;
-}): {texts: LedText[]; rects: LedRect[]} => ({
-  texts: [
-    ...(top ? [{text: top, x: COLS / 2, y: 10, size: 7, color: "textMuted", level: 0.9, tracking: 1}] : []),
-    {text: "VOCÊ", x: L, y: 26, size: 11, color: "text", tracking: 1},
-    {text: "BOLETOS", x: R, y: 26, size: 11, color: "text", tracking: 1},
-    {text: you, x: L, y: 61, size: 40, color: youColor, level: youLevel},
-    {text: "×", x: COLS / 2, y: 59, size: 24, color: "textMuted", level: 0.85},
-    {text: them, x: R, y: 61, size: 40, color: themColor, level: themLevel},
-  ],
-  rects: [
-    {x: L - 13, y: 35, w: 26, h: 1, color: "positive", level: 0.9},
-    {x: R - 21, y: 35, w: 42, h: 1, color: "negative", level: 0.9},
-  ],
-});
-
-/** Câmera do placar: contra-plongée leve, enquadrada para a faixa livre do 9:16. */
-// center.x > 0 desloca o placar um pouco para a esquerda: a borda direita fica fora da coluna de botões do app
-const boardCam = (fill: number, azimuth: number, elevation = -7, title = false) =>
-  frameSafe({center: [0.08, 0, 0], size: [BOARD_W + 0.3, BOARD_H + 0.3, 0.4], azimuth, elevation, fill, title});
+const BROLL = (f: string) => staticFile(`videos/${SLUG}/broll/${f}`);
 
 // ---------------------------------------------------------------------------------------------
 // 1. Gancho — o dia já começa perdendo de 57 a 0
@@ -103,10 +59,33 @@ const Gancho: React.FC = () => {
   const n = Math.round(57 * k);
   const flash = interpolate(t, [c57, c57 + 0.12, c57 + 1.1], [0, 1, 0.15], clamp);
   const b = versus({you: "0", them: String(n), top: "1º TEMPO"});
-  const a = boardCam(0.72, -14);
-  const z = boardCam(0.78, -7);
+  const a = boardCam(0.66, -14, -7, false, -1.05);
+  const z = boardCam(0.74, -7, -7, false, -0.55);
+  // b-roll: o "primeiro pedido" na chapa, embaixo do placar; some antes do 57 cravar (preso à fala).
+  // Trechos limpos do clipe: 0–1,15 s (espátula prensando) e 2,75–3,95 s (queijo já pousado, dedo enluvado
+  // pressionando). Fica de fora 1,2–2,7 s: o queijo desce com a mão fora do quadro e parece "flutuar".
+  const out0 = Math.min(1.8, c57 - 0.9);
+  const out1 = Math.min(2.35, c57 - 0.3);
   return (
     <AbsoluteFill>
+      <BrollPlate
+        clips={[
+          {src: BROLL("v1-smash.mp4"), at: 0, srcFrom: 0, srcTo: 1.15},
+          {src: BROLL("v1-smash.mp4"), at: 1.15, srcFrom: 2.75, srcTo: 3.95},
+        ]}
+        opacity={[
+          [0, 1],
+          [out0, 1],
+          [out1, 0],
+        ]}
+        top={[0.38, 0.5]}
+        bottom={0.66}
+        darken={0.2}
+        shiftY={-30}
+        zoom={[1.02, 1.08]}
+        zoomDur={3}
+        originY={0.55}
+      />
       <Scene3D camera={a} floorY={FLOOR_Y}>
         <CameraRig keys={[{t: 0, ...a}, {t: zero + 0.8, ...z}]} />
         <Stadium />
@@ -116,7 +95,7 @@ const Gancho: React.FC = () => {
           width={BOARD_W}
           cols={COLS}
           rows={ROWS}
-          posts={POSTS}
+          posts={0}
           heat={flash}
           glows={[{x: R, y: 61, size: 1.6 + flash * 1.2, intensity: 0.25 + flash * 0.4}]}
         />
@@ -126,17 +105,6 @@ const Gancho: React.FC = () => {
     </AbsoluteFill>
   );
 };
-
-// ---------------------------------------------------------------------------------------------
-// Bloco de número no terço superior (abaixo do selo "exemplo")
-// ---------------------------------------------------------------------------------------------
-const TopBlock: React.FC<{children: React.ReactNode}> = ({children}) => (
-  <SafeArea align="top" style={{paddingTop: 300}} gap={8}>
-    <div style={{position: "relative", width: "100%", height: 260}}>{children}</div>
-  </SafeArea>
-);
-const layer: React.CSSProperties = {position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center"};
-const subLabel = type("body", "body", {color: c("textMuted")});
 
 // ---------------------------------------------------------------------------------------------
 // 2. Quanto sobra — de R$ 46, sobram R$ 12,88
@@ -187,7 +155,7 @@ const OsBoletos: React.FC = () => {
   const v22 = useCue("vinte e dois mil");
   const fixo = useCue("custo fixo do mês");
   const step = 0.3;
-  const travel = 1.3;
+  const travel = 1.5;
   // fila de lado, como time perfilado; o 1º boleto vai até a ponta esquerda
   const slot = (i: number): [number, number, number] => [-1.2 + i * 0.6, 0, 0.3 - 0.3 * i];
   const a = frameSafe({center: [0.08, 0.65, -0.3], size: [3.2, 1.3, 1.3], azimuth: 14, elevation: 8, fill: 0.84});
@@ -197,7 +165,8 @@ const OsBoletos: React.FC = () => {
       <Scene3D camera={a} floorY={0}>
         <CameraRig keys={[{t: 0, ...a}, {t: fixo + 1.2, ...b}]} />
         <PitchLines />
-        <BoletoLineup count={N_BOLETOS} start={0} step={step} travel={travel} slot={slot} from={[4.6, 0, -3.2]} face={0.32} glowAt={v22} />
+        {/* a fila já está entrando no corte (start < 0): a cena nunca abre com o campo vazio */}
+        <BoletoLineup count={N_BOLETOS} start={-0.5} step={step} travel={travel} slot={slot} from={[3.6, 0, -2.6]} face={0.32} glowAt={v22} />
       </Scene3D>
       <TopBlock>
         <Reveal delay={v22 - 0.08} preset="blur" style={layer}>
@@ -207,11 +176,11 @@ const OsBoletos: React.FC = () => {
           <div style={subLabel}>custo fixo por mês</div>
         </Reveal>
       </TopBlock>
-      <Sfx name="thud" at={travel * 0.9} volume={0.45} />
+      <Sfx name="thud" at={-0.5 + travel * 0.9} volume={0.45} />
       {[1, 2, 3].map((i) => (
-        <Sfx key={i} name="tick" at={i * step + travel * 0.9} volume={0.35} rate={0.9 + i * 0.05} />
+        <Sfx key={i} name="tick" at={-0.5 + i * step + travel * 0.9} volume={0.35} rate={0.9 + i * 0.05} />
       ))}
-      <Sfx name="thud" at={(N_BOLETOS - 1) * step + travel * 0.9} volume={0.5} />
+      <Sfx name="thud" at={-0.5 + (N_BOLETOS - 1) * step + travel * 0.9} volume={0.5} />
       <Sfx name="thud" at={v22 + 0.05} volume={0.75} rate={0.85} />
     </AbsoluteFill>
   );
@@ -256,10 +225,27 @@ const ODiaBom: React.FC = () => {
   const celebrate = interpolate(t, [burst, burst + 0.15, burst + 0.9], [0, 0.8, 0.1], clamp);
   const flash = interpolate(t, [c57, c57 + 0.12, c57 + 0.9], [0, 1, 0.25], clamp);
   const b = versus({you: String(you), them: "57", youLevel});
-  const a = boardCam(0.72, 12);
-  const z = boardCam(0.77, 5);
+  const a = boardCam(0.66, 12, -7, false, -1.0);
+  const z = boardCam(0.7, 5, -7, false, -0.85);
   return (
     <AbsoluteFill>
+      {/* b-roll: o pico (sacolas lacradas) embaixo do placar. O terço de cima do clipe (pessoas desfocadas,
+          uma sem touca) fica coberto pelo fundo; em "Perdeu" a imagem perde a cor e apaga. */}
+      <BrollPlate
+        clips={[{src: BROLL("v1-pico.mp4"), at: 0, srcFrom: 0, srcTo: 4}]}
+        opacity={[
+          [0, 1],
+          [perdeu + 0.5, 1],
+          [Math.min(3.95, perdeu + 1.3), 0],
+        ]}
+        top={[0.44, 0.56]}
+        darken={0.2}
+        shiftY={120}
+        zoom={[1.06, 1.12]}
+        zoomDur={4}
+        originY={0.9}
+        drainAt={perdeu}
+      />
       <Scene3D camera={a} floorY={FLOOR_Y}>
         <CameraRig keys={[{t: 0, ...a}, {t: perdeu + 1.6, ...z}]} />
         <Stadium />
@@ -269,7 +255,7 @@ const ODiaBom: React.FC = () => {
           width={BOARD_W}
           cols={COLS}
           rows={ROWS}
-          posts={POSTS}
+          posts={0}
           heat={Math.max(celebrate * 0.6, flash)}
           glows={[
             {x: L, y: 61, size: 1.4 + celebrate, intensity: (0.15 + celebrate * 0.35) * youLevel},
@@ -358,34 +344,6 @@ const Meta45: React.FC = () => {
   );
 };
 
-// ---------------------------------------------------------------------------------------------
-// 8. CTA — Comenta PLACAR
-// ---------------------------------------------------------------------------------------------
-const Cta: React.FC = () => {
-  const t = useTime();
-  const comenta = useCue("Comenta PLACAR");
-  const placar = useCue("PLACAR");
-  const blink = t < 0.35 ? 1 : Math.floor((t - 0.35) * 2.4) % 2 === 0 ? 1 : 0.3;
-  const b = versus({you: "0", them: "??", themLevel: blink});
-  const a = boardCam(0.7, -8, -5, true);
-  const z = boardCam(0.76, -2, -4, true);
-  return (
-    <AbsoluteFill>
-      <Scene3D camera={a} floorY={FLOOR_Y}>
-        <CameraRig keys={[{t: 0, ...a}, {t: 4.5, ...z}]} />
-        {/* sem torres de luz: o título ocupa o topo e as lâmpadas atrás dele atrapalhariam a leitura */}
-        <Stadium lamps={false} />
-        <Scoreboard texts={b.texts} rects={b.rects} width={BOARD_W} cols={COLS} rows={ROWS} posts={POSTS} glows={[{x: R, y: 61, size: 1.5, intensity: 0.3 * blink}]} />
-      </Scene3D>
-      <SafeArea align="top" style={{paddingTop: 250}}>
-        <KineticText text={"Comenta\n*PLACAR*"} size="h1" delay={comenta - 0.1} preset="mask" />
-      </SafeArea>
-      <Sfx name="pop" at={comenta} volume={0.6} />
-      <Sfx name="sparkle" at={placar + 0.15} volume={0.55} />
-    </AbsoluteFill>
-  );
-};
-
 // Trechos em que o texto na tela é a própria fala: a legenda some (calculado da fala, não em segundos).
 const HIDE: [number, number][] = [
   [tl.at("Só pra empatar") - 0.05, tl.end("Só pra empatar") + 0.65],
@@ -411,10 +369,12 @@ const Video: React.FC = () => (
       {beat: B[4], component: ODiaBom},
       {beat: B[5], component: AVirada},
       {beat: B[6], component: Meta45},
-      {beat: B[7], component: Cta},
+      {beat: B[7], component: CtaPlacar},
     ]}
   />
 );
 
-const def: VideoDef = {id: SLUG, component: Video, duration: B[B.length - 1].end};
+// duração em quadro inteiro: o Explainer arredonda o fim da última cena e o Root usa ceil;
+// sem isto pode sobrar 1 quadro vazio no fim (aparece como piscada preta no loop do Reels)
+const def: VideoDef = {id: SLUG, component: Video, duration: Math.round(B[B.length - 1].end * FPS) / FPS};
 export default def;
