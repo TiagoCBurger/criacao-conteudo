@@ -1,30 +1,13 @@
-# Status das narrações — FALHA na Fase 1
+# Status das narrações
 
 **Data:** 2026-10-17
 
-**Motivo exato:** a variável `OPENROUTER_API_KEY` **não existe** no ambiente desta sessão auxiliar
-(`[ -n "$OPENROUTER_API_KEY" ]` retornou falso) e também não há `.env` na raiz do projeto
-(só `.env.example`). Nenhuma variável com "openrouter" no nome está definida.
+## Fase 1 — comparação de vozes: CONCLUÍDA
 
-Saída de `node .claude/skills/midia-ia-openrouter/scripts/or.mjs saldo`:
+- Chave `OPENROUTER_API_KEY` presente nesta sessão; `or.mjs saldo` funcionou (US$ 1,94 antes, US$ 1,70 depois).
+- 8 amostras em `narracoes/comparacao/` (4 MAI nativas pt-BR, 3 ElevenLabs, 1 Fish), cada uma com `.palavras.json`.
+- Tabela e observações em `narracoes/comparacao/LEIA.md`.
+- Custo estimado das amostras: ~US$ 0,02. O saldo da conta caiu US$ 0,24 no período (pode incluir transcrições, tentativas Gemini recusadas ou uso de outras sessões na mesma conta).
+- Gemini TTS falhou (exige `response_format="pcm"`; o script pede mp3).
 
-```
-✗ OPENROUTER_API_KEY não encontrada. Crie um arquivo .env na raiz do projeto com a linha
-  OPENROUTER_API_KEY=sk-or-v1-…
-(chave em https://openrouter.ai/keys) e confira se .env está no .gitignore.
-```
-
-Nada foi gerado nem gasto. Passos 2–4 da Fase 1 não foram executados.
-
-**Para destravar:** adicionar `OPENROUTER_API_KEY` às variáveis/segredos do *environment* do
-Claude Code na web (configurações do ambiente) e abrir uma sessão nova, ou criar `.env`
-localmente (nunca commitado).
-
-## Teste de "Network secret" (injeção pelo proxy)
-
-`GET https://openrouter.ai/api/v1/key` sem cabeçalho `Authorization`:
-
-- Código HTTP: **401**
-- Resposta: `{"error":{"message":"No cookie auth credentials found","code":401}}`. Nenhum dado de chave (label/limite) voltou.
-
-Conclusão: o proxy desta sessão também **não** injeta a chave do OpenRouter.
+## Fase 2 — narrações completas: AGUARDANDO a voz escolhida

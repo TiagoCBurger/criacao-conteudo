@@ -1,0 +1,80 @@
+{
+ "text": "Seu anúncio teve mil curtidas e nenhuma venda? Curtida não paga a conta.",
+ "language": "pt",
+ "duration": 6.408,
+ "words": [
+  {
+   "word": "Seu",
+   "start": 0,
+   "end": 0.28
+  },
+  {
+   "word": "anúncio",
+   "start": 0.28,
+   "end": 0.68
+  },
+  {
+   "word": "teve",
+   "start": 0.68,
+   "end": 1.06
+  },
+  {
+   "word": "mil",
+   "start": 1.06,
+   "end": 1.62
+  },
+  {
+   "word": "curtidas",
+   "start": 1.62,
+   "end": 2.42
+  },
+  {
+   "word": "e",
+   "start": 2.42,
+   "end": 2.62
+  },
+  {
+   "word": "nenhuma",
+   "start": 2.62,
+   "end": 2.86
+  },
+  {
+   "word": "venda?",
+   "start": 2.86,
+   "end": 3.62
+  },
+  {
+   "word": "Curtida",
+   "start": 3.68,
+   "end": 4.34
+  },
+  {
+   "word": "não",
+   "start": 4.34,
+   "end": 4.48
+  },
+  {
+   "word": "paga",
+   "start": 4.48,
+   "end": 4.76
+  },
+  {
+   "word": "a",
+   "start": 4.76,
+   "end": 4.92
+  },
+  {
+   "word": "conta.",
+   "start": 4.92,
+   "end": 5.54
+  }
+ ],
+ "segments": [
+  {
+   "start": 0,
+   "end": 5.22,
+   "text": " Seu anúncio teve mil curtidas e nenhuma venda? Curtida não paga a conta."
+  }
+ ],
+ "fonte": "openrouter openai/whisper-large-v3-turbo"
+}
