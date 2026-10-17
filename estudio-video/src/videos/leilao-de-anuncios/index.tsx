@@ -1,6 +1,6 @@
 // Leilão de anúncios — por que quem paga mais nem sempre aparece primeiro (Google Ads e Meta).
-// Ativos gerados por IA: narração (OpenRouter), imagens (OpenRouter) → modelos 3D (TripoSR) e cenário 2.5D
-// (Depth Anything). Rode `npm run ia -- leilao-de-anuncios` para gerar/atualizar; veja storyboard.md.
+// Ativos gerados por IA: narração e trilha (OpenRouter), imagens (OpenRouter) → modelos 3D (TripoSR) e
+// cenário 2.5D (Depth Anything). Rode `npm run ia -- leilao-de-anuncios` para gerar/atualizar; veja storyboard.md.
 import {Search} from "lucide-react";
 import React from "react";
 import {AbsoluteFill, interpolate, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
@@ -41,7 +41,7 @@ import {
   type V3,
 } from "../../lib";
 import tlJson from "../../../public/videos/leilao-de-anuncios/timeline.json";
-import {Clarao, GolpeMartelo, Joia, Moeda, Placa, Salao} from "./objetos";
+import {A, Clarao, GolpeMartelo, Joia, Moeda, Placa, Salao} from "./objetos";
 
 const SLUG = "leilao-de-anuncios";
 const tl = timeline(tlJson as never);
@@ -605,6 +605,7 @@ const Video: React.FC = () => (
   <Explainer
     tl={tl}
     audio={staticFile(`videos/${SLUG}/narracao.wav`)}
+    music={A.music ? staticFile(A.music) : undefined}
     hideCaptions={[
       [tl.at("E quem paga"), tl.at("Cada anunciante")],
       [tl.at("relevância vale"), tl.at("Antes de aumentar")],

@@ -61,6 +61,12 @@ const ${pascal(s.id)}: React.FC = () => {
   )
   .join("\n\n");
 
+// trilha (gerada pelo `npm run ia` ou fornecida): entra no Explainer se já existir em public/videos/<slug>/trilha.mp3
+const hasMusic = fs.existsSync(path.join(root, "public", "videos", slug, "trilha.mp3"));
+const musicLine = hasMusic
+  ? `    music={staticFile(\`videos/\${SLUG}/trilha.mp3\`)}\n`
+  : `    // music={staticFile(\`videos/\${SLUG}/trilha.mp3\`)}   // depois de gerar a trilha (npm run ia) ou receber uma\n`;
+
 const code = `import React from "react";
 import {AbsoluteFill, staticFile} from "remotion";
 import type {VideoDef} from "../../config";
@@ -82,7 +88,7 @@ const Video: React.FC = () => (
   <Explainer
     tl={tl}
     audio={staticFile(\`videos/\${SLUG}/narracao.wav\`)}
-    scenes={[
+${musicLine}    scenes={[
 ${sections.map((s, i) => `      {beat: B[${i}], component: ${pascal(s.id)}},`).join("\n")}
     ]}
   />

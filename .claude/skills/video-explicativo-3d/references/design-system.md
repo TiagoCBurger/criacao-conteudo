@@ -146,7 +146,7 @@ Os tamanhos são em px num quadro de 1080 de largura. Tempos em **segundos**.
                "highlight": "text", "box": null, "stroke": 0},
   "brand": {"logo": "logos/logo.svg", "logoOnDark": "logos/logo-branco.svg",
             "watermark": "none|top-left|top-right|bottom", "handle": "@canal", "endCard": false},
-  "sound": {"palette": "soft|crisp|punchy|digital", "sfxGain": 0.3, "musicGain": 0.12, "duckTo": 0.35,
+  "sound": {"palette": "soft|crisp|punchy|digital", "sfxGain": 0.3, "musicGain": 0.18, "duckTo": 0.35,
             "library": "sons", "transitionSfx": "whoosh-soft"}
 }
 ```

@@ -1,6 +1,6 @@
 # Desenho de som
 
-A narração chega pronta. Esta skill cuida dos **efeitos sonoros** (e de uma trilha, se o usuário fornecer). Som bem colocado faz a animação parecer mais rápida, mais física e mais cara. Som demais cansa e compete com a voz.
+A narração chega pronta (ou é gerada na etapa 2b). Esta skill cuida dos **efeitos sonoros** e da **trilha**: gera uma original sob medida, a não ser que o usuário forneça a dele. Som bem colocado faz a animação parecer mais rápida, mais física e mais cara. Som demais cansa e compete com a voz.
 
 ## Biblioteca
 
@@ -37,10 +37,22 @@ Gerada por síntese em `public/sfx/` na paleta do design system (`sound.palette`
 
 Referência, com narração = 1,0 (a narração entra normalizada em −16 LUFS pelo `timeline.mjs`):
 - efeitos: `sound.sfxGain` 0,25–0,45 (ajuste fino por `volume` em cada `<Sfx>`); `boom`/`riser` ~0,6–0,8 do ganho; `tick`/`click` ~0,5;
-- trilha: `sound.musicGain` 0,08–0,15, com ducking automático para `duckTo` (~35%) enquanto há fala.
+- trilha: `sound.musicGain` 0,15–0,22 para a trilha gerada (nivelada em −16 LUFS) e 0,08–0,15 para trilhas fornecidas, que costumam vir mais altas; ducking automático para `duckTo` (~30–35%) enquanto há fala.
 
 O `render.mjs` masteriza o mix final em −14 LUFS / −1,5 dBTP (padrão de Reels/TikTok/Shorts) e informa o resultado. Se o mix soa abafado ou com efeitos altos demais, mexa nos ganhos do design system, não na masterização.
 
 ## Trilha
 
-Só use trilha que o usuário forneceu ou indicou (direitos autorais). Coloque-a em `public/videos/<slug>/trilha.mp3` e passe `music={staticFile(...)}` ao Explainer. Sem trilha, o vídeo fica só com voz + efeitos, o que é comum e funciona bem em vídeo explicativo.
+**Padrão: trilha original gerada** com `node scripts/ia/trilha.mjs <slug>`, depois da timeline (o `npm run ia` já roda). Ela usa o Lyria 3 do Google via OpenRouter (`google/lyria-3-pro-preview`; `lyria-3-clip-preview` para vídeos de até 30 s) e pede:
+- **instrumental**, sem voz nem letra, mixada para locução: faixa de 1–4 kHz livre, sem melodia principal agitada;
+- **a duração exata do vídeo** (fala + 1,2 s de cauda), com final de verdade: uma batida final e uma cauda curta, sem fade no meio;
+- **estrutura com marcações de tempo** tiradas das seções da timeline: gancho tenso → assentamento → desenvolvimento → pico → resolução;
+- **estilo pelo design system**: direção de arte (cinematic, technical, editorial, playful) e `motion.personality` definem o clima e o BPM.
+
+Ajuste por vídeo em `src/videos/<slug>/ia.json` → `"music": {"style": "…", "bpm": 92, "sections": {"<id da seção>": "o que a música faz ali"}, "model": "…", "prompt": "…(substitui tudo)"}`. Use `sections` para alinhar acentos musicais com eventos visuais fortes (ex.: "impacto grave aos 3 s, junto com o martelo").
+
+O script corta ou completa a faixa na medida, nivela em −16 LUFS e grava `public/videos/<slug>/trilha.mp3`, junto com `ia/trilha.json` (modelo, prompt e custo). No vídeo, passe `music={staticFile("videos/<slug>/trilha.mp3")}` ao `Explainer`, ou `A.music` do `assets.json`. O `<Music>` abaixa a trilha sob a fala (`sound.duckTo`). Com trilha gerada sob medida, `sound.musicGain` entre 0,15 e 0,22 costuma funcionar. Confira de ouvido no render.
+
+**Trilha fornecida pelo usuário** (com direitos) tem prioridade: coloque-a em `public/videos/<slug>/trilha.mp3`. O script detecta que ela não foi gerada por ele (não há `ia/trilha.json`) e não a toca. **Sem `OPENROUTER_API_KEY`**, o vídeo sai só com voz e efeitos, o que também funciona bem em vídeo explicativo: diga isso na entrega.
+
+Todo áudio do Lyria leva a marca d'água SynthID. Registre na entrega que a trilha foi gerada por IA e com qual modelo.

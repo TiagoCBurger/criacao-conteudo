@@ -2,7 +2,7 @@
 name: video-explicativo-3d
 description: >-
   Cria vídeos explicativos verticais (9:16 — Reels, TikTok, Shorts) com animação de alta qualidade,
-  elementos 3D, gráficos, blocos e diagramas, tipografia cinética, lettering, legendas e efeitos sonoros,
+  elementos 3D, gráficos, blocos e diagramas, tipografia cinética, lettering, legendas, efeitos sonoros e trilha original gerada,
   sincronizados palavra a palavra com uma narração já gravada. Use sempre que houver roteiro + áudio/locução
   para virar vídeo, ou quando o usuário pedir "vídeo explicativo", "vídeo didático", "motion graphics",
   "reels/shorts animado", "animar esse roteiro/narração", "vídeo com 3D", ou entregar a saída de uma skill
@@ -14,7 +14,7 @@ description: >-
 
 Transforma **roteiro + narração prontos** em um vídeo vertical didático e bem animado. O tempo de tudo vem da fala. O estilo de tudo vem do design system do projeto. O resultado é um MP4 pronto para postar, com capa e legendas.
 
-**Esta skill faz:** storyboard visual, cenas animadas (3D, gráficos, diagramas, tipografia), legendas sincronizadas, efeitos sonoros, mixagem e render.
+**Esta skill faz:** storyboard visual, cenas animadas (3D, gráficos, diagramas, tipografia), legendas sincronizadas, efeitos sonoros, trilha original sob medida (gerada por IA), mixagem e render.
 **Não faz:** escrever roteiro nem gravar narração (isso chega pronto de outra skill), nem inventar identidade visual por conta própria quando o projeto já tem uma.
 
 ## Insumos
@@ -24,7 +24,7 @@ Transforma **roteiro + narração prontos** em um vídeo vertical didático e be
 | Narração | **sim** | mp3, wav, m4a… Sem áudio, pare e peça: o vídeo é cronometrado por ele |
 | Roteiro | recomendado | .md/.txt (títulos `#` = seções; `[colchetes]`, `> citações` e linhas `VISUAL:`/`TELA:` = notas de direção), ou .json com seções |
 | Alinhamento | opcional | ElevenLabs (with-timestamps / STT), OpenAI Whisper verbose_json, whisper.cpp, .srt/.vtt. Sem ele, a skill transcreve |
-| Assets | opcional | logos, imagens, trilha (só com direitos), modelos .glb do usuário |
+| Assets | opcional | logos, imagens, trilha (com direitos; sem ela, a skill gera uma original), modelos .glb do usuário |
 
 Procure os insumos onde a skill de roteiro costuma deixá-los (pasta do episódio, `roteiros/`, `audio/`) antes de perguntar.
 
@@ -48,7 +48,7 @@ Todos os comandos abaixo rodam dentro de `estudio-video/`.
 Por quê: tudo no vídeo (cores, fontes, material e luz 3D, curvas de animação, paleta sonora) sai dos tokens. Valor de estilo escrito à mão numa cena quebra a consistência da série.
 
 ### 2b. Ativos gerados por IA (opcional) → `references/ia-generativa.md`
-Quando o usuário pede narração por IA, imagens geradas ou 3D único: descreva as imagens em `src/videos/<slug>/ia.json` e rode `npm run ia -- <slug> --script <roteiro>`. Isso gera a narração (OpenRouter), as imagens (OpenRouter), os modelos 3D (TripoSR, local) e os cenários 2.5D (profundidade, local), e roda a timeline no fim. Precisa de `OPENROUTER_API_KEY` no ambiente.
+Quando o usuário pede narração por IA, imagens geradas ou 3D único: descreva as imagens em `src/videos/<slug>/ia.json` e rode `npm run ia -- <slug> --script <roteiro>`. Isso gera a narração (OpenRouter), as imagens (OpenRouter), os modelos 3D (TripoSR, local) e os cenários 2.5D (profundidade, local), roda a timeline e, por fim, gera a **trilha original** sob medida (Lyria 3 via OpenRouter, veja a etapa 6). Precisa de `OPENROUTER_API_KEY` no ambiente.
 
 ### 3. Linha do tempo da fala
 ```bash
@@ -74,7 +74,9 @@ Implemente cada beat em `src/videos/<slug>/index.tsx` com a biblioteca (`../../l
 - **Fidelidade:** números, nomes e afirmações na tela vêm do roteiro. Não invente dados.
 
 ### 6. Som → `references/som.md`
-Coloque `<Sfx>` nos eventos visuais que têm peso: entrada principal, revelação, impacto, acerto/erro. O som de transição entre cenas já vem do design system. Trilha só se o usuário fornecer.
+Coloque `<Sfx>` nos eventos visuais que têm peso: entrada principal, revelação, impacto, acerto/erro. O som de transição entre cenas já vem do design system.
+
+**Trilha: gerada por padrão.** Depois da timeline, `node scripts/ia/trilha.mjs <slug>` (o `npm run ia` já faz isso) compõe uma faixa instrumental original (Lyria 3 via OpenRouter). Ela tem a duração exata do vídeo, segue a estrutura das seções da fala e o estilo do design system, e é nivelada para ficar sob a voz. O resultado vai para `public/videos/<slug>/trilha.mp3`: passe `music=` ao `Explainer` (o esqueleto do `npm run new` já inclui quando o arquivo existe). Trilha fornecida pelo usuário tem prioridade e nunca é sobrescrita. Sem `OPENROUTER_API_KEY`, o vídeo sai só com voz e efeitos: avise na entrega.
 
 ### 7. Conferência → `references/qualidade-e-render.md`
 ```bash
@@ -87,7 +89,7 @@ npm run check -- <slug>          # prancha de contato em out/check/<slug>/pranch
 ```bash
 npm run render -- <slug>         # MP4 final masterizado + capa + .srt
 ```
-Entregue ao usuário: o caminho do MP4, a capa, o `.srt` e um resumo curto com a duração, as cenas e o tratamento de cada uma, as decisões de design (principalmente se o design system foi criado ou convertido agora), o loudness reportado e qualquer pendência (fonte substituída, dado a confirmar, trilha ausente).
+Entregue ao usuário: o caminho do MP4, a capa, o `.srt` e um resumo curto com a duração, as cenas e o tratamento de cada uma, as decisões de design (principalmente se o design system foi criado ou convertido agora), o loudness reportado, a origem da trilha (gerada, com o modelo, ou fornecida) e qualquer pendência (fonte substituída, dado a confirmar, trilha ausente).
 
 ## Referências
 
@@ -100,7 +102,7 @@ Entregue ao usuário: o caminho do MP4, a capa, o `.srt` e um resumo curto com a
 | `references/3d.md` | etapa 5, cenas 3D: linguagem por direção de arte, regras do R3F no Remotion, enquadramento, receitas |
 | `references/2d.md` | etapa 5, quando `art.medium` é `"2d"`: linguagem e componentes de motion graphics planos |
 | `references/som.md` | etapa 6: biblioteca de efeitos, posicionamento, níveis |
-| `references/ia-generativa.md` | etapa 2b: narração e imagens via OpenRouter, imagem→3D (TripoSR), cenário 2.5D, `GenModel`/`Relevo` |
+| `references/ia-generativa.md` | etapas 2b e 6: narração, imagens e trilha via OpenRouter, imagem→3D (TripoSR), cenário 2.5D, `GenModel`/`Relevo` |
 | `references/qualidade-e-render.md` | etapas 7–8: checklist, render, solução de problemas |
 
 `assets/estudio/` é o template do estúdio (não edite vídeos ali). `assets/direcoes/*.json` são presets de direção de arte (sem cores/fontes de marca). `assets/design-system-exemplo/tokens.json` é só uma **referência de formato**: suas cores e fontes são placeholders e não devem aparecer no vídeo de ninguém.

@@ -115,7 +115,7 @@
   "sound": {
     "palette": "digital",
     "sfxGain": 0.28,
-    "musicGain": 0.12,
+    "musicGain": 0.18,
     "duckTo": 0.35,
     "transitionSfx": "swish"
   }

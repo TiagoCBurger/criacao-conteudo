@@ -5,7 +5,7 @@ import * as THREE from "three";
 import {c, ds} from "../../ds";
 import {ThemedMaterial, type V3} from "./scene";
 
-// Ativos gerados por IA (npm run ia -- <slug>): modelos 3D do TripoSR e cenários 2.5D (imagem + profundidade).
+// Ativos gerados por IA (npm run ia -- <slug>): modelos 3D do TripoSR, cenários 2.5D (imagem + profundidade) e trilha.
 // O índice fica em public/videos/<slug>/ia/assets.json; a cena importa o JSON e passa a entrada aqui.
 // Sem a entrada (geração não rodou ou falhou), os componentes usam o `fallback` — o vídeo sempre renderiza.
 
@@ -15,6 +15,8 @@ export type GenAssets = {
   models: Record<string, GenModelAsset>;
   images: Record<string, string>;
   reliefs: Record<string, ReliefAsset>;
+  /** trilha gerada (ou fornecida) em public/: passe ao Explainer com music={A.music ? staticFile(A.music) : undefined} */
+  music?: string;
 };
 
 const firstGeometry = (scene: THREE.Object3D) => {

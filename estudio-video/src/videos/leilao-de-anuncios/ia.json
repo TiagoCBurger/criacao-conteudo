@@ -47,5 +47,14 @@
       "resolution": "1K",
       "prompt": "An auction bidding paddle held upright: a round flat paddle about 25 cm wide with a blank matte off-white face and a thin brass rim, mounted on a short dark walnut handle below it. Front view turned slightly to the side so its thickness is visible."
     }
-  ]
+  ],
+  "music": {
+    "style": "dark, elegant cinematic score with the tension of a night auction: deep sub-bass pulses, a ticking clock-like percussion, muted analog synth pads, a sparse felt-piano motif, low brass swells on impacts, warm tape texture; confident and quietly driving",
+    "bpm": 92,
+    "sections": {
+      "gancho": "hook: immediate intrigue, ticking pulse and a deep low impact hit (the auction gavel) around the 3-second mark",
+      "na-meta": "peak: fullest arrangement, steady drive, still leaving room for the voice",
+      "fechamento": "resolution: warm confident lift, land on a final strong low hit like a gavel strike, then a short natural tail"
+    }
+  }
 }

@@ -54,7 +54,7 @@ const Video: React.FC = () => (
       {beat: B[2], component: Dado, transition: "zoom"},
       {beat: B[3], component: Fechamento},
     ]}
-    // music={staticFile("videos/meu-video/trilha.mp3")}   // só se o usuário forneceu trilha
+    music={staticFile("videos/meu-video/trilha.mp3")}   // trilha gerada (scripts/ia/trilha.mjs) ou fornecida
     // hideCaptions={[[0, 2.1]]}                          // trechos em que o texto na tela = fala
   />
 );

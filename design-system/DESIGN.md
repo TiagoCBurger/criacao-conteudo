@@ -21,7 +21,7 @@ HUD: minimal
 - **Modelos gerados por IA** (`npm run ia`): imagem gerada no OpenRouter, convertida em malha 3D pelo TripoSR (local). Na cena, recebem o **material do design system** (não a cor da imagem), para continuarem coerentes com o resto da série. A cor gerada fica disponível (`vertexColors`) para usos pontuais.
 - **Cenários 2.5D**: imagem gerada mais o mapa de profundidade (Depth Anything V2), deslocando uma malha densa. A câmera anda poucos graus, com paralaxe real. Use como fundo, sempre escurecido pela neblina, nunca como assunto principal com texto por cima.
 - Movimento `confident`: molas amortecidas (pop damping 20), transição `blur` de 0,55 s, deriva de câmera 0,4.
-- Som `crisp`, efeitos a 0,32, transição `whoosh-soft`. Trilha só se o usuário fornecer ou pedir uma gerada.
+- Som `crisp`, efeitos a 0,32, transição `whoosh-soft`. **Trilha original gerada** (Lyria 3 via OpenRouter) sob medida para cada vídeo: cinematográfica, escura e elegante, pulso grave e percussão de "relógio", cerca de 92 BPM. `musicGain 0,2` com `duckTo 0,3`: presente nas pausas, bem abaixo da voz durante a fala.
 
 ## Regras
 - Uma mensagem por tela: 1 visual principal e no máximo 1 bloco de texto (≤ 5 palavras ou um número) além da legenda.

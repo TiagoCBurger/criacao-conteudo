@@ -5,7 +5,7 @@
 cd estudio-video
 npm install                      # contêiner novo
 npm run ia:setup                 # TripoSR + Depth Anything locais (~5 min na 1ª vez)
-npm run ia -- leilao-de-anuncios --script ../roteiros/leilao-de-anuncios.md   # voz + imagens + 3D + relevo + timeline
+npm run ia -- leilao-de-anuncios --script ../roteiros/leilao-de-anuncios.md   # voz + imagens + 3D + relevo + timeline + trilha
 .ia/venv/bin/python scripts/ia/previa-3d.py public/videos/leilao-de-anuncios/ia/3d/*.glb --out out/previa-3d.png
 npm run typecheck && npm run check -- leilao-de-anuncios   # conferir: martelo (pose do golpe), joia, placas, salão 2.5D
 npm run render -- leilao-de-anuncios
@@ -17,6 +17,7 @@ Narração: OpenRouter (`openai/gpt-audio`, voz `cedar`) gerada por `npm run ia`
 Ativos de IA (`src/videos/leilao-de-anuncios/ia.json` → `public/videos/leilao-de-anuncios/ia/`):
 - `salao`: imagem 9:16 gerada (Nano Banana Pro) + profundidade (Depth Anything V2) → **cenário 2.5D** com paralaxe (`<Relevo>`), usado no gancho e no fechamento.
 - `martelo`, `moeda`, `joia`, `placa`: imagens geradas → **modelos 3D** (TripoSR) com o material do design system (`<GenModel>`).
+- `trilha.mp3`: trilha original (Lyria 3), com a duração exata do vídeo e acentos alinhados às seções. O impacto grave do gancho cai junto com o martelo, e o fechamento termina numa batida final. A direção musical fica em `ia.json → music`.
 - Se algum ativo faltar, a cena usa geometria própria (fallback) e o vídeo continua renderizando.
 
 | # | Cena | Âncora (fala) | Tempo | Ideia (1 frase) | Visual | Texto na tela | Som |

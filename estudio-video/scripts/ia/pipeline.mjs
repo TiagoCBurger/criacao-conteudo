@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Pipeline de IA de um vídeo: narração (OpenRouter) → imagens (OpenRouter) → 3D (TripoSR local)
-// → relevo 2.5D (Depth Anything local) → timeline da fala.
-// Uso: npm run ia -- <slug> [--script ../roteiros/<slug>.md] [--voice cedar] [--sem-narracao] [--sem-imagens] [--force]
+// → relevo 2.5D (Depth Anything local) → timeline da fala → trilha original (OpenRouter, Lyria).
+// Uso: npm run ia -- <slug> [--script ../roteiros/<slug>.md] [--voice cedar]
+//        [--sem-narracao] [--sem-imagens] [--sem-timeline] [--sem-trilha] [--force]
 //
 // Cada etapa pula o que já existe (rode de novo sem medo). --force refaz tudo.
 // Resultado em public/videos/<slug>/ia/ e o índice public/videos/<slug>/ia/assets.json, que a cena
@@ -17,7 +18,7 @@ const opt = (k, d) => {
   return i >= 0 ? args[i + 1] : d;
 };
 if (!slug) {
-  console.error("uso: npm run ia -- <slug> [--script roteiro.md] [--voice cedar] [--sem-narracao] [--sem-imagens] [--force]");
+  console.error("uso: npm run ia -- <slug> [--script roteiro.md] [--voice cedar] [--sem-narracao] [--sem-imagens] [--sem-trilha] [--force]");
   process.exit(1);
 }
 const has = (f) => args.includes(`--${f}`);
@@ -45,9 +46,11 @@ if (!has("sem-narracao")) {
 }
 
 // 2) imagens
-const spec = JSON.parse(fs.readFileSync(path.join("src", "videos", slug, "ia.json"), "utf8"));
+const specFile = path.join("src", "videos", slug, "ia.json");
+const spec = fs.existsSync(specFile) ? JSON.parse(fs.readFileSync(specFile, "utf8")) : {images: []};
+spec.images ??= [];
 const imgDir = path.join(base, "img");
-if (!has("sem-imagens")) run("node", ["scripts/ia/imagens.mjs", slug, ...force]);
+if (!has("sem-imagens") && spec.images.length) run("node", ["scripts/ia/imagens.mjs", slug, ...force]);
 
 // 3) 3D e 4) relevo (locais)
 const to3d = spec.images.filter((i) => i.to3d && fs.existsSync(path.join(imgDir, `${i.name}.png`)));
@@ -60,6 +63,16 @@ for (const i of to3d) {
   run(PY, a);
 }
 if (relief.length) run(PY, ["scripts/ia/profundidade.py", ...relief.map((i) => path.join(imgDir, `${i.name}.png`)), "--out", imgDir, ...force]);
+
+// 5) timeline da fala (a trilha precisa dela para ter a duração e a estrutura do vídeo)
+if (fs.existsSync(wav) && !has("sem-timeline")) run("npm", ["run", "timeline", "--", slug, "--audio", wav, "--script", script]);
+
+// 6) trilha original sob medida (mantém trilha.mp3 fornecida pelo usuário)
+const tlFile = path.join("public", "videos", slug, "timeline.json");
+if (!has("sem-trilha")) {
+  if (fs.existsSync(tlFile)) run("node", ["scripts/ia/trilha.mjs", slug, ...force]);
+  else console.log("• trilha: sem timeline.json ainda — rode de novo depois da timeline");
+}
 
 // índice para as cenas
 const assets = {models: {}, images: {}, reliefs: {}};
@@ -75,9 +88,9 @@ for (const i of spec.images) {
   const dep = path.join(imgDir, `${i.name}.profundidade.png`);
   if (fs.existsSync(dep)) assets.reliefs[i.name] = {image: assets.images[i.name], depth: `videos/${slug}/ia/img/${i.name}.profundidade.png`};
 }
+if (fs.existsSync(path.join("public", "videos", slug, "trilha.mp3"))) assets.music = `videos/${slug}/trilha.mp3`;
 fs.mkdirSync(base, {recursive: true});
 fs.writeFileSync(path.join(base, "assets.json"), JSON.stringify(assets, null, 2));
-console.log(`\n✓ assets.json: ${Object.keys(assets.models).length} modelos 3D, ${Object.keys(assets.reliefs).length} relevos, ${Object.keys(assets.images).length} imagens`);
-
-// 5) timeline
-if (fs.existsSync(wav) && !has("sem-timeline")) run("npm", ["run", "timeline", "--", slug, "--audio", wav, "--script", script]);
+console.log(
+  `\n✓ assets.json: ${Object.keys(assets.models).length} modelos 3D, ${Object.keys(assets.reliefs).length} relevos, ${Object.keys(assets.images).length} imagens${assets.music ? ", trilha" : ""}`,
+);
