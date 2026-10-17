@@ -1,0 +1,217 @@
+{
+  "model": "openai/gpt-audio",
+  "voice": "cedar",
+  "created": "2026-10-17T01:16:31.448Z",
+  "sections": [
+    {
+      "title": "Gancho",
+      "text": "Toda vez que você pesquisa no Google, acontece um leilão. Antes de a página carregar. E quem paga mais nem sempre ganha.",
+      "transcript": "Toda vez que você pesquisa no Google, acontece um leilão. Antes de a página carregar. E quem paga mais nem sempre ganha.",
+      "match": 1,
+      "seconds": 8.6,
+      "usage": {
+        "prompt_tokens": 184,
+        "completion_tokens": 215,
+        "total_tokens": 399,
+        "cost": 0.011952,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.011952,
+          "upstream_inference_prompt_cost": 0.00046,
+          "upstream_inference_completions_cost": 0.011492
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 173
+        }
+      }
+    },
+    {
+      "title": "A disputa",
+      "text": "Cada anunciante dá um lance pelo seu clique. Mas o Google não olha só o dinheiro: ele combina o lance com a qualidade do anúncio.",
+      "transcript": "Cada anunciante dá um lance pelo seu clique. Mas o Google não olha só o dinheiro: ele combina o lance com a qualidade do anúncio.",
+      "match": 1,
+      "seconds": 8.67,
+      "usage": {
+        "prompt_tokens": 185,
+        "completion_tokens": 219,
+        "total_tokens": 404,
+        "cost": 0.0121565,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0121565,
+          "upstream_inference_prompt_cost": 0.0004625,
+          "upstream_inference_completions_cost": 0.011694
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 176
+        }
+      }
+    },
+    {
+      "title": "Qualidade",
+      "text": "E qualidade aqui é medida em três coisas: a chance de você clicar, o quanto o anúncio combina com a busca e se a página entrega o que promete.",
+      "transcript": "E qualidade aqui é medida em três coisas: a chance de você clicar, o quanto o anúncio combina com a busca e se a página entrega o que promete.",
+      "match": 1,
+      "seconds": 8.96,
+      "usage": {
+        "prompt_tokens": 188,
+        "completion_tokens": 229,
+        "total_tokens": 417,
+        "cost": 0.012534,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.012534,
+          "upstream_inference_prompt_cost": 0.00047,
+          "upstream_inference_completions_cost": 0.012064
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 181
+        }
+      }
+    },
+    {
+      "title": "O exemplo",
+      "text": "Num exemplo simplificado: a Ana dá um lance de quatro reais, com nota de qualidade dez. Quarenta pontos. O Bruno oferece oito reais, mas com nota três. Vinte e quatro pontos. A Ana fica em primeiro, mesmo oferecendo a metade.",
+      "transcript": "Num exemplo simplificado: a Ana dá um lance de quatro reais, com nota de qualidade dez. Quarenta pontos. O Bruno oferece oito reais, mas com nota três. Vinte e quatro pontos. A Ana fica em primeiro, mesmo oferecendo a metade.",
+      "match": 1,
+      "seconds": 16.49,
+      "usage": {
+        "prompt_tokens": 209,
+        "completion_tokens": 407,
+        "total_tokens": 616,
+        "cost": 0.0225205,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0225205,
+          "upstream_inference_prompt_cost": 0.0005225,
+          "upstream_inference_completions_cost": 0.021998
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 332
+        }
+      }
+    },
+    {
+      "title": "O preço",
+      "text": "E ela nem paga os quatro reais. Paga só o necessário para superar o Bruno: dois reais e quarenta e um centavos.",
+      "transcript": "E ela nem paga os quatro reais. Paga só o necessário para superar o Bruno: dois reais e quarenta e um centavos.",
+      "match": 1,
+      "seconds": 7.34,
+      "usage": {
+        "prompt_tokens": 184,
+        "completion_tokens": 193,
+        "total_tokens": 377,
+        "cost": 0.01049,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.01049,
+          "upstream_inference_prompt_cost": 0.00046,
+          "upstream_inference_completions_cost": 0.01003
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 150
+        }
+      }
+    },
+    {
+      "title": "Na Meta",
+      "text": "No Instagram e no Facebook, a lógica é parecida: a Meta pesa o lance, a chance de a pessoa agir e a qualidade do anúncio.",
+      "transcript": "No Instagram e no Facebook, a lógica é parecida: a Meta pesa o lance, a chance de a pessoa agir e a qualidade do anúncio.",
+      "match": 1,
+      "seconds": 8.44,
+      "usage": {
+        "prompt_tokens": 186,
+        "completion_tokens": 220,
+        "total_tokens": 406,
+        "cost": 0.012115,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.012115,
+          "upstream_inference_prompt_cost": 0.000465,
+          "upstream_inference_completions_cost": 0.01165
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 175
+        }
+      }
+    },
+    {
+      "title": "Fechamento",
+      "text": "Moral do leilão: relevância vale dinheiro. Antes de aumentar o lance, melhore o anúncio.",
+      "transcript": "Moral do leilão: relevância vale dinheiro. Antes de aumentar o lance, melhore o anúncio.",
+      "match": 1,
+      "seconds": 6.23,
+      "usage": {
+        "prompt_tokens": 179,
+        "completion_tokens": 164,
+        "total_tokens": 343,
+        "cost": 0.0090535,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0090535,
+          "upstream_inference_prompt_cost": 0.0004475,
+          "upstream_inference_completions_cost": 0.008606
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 129
+        }
+      }
+    }
+  ]
+}

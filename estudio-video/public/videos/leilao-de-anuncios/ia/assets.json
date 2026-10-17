@@ -1,1 +1,49 @@
-{"models": {}, "images": {}, "reliefs": {}}
+{
+  "models": {
+    "martelo": {
+      "src": "videos/leilao-de-anuncios/ia/3d/martelo.glb",
+      "size": [
+        0.4087,
+        1,
+        0.3888
+      ]
+    },
+    "moeda": {
+      "src": "videos/leilao-de-anuncios/ia/3d/moeda.glb",
+      "size": [
+        0.4755,
+        1,
+        0.9486
+      ]
+    },
+    "joia": {
+      "src": "videos/leilao-de-anuncios/ia/3d/joia.glb",
+      "size": [
+        1,
+        0.7808,
+        0.9563
+      ]
+    },
+    "placa": {
+      "src": "videos/leilao-de-anuncios/ia/3d/placa.glb",
+      "size": [
+        0.4665,
+        1,
+        0.4089
+      ]
+    }
+  },
+  "images": {
+    "salao": "videos/leilao-de-anuncios/ia/img/salao.png",
+    "martelo": "videos/leilao-de-anuncios/ia/img/martelo.png",
+    "moeda": "videos/leilao-de-anuncios/ia/img/moeda.png",
+    "joia": "videos/leilao-de-anuncios/ia/img/joia.png",
+    "placa": "videos/leilao-de-anuncios/ia/img/placa.png"
+  },
+  "reliefs": {
+    "salao": {
+      "image": "videos/leilao-de-anuncios/ia/img/salao.png",
+      "depth": "videos/leilao-de-anuncios/ia/img/salao.profundidade.png"
+    }
+  }
+}
