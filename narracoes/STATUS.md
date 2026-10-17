@@ -19,3 +19,12 @@ Nada foi gerado nem gasto. Passos 2–4 da Fase 1 não foram executados.
 **Para destravar:** adicionar `OPENROUTER_API_KEY` às variáveis/segredos do *environment* do
 Claude Code na web (configurações do ambiente) e abrir uma sessão nova, ou criar `.env`
 localmente (nunca commitado).
+
+## Teste de "Network secret" (injeção pelo proxy)
+
+`GET https://openrouter.ai/api/v1/key` sem cabeçalho `Authorization`:
+
+- Código HTTP: **401**
+- Resposta: `{"error":{"message":"No cookie auth credentials found","code":401}}`. Nenhum dado de chave (label/limite) voltou.
+
+Conclusão: o proxy desta sessão também **não** injeta a chave do OpenRouter.
