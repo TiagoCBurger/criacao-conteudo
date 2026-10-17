@@ -14,7 +14,8 @@
       "name": "martelo",
       "to3d": {
         "smooth": 6,
-        "orient": "head"
+        "orient": "head",
+        "faces": 12000
       },
       "aspect_ratio": "1:1",
       "resolution": "1K",
@@ -24,7 +25,8 @@
       "name": "moeda",
       "to3d": {
         "smooth": 4,
-        "orient": "face"
+        "orient": "face",
+        "faces": 12000
       },
       "aspect_ratio": "1:1",
       "resolution": "1K",
@@ -44,7 +46,8 @@
       "name": "placa",
       "to3d": {
         "smooth": 4,
-        "orient": "face"
+        "orient": "face",
+        "faces": 12000
       },
       "aspect_ratio": "1:1",
       "resolution": "1K",

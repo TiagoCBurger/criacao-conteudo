@@ -126,7 +126,7 @@ const ReliefMesh: React.FC<{
   brightness?: number;
   position?: V3;
   segments?: number;
-}> = ({asset, width, aspect = 16 / 9, relief = 0.6, brightness = 1, position = [0, 0, 0], segments = 320}) => {
+}> = ({asset, width, aspect = 16 / 9, relief = 0.6, brightness = 1, position = [0, 0, 0], segments = 220}) => {
   const [map, depth] = useTexture([staticFile(asset.image), staticFile(asset.depth)]);
   useMemo(() => {
     map.colorSpace = THREE.SRGBColorSpace;

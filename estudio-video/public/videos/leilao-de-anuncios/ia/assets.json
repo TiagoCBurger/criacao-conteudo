@@ -3,17 +3,17 @@
     "martelo": {
       "src": "videos/leilao-de-anuncios/ia/3d/martelo.glb",
       "size": [
-        0.4138,
+        0.4146,
         1,
-        0.2547
+        0.259
       ]
     },
     "moeda": {
       "src": "videos/leilao-de-anuncios/ia/3d/moeda.glb",
       "size": [
         1,
-        0.9768,
-        0.212
+        0.9778,
+        0.2121
       ]
     },
     "joia": {
@@ -27,9 +27,9 @@
     "placa": {
       "src": "videos/leilao-de-anuncios/ia/3d/placa.glb",
       "size": [
-        0.5927,
+        0.5919,
         1,
-        0.2188
+        0.217
       ]
     }
   },
