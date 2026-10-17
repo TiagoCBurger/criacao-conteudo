@@ -10,3 +10,4 @@ public/videos/*/.fala-reconhecida.json
 
 # ferramentas de IA locais (TripoSR, venv, pesos) — recriadas por scripts/ia/setup-3d.sh
 .ia/
+public/videos/*/ia/trilha-resposta.txt
