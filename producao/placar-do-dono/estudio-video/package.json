@@ -1,0 +1,44 @@
+{
+  "name": "estudio-video",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Estúdio Remotion + React Three Fiber para vídeos explicativos verticais, guiado pelo design system do projeto.",
+  "scripts": {
+    "ds:sync": "node scripts/sync-ds.mjs",
+    "ds:check": "node scripts/validate-ds.mjs",
+    "studio": "npm run ds:sync && remotion studio",
+    "typecheck": "npm run ds:sync --silent && tsc --noEmit",
+    "timeline": "node scripts/timeline.mjs",
+    "new": "node scripts/new-video.mjs",
+    "check": "node scripts/check.mjs",
+    "render": "node scripts/render.mjs"
+  },
+  "dependencies": {
+    "@react-three/drei": "10.7.6",
+    "@react-three/fiber": "9.4.0",
+    "@remotion/captions": "4.0.535",
+    "@remotion/cli": "4.0.535",
+    "@remotion/fonts": "4.0.535",
+    "@remotion/layout-utils": "4.0.535",
+    "@remotion/media": "4.0.535",
+    "@remotion/media-utils": "4.0.535",
+    "@remotion/noise": "4.0.535",
+    "@remotion/paths": "4.0.535",
+    "@remotion/shapes": "4.0.535",
+    "@remotion/three": "4.0.535",
+    "@remotion/transitions": "4.0.535",
+    "lucide-react": "1.57.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.535",
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "@remotion/bundler": "4.0.535",
+    "@remotion/install-whisper-cpp": "4.0.535",
+    "@remotion/renderer": "4.0.535",
+    "@types/react": "19.2.2",
+    "@types/three": "0.180.0",
+    "typescript": "5.9.3"
+  }
+}

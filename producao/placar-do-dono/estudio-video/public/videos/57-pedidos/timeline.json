@@ -1,0 +1,768 @@
+{
+ "version": 1,
+ "audio": "narracao.wav",
+ "sourceAudio": "../episodios/57-pedidos/narracao.mp3",
+ "sourceScript": "../episodios/57-pedidos/roteiro.md",
+ "durationMs": 45144,
+ "language": "pt",
+ "source": "openai-whisper",
+ "scriptMatch": 1,
+ "words": [
+  {
+   "text": "Todo",
+   "startMs": 94,
+   "endMs": 368
+  },
+  {
+   "text": "dia,",
+   "startMs": 379,
+   "endMs": 642
+  },
+  {
+   "text": "antes",
+   "startMs": 850,
+   "endMs": 1125
+  },
+  {
+   "text": "do",
+   "startMs": 1136,
+   "endMs": 1212
+  },
+  {
+   "text": "primeiro",
+   "startMs": 1223,
+   "endMs": 1508
+  },
+  {
+   "text": "pedido,",
+   "startMs": 1519,
+   "endMs": 1936
+  },
+  {
+   "text": "o",
+   "startMs": 2177,
+   "endMs": 2237
+  },
+  {
+   "text": "seu",
+   "startMs": 2243,
+   "endMs": 2407
+  },
+  {
+   "text": "delivery",
+   "startMs": 2418,
+   "endMs": 2802
+  },
+  {
+   "text": "já",
+   "startMs": 2813,
+   "endMs": 2934
+  },
+  {
+   "text": "está",
+   "startMs": 2945,
+   "endMs": 3120
+  },
+  {
+   "text": "perdendo",
+   "startMs": 3131,
+   "endMs": 3570
+  },
+  {
+   "text": "de",
+   "startMs": 3581,
+   "endMs": 3668
+  },
+  {
+   "text": "cinquenta",
+   "startMs": 3679,
+   "endMs": 4118,
+   "em": true
+  },
+  {
+   "text": "e",
+   "startMs": 4129,
+   "endMs": 4189,
+   "em": true
+  },
+  {
+   "text": "sete",
+   "startMs": 4162,
+   "endMs": 4414,
+   "em": true
+  },
+  {
+   "text": "a",
+   "startMs": 4425,
+   "endMs": 4485
+  },
+  {
+   "text": "zero.",
+   "startMs": 4469,
+   "endMs": 4776
+  },
+  {
+   "text": "Pega",
+   "startMs": 5526,
+   "endMs": 5746
+  },
+  {
+   "text": "um",
+   "startMs": 5757,
+   "endMs": 5822
+  },
+  {
+   "text": "pedido",
+   "startMs": 5833,
+   "endMs": 6151
+  },
+  {
+   "text": "de",
+   "startMs": 6162,
+   "endMs": 6239
+  },
+  {
+   "text": "quarenta",
+   "startMs": 6250,
+   "endMs": 6612
+  },
+  {
+   "text": "e",
+   "startMs": 6623,
+   "endMs": 6683
+  },
+  {
+   "text": "seis",
+   "startMs": 6656,
+   "endMs": 6831
+  },
+  {
+   "text": "reais.",
+   "startMs": 6842,
+   "endMs": 7281
+  },
+  {
+   "text": "Tira",
+   "startMs": 8037,
+   "endMs": 8278
+  },
+  {
+   "text": "insumo,",
+   "startMs": 8289,
+   "endMs": 8739
+  },
+  {
+   "text": "embalagem,",
+   "startMs": 8925,
+   "endMs": 9485
+  },
+  {
+   "text": "app",
+   "startMs": 9649,
+   "endMs": 9825
+  },
+  {
+   "text": "e",
+   "startMs": 9836,
+   "endMs": 9896
+  },
+  {
+   "text": "imposto:",
+   "startMs": 9857,
+   "endMs": 10340
+  },
+  {
+   "text": "sobram",
+   "startMs": 10570,
+   "endMs": 10932
+  },
+  {
+   "text": "doze",
+   "startMs": 10943,
+   "endMs": 11305,
+   "em": true
+  },
+  {
+   "text": "e",
+   "startMs": 11316,
+   "endMs": 11376,
+   "em": true
+  },
+  {
+   "text": "oitenta",
+   "startMs": 11360,
+   "endMs": 11667,
+   "em": true
+  },
+  {
+   "text": "e",
+   "startMs": 11678,
+   "endMs": 11738,
+   "em": true
+  },
+  {
+   "text": "oito.",
+   "startMs": 11711,
+   "endMs": 11996,
+   "em": true
+  },
+  {
+   "text": "E",
+   "startMs": 12752,
+   "endMs": 12928
+  },
+  {
+   "text": "isso",
+   "startMs": 12939,
+   "endMs": 13169
+  },
+  {
+   "text": "nem",
+   "startMs": 13180,
+   "endMs": 13421
+  },
+  {
+   "text": "é",
+   "startMs": 13432,
+   "endMs": 13492
+  },
+  {
+   "text": "lucro.",
+   "startMs": 13498,
+   "endMs": 13871
+  },
+  {
+   "text": "Primeiro,",
+   "startMs": 14627,
+   "endMs": 15033
+  },
+  {
+   "text": "paga",
+   "startMs": 15274,
+   "endMs": 15504
+  },
+  {
+   "text": "os",
+   "startMs": 15515,
+   "endMs": 15636
+  },
+  {
+   "text": "vinte",
+   "startMs": 15647,
+   "endMs": 15855,
+   "em": true
+  },
+  {
+   "text": "e",
+   "startMs": 15866,
+   "endMs": 15926,
+   "em": true
+  },
+  {
+   "text": "dois",
+   "startMs": 15888,
+   "endMs": 16064,
+   "em": true
+  },
+  {
+   "text": "mil",
+   "startMs": 16075,
+   "endMs": 16239,
+   "em": true
+  },
+  {
+   "text": "de",
+   "startMs": 16250,
+   "endMs": 16349
+  },
+  {
+   "text": "custo",
+   "startMs": 16360,
+   "endMs": 16700
+  },
+  {
+   "text": "fixo",
+   "startMs": 16711,
+   "endMs": 17072
+  },
+  {
+   "text": "do",
+   "startMs": 17083,
+   "endMs": 17204
+  },
+  {
+   "text": "mês.",
+   "startMs": 17215,
+   "endMs": 17588
+  },
+  {
+   "text": "Vinte",
+   "startMs": 18344,
+   "endMs": 18596
+  },
+  {
+   "text": "e",
+   "startMs": 18607,
+   "endMs": 18667
+  },
+  {
+   "text": "dois",
+   "startMs": 18629,
+   "endMs": 18783
+  },
+  {
+   "text": "mil",
+   "startMs": 18794,
+   "endMs": 18925
+  },
+  {
+   "text": "divididos",
+   "startMs": 18936,
+   "endMs": 19430
+  },
+  {
+   "text": "por",
+   "startMs": 19441,
+   "endMs": 19605
+  },
+  {
+   "text": "doze",
+   "startMs": 19616,
+   "endMs": 19912
+  },
+  {
+   "text": "e",
+   "startMs": 19923,
+   "endMs": 19983
+  },
+  {
+   "text": "oitenta",
+   "startMs": 19956,
+   "endMs": 20230
+  },
+  {
+   "text": "e",
+   "startMs": 20241,
+   "endMs": 20301
+  },
+  {
+   "text": "oito:",
+   "startMs": 20285,
+   "endMs": 20548
+  },
+  {
+   "text": "mil",
+   "startMs": 20757,
+   "endMs": 20921
+  },
+  {
+   "text": "setecentos",
+   "startMs": 20932,
+   "endMs": 21480
+  },
+  {
+   "text": "e",
+   "startMs": 21491,
+   "endMs": 21568
+  },
+  {
+   "text": "nove",
+   "startMs": 21579,
+   "endMs": 21809
+  },
+  {
+   "text": "pedidos",
+   "startMs": 21820,
+   "endMs": 22248
+  },
+  {
+   "text": "no",
+   "startMs": 22259,
+   "endMs": 22336
+  },
+  {
+   "text": "mês.",
+   "startMs": 22346,
+   "endMs": 22686
+  },
+  {
+   "text": "Cinquenta",
+   "startMs": 23443,
+   "endMs": 23969,
+   "em": true
+  },
+  {
+   "text": "e",
+   "startMs": 23980,
+   "endMs": 24040,
+   "em": true
+  },
+  {
+   "text": "sete",
+   "startMs": 24024,
+   "endMs": 24353,
+   "em": true
+  },
+  {
+   "text": "por",
+   "startMs": 24364,
+   "endMs": 24496,
+   "em": true
+  },
+  {
+   "text": "dia.",
+   "startMs": 24507,
+   "endMs": 24803,
+   "em": true
+  },
+  {
+   "text": "Só",
+   "startMs": 25559,
+   "endMs": 25800
+  },
+  {
+   "text": "pra",
+   "startMs": 25811,
+   "endMs": 25943
+  },
+  {
+   "text": "empatar.",
+   "startMs": 25954,
+   "endMs": 26382
+  },
+  {
+   "text": "Aquele",
+   "startMs": 27138,
+   "endMs": 27489
+  },
+  {
+   "text": "dia",
+   "startMs": 27500,
+   "endMs": 27708
+  },
+  {
+   "text": "de",
+   "startMs": 27719,
+   "endMs": 27796
+  },
+  {
+   "text": "quarenta",
+   "startMs": 27807,
+   "endMs": 28224
+  },
+  {
+   "text": "pedidos",
+   "startMs": 28235,
+   "endMs": 28618
+  },
+  {
+   "text": "que",
+   "startMs": 28629,
+   "endMs": 28706
+  },
+  {
+   "text": "você",
+   "startMs": 28717,
+   "endMs": 28936
+  },
+  {
+   "text": "comemorou?",
+   "startMs": 28947,
+   "endMs": 29441
+  },
+  {
+   "text": "Perdeu",
+   "startMs": 30197,
+   "endMs": 30592
+  },
+  {
+   "text": "de",
+   "startMs": 30603,
+   "endMs": 30691
+  },
+  {
+   "text": "quarenta",
+   "startMs": 30702,
+   "endMs": 31096,
+   "em": true
+  },
+  {
+   "text": "a",
+   "startMs": 31107,
+   "endMs": 31167,
+   "em": true
+  },
+  {
+   "text": "cinquenta",
+   "startMs": 31140,
+   "endMs": 31568,
+   "em": true
+  },
+  {
+   "text": "e",
+   "startMs": 31579,
+   "endMs": 31639,
+   "em": true
+  },
+  {
+   "text": "sete.",
+   "startMs": 31623,
+   "endMs": 32018,
+   "em": true
+  },
+  {
+   "text": "Pra",
+   "startMs": 32774,
+   "endMs": 32961
+  },
+  {
+   "text": "virar",
+   "startMs": 32971,
+   "endMs": 33235
+  },
+  {
+   "text": "o",
+   "startMs": 33246,
+   "endMs": 33306
+  },
+  {
+   "text": "jogo:",
+   "startMs": 33311,
+   "endMs": 33662
+  },
+  {
+   "text": "combo",
+   "startMs": 33991,
+   "endMs": 34243
+  },
+  {
+   "text": "sobe",
+   "startMs": 34254,
+   "endMs": 34550
+  },
+  {
+   "text": "o",
+   "startMs": 34561,
+   "endMs": 34621
+  },
+  {
+   "text": "ticket,",
+   "startMs": 34616,
+   "endMs": 35033
+  },
+  {
+   "text": "ficha",
+   "startMs": 35263,
+   "endMs": 35548
+  },
+  {
+   "text": "técnica",
+   "startMs": 35559,
+   "endMs": 35987
+  },
+  {
+   "text": "sobe",
+   "startMs": 35998,
+   "endMs": 36305
+  },
+  {
+   "text": "a",
+   "startMs": 36316,
+   "endMs": 36376
+  },
+  {
+   "text": "margem,",
+   "startMs": 36371,
+   "endMs": 36754
+  },
+  {
+   "text": "custo",
+   "startMs": 36974,
+   "endMs": 37303
+  },
+  {
+   "text": "fixo",
+   "startMs": 37314,
+   "endMs": 37664
+  },
+  {
+   "text": "no",
+   "startMs": 37675,
+   "endMs": 37774
+  },
+  {
+   "text": "osso.",
+   "startMs": 37785,
+   "endMs": 38114
+  },
+  {
+   "text": "Juntos,",
+   "startMs": 38871,
+   "endMs": 39342
+  },
+  {
+   "text": "a",
+   "startMs": 39452,
+   "endMs": 39512
+  },
+  {
+   "text": "meta",
+   "startMs": 39518,
+   "endMs": 39814
+  },
+  {
+   "text": "cai",
+   "startMs": 39825,
+   "endMs": 39989
+  },
+  {
+   "text": "pra",
+   "startMs": 40000,
+   "endMs": 40121
+  },
+  {
+   "text": "quarenta",
+   "startMs": 40132,
+   "endMs": 40461,
+   "em": true
+  },
+  {
+   "text": "e",
+   "startMs": 40471,
+   "endMs": 40531,
+   "em": true
+  },
+  {
+   "text": "cinco.",
+   "startMs": 40515,
+   "endMs": 40844,
+   "em": true
+  },
+  {
+   "text": "Comenta",
+   "startMs": 41601,
+   "endMs": 42018
+  },
+  {
+   "text": "PLACAR",
+   "startMs": 42029,
+   "endMs": 42423,
+   "em": true
+  },
+  {
+   "text": "que",
+   "startMs": 42434,
+   "endMs": 42500
+  },
+  {
+   "text": "eu",
+   "startMs": 42511,
+   "endMs": 42577
+  },
+  {
+   "text": "te",
+   "startMs": 42588,
+   "endMs": 42686
+  },
+  {
+   "text": "mando",
+   "startMs": 42697,
+   "endMs": 42884
+  },
+  {
+   "text": "a",
+   "startMs": 42895,
+   "endMs": 42955
+  },
+  {
+   "text": "planilha",
+   "startMs": 42950,
+   "endMs": 43355
+  },
+  {
+   "text": "pra",
+   "startMs": 43366,
+   "endMs": 43509
+  },
+  {
+   "text": "calcular",
+   "startMs": 43520,
+   "endMs": 43991
+  },
+  {
+   "text": "o",
+   "startMs": 44002,
+   "endMs": 44062
+  },
+  {
+   "text": "seu.",
+   "startMs": 44057,
+   "endMs": 44375
+  }
+ ],
+ "sections": [
+  {
+   "id": "gancho",
+   "title": "Gancho",
+   "startMs": 94,
+   "endMs": 4776,
+   "notes": [
+    "TELA: placar de LED de estádio à noite: \"VOCÊ 0 × 57 BOLETOS\" · 1º tempo"
+   ]
+  },
+  {
+   "id": "quanto-sobra",
+   "title": "Quanto sobra",
+   "startMs": 5526,
+   "endMs": 11996,
+   "notes": [
+    "TELA: pedido de R$ 46 que se divide em fatias (insumo, embalagem, app, imposto); a fatia fina que sobra (28%) acende: \"R$ 12,88\". Selo pequeno \"exemplo\"."
+   ]
+  },
+  {
+   "id": "os-boletos",
+   "title": "Os boletos",
+   "startMs": 12752,
+   "endMs": 17588,
+   "notes": [
+    "TELA: pilha de boletos entrando em campo, em fila; \"custo fixo: R$ 22 mil/mês\""
+   ]
+  },
+  {
+   "id": "a-conta",
+   "title": "A conta",
+   "startMs": 18344,
+   "endMs": 26382,
+   "notes": [
+    "TELA: conta montada em tipografia de placar: 22.000 ÷ 12,88 = 1.709/mês → ÷ 30 dias = 57/dia"
+   ]
+  },
+  {
+   "id": "o-dia-bom",
+   "title": "O dia bom",
+   "startMs": 27138,
+   "endMs": 32018,
+   "notes": [
+    "TELA: placar \"40 × 57\"; o confete da comemoração cai e murcha"
+   ]
+  },
+  {
+   "id": "a-virada",
+   "title": "A virada",
+   "startMs": 32774,
+   "endMs": 40844,
+   "notes": [
+    "TELA: prancheta de técnico com três jogadas (ticket R$ 50 · margem 30% · fixo R$ 20 mil); o placar desce de 57 para 45"
+   ]
+  },
+  {
+   "id": "cta",
+   "title": "CTA",
+   "startMs": 41601,
+   "endMs": 44375,
+   "notes": [
+    "TELA: placar \"VOCÊ 0 × ?? BOLETOS\" + \"Comenta PLACAR\""
+   ]
+  }
+ ]
+}

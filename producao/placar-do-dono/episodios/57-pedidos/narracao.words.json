@@ -1,0 +1,670 @@
+{
+ "text": "Todo dia, antes do primeiro pedido, o seu delivery já está perdendo de cinquenta e sete a zero. Pega um pedido de quarenta e seis reais. Tira insumo, embalagem, app e imposto: sobram doze e oitenta e oito. E isso nem é lucro. Primeiro, paga os vinte e dois mil de custo fixo do mês. Vinte e dois mil divididos por doze e oitenta e oito: mil setecentos e nove pedidos no mês. Cinquenta e sete por dia. Só pra empatar. Aquele dia de quarenta pedidos que você comemorou? Perdeu de quarenta a cinquenta e sete. Pra virar o jogo: combo sobe o ticket, ficha técnica sobe a margem, custo fixo no osso. Juntos, a meta cai pra quarenta e cinco. Comenta PLACAR que eu te mando a planilha pra calcular o seu.",
+ "words": [
+  {
+   "word": "Todo",
+   "start": 0.094,
+   "end": 0.368
+  },
+  {
+   "word": "dia",
+   "start": 0.379,
+   "end": 0.642
+  },
+  {
+   "word": "antes",
+   "start": 0.85,
+   "end": 1.125
+  },
+  {
+   "word": "do",
+   "start": 1.136,
+   "end": 1.212
+  },
+  {
+   "word": "primeiro",
+   "start": 1.223,
+   "end": 1.508
+  },
+  {
+   "word": "pedido",
+   "start": 1.519,
+   "end": 1.936
+  },
+  {
+   "word": "o",
+   "start": 2.177,
+   "end": 2.232
+  },
+  {
+   "word": "seu",
+   "start": 2.243,
+   "end": 2.407
+  },
+  {
+   "word": "delivery",
+   "start": 2.418,
+   "end": 2.802
+  },
+  {
+   "word": "já",
+   "start": 2.813,
+   "end": 2.934
+  },
+  {
+   "word": "está",
+   "start": 2.945,
+   "end": 3.12
+  },
+  {
+   "word": "perdendo",
+   "start": 3.131,
+   "end": 3.57
+  },
+  {
+   "word": "de",
+   "start": 3.581,
+   "end": 3.668
+  },
+  {
+   "word": "cinquenta",
+   "start": 3.679,
+   "end": 4.118
+  },
+  {
+   "word": "e",
+   "start": 4.129,
+   "end": 4.151
+  },
+  {
+   "word": "sete",
+   "start": 4.162,
+   "end": 4.414
+  },
+  {
+   "word": "a",
+   "start": 4.425,
+   "end": 4.458
+  },
+  {
+   "word": "zero",
+   "start": 4.469,
+   "end": 4.776
+  },
+  {
+   "word": "Pega",
+   "start": 5.526,
+   "end": 5.746
+  },
+  {
+   "word": "um",
+   "start": 5.757,
+   "end": 5.822
+  },
+  {
+   "word": "pedido",
+   "start": 5.833,
+   "end": 6.151
+  },
+  {
+   "word": "de",
+   "start": 6.162,
+   "end": 6.239
+  },
+  {
+   "word": "quarenta",
+   "start": 6.25,
+   "end": 6.612
+  },
+  {
+   "word": "e",
+   "start": 6.623,
+   "end": 6.645
+  },
+  {
+   "word": "seis",
+   "start": 6.656,
+   "end": 6.831
+  },
+  {
+   "word": "reais",
+   "start": 6.842,
+   "end": 7.281
+  },
+  {
+   "word": "Tira",
+   "start": 8.037,
+   "end": 8.278
+  },
+  {
+   "word": "insumo",
+   "start": 8.289,
+   "end": 8.739
+  },
+  {
+   "word": "embalagem",
+   "start": 8.925,
+   "end": 9.485
+  },
+  {
+   "word": "app",
+   "start": 9.649,
+   "end": 9.825
+  },
+  {
+   "word": "e",
+   "start": 9.836,
+   "end": 9.846
+  },
+  {
+   "word": "imposto",
+   "start": 9.857,
+   "end": 10.34
+  },
+  {
+   "word": "sobram",
+   "start": 10.57,
+   "end": 10.932
+  },
+  {
+   "word": "doze",
+   "start": 10.943,
+   "end": 11.305
+  },
+  {
+   "word": "e",
+   "start": 11.316,
+   "end": 11.349
+  },
+  {
+   "word": "oitenta",
+   "start": 11.36,
+   "end": 11.667
+  },
+  {
+   "word": "e",
+   "start": 11.678,
+   "end": 11.7
+  },
+  {
+   "word": "oito",
+   "start": 11.711,
+   "end": 11.996
+  },
+  {
+   "word": "E",
+   "start": 12.752,
+   "end": 12.928
+  },
+  {
+   "word": "isso",
+   "start": 12.939,
+   "end": 13.169
+  },
+  {
+   "word": "nem",
+   "start": 13.18,
+   "end": 13.421
+  },
+  {
+   "word": "é",
+   "start": 13.432,
+   "end": 13.487
+  },
+  {
+   "word": "lucro",
+   "start": 13.498,
+   "end": 13.871
+  },
+  {
+   "word": "Primeiro",
+   "start": 14.627,
+   "end": 15.033
+  },
+  {
+   "word": "paga",
+   "start": 15.274,
+   "end": 15.504
+  },
+  {
+   "word": "os",
+   "start": 15.515,
+   "end": 15.636
+  },
+  {
+   "word": "vinte",
+   "start": 15.647,
+   "end": 15.855
+  },
+  {
+   "word": "e",
+   "start": 15.866,
+   "end": 15.877
+  },
+  {
+   "word": "dois",
+   "start": 15.888,
+   "end": 16.064
+  },
+  {
+   "word": "mil",
+   "start": 16.075,
+   "end": 16.239
+  },
+  {
+   "word": "de",
+   "start": 16.25,
+   "end": 16.349
+  },
+  {
+   "word": "custo",
+   "start": 16.36,
+   "end": 16.7
+  },
+  {
+   "word": "fixo",
+   "start": 16.711,
+   "end": 17.072
+  },
+  {
+   "word": "do",
+   "start": 17.083,
+   "end": 17.204
+  },
+  {
+   "word": "mês",
+   "start": 17.215,
+   "end": 17.588
+  },
+  {
+   "word": "Vinte",
+   "start": 18.344,
+   "end": 18.596
+  },
+  {
+   "word": "e",
+   "start": 18.607,
+   "end": 18.618
+  },
+  {
+   "word": "dois",
+   "start": 18.629,
+   "end": 18.783
+  },
+  {
+   "word": "mil",
+   "start": 18.794,
+   "end": 18.925
+  },
+  {
+   "word": "divididos",
+   "start": 18.936,
+   "end": 19.43
+  },
+  {
+   "word": "por",
+   "start": 19.441,
+   "end": 19.605
+  },
+  {
+   "word": "doze",
+   "start": 19.616,
+   "end": 19.912
+  },
+  {
+   "word": "e",
+   "start": 19.923,
+   "end": 19.945
+  },
+  {
+   "word": "oitenta",
+   "start": 19.956,
+   "end": 20.23
+  },
+  {
+   "word": "e",
+   "start": 20.241,
+   "end": 20.274
+  },
+  {
+   "word": "oito",
+   "start": 20.285,
+   "end": 20.548
+  },
+  {
+   "word": "mil",
+   "start": 20.757,
+   "end": 20.921
+  },
+  {
+   "word": "setecentos",
+   "start": 20.932,
+   "end": 21.48
+  },
+  {
+   "word": "e",
+   "start": 21.491,
+   "end": 21.568
+  },
+  {
+   "word": "nove",
+   "start": 21.579,
+   "end": 21.809
+  },
+  {
+   "word": "pedidos",
+   "start": 21.82,
+   "end": 22.248
+  },
+  {
+   "word": "no",
+   "start": 22.259,
+   "end": 22.336
+  },
+  {
+   "word": "mês",
+   "start": 22.346,
+   "end": 22.686
+  },
+  {
+   "word": "Cinquenta",
+   "start": 23.443,
+   "end": 23.969
+  },
+  {
+   "word": "e",
+   "start": 23.98,
+   "end": 24.013
+  },
+  {
+   "word": "sete",
+   "start": 24.024,
+   "end": 24.353
+  },
+  {
+   "word": "por",
+   "start": 24.364,
+   "end": 24.496
+  },
+  {
+   "word": "dia",
+   "start": 24.507,
+   "end": 24.803
+  },
+  {
+   "word": "Só",
+   "start": 25.559,
+   "end": 25.8
+  },
+  {
+   "word": "pra",
+   "start": 25.811,
+   "end": 25.943
+  },
+  {
+   "word": "empatar",
+   "start": 25.954,
+   "end": 26.382
+  },
+  {
+   "word": "Aquele",
+   "start": 27.138,
+   "end": 27.489
+  },
+  {
+   "word": "dia",
+   "start": 27.5,
+   "end": 27.708
+  },
+  {
+   "word": "de",
+   "start": 27.719,
+   "end": 27.796
+  },
+  {
+   "word": "quarenta",
+   "start": 27.807,
+   "end": 28.224
+  },
+  {
+   "word": "pedidos",
+   "start": 28.235,
+   "end": 28.618
+  },
+  {
+   "word": "que",
+   "start": 28.629,
+   "end": 28.706
+  },
+  {
+   "word": "você",
+   "start": 28.717,
+   "end": 28.936
+  },
+  {
+   "word": "comemorou",
+   "start": 28.947,
+   "end": 29.441
+  },
+  {
+   "word": "Perdeu",
+   "start": 30.197,
+   "end": 30.592
+  },
+  {
+   "word": "de",
+   "start": 30.603,
+   "end": 30.691
+  },
+  {
+   "word": "quarenta",
+   "start": 30.702,
+   "end": 31.096
+  },
+  {
+   "word": "a",
+   "start": 31.107,
+   "end": 31.129
+  },
+  {
+   "word": "cinquenta",
+   "start": 31.14,
+   "end": 31.568
+  },
+  {
+   "word": "e",
+   "start": 31.579,
+   "end": 31.612
+  },
+  {
+   "word": "sete",
+   "start": 31.623,
+   "end": 32.018
+  },
+  {
+   "word": "Pra",
+   "start": 32.774,
+   "end": 32.961
+  },
+  {
+   "word": "virar",
+   "start": 32.971,
+   "end": 33.235
+  },
+  {
+   "word": "o",
+   "start": 33.246,
+   "end": 33.3
+  },
+  {
+   "word": "jogo",
+   "start": 33.311,
+   "end": 33.662
+  },
+  {
+   "word": "combo",
+   "start": 33.991,
+   "end": 34.243
+  },
+  {
+   "word": "sobe",
+   "start": 34.254,
+   "end": 34.55
+  },
+  {
+   "word": "o",
+   "start": 34.561,
+   "end": 34.605
+  },
+  {
+   "word": "ticket",
+   "start": 34.616,
+   "end": 35.033
+  },
+  {
+   "word": "ficha",
+   "start": 35.263,
+   "end": 35.548
+  },
+  {
+   "word": "técnica",
+   "start": 35.559,
+   "end": 35.987
+  },
+  {
+   "word": "sobe",
+   "start": 35.998,
+   "end": 36.305
+  },
+  {
+   "word": "a",
+   "start": 36.316,
+   "end": 36.36
+  },
+  {
+   "word": "margem",
+   "start": 36.371,
+   "end": 36.754
+  },
+  {
+   "word": "custo",
+   "start": 36.974,
+   "end": 37.303
+  },
+  {
+   "word": "fixo",
+   "start": 37.314,
+   "end": 37.664
+  },
+  {
+   "word": "no",
+   "start": 37.675,
+   "end": 37.774
+  },
+  {
+   "word": "osso",
+   "start": 37.785,
+   "end": 38.114
+  },
+  {
+   "word": "Juntos",
+   "start": 38.871,
+   "end": 39.342
+  },
+  {
+   "word": "a",
+   "start": 39.452,
+   "end": 39.507
+  },
+  {
+   "word": "meta",
+   "start": 39.518,
+   "end": 39.814
+  },
+  {
+   "word": "cai",
+   "start": 39.825,
+   "end": 39.989
+  },
+  {
+   "word": "pra",
+   "start": 40.0,
+   "end": 40.121
+  },
+  {
+   "word": "quarenta",
+   "start": 40.132,
+   "end": 40.461
+  },
+  {
+   "word": "e",
+   "start": 40.471,
+   "end": 40.504
+  },
+  {
+   "word": "cinco",
+   "start": 40.515,
+   "end": 40.844
+  },
+  {
+   "word": "Comenta",
+   "start": 41.601,
+   "end": 42.018
+  },
+  {
+   "word": "PLACAR",
+   "start": 42.029,
+   "end": 42.423
+  },
+  {
+   "word": "que",
+   "start": 42.434,
+   "end": 42.5
+  },
+  {
+   "word": "eu",
+   "start": 42.511,
+   "end": 42.577
+  },
+  {
+   "word": "te",
+   "start": 42.588,
+   "end": 42.686
+  },
+  {
+   "word": "mando",
+   "start": 42.697,
+   "end": 42.884
+  },
+  {
+   "word": "a",
+   "start": 42.895,
+   "end": 42.939
+  },
+  {
+   "word": "planilha",
+   "start": 42.95,
+   "end": 43.355
+  },
+  {
+   "word": "pra",
+   "start": 43.366,
+   "end": 43.509
+  },
+  {
+   "word": "calcular",
+   "start": 43.52,
+   "end": 43.991
+  },
+  {
+   "word": "o",
+   "start": 44.002,
+   "end": 44.046
+  },
+  {
+   "word": "seu",
+   "start": 44.057,
+   "end": 44.375
+  }
+ ]
+}
