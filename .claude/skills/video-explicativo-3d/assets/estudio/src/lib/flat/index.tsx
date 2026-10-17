@@ -69,9 +69,12 @@ export const FitText: React.FC<{
         }
         size = Math.min(maxSize, size * 0.98);
         const p = spring({frame: frame - Math.round((delay + i * stagger) * fps), fps, config: ds.motion.spring.enter});
+        // a folga em cima (compensada na margem) deixa os acentos de "É", "Ê", "Ã" fora do recorte quando a linha
+        // está no lugar, e o deslocamento de 130% os mantém escondidos antes da entrada
+        const folga = size * 0.2;
         return (
-          <div key={i} style={{overflow: "hidden", lineHeight: 0.92, paddingBottom: size * 0.04}}>
-            <div style={{...base, fontSize: size, lineHeight: 0.92, color: c(em ? accent : color), whiteSpace: "nowrap", transform: `translateY(${(1 - p) * 105}%) translateY(${-e * 20}px)`}}>{text}</div>
+          <div key={i} style={{overflow: "hidden", lineHeight: 0.92, paddingTop: folga, marginTop: -folga, paddingBottom: size * 0.04}}>
+            <div style={{...base, fontSize: size, lineHeight: 0.92, color: c(em ? accent : color), whiteSpace: "nowrap", opacity: p < 0.001 ? 0 : 1, transform: `translateY(${(1 - p) * 130}%) translateY(${-e * 20}px)`}}>{text}</div>
           </div>
         );
       })}

@@ -1,6 +1,6 @@
 import React from "react";
 import {AbsoluteFill, interpolate, Sequence, useCurrentFrame, useVideoConfig} from "remotion";
-import {ds} from "../ds";
+import {c, ds} from "../ds";
 import {Music, Narration, Sfx} from "./audio";
 import {Captions} from "./captions";
 import {Stage, Watermark} from "./layout";
@@ -85,7 +85,7 @@ const SceneTransition: React.FC<{children: React.ReactNode; enterType: Transitio
   exitAt,
 }) => {
   const frame = useCurrentFrame();
-  const {height} = useVideoConfig();
+  const {width, height} = useVideoConfig();
   // Transições de opacidade são escalonadas: quem sai some nos primeiros ~60% da janela e quem entra
   // aparece a partir de ~25% — evita duas cenas cheias sobrepostas (texto sobre 3D) no meio do corte.
   // "push" e "wipe" são espaciais e ficam simultâneas.
@@ -132,9 +132,19 @@ const SceneTransition: React.FC<{children: React.ReactNode; enterType: Transitio
       if (pout >= 1) opacity = 0;
       break;
     case "fade":
-    case "wipe":
-      opacity *= 1 - pout * (exitType === "wipe" ? 0.4 : 1);
+      opacity *= 1 - pout;
       break;
+    case "wipe": {
+      // a cena que sai ganha um furo do mesmo tamanho do círculo da que entra (mesma curva), senão as duas
+      // aparecem sobrepostas dentro do círculo (as cenas têm fundo transparente)
+      const pNext = interpolate(frame, [exitAt, exitAt + T], [0, 1], {...clamp, easing: ease.enter});
+      if (pNext > 0) {
+        const r = pNext * 1.2 * (Math.hypot(width, height) / Math.SQRT2);
+        st.maskImage = `radial-gradient(circle at 50% 50%, transparent ${r}px, black ${r + 1}px)`;
+        st.WebkitMaskImage = st.maskImage;
+      }
+      break;
+    }
     case "slide":
       opacity *= 1 - pout;
       tf.push(`translateY(${-pout * height * 0.1}px)`);
@@ -151,5 +161,26 @@ const SceneTransition: React.FC<{children: React.ReactNode; enterType: Transitio
       st.filter = `${st.filter ?? ""} blur(${pout * 28}px)`;
       break;
   }
-  return <AbsoluteFill style={{...st, opacity, transform: tf.join(" ") || undefined}}>{children}</AbsoluteFill>;
+  const scene = <AbsoluteFill style={{...st, opacity, transform: tf.join(" ") || undefined}}>{children}</AbsoluteFill>;
+  if (enterType !== "wipe" || pin <= 0 || pin >= 1) return scene;
+  // borda do círculo no acento: deixa o wipe legível como movimento, mesmo quando a cena nova ainda está vazia
+  const r = pin * 1.2 * (Math.hypot(width, height) / Math.SQRT2);
+  return (
+    <>
+      {scene}
+      <div
+        style={{
+          position: "absolute",
+          left: width / 2 - r,
+          top: height / 2 - r,
+          width: r * 2,
+          height: r * 2,
+          borderRadius: "50%",
+          border: `${Math.round(width * 0.012)}px solid ${c("accent")}`,
+          opacity: 1 - pin,
+          pointerEvents: "none",
+        }}
+      />
+    </>
+  );
 };
