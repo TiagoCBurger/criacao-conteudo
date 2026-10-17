@@ -106,7 +106,7 @@ export const GolpeMartelo: React.FC<{at: number; h?: number; position?: V3; rota
   return (
     <group position={position} rotation={[0, rotationY, 0]}>
       {/* bloco de batida: sob a cabeça, que no impacto fica a ~0,85h para a esquerda do pivô */}
-      <mesh position={[-0.86 * h, -0.3 * h, 0]} castShadow receiveShadow>
+      <mesh position={[-0.88 * h, -0.27 * h, 0]} castShadow receiveShadow>
         <cylinderGeometry args={[0.2 * h, 0.22 * h, 0.12 * h, 48]} />
         <ThemedMaterial color="secondary" />
       </mesh>

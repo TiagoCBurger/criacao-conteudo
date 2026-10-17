@@ -1,18 +1,15 @@
 # Storyboard — leilao-de-anuncios
 
-## Como finalizar (sessão com `OPENROUTER_API_KEY`)
+## Estado
+Narração (OpenRouter `openai/gpt-audio`, voz `cedar`, 66,7 s), imagens (Nano Banana Pro), modelos 3D (TripoSR) e relevo do salão (Depth Anything V2) **gerados** e versionados em `public/videos/leilao-de-anuncios/ia/`. A timeline vem da narração real (95% casada com o roteiro).
+**Pendente: trilha.** O OpenRouter recusou com 402 (saldo mínimo para saída de áudio). Depois de adicionar créditos:
 ```bash
 cd estudio-video
-npm install                      # contêiner novo
-npm run ia:setup                 # TripoSR + Depth Anything locais (~5 min na 1ª vez)
-npm run ia -- leilao-de-anuncios --script ../roteiros/leilao-de-anuncios.md   # voz + imagens + 3D + relevo + timeline + trilha
-.ia/venv/bin/python scripts/ia/previa-3d.py public/videos/leilao-de-anuncios/ia/3d/*.glb --out out/previa-3d.png
-npm run typecheck && npm run check -- leilao-de-anuncios   # conferir: martelo (pose do golpe), joia, placas, salão 2.5D
+node scripts/ia/trilha.mjs leilao-de-anuncios
+node scripts/ia/pipeline.mjs leilao-de-anuncios --sem-narracao --sem-imagens --sem-timeline   # atualiza assets.json (music)
 npm run render -- leilao-de-anuncios
 ```
-O `timeline.json` versionado hoje vem de uma narração **provisória** (Piper, local), usada só para montar e conferir as cenas. O `npm run ia` o substitui pela narração do OpenRouter.
-
-Narração: OpenRouter (`openai/gpt-audio`, voz `cedar`) gerada por `npm run ia`. Os tempos abaixo vêm da narração **provisória** local (Piper, 53,2 s) e só servem de referência: as cenas são ancoradas em palavras (`useCue`), então acompanham a voz final sozinhas.
+Os tempos da tabela abaixo são do planejamento (narração provisória de 53 s). As cenas são ancoradas em palavras (`useCue`) e acompanham a voz final sozinhas.
 
 Ativos de IA (`src/videos/leilao-de-anuncios/ia.json` → `public/videos/leilao-de-anuncios/ia/`):
 - `salao`: imagem 9:16 gerada (Nano Banana Pro) + profundidade (Depth Anything V2) → **cenário 2.5D** com paralaxe (`<Relevo>`), usado no gancho e no fechamento.

@@ -27,7 +27,10 @@ O OpenRouter **não tem** modelos de imagem→3D. Por isso o 3D é gerado localm
      ]
    }
    ```
-   - `to3d`: vira `.glb`. Aceita as opções do `imagem-para-3d.py`: `smooth` (0 para facetado), `faces`, `mc`, `fg`.
+   - `to3d`: vira `.glb`. Aceita as opções do `imagem-para-3d.py`: `smooth` (0 para facetado), `faces`, `mc`, `fg` e `orient`.
+     - `orient: "face"` para objetos planos (moeda, placa, cartão): o lado largo vira para a câmera. A foto pedida em 3/4 sai quase de perfil sem isso.
+     - `orient: "head"` para objetos com cabeça (martelo, chave, machado): o eixo da cabeça fica em X, como as animações de golpe esperam.
+     - Facetado de verdade (joia, cristal, low-poly): `faces` baixo (300–500) com `smooth` 1–2 e `flat` no `GenModel`. A redução cria facetas planas grandes, e o TripoSR sozinho arredonda as arestas.
    - `relief`: gera também `<nome>.profundidade.png` para o `<Relevo>`.
    - `reference`: nome(s) de imagem já gerada, enviada como referência de estilo.
    - **Prompts de objeto definem a pose canônica** de que a cena depende (ex.: "martelo em pé como um T, cabo para baixo"). O `.glb` sai com Y para cima, base em y=0 e a frente para +Z, igual à foto.
@@ -50,5 +53,6 @@ O OpenRouter **não tem** modelos de imagem→3D. Por isso o 3D é gerado localm
 
 - Imagens, narração e trilha geradas com a chave do usuário são ativos do projeto. Registre modelo e prompt (o `manifest.json`, o `narracao-openrouter.json` e o `trilha.json` já fazem isso). Não gere pessoas reais, marcas de terceiros nem imitação de artistas ou músicas existentes.
 - Se a resposta do modelo de música vier num formato inesperado, o `trilha.mjs` salva a resposta em `ia/trilha-resposta.txt` para diagnóstico.
+- **Saldo:** o OpenRouter exige um saldo mínimo para saída de áudio (402, *"requires at least $0.50 in balance for audio output"*). Sem saldo, o `npm run ia` segue, mas sem a trilha, e lista a pendência no fim. Depois de adicionar créditos, rode só `node scripts/ia/trilha.mjs <slug>` e o pipeline com `--sem-narracao --sem-imagens --sem-timeline` para atualizar o `assets.json`.
 - Todo prompt de imagem carrega a paleta do design system (hex) no `style`. Imagens fora da paleta quebram a série.
 - Cenário 2.5D é **fundo**: o assunto da cena continua sendo o objeto 3D ou o número.

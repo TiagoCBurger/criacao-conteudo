@@ -2,7 +2,7 @@
 
 Uso (de dentro de estudio-video/, depois de `bash scripts/ia/setup-3d.sh`):
   .ia/venv/bin/python scripts/ia/imagem-para-3d.py <img.png> [<img2.png> …] --out public/videos/<slug>/3d
-      [--mc 256] [--faces 40000] [--smooth 8] [--fg 0.85]
+      [--mc 256] [--faces 40000] [--smooth 8] [--fg 0.85] [--orient none|face|head]
 
 Para cada imagem gera <nome>.glb, já pronto para o R3F:
 - Y para cima, objeto centrado em x/z, base apoiada em y=0, maior dimensão = 1 unidade;
@@ -45,7 +45,29 @@ def prepare(path, fg_ratio, session):
     return Image.fromarray((rgb * 255.0).astype(np.uint8))
 
 
-def finish(mesh, faces, smooth):
+def yaw_for(mesh, orient):
+    """Ângulo (rad, em torno de Y) que deixa o objeto legível para uma câmera em +Z.
+    face: objeto plano (moeda, placa, cartão) — a direção mais fina no chão vira Z (de frente para a câmera).
+    head: objeto com "cabeça" (martelo, chave, machado) — a direção mais longa do topo (30% de cima) vira X."""
+    v = mesh.vertices
+    if orient == "head":
+        lo, hi = v[:, 1].min(), v[:, 1].max()
+        v = v[v[:, 1] >= hi - 0.3 * (hi - lo)]
+    xz = v[:, [0, 2]] - v[:, [0, 2]].mean(0)
+    w, vec = np.linalg.eigh(np.cov(xz.T))  # autovalores em ordem crescente
+    d = vec[:, 0] if orient == "face" else vec[:, 1]  # face: eixo mais fino; head: eixo mais longo
+    target = np.array([0.0, 1.0]) if orient == "face" else np.array([1.0, 0.0])  # (x, z)
+    # rotação em Y: (x, z) → (x cosθ + z sinθ, −x sinθ + z cosθ); escolhe θ que leva d ao alvo
+    ang = lambda u: np.arctan2(u[1], u[0])  # ângulo no plano (x, z)
+    theta = ang(d) - ang(target)
+    if theta > np.pi / 2:  # os dois sentidos do eixo servem: usa o giro menor
+        theta -= np.pi
+    if theta < -np.pi / 2:
+        theta += np.pi
+    return float(theta)
+
+
+def finish(mesh, faces, smooth, orient="none"):
     # Eixos do TripoSR: +X para cima, +Y horizontal na imagem, câmera de entrada em -Z.
     # three.js: Y para cima e o objeto olhando para a câmera em +Z (como na foto de entrada).
     m = np.eye(4)
@@ -69,6 +91,8 @@ def finish(mesh, faces, smooth):
 
             _, idx = cKDTree(verts_before).query(mesh.vertices)
             mesh.visual = trimesh.visual.ColorVisuals(mesh, vertex_colors=colors[idx])
+    if orient in ("face", "head"):
+        mesh.apply_transform(trimesh.transformations.rotation_matrix(yaw_for(mesh, orient), [0, 1, 0]))
     lo, hi = mesh.bounds
     size = hi - lo
     scale = 1.0 / float(size.max())
@@ -87,6 +111,7 @@ def main():
     ap.add_argument("--smooth", type=int, default=8, help="iterações de suavização Taubin")
     ap.add_argument("--fg", type=float, default=0.85, help="fração do quadro ocupada pelo objeto")
     ap.add_argument("--threshold", type=float, default=25.0, help="limiar de densidade da superfície")
+    ap.add_argument("--orient", choices=["none", "face", "head"], default="none", help="face: objeto plano de frente para +Z; head: eixo da cabeça em X")
     ap.add_argument("--force", action="store_true", help="refaz mesmo se o .glb já existir")
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
@@ -120,7 +145,7 @@ def main():
         with torch.no_grad():
             codes = model([img], device="cpu")
             mesh = model.extract_mesh(codes, True, resolution=a.mc, threshold=a.threshold)[0]
-        mesh, size = finish(mesh, a.faces, a.smooth)
+        mesh, size = finish(mesh, a.faces, a.smooth, a.orient)
         mesh.export(dst)
         with open(os.path.join(a.out, f"{name}.json"), "w") as f:
             json.dump({"size": [round(x, 4) for x in size], "faces": int(len(mesh.faces)), "source": os.path.basename(p)}, f)

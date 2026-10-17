@@ -27,10 +27,13 @@ const script = opt("script", `../roteiros/${slug}.md`);
 const base = path.join("public", "videos", slug, "ia");
 const PY = path.join(".ia", "venv", "bin", "python");
 
-const run = (cmd, a, extraEnv = {}) => {
+const avisos = [];
+// soft: a falha vira aviso e o pipeline segue (ex.: trilha sem saldo — o vídeo sai só com voz e efeitos)
+const run = (cmd, a, {soft = false} = {}) => {
   console.log(`\n$ ${cmd} ${a.join(" ")}`);
-  const r = spawnSync(cmd, a, {stdio: "inherit", env: {...process.env, ...extraEnv}});
+  const r = spawnSync(cmd, a, {stdio: "inherit", env: process.env});
   if (r.status !== 0) {
+    if (soft) return avisos.push(`${cmd} ${a.slice(0, 2).join(" ")} falhou (veja acima)`);
     console.error(`✗ falhou: ${cmd} ${a.join(" ")}`);
     process.exit(r.status ?? 1);
   }
@@ -70,7 +73,7 @@ if (fs.existsSync(wav) && !has("sem-timeline")) run("npm", ["run", "timeline", "
 // 6) trilha original sob medida (mantém trilha.mp3 fornecida pelo usuário)
 const tlFile = path.join("public", "videos", slug, "timeline.json");
 if (!has("sem-trilha")) {
-  if (fs.existsSync(tlFile)) run("node", ["scripts/ia/trilha.mjs", slug, ...force]);
+  if (fs.existsSync(tlFile)) run("node", ["scripts/ia/trilha.mjs", slug, ...force], {soft: true});
   else console.log("• trilha: sem timeline.json ainda — rode de novo depois da timeline");
 }
 
@@ -94,3 +97,4 @@ fs.writeFileSync(path.join(base, "assets.json"), JSON.stringify(assets, null, 2)
 console.log(
   `\n✓ assets.json: ${Object.keys(assets.models).length} modelos 3D, ${Object.keys(assets.reliefs).length} relevos, ${Object.keys(assets.images).length} imagens${assets.music ? ", trilha" : ""}`,
 );
+if (avisos.length) console.log(`\n! pendências:\n${avisos.map((x) => `  - ${x}`).join("\n")}`);

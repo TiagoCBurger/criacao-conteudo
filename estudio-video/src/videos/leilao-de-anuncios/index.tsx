@@ -113,7 +113,7 @@ const Gancho: React.FC = () => {
 const Sombra: React.FC = () => (
   <AbsoluteFill
     style={{
-      background: `linear-gradient(180deg, ${alpha("background", 0.8)} 0%, ${alpha("background", 0)} 17%, ${alpha("background", 0)} 71%, ${alpha("background", 0.9)} 86%)`,
+      background: `linear-gradient(180deg, ${alpha("background", 0.94)} 0%, ${alpha("background", 0.78)} 15%, ${alpha("background", 0)} 31%, ${alpha("background", 0)} 70%, ${alpha("background", 0.9)} 86%)`,
     }}
   />
 );

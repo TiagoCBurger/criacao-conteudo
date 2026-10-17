@@ -176,7 +176,14 @@ for (const v of variants) {
     lastErr = new Error("resposta sem áudio");
   } catch (e) {
     lastErr = e;
-    if (!/400|422|audio|modalit|format|stream/i.test(String(e.message))) break; // erro que outra variação não resolve
+    const msg = String(e.message);
+    // conta/saldo/permissão: nenhuma variação do pedido resolve
+    if (/: 40[123] /.test(msg)) {
+      const why = /: 402 /.test(msg) ? "saldo insuficiente no OpenRouter (áudio exige saldo mínimo) — adicione créditos em openrouter.ai/settings/credits" : "chave sem permissão para este modelo";
+      console.error(`✗ trilha: ${why}\n  ${msg.slice(0, 240)}`);
+      process.exit(3);
+    }
+    if (!/400|422|audio|modalit|format|stream/i.test(msg)) break; // erro que outra variação não resolve
   }
 }
 fs.mkdirSync(iaDir, {recursive: true});

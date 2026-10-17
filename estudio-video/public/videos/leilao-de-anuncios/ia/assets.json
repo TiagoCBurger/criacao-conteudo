@@ -3,33 +3,33 @@
     "martelo": {
       "src": "videos/leilao-de-anuncios/ia/3d/martelo.glb",
       "size": [
-        0.4087,
+        0.4138,
         1,
-        0.3888
+        0.2547
       ]
     },
     "moeda": {
       "src": "videos/leilao-de-anuncios/ia/3d/moeda.glb",
       "size": [
-        0.4755,
         1,
-        0.9486
+        0.9768,
+        0.212
       ]
     },
     "joia": {
       "src": "videos/leilao-de-anuncios/ia/3d/joia.glb",
       "size": [
         1,
-        0.7808,
-        0.9563
+        0.7843,
+        0.9728
       ]
     },
     "placa": {
       "src": "videos/leilao-de-anuncios/ia/3d/placa.glb",
       "size": [
-        0.4665,
+        0.5927,
         1,
-        0.4089
+        0.2188
       ]
     }
   },
